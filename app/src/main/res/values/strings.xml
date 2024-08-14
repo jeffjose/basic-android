@@ -15,8 +15,6 @@
 -->
 <resources>
     <string name="app_name">Cupcake</string>
-    <string name="first">First</string>
-    <string name="second">Second</string>
     <string name="next">Next</string>
     <string name="prev">Previous</string>
     <string name="order_cupcakes">Order Cupcakes</string>

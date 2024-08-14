@@ -15,9 +15,6 @@
  */
 package com.example.cupcake
 
-import android.content.Context
-import android.content.Intent
-import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -33,10 +30,8 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
@@ -44,26 +39,19 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.cupcake.data.OrderUiState
 import com.example.cupcake.ui.FirstScreen
 import com.example.cupcake.ui.SecondScreen
-
-/** enum values that represent the screens in the app */
-enum class CupcakeScreen(@StringRes val title: Int) {
-    First(title = R.string.app_name),
-    Second(title = R.string.choose_flavor),
-}
 
 /** Composable that displays the topBar and displays back button if back navigation is possible. */
 @Composable
 fun CupcakeAppBar(
-        currentScreen: CupcakeScreen,
+        currentScreen: String,
         canNavigateBack: Boolean,
         navigateUp: () -> Unit,
         modifier: Modifier = Modifier
 ) {
     TopAppBar(
-            title = { Text(stringResource(currentScreen.title)) },
+            title = { Text(currentScreen) },
             colors =
                     TopAppBarDefaults.mediumTopAppBarColors(
                             containerColor = MaterialTheme.colorScheme.primaryContainer
@@ -83,14 +71,11 @@ fun CupcakeAppBar(
 }
 
 @Composable
-fun CupcakeApp(
-        navController: NavHostController = rememberNavController()
-) {
+fun CupcakeApp(navController: NavHostController = rememberNavController()) {
     // Get current back stack entry
     val backStackEntry by navController.currentBackStackEntryAsState()
     // Get the name of the current screen
-    val currentScreen =
-            CupcakeScreen.valueOf(backStackEntry?.destination?.route ?: CupcakeScreen.First.name)
+    val currentScreen = backStackEntry?.destination?.route ?: "/first"
 
     Scaffold(
             topBar = {
@@ -101,33 +86,33 @@ fun CupcakeApp(
                 )
             }
     ) { innerPadding ->
-
         NavHost(
                 navController = navController,
-                startDestination = CupcakeScreen.First.name,
+                startDestination = "/first",
                 modifier =
                         Modifier.fillMaxSize()
                                 .verticalScroll(rememberScrollState())
                                 .padding(innerPadding)
         ) {
-            composable(route = CupcakeScreen.First.name) {
+            composable(route = "/first") {
                 FirstScreen(
                         onNextButtonClicked = {
                             // viewModel.setQuantity(it)
-                            navController.navigate(CupcakeScreen.Second.name)
+                            navController.navigate("/second")
                         },
                         modifier =
-                                Modifier.fillMaxSize()
+                                Modifier.fillMaxHeight()
                                         .padding(dimensionResource(R.dimen.padding_medium))
                 )
             }
-            composable(route = CupcakeScreen.Second.name) {
-                //val context = LocalContext.current
+            composable(route = "/second") {
+                // val context = LocalContext.current
                 SecondScreen(
                         onPrevButtonClicked = {
-    navController.popBackStack(CupcakeScreen.First.name, inclusive = false)
+                            navController.popBackStack("/first", inclusive = false)
                         },
-                        modifier = Modifier.fillMaxHeight()
+                        modifier =
+                                Modifier.fillMaxHeight()
                                         .padding(dimensionResource(R.dimen.padding_medium))
                 )
             }
