@@ -48,7 +48,7 @@ import com.example.cupcake.ui.theme.CupcakeTheme
  * [onNextButtonClicked] lambda that triggers the navigation to next screen
  */
 @Composable
-fun SelectOptionScreen(
+fun SecondScreen(
     subtotal: String,
     options: List<String>,
     onSelectionChanged: (String) -> Unit = {},
@@ -128,7 +128,7 @@ fun SelectOptionScreen(
 @Composable
 fun SelectOptionPreview() {
     CupcakeTheme {
-        SelectOptionScreen(
+        SecondScreen(
             subtotal = "299.99",
             options = listOf("Option 1", "Option 2", "Option 3", "Option 4"),
             modifier = Modifier.fillMaxHeight()

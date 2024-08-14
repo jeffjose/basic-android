@@ -47,45 +47,41 @@ import com.example.cupcake.ui.theme.CupcakeTheme
  * next screen
  */
 @Composable
-fun StartOrderScreen(
-    quantityOptions: List<Pair<Int, Int>>,
-    onNextButtonClicked: (Int) -> Unit,
-    modifier: Modifier = Modifier
+fun FirstScreen(
+        quantityOptions: List<Pair<Int, Int>>,
+        onNextButtonClicked: (Int) -> Unit,
+        modifier: Modifier = Modifier
 ) {
-    Column(
-        modifier = modifier,
-        verticalArrangement = Arrangement.SpaceBetween
-    ) {
+    Column(modifier = modifier, verticalArrangement = Arrangement.SpaceBetween) {
         Column(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_small))
+                modifier = Modifier.fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_small))
         ) {
             Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_medium)))
             Image(
-                painter = painterResource(R.drawable.cupcake),
-                contentDescription = null,
-                modifier = Modifier.width(300.dp)
+                    painter = painterResource(R.drawable.cupcake),
+                    contentDescription = null,
+                    modifier = Modifier.width(300.dp)
             )
             Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_medium)))
             Text(
-                text = stringResource(R.string.order_cupcakes),
-                style = MaterialTheme.typography.headlineSmall
+                    text = stringResource(R.string.order_cupcakes),
+                    style = MaterialTheme.typography.headlineSmall
             )
             Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_small)))
         }
         Column(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(
-                dimensionResource(id = R.dimen.padding_medium)
-            )
+                modifier = Modifier.fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement =
+                        Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium))
         ) {
             quantityOptions.forEach { item ->
                 SelectQuantityButton(
-                    labelResourceId = item.first,
-                    onClick = { onNextButtonClicked(item.second) },
-                    modifier = Modifier.fillMaxWidth(),
+                        labelResourceId = item.first,
+                        onClick = { onNextButtonClicked(item.second) },
+                        modifier = Modifier.fillMaxWidth(),
                 )
             }
         }
@@ -93,19 +89,16 @@ fun StartOrderScreen(
 }
 
 /**
- * Customizable button composable that displays the [labelResourceId]
- * and triggers [onClick] lambda when this composable is clicked
+ * Customizable button composable that displays the [labelResourceId] and triggers [onClick] lambda
+ * when this composable is clicked
  */
 @Composable
 fun SelectQuantityButton(
-    @StringRes labelResourceId: Int,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier
+        @StringRes labelResourceId: Int,
+        onClick: () -> Unit,
+        modifier: Modifier = Modifier
 ) {
-    Button(
-        onClick = onClick,
-        modifier = modifier.widthIn(min = 250.dp)
-    ) {
+    Button(onClick = onClick, modifier = modifier.widthIn(min = 250.dp)) {
         Text(stringResource(labelResourceId))
     }
 }
@@ -114,12 +107,10 @@ fun SelectQuantityButton(
 @Composable
 fun StartOrderPreview() {
     CupcakeTheme {
-        StartOrderScreen(
-            quantityOptions = DataSource.quantityOptions,
-            onNextButtonClicked = {},
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(dimensionResource(R.dimen.padding_medium))
+        FirstScreen(
+                quantityOptions = DataSource.quantityOptions,
+                onNextButtonClicked = {},
+                modifier = Modifier.fillMaxSize().padding(dimensionResource(R.dimen.padding_medium))
         )
     }
 }
