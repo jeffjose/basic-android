@@ -104,7 +104,6 @@ fun CupcakeApp(
                 )
             }
     ) { innerPadding ->
-        val uiState by viewModel.uiState.collectAsState()
 
         NavHost(
                 navController = navController,
@@ -126,12 +125,13 @@ fun CupcakeApp(
                 )
             }
             composable(route = CupcakeScreen.Second.name) {
-                val context = LocalContext.current
+                //val context = LocalContext.current
                 SecondScreen(
                         onPrevButtonClicked = {
-                            cancelOrderAndNavigateToStart(viewModel, navController)
+    navController.popBackStack(CupcakeScreen.First.name, inclusive = false)
                         },
                         modifier = Modifier.fillMaxHeight()
+                                        .padding(dimensionResource(R.dimen.padding_medium))
                 )
             }
         }

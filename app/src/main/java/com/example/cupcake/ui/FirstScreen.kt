@@ -57,18 +57,6 @@ fun FirstScreen(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_small))
         ) {
-            Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_medium)))
-            Image(
-                    painter = painterResource(R.drawable.cupcake),
-                    contentDescription = null,
-                    modifier = Modifier.width(300.dp)
-            )
-            Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_medium)))
-            Text(
-                    text = stringResource(R.string.order_cupcakes),
-                    style = MaterialTheme.typography.headlineSmall
-            )
-            Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_small)))
         }
         Column(
                 modifier = Modifier.fillMaxWidth(),

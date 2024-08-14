@@ -17,11 +17,10 @@ package com.example.cupcake.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material3.Button
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
@@ -33,6 +32,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.cupcake.R
 import com.example.cupcake.ui.theme.CupcakeTheme
 
@@ -45,17 +45,19 @@ import com.example.cupcake.ui.theme.CupcakeTheme
 @Composable
 fun SecondScreen(onPrevButtonClicked: () -> Unit = {}, modifier: Modifier = Modifier) {
 
-    Column(modifier = Modifier.fillMaxHeight(), verticalArrangement = Arrangement.SpaceBetween) {
-    }
-    Column(modifier = Modifier.fillMaxWidth(), verticalArrangement = Arrangement.SpaceBetween) {
-        Row(
-                modifier =
-                        Modifier.fillMaxWidth().padding(dimensionResource(R.dimen.padding_medium)),
-                horizontalArrangement =
-                        Arrangement.spacedBy(dimensionResource(R.dimen.padding_medium)),
-                verticalAlignment = Alignment.Bottom
+    Column(modifier = modifier, verticalArrangement = Arrangement.SpaceBetween) {
+        Column(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_small))
+        ) {}
+        Column(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement =
+                        Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium))
         ) {
-            Button(modifier = Modifier.weight(1f), onClick = onPrevButtonClicked) {
+            Button(onClick = onPrevButtonClicked, modifier = modifier.widthIn(min = 250.dp)) {
                 Text(stringResource(R.string.prev))
             }
         }
@@ -65,5 +67,9 @@ fun SecondScreen(onPrevButtonClicked: () -> Unit = {}, modifier: Modifier = Modi
 @Preview
 @Composable
 fun SelectOptionPreview() {
-    CupcakeTheme { SecondScreen(modifier = Modifier.fillMaxHeight()) }
+    CupcakeTheme {
+        SecondScreen(
+                modifier = Modifier.fillMaxSize().padding(dimensionResource(R.dimen.padding_medium))
+        )
+    }
 }
