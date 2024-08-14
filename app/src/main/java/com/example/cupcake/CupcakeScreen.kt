@@ -53,10 +53,8 @@ import com.example.cupcake.ui.SecondScreen
 
 /** enum values that represent the screens in the app */
 enum class CupcakeScreen(@StringRes val title: Int) {
-    Start(title = R.string.app_name),
-    Flavor(title = R.string.choose_flavor),
-    Pickup(title = R.string.choose_pickup_date),
-    Summary(title = R.string.order_summary)
+    First(title = R.string.app_name),
+    Second(title = R.string.choose_flavor),
 }
 
 /** Composable that displays the topBar and displays back button if back navigation is possible. */
@@ -96,7 +94,7 @@ fun CupcakeApp(
     val backStackEntry by navController.currentBackStackEntryAsState()
     // Get the name of the current screen
     val currentScreen =
-            CupcakeScreen.valueOf(backStackEntry?.destination?.route ?: CupcakeScreen.Start.name)
+            CupcakeScreen.valueOf(backStackEntry?.destination?.route ?: CupcakeScreen.First.name)
 
     Scaffold(
             topBar = {
@@ -111,29 +109,29 @@ fun CupcakeApp(
 
         NavHost(
                 navController = navController,
-                startDestination = CupcakeScreen.Start.name,
+                startDestination = CupcakeScreen.First.name,
                 modifier =
                         Modifier.fillMaxSize()
                                 .verticalScroll(rememberScrollState())
                                 .padding(innerPadding)
         ) {
-            composable(route = CupcakeScreen.Start.name) {
+            composable(route = CupcakeScreen.First.name) {
                 FirstScreen(
                         quantityOptions = DataSource.quantityOptions,
                         onNextButtonClicked = {
                             viewModel.setQuantity(it)
-                            navController.navigate(CupcakeScreen.Flavor.name)
+                            navController.navigate(CupcakeScreen.Second.name)
                         },
                         modifier =
                                 Modifier.fillMaxSize()
                                         .padding(dimensionResource(R.dimen.padding_medium))
                 )
             }
-            composable(route = CupcakeScreen.Flavor.name) {
+            composable(route = CupcakeScreen.Second.name) {
                 val context = LocalContext.current
                 SecondScreen(
                         subtotal = uiState.price,
-                        onNextButtonClicked = { navController.navigate(CupcakeScreen.Pickup.name) },
+                        onNextButtonClicked = { },
                         onCancelButtonClicked = {
                             cancelOrderAndNavigateToStart(viewModel, navController)
                         },
@@ -152,7 +150,7 @@ private fun cancelOrderAndNavigateToStart(
         navController: NavHostController
 ) {
     viewModel.resetOrder()
-    navController.popBackStack(CupcakeScreen.Start.name, inclusive = false)
+    navController.popBackStack(CupcakeScreen.First.name, inclusive = false)
 }
 
 /** Creates an intent to share order details */
