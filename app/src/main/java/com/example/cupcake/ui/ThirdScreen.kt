@@ -22,10 +22,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
+import androidx.navigation.compose.rememberNavController
 import androidx.compose.material3.Button
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.navigation.compose.rememberNavController
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
@@ -37,12 +40,14 @@ import com.example.cupcake.R
 import com.example.cupcake.ui.theme.CupcakeTheme
 
 /**
- * Composable that allows the user to select the desired cupcake quantity and expects
- * [onNextButtonClicked] lambda that expects the selected quantity and triggers the navigation to
- * next screen
+ * Composable that displays the list of items as [RadioButton] options, [onSelectionChanged] lambda
+ * that notifies the parent composable when a new value is selected, [onPrevButtonClicked] lambda
+ * that cancels the order when user clicks cancel and [onNextButtonClicked] lambda that triggers the
+ * navigation to next screen
  */
 @Composable
-fun FirstScreen(navController: NavHostController, modifier: Modifier = Modifier) {
+fun ThirdScreen(navController: NavHostController, modifier: Modifier = Modifier) {
+
     Column(modifier = modifier, verticalArrangement = Arrangement.SpaceBetween) {
         Column(
                 modifier = Modifier.fillMaxWidth(),
@@ -56,8 +61,8 @@ fun FirstScreen(navController: NavHostController, modifier: Modifier = Modifier)
                         Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium))
         ) {
             Row(
+
                 horizontalArrangement = Arrangement.SpaceEvenly
-                
             ) {
                 Button(
                         onClick = { navController.navigate("/first") },
@@ -76,10 +81,10 @@ fun FirstScreen(navController: NavHostController, modifier: Modifier = Modifier)
 
 @Preview
 @Composable
-fun FirstScreenPreview() {
+fun ThirdScreenPreview() {
     CupcakeTheme {
-        FirstScreen(
-                navController= rememberNavController(),
+        ThirdScreen(
+                navController = rememberNavController(),
                 modifier = Modifier.fillMaxSize().padding(dimensionResource(R.dimen.padding_medium))
         )
     }

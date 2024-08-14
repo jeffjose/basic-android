@@ -17,10 +17,10 @@ package com.example.cupcake.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material3.Button
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
@@ -32,7 +32,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.cupcake.R
 import com.example.cupcake.ui.theme.CupcakeTheme
 
@@ -43,7 +44,7 @@ import com.example.cupcake.ui.theme.CupcakeTheme
  * navigation to next screen
  */
 @Composable
-fun SecondScreen(onPrevButtonClicked: () -> Unit = {}, modifier: Modifier = Modifier) {
+fun SecondScreen(navController: NavHostController, modifier: Modifier = Modifier) {
 
     Column(modifier = modifier, verticalArrangement = Arrangement.SpaceBetween) {
         Column(
@@ -57,8 +58,17 @@ fun SecondScreen(onPrevButtonClicked: () -> Unit = {}, modifier: Modifier = Modi
                 verticalArrangement =
                         Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium))
         ) {
-            Button(onClick = onPrevButtonClicked, modifier = modifier.widthIn(min = 250.dp)) {
-                Text(stringResource(R.string.prev))
+            Row(horizontalArrangement = Arrangement.SpaceEvenly) {
+                Button(onClick = { navController.navigate("/first") }) {
+                    Text(stringResource(R.string.one))
+                }
+                Button(onClick = { navController.navigate("/second") }) {
+                    Text(stringResource(R.string.two))
+                }
+
+                Button(onClick = { navController.navigate("/third") }) {
+                    Text(stringResource(R.string.three))
+                }
             }
         }
     }
@@ -66,9 +76,10 @@ fun SecondScreen(onPrevButtonClicked: () -> Unit = {}, modifier: Modifier = Modi
 
 @Preview
 @Composable
-fun SelectOptionPreview() {
+fun SecondScreenPreview() {
     CupcakeTheme {
         SecondScreen(
+                navController = rememberNavController(),
                 modifier = Modifier.fillMaxSize().padding(dimensionResource(R.dimen.padding_medium))
         )
     }

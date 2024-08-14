@@ -15,8 +15,11 @@
 -->
 <resources>
     <string name="app_name">Cupcake</string>
-    <string name="next">Next</string>
+    <string name="one">One</string>
+    <string name="two">Two</string>
+    <string name="three">Three</string>
     <string name="prev">Previous</string>
+    <string name="next">Next</string>
     <string name="order_cupcakes">Order Cupcakes</string>
     <string name="one_cupcake">One Cupcake</string>
     <string name="six_cupcakes">Six Cupcakes</string>

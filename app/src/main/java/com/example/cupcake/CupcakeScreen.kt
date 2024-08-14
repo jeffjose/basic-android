@@ -41,6 +41,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.cupcake.ui.FirstScreen
 import com.example.cupcake.ui.SecondScreen
+import com.example.cupcake.ui.ThirdScreen
 
 /** Composable that displays the topBar and displays back button if back navigation is possible. */
 @Composable
@@ -96,10 +97,11 @@ fun CupcakeApp(navController: NavHostController = rememberNavController()) {
         ) {
             composable(route = "/first") {
                 FirstScreen(
-                        onNextButtonClicked = {
-                            // viewModel.setQuantity(it)
-                            navController.navigate("/second")
-                        },
+                        // onNextButtonClicked = {
+                        //     // viewModel.setQuantity(it)
+                        //     navController.navigate("/second")
+                        // },
+                        navController = navController,
                         modifier =
                                 Modifier.fillMaxHeight()
                                         .padding(dimensionResource(R.dimen.padding_medium))
@@ -108,9 +110,19 @@ fun CupcakeApp(navController: NavHostController = rememberNavController()) {
             composable(route = "/second") {
                 // val context = LocalContext.current
                 SecondScreen(
-                        onPrevButtonClicked = {
-                            navController.popBackStack("/first", inclusive = false)
-                        },
+                        navController = navController,
+                        modifier =
+                                Modifier.fillMaxHeight()
+                                        .padding(dimensionResource(R.dimen.padding_medium))
+                )
+            }
+            composable(route = "/third") {
+                // val context = LocalContext.current
+                ThirdScreen(
+                        navController = navController,
+                        // onPrevButtonClicked = {
+                        //     navController.popBackStack("/first", inclusive = false)
+                        // },
                         modifier =
                                 Modifier.fillMaxHeight()
                                         .padding(dimensionResource(R.dimen.padding_medium))
