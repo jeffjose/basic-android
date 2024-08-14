@@ -39,7 +39,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -47,7 +46,6 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.cupcake.data.OrderUiState
 import com.example.cupcake.ui.FirstScreen
-import com.example.cupcake.ui.OrderViewModel
 import com.example.cupcake.ui.SecondScreen
 
 /** enum values that represent the screens in the app */
@@ -86,7 +84,6 @@ fun CupcakeAppBar(
 
 @Composable
 fun CupcakeApp(
-        viewModel: OrderViewModel = viewModel(),
         navController: NavHostController = rememberNavController()
 ) {
     // Get current back stack entry
@@ -136,27 +133,4 @@ fun CupcakeApp(
             }
         }
     }
-}
-
-/** Resets the [OrderUiState] and pops up to [CupcakeScreen.Start] */
-private fun cancelOrderAndNavigateToStart(
-        viewModel: OrderViewModel,
-        navController: NavHostController
-) {
-    viewModel.resetOrder()
-    navController.popBackStack(CupcakeScreen.First.name, inclusive = false)
-}
-
-/** Creates an intent to share order details */
-private fun shareOrder(context: Context, subject: String, summary: String) {
-    // Create an ACTION_SEND implicit intent with order details in the intent extras
-    val intent =
-            Intent(Intent.ACTION_SEND).apply {
-                type = "text/plain"
-                putExtra(Intent.EXTRA_SUBJECT, subject)
-                putExtra(Intent.EXTRA_TEXT, summary)
-            }
-    context.startActivity(
-            Intent.createChooser(intent, context.getString(R.string.new_cupcake_order))
-    )
 }
