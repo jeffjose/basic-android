@@ -45,7 +45,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.cupcake.data.DataSource
 import com.example.cupcake.data.OrderUiState
 import com.example.cupcake.ui.FirstScreen
 import com.example.cupcake.ui.OrderViewModel
@@ -117,9 +116,8 @@ fun CupcakeApp(
         ) {
             composable(route = CupcakeScreen.First.name) {
                 FirstScreen(
-                        quantityOptions = DataSource.quantityOptions,
                         onNextButtonClicked = {
-                            viewModel.setQuantity(it)
+                            // viewModel.setQuantity(it)
                             navController.navigate(CupcakeScreen.Second.name)
                         },
                         modifier =
@@ -130,13 +128,9 @@ fun CupcakeApp(
             composable(route = CupcakeScreen.Second.name) {
                 val context = LocalContext.current
                 SecondScreen(
-                        subtotal = uiState.price,
-                        onNextButtonClicked = { },
-                        onCancelButtonClicked = {
+                        onPrevButtonClicked = {
                             cancelOrderAndNavigateToStart(viewModel, navController)
                         },
-                        options = DataSource.flavors.map { id -> context.resources.getString(id) },
-                        onSelectionChanged = { viewModel.setFlavor(it) },
                         modifier = Modifier.fillMaxHeight()
                 )
             }
