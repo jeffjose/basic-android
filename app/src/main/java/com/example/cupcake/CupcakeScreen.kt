@@ -48,7 +48,6 @@ import androidx.navigation.compose.rememberNavController
 import com.example.cupcake.data.DataSource
 import com.example.cupcake.data.OrderUiState
 import com.example.cupcake.ui.FirstScreen
-import com.example.cupcake.ui.OrderSummaryScreen
 import com.example.cupcake.ui.OrderViewModel
 import com.example.cupcake.ui.SecondScreen
 
@@ -140,33 +139,6 @@ fun CupcakeApp(
                         },
                         options = DataSource.flavors.map { id -> context.resources.getString(id) },
                         onSelectionChanged = { viewModel.setFlavor(it) },
-                        modifier = Modifier.fillMaxHeight()
-                )
-            }
-            composable(route = CupcakeScreen.Pickup.name) {
-                SecondScreen(
-                        subtotal = uiState.price,
-                        onNextButtonClicked = {
-                            navController.navigate(CupcakeScreen.Summary.name)
-                        },
-                        onCancelButtonClicked = {
-                            cancelOrderAndNavigateToStart(viewModel, navController)
-                        },
-                        options = uiState.pickupOptions,
-                        onSelectionChanged = { viewModel.setDate(it) },
-                        modifier = Modifier.fillMaxHeight()
-                )
-            }
-            composable(route = CupcakeScreen.Summary.name) {
-                val context = LocalContext.current
-                OrderSummaryScreen(
-                        orderUiState = uiState,
-                        onCancelButtonClicked = {
-                            cancelOrderAndNavigateToStart(viewModel, navController)
-                        },
-                        onSendButtonClicked = { subject: String, summary: String ->
-                            shareOrder(context, subject = subject, summary = summary)
-                        },
                         modifier = Modifier.fillMaxHeight()
                 )
             }
