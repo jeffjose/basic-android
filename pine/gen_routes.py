@@ -5,10 +5,10 @@ from pathlib import Path
 
 from patterns import import_pattern
 
-from utils import get_screen_path, read_file, write_file
+from utils import get_screen_path, read_file, write_file, get_project_namespace
 
 INPUT_PATTERN = 'src/routes/**/*.pine'
-TEMPLATE = '''
+TEMPLATE = '''%%NAMESPACE%%
 
 %%IMPORT%%
 
@@ -62,13 +62,16 @@ def parse(data):
 
     return {'imports': '\n'.join(imports), 'contents': '\n'.join(contents)}
 
+def mkpackage_string():
+    return f'package {get_project_namespace()}.ui'
+
 def create_screen(template, file):
 
     parcel = parse(read_file(file))
 
     slug = get_slug(file)
 
-    final = template.replace('%%IMPORT%%', parcel['imports']).replace("%%CONTENT%%", parcel['contents']).replace("%%NAME%%", slug)
+    final = template.replace('%%NAMESPACE%%', mkpackage_string()).replace('%%IMPORT%%', parcel['imports']).replace("%%CONTENT%%", parcel['contents']).replace("%%NAME%%", slug).strip()
 
     write_file(get_screen_path() / Path(slug + '.kt'), final)
 

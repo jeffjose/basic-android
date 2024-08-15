@@ -11,8 +11,7 @@ from utils import get_screen_path, read_file, write_file, get_main_dir, write_js
 INPUT_MANIFEST = 'src/manifest.json'
 OUTPUT_MANIFEST = get_main_dir() / 'AndroidManifest.xml'
 
-TEMPLATE = '''
-<?xml version="1.0" encoding="utf-8"?>
+TEMPLATE = '''<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -108,7 +107,7 @@ def create_manifest(template, manifest):
 
     parcel = parse(manifest)
 
-    final = template.format(**parcel)
+    final = template.format(**parcel).strip()
 
     write_file(OUTPUT_MANIFEST, final)
 

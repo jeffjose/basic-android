@@ -2,6 +2,8 @@ import ujson as json
 import shutil
 from pathlib import Path
 
+NAMESPACE_BASE = 'com.example'
+
 
 #########
 # Project paths
@@ -11,6 +13,9 @@ OUTPUT_BASE = 'dist'
 
 def get_project_name():
     return 'cupcake'
+
+def get_project_namespace():
+    return f'{NAMESPACE_BASE}.{get_project_name()}'
 
 
 def get_output_dir():
