@@ -17,6 +17,8 @@
     <string name="app_name">Cupcake</string>
     <string name="foobar">Foobar</string>
     <string name="blogpost">Blog entry</string>
+    <string name="blog123">Blog 123</string>
+    <string name="blog345">Blog 345</string>
     <string name="root">/</string>
     <string name="home">Home</string>
     <string name="about">About</string>

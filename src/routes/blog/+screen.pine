@@ -35,7 +35,10 @@ Column(verticalArrangement = Arrangement.SpaceBetween,
 
                         Button(
                                 onClick = { navController.navigate("/blog/123") },
-                        ) { Text(stringResource(R.string.blogpost)) }
+                        ) { Text(stringResource(R.string.blog123)) }
+                        Button(
+                                onClick = { navController.navigate("/blog/345") },
+                        ) { Text(stringResource(R.string.blog345)) }
+                }
                 }
         }
-}

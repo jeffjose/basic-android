@@ -14,8 +14,7 @@ import androidx.compose.foundation.layout.Arrangement
 
 Column(
         verticalArrangement = Arrangement.SpaceBetween,
-        modifier = Modifier.fillMaxHeight()
-                                        .padding(dimensionResource(R.dimen.padding_medium))
+        modifier = Modifier.fillMaxHeight().padding(dimensionResource(R.dimen.padding_medium))
 
 ) {
 
@@ -26,6 +25,7 @@ Column(
         ) {}
 
     Text(stringResource(R.string.blogpost))
+    Text(params?.getString("id") ?: "xxx")
 
 
 }

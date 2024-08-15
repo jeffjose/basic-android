@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
+import android.os.Bundle
 import com.example.cupcake.ui.theme.CupcakeTheme
 
 import androidx.compose.foundation.layout.Arrangement
@@ -23,7 +24,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 
 
 @Composable
-fun BlogScreen(navController: NavHostController) {
+fun BlogScreen(navController: NavHostController, params: Bundle?) {
     
 Column(verticalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier.fillMaxHeight()
@@ -46,20 +47,26 @@ Column(verticalArrangement = Arrangement.SpaceBetween,
                         ) { Text(stringResource(R.string.nested)) }
 
                         Button(
-                                onClick = { navController.navigate("/blog/999") },
-                        ) { Text(stringResource(R.string.blogpost)) }
+                                onClick = { navController.navigate("/blog/123") },
+                        ) { Text(stringResource(R.string.blog123)) }
+                        Button(
+                                onClick = { navController.navigate("/blog/345") },
+                        ) { Text(stringResource(R.string.blog345)) }
+                }
                 }
         }
-}
 
 }
 
+/*
 @Preview
 @Composable
 fun BlogScreenPreview() {
     CupcakeTheme {
         BlogScreen(
-                navController = rememberNavController(),
+            navController = rememberNavController(),
+            params = Bundle?
         )
     }
-}
+    }
+    */

@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
+import android.os.Bundle
 import com.example.cupcake.ui.theme.CupcakeTheme
 
 import androidx.compose.foundation.layout.Arrangement
@@ -23,7 +24,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 
 
 @Composable
-fun AboutScreen(navController: NavHostController) {
+fun AboutScreen(navController: NavHostController, params: Bundle?) {
     
 Column(verticalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier.fillMaxHeight()
@@ -57,12 +58,15 @@ Column(verticalArrangement = Arrangement.SpaceBetween,
 
 }
 
+/*
 @Preview
 @Composable
 fun AboutScreenPreview() {
     CupcakeTheme {
         AboutScreen(
-                navController = rememberNavController(),
+            navController = rememberNavController(),
+            params = Bundle?
         )
     }
-}
+    }
+    */

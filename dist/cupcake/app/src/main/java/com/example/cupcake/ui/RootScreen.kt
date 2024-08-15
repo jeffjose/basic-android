@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
+import android.os.Bundle
 import com.example.cupcake.ui.theme.CupcakeTheme
 
 import androidx.compose.foundation.layout.Arrangement
@@ -23,7 +24,7 @@ import com.example.cupcake.R
 
 
 @Composable
-fun RootScreen(navController: NavHostController) {
+fun RootScreen(navController: NavHostController, params: Bundle?) {
     
 Column(
         verticalArrangement = Arrangement.SpaceBetween,
@@ -63,12 +64,15 @@ Column(
 
 }
 
+/*
 @Preview
 @Composable
 fun RootScreenPreview() {
     CupcakeTheme {
         RootScreen(
-                navController = rememberNavController(),
+            navController = rememberNavController(),
+            params = Bundle?
         )
     }
-}
+    }
+    */

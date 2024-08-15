@@ -23,25 +23,29 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
+import android.os.Bundle
 import %%NAMESPACE%%.ui.theme.CupcakeTheme
 
 %%IMPORT%%
 
 
 @Composable
-fun %%NAME%%Screen(navController: NavHostController) {
+fun %%NAME%%Screen(navController: NavHostController, params: Bundle?) {
     %%CONTENT%%
 }
 
+/*
 @Preview
 @Composable
 fun %%NAME%%ScreenPreview() {
     CupcakeTheme {
         %%NAME%%Screen(
-                navController = rememberNavController(),
+            navController = rememberNavController(),
+            params = Bundle?
         )
     }
-}
+    }
+    */
 
 """
 
@@ -79,10 +83,10 @@ fun Navigation(navController: NavHostController) {
 """
 
 TEMPLATE_COMPOSABLE = """
-    composable(route = "%%ROUTE%%") {
-      %%NAME%%Screen(
-              navController = navController,
-      )
+    composable(
+            route = "%%ROUTE%%",
+            ) { backStackEntry ->
+      %%NAME%%Screen(navController = navController, params = backStackEntry.arguments)
     }
 """
 
@@ -184,7 +188,7 @@ def get_route(file, routable=False):
         route = "/"
 
     if routable:
-        route = route.replace('[', '{').replace(']', '}')
+        route = route.replace("[", "{").replace("]", "}")
 
     return route
 
@@ -222,7 +226,7 @@ def create_navigation(template_navigation, template_composable, files):
 def get_static_route_files(files):
 
     return files
-    #return [x for x in files if not x.parent.name.startswith("[")]
+    # return [x for x in files if not x.parent.name.startswith("[")]
 
 
 def get_param_route_files(files):

@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
+import android.os.Bundle
 import com.example.cupcake.ui.theme.CupcakeTheme
 
 import androidx.compose.ui.res.stringResource
@@ -21,7 +22,7 @@ import androidx.compose.foundation.layout.Arrangement
 
 
 @Composable
-fun SettingsGeneralScreen(navController: NavHostController) {
+fun SettingsGeneralScreen(navController: NavHostController, params: Bundle?) {
     
 
 Column(
@@ -46,12 +47,15 @@ Column(
 
 }
 
+/*
 @Preview
 @Composable
 fun SettingsGeneralScreenPreview() {
     CupcakeTheme {
         SettingsGeneralScreen(
-                navController = rememberNavController(),
+            navController = rememberNavController(),
+            params = Bundle?
         )
     }
-}
+    }
+    */
