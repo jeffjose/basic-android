@@ -1,6 +1,8 @@
 import shutil
 from pathlib import Path
 
+OUTPUT_BASE = 'dist'
+
 def get_project_name():
     return 'cupcake'
 
@@ -11,7 +13,7 @@ def mkdir(path):
 
 def clean(path):
     print('Removing path', path)
-    shutil.rmtree(path)
+    shutil.rmtree(path, ignore_errors=True)
 
 def init():
 
@@ -21,10 +23,10 @@ def init():
     mkdir(app_dir)
 
 def get_output_dir():
-    return Path(get_project_name()) 
+    return Path(OUTPUT_BASE) / get_project_name()
 
 def get_app_dir():
-    return Path(get_project_name()) / 'java/com/example' / get_project_name()
+    return get_output_dir() / 'java/com/example' / get_project_name()
 
 def get_screen_path():
 

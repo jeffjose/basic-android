@@ -8,7 +8,7 @@
   "main": "index.js",
   "scripts": {
     "build": "cd .pine-app && ./gradlew buildDebug",
-    "gen": "./scripts/gen.sh",
+    "gen": "./pine/scripts/gen.sh",
     "install": "cd .pine-app && ./gradlew installDebug",
     "test": "echo \"Error: no test specified\" && exit 1"
   }
