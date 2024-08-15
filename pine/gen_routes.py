@@ -14,12 +14,19 @@ from utils import (
 )
 
 INPUT_PATTERN = "src/routes/**/*.pine"
-TEMPLATE_SCREEN = """%%NAMESPACE%%
+TEMPLATE_SCREEN = """%%PACKAGENAME%%
+
+import androidx.compose.runtime.Composable
+import androidx.navigation.NavHostController
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
+import %%NAMESPACE%%.ui.theme.CupcakeTheme
 
 %%IMPORT%%
 
+
 @Composable
-fun %%NAME%%Screen(navController: NavHostController, modifier: Modifier = Modifier) {
+fun %%NAME%%Screen(navController: NavHostController) {
     %%CONTENT%%
 }
 
@@ -29,14 +36,13 @@ fun %%NAME%%ScreenPreview() {
     CupcakeTheme {
         %%NAME%%Screen(
                 navController = rememberNavController(),
-                modifier = Modifier.fillMaxSize().padding(dimensionResource(R.dimen.padding_medium))
         )
     }
 }
 
 """
 
-TEMPLATE_NAVIGATION = """%%NAMESPACE%%
+TEMPLATE_NAVIGATION = """%%PACKAGENAME%%
 
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.runtime.Composable
@@ -73,7 +79,6 @@ TEMPLATE_COMPOSABLE = """
     composable(route = "%%ROUTE%%") {
       %%NAME%%Screen(
               navController = navController,
-              modifier = Modifier.fillMaxHeight().padding(dimensionResource(R.dimen.padding_medium))
       )
     }
 """
@@ -81,7 +86,7 @@ TEMPLATE_COMPOSABLE = """
 
 def collect_files():
 
-    files = [Path(x) for x in glob.glob(INPUT_PATTERN)]
+    files = [Path(x) for x in glob.glob(INPUT_PATTERN, recursive=True)]
     print(files)
 
     return files
@@ -104,7 +109,15 @@ def get_template_composable():
 
 def get_slug(file):
 
-    return file.parent.name.capitalize()
+    route = get_route(file)
+
+    if route == "/":
+        route = "root"
+
+    route = "".join([x.capitalize() for x in route.strip("/").split("/")])
+
+    print(file, route)
+    return route
 
 
 def parse(data):
@@ -125,6 +138,7 @@ def parse(data):
 def mkpackage_string_screen():
     return f"package {get_project_namespace()}.ui"
 
+
 def mkpackage_string():
     return f"package {get_project_namespace()}"
 
@@ -140,7 +154,8 @@ def create_screen(template, file):
     slug = get_slug(file)
 
     final = (
-        template.replace("%%NAMESPACE%%", mkpackage_string_screen())
+        template.replace("%%PACKAGENAME%%", mkpackage_string_screen())
+        .replace("%%NAMESPACE%%", get_project_namespace())
         .replace("%%IMPORT%%", parcel["imports"])
         .replace("%%CONTENT%%", parcel["contents"])
         .replace("%%NAME%%", slug)
@@ -150,9 +165,19 @@ def create_screen(template, file):
     write_file(get_screen_dir() / Path(get_screenfile_name(slug)), final)
 
 
+def get_route(file):
+    route = str(file.parent).replace("src/routes", "")
+
+    # Handle top-level
+    if route == "":
+        route = "/"
+
+    return route
+
+
 def get_composable(template_composable, file):
 
-    route = str(file.parent).replace("src/routes", "")
+    route = get_route(file)
 
     return template_composable.replace("%%ROUTE%%", route).replace(
         "%%NAME%%", get_slug(file)
@@ -171,13 +196,12 @@ def create_navigation(template_navigation, template_composable, files):
     composables = [get_composable(template_composable, file) for file in files]
 
     final = (
-        template_navigation.replace("%%NAMESPACE%%", mkpackage_string())
+        template_navigation.replace("%%PACKAGENAME%%", mkpackage_string())
         .replace("%%IMPORTS%%", "\n".join(imports))
         .replace("%%COMPOSABLES%%", "\n".join(composables))
         .strip()
     )
 
-    print(final)
     write_file(get_app_dir() / "Navigation.kt", final)
 
 

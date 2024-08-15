@@ -15,6 +15,7 @@
 -->
 <resources>
     <string name="app_name">Cupcake</string>
+    <string name="foobar">Foobar</string>
     <string name="one">One</string>
     <string name="two">Two</string>
     <string name="three">Three</string>

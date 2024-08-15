@@ -13,10 +13,9 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.layout.fillMaxSize
 import com.example.cupcake.R
 
-import com.example.cupcake.ui.RootScreen
 import com.example.cupcake.ui.FirstScreen
-import com.example.cupcake.ui.FirstAScreen
 import com.example.cupcake.ui.SecondScreen
+import com.example.cupcake.ui.ThirdScreen
 
 @Composable
 fun Navigation(navController: NavHostController) {
@@ -29,23 +28,10 @@ fun Navigation(navController: NavHostController) {
   ) {
 
     
-    composable(route = "/") {
-      RootScreen(
-              navController = navController,
-      )
-    }
-
-
     composable(route = "/first") {
       FirstScreen(
               navController = navController,
-      )
-    }
-
-
-    composable(route = "/first/a") {
-      FirstAScreen(
-              navController = navController,
+              modifier = Modifier.fillMaxHeight().padding(dimensionResource(R.dimen.padding_medium))
       )
     }
 
@@ -53,6 +39,15 @@ fun Navigation(navController: NavHostController) {
     composable(route = "/second") {
       SecondScreen(
               navController = navController,
+              modifier = Modifier.fillMaxHeight().padding(dimensionResource(R.dimen.padding_medium))
+      )
+    }
+
+
+    composable(route = "/third") {
+      ThirdScreen(
+              navController = navController,
+              modifier = Modifier.fillMaxHeight().padding(dimensionResource(R.dimen.padding_medium))
       )
     }
 
