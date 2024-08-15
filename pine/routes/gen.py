@@ -41,7 +41,7 @@ def create_screen(template, file):
 
     final = template.replace("%%CONTENT%%", contents).replace("%%NAME%%", slug)
 
-    _write_file(slug + '.kt', final)
+    _write_file(Path(slug + '.kt'), final)
 
 
 def main():
