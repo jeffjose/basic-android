@@ -19,13 +19,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import com.example.cupcake.R
+import androidx.compose.foundation.layout.fillMaxHeight
 import com.example.cupcake.ui.theme.CupcakeTheme
 
 
 @Composable
 fun FirstScreen(navController: NavHostController) {
     
-Column(verticalArrangement = Arrangement.SpaceBetween) {
+Column(verticalArrangement = Arrangement.SpaceBetween,
+        modifier = Modifier.fillMaxHeight()
+                                        .padding(dimensionResource(R.dimen.padding_medium))
+) {
         Column(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -43,8 +47,8 @@ Column(verticalArrangement = Arrangement.SpaceBetween) {
                         ) { Text(stringResource(R.string.two)) }
 
                         Button(
-                                onClick = { navController.navigate("/third") },
-                        ) { Text(stringResource(R.string.three)) }
+                                onClick = { navController.navigate("/") },
+                        ) { Text(stringResource(R.string.root)) }
                 }
         }
 }

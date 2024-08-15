@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -26,7 +27,9 @@ import com.example.cupcake.ui.theme.CupcakeTheme
 fun RootScreen(navController: NavHostController) {
     
 Column(
-        verticalArrangement = Arrangement.SpaceBetween
+        verticalArrangement = Arrangement.SpaceBetween,
+        modifier = Modifier.fillMaxHeight()
+                                        .padding(dimensionResource(R.dimen.padding_medium))
         ) {
         Column(
                 modifier = Modifier.fillMaxWidth(),
@@ -44,8 +47,8 @@ Column(
                                 onClick = { navController.navigate("/first") },
                         ) { Text(stringResource(R.string.one)) }
                         Button(
-                                onClick = { navController.navigate("/first/a") },
-                        ) { Text(stringResource(R.string.foobar)) }
+                                onClick = { navController.navigate("/first/nested") },
+                        ) { Text(stringResource(R.string.nested)) }
 
                         Button(
                                 onClick = { navController.navigate("/second") },

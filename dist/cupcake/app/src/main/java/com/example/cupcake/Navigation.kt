@@ -15,7 +15,7 @@ import com.example.cupcake.R
 
 import com.example.cupcake.ui.RootScreen
 import com.example.cupcake.ui.FirstScreen
-import com.example.cupcake.ui.FirstAScreen
+import com.example.cupcake.ui.FirstNestedScreen
 import com.example.cupcake.ui.SecondScreen
 
 @Composable
@@ -43,8 +43,8 @@ fun Navigation(navController: NavHostController) {
     }
 
 
-    composable(route = "/first/a") {
-      FirstAScreen(
+    composable(route = "/first/nested") {
+      FirstNestedScreen(
               navController = navController,
       )
     }

@@ -19,13 +19,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import com.example.cupcake.R
+import androidx.compose.foundation.layout.fillMaxHeight
 import com.example.cupcake.ui.theme.CupcakeTheme
 
 
 @Composable
 fun SecondScreen(navController: NavHostController) {
     
-Column(verticalArrangement = Arrangement.SpaceBetween) {
+Column(verticalArrangement = Arrangement.SpaceBetween,
+        modifier = Modifier.fillMaxHeight()
+                                        .padding(dimensionResource(R.dimen.padding_medium))
+) {
         Column(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally,
