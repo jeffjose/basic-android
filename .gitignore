@@ -36,3 +36,5 @@ proguard-project.txt
 .idea
 
 __pycache__
+dist
+pnpm-lock.yaml

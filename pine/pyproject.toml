@@ -5,7 +5,9 @@ description = "Add your description here"
 authors = [
     { name = "Jeffrey Jose", email = "jeffjosejeff@gmail.com" }
 ]
-dependencies = []
+dependencies = [
+    "pyinstaller>=6.10.0",
+]
 readme = "README.md"
 requires-python = ">= 3.8"
 
