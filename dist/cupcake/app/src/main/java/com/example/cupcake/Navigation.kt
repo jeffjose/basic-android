@@ -14,9 +14,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import com.example.cupcake.R
 
 import com.example.cupcake.ui.RootScreen
-import com.example.cupcake.ui.FirstScreen
-import com.example.cupcake.ui.FirstNestedScreen
-import com.example.cupcake.ui.SecondScreen
+import com.example.cupcake.ui.SettingsScreen
+import com.example.cupcake.ui.SettingsSecurityScreen
+import com.example.cupcake.ui.SettingsGeneralScreen
+import com.example.cupcake.ui.AboutScreen
+import com.example.cupcake.ui.BlogScreen
+import com.example.cupcake.ui.BlogNestedScreen
 
 @Composable
 fun Navigation(navController: NavHostController) {
@@ -36,22 +39,43 @@ fun Navigation(navController: NavHostController) {
     }
 
 
-    composable(route = "/first") {
-      FirstScreen(
+    composable(route = "/settings") {
+      SettingsScreen(
               navController = navController,
       )
     }
 
 
-    composable(route = "/first/nested") {
-      FirstNestedScreen(
+    composable(route = "/settings/security") {
+      SettingsSecurityScreen(
               navController = navController,
       )
     }
 
 
-    composable(route = "/second") {
-      SecondScreen(
+    composable(route = "/settings/general") {
+      SettingsGeneralScreen(
+              navController = navController,
+      )
+    }
+
+
+    composable(route = "/about") {
+      AboutScreen(
+              navController = navController,
+      )
+    }
+
+
+    composable(route = "/blog") {
+      BlogScreen(
+              navController = navController,
+      )
+    }
+
+
+    composable(route = "/blog/nested") {
+      BlogNestedScreen(
               navController = navController,
       )
     }

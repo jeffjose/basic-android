@@ -44,15 +44,15 @@ Column(
         ) {
                 Row(horizontalArrangement = Arrangement.SpaceEvenly) {
                         Button(
-                                onClick = { navController.navigate("/first") },
-                        ) { Text(stringResource(R.string.one)) }
+                                onClick = { navController.navigate("/") },
+                        ) { Text(stringResource(R.string.home)) }
                         Button(
-                                onClick = { navController.navigate("/first/nested") },
-                        ) { Text(stringResource(R.string.nested)) }
+                                onClick = { navController.navigate("/settings") },
+                        ) { Text(stringResource(R.string.settings)) }
 
                         Button(
-                                onClick = { navController.navigate("/second") },
-                        ) { Text(stringResource(R.string.two)) }
+                                onClick = { navController.navigate("/about") },
+                        ) { Text(stringResource(R.string.about)) }
                 }
         }
 }

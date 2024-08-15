@@ -1,9 +1,16 @@
+package com.example.cupcake.ui
+
+import androidx.compose.runtime.Composable
+import androidx.navigation.NavHostController
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
+import com.example.cupcake.ui.theme.CupcakeTheme
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -12,13 +19,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import com.example.cupcake.R
+import androidx.compose.foundation.layout.fillMaxHeight
 import com.example.cupcake.ui.theme.CupcakeTheme
 
-Column(
-        verticalArrangement = Arrangement.SpaceBetween,
+
+@Composable
+fun AboutScreen(navController: NavHostController) {
+    
+Column(verticalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier.fillMaxHeight()
                                         .padding(dimensionResource(R.dimen.padding_medium))
-        ) {
+) {
         Column(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -32,15 +43,27 @@ Column(
         ) {
                 Row(horizontalArrangement = Arrangement.SpaceEvenly) {
                         Button(
-                                onClick = { navController.navigate("/") },
-                        ) { Text(stringResource(R.string.home)) }
+                                onClick = { navController.navigate("/first") },
+                        ) { Text(stringResource(R.string.one)) }
                         Button(
-                                onClick = { navController.navigate("/settings") },
-                        ) { Text(stringResource(R.string.settings)) }
+                                onClick = { navController.navigate("/second") },
+                        ) { Text(stringResource(R.string.two)) }
 
                         Button(
-                                onClick = { navController.navigate("/about") },
-                        ) { Text(stringResource(R.string.about)) }
+                                onClick = { navController.navigate("/third") },
+                        ) { Text(stringResource(R.string.three)) }
                 }
         }
+}
+
+}
+
+@Preview
+@Composable
+fun AboutScreenPreview() {
+    CupcakeTheme {
+        AboutScreen(
+                navController = rememberNavController(),
+        )
+    }
 }

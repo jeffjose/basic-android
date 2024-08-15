@@ -24,7 +24,7 @@ import com.example.cupcake.ui.theme.CupcakeTheme
 
 
 @Composable
-fun SecondScreen(navController: NavHostController) {
+fun SettingsScreen(navController: NavHostController) {
     
 Column(verticalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier.fillMaxHeight()
@@ -43,15 +43,15 @@ Column(verticalArrangement = Arrangement.SpaceBetween,
         ) {
                 Row(horizontalArrangement = Arrangement.SpaceEvenly) {
                         Button(
-                                onClick = { navController.navigate("/first") },
-                        ) { Text(stringResource(R.string.one)) }
+                                onClick = { navController.navigate("/") },
+                        ) { Text(stringResource(R.string.home)) }
                         Button(
-                                onClick = { navController.navigate("/second") },
-                        ) { Text(stringResource(R.string.two)) }
+                                onClick = { navController.navigate("/settings/general") },
+                        ) { Text(stringResource(R.string.general)) }
 
                         Button(
-                                onClick = { navController.navigate("/third") },
-                        ) { Text(stringResource(R.string.three)) }
+                                onClick = { navController.navigate("/settings/security") },
+                        ) { Text(stringResource(R.string.security)) }
                 }
         }
 }
@@ -60,9 +60,9 @@ Column(verticalArrangement = Arrangement.SpaceBetween,
 
 @Preview
 @Composable
-fun SecondScreenPreview() {
+fun SettingsScreenPreview() {
     CupcakeTheme {
-        SecondScreen(
+        SettingsScreen(
                 navController = rememberNavController(),
         )
     }

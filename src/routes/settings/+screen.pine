@@ -1,11 +1,3 @@
-package com.example.cupcake.ui
-
-import androidx.compose.runtime.Composable
-import androidx.navigation.NavHostController
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.compose.rememberNavController
-import com.example.cupcake.ui.theme.CupcakeTheme
-
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -22,10 +14,6 @@ import com.example.cupcake.R
 import androidx.compose.foundation.layout.fillMaxHeight
 import com.example.cupcake.ui.theme.CupcakeTheme
 
-
-@Composable
-fun FirstScreen(navController: NavHostController) {
-    
 Column(verticalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier.fillMaxHeight()
                                         .padding(dimensionResource(R.dimen.padding_medium))
@@ -43,24 +31,15 @@ Column(verticalArrangement = Arrangement.SpaceBetween,
         ) {
                 Row(horizontalArrangement = Arrangement.SpaceEvenly) {
                         Button(
-                                onClick = { navController.navigate("/second") },
-                        ) { Text(stringResource(R.string.two)) }
+                                onClick = { navController.navigate("/") },
+                        ) { Text(stringResource(R.string.home)) }
+                        Button(
+                                onClick = { navController.navigate("/settings/general") },
+                        ) { Text(stringResource(R.string.general)) }
 
                         Button(
-                                onClick = { navController.navigate("/") },
-                        ) { Text(stringResource(R.string.root)) }
+                                onClick = { navController.navigate("/settings/security") },
+                        ) { Text(stringResource(R.string.security)) }
                 }
         }
-}
-
-}
-
-@Preview
-@Composable
-fun FirstScreenPreview() {
-    CupcakeTheme {
-        FirstScreen(
-                navController = rememberNavController(),
-        )
-    }
 }

@@ -11,7 +11,7 @@
     "dist": "cd dist/cupcake && ./gradlew buildDebug",
     "gen": "./pine/scripts/gen.sh",
     "install": "cd .pine-app && ./gradlew installDebug",
-    "open": "pnpm gen && cd dist/cupcake && ./gradlew installDebug",
+    "push": "pnpm gen && cd dist/cupcake && ./gradlew installDebug",
     "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
