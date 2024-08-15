@@ -20,7 +20,6 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import com.example.cupcake.R
 import androidx.compose.foundation.layout.fillMaxHeight
-import com.example.cupcake.ui.theme.CupcakeTheme
 
 
 @Composable
