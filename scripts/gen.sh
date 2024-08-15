@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 
-echo "Generating"
+echo "--> Pine"
 
-python pine/routes/gen.py
+python pine/init.py
+python pine/gen_routes.py

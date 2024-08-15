@@ -10,5 +10,3 @@
 #   universal: false
 
 -e file:.
-path==17.0.0
-    # via basic-android

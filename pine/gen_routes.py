@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 
 import glob
-from path import Path
+from pathlib import Path
+
+from utils import get_screen_path
 
 TEMPLATE = "pine/routes/screen.kt.template"
-OUTPUT_DIR = "src/ui"
-
 
 def collect_files():
 
@@ -27,11 +27,12 @@ def _read_file(file: Path):
 
 
 def _write_file(file, lines):
-    return file.write_lines(lines)
+    print('Writing ', file)
+    file.write_text(lines)
 
 def get_slug(file):
 
-    return file.parent.basename().capitalize()
+    return file.parent.name.capitalize()
 
 def create_screen(template, file):
 
@@ -41,7 +42,7 @@ def create_screen(template, file):
 
     final = template.replace("%%CONTENT%%", contents).replace("%%NAME%%", slug)
 
-    _write_file(Path(slug + '.kt'), final)
+    _write_file(get_screen_path() / Path(slug + '.kt'), final)
 
 
 def main():
@@ -49,7 +50,8 @@ def main():
 
     template = get_template()
 
-    create_screen(template, files[0])
+    for file in files:
+        create_screen(template, file)
 
 
 if __name__ == "__main__":
