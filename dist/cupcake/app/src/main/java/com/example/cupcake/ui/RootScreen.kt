@@ -25,7 +25,9 @@ import com.example.cupcake.ui.theme.CupcakeTheme
 @Composable
 fun RootScreen(navController: NavHostController) {
     
-Column(verticalArrangement = Arrangement.SpaceBetween) {
+Column(
+        verticalArrangement = Arrangement.SpaceBetween
+        ) {
         Column(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -42,12 +44,12 @@ Column(verticalArrangement = Arrangement.SpaceBetween) {
                                 onClick = { navController.navigate("/first") },
                         ) { Text(stringResource(R.string.one)) }
                         Button(
-                                onClick = { navController.navigate("/second") },
-                        ) { Text(stringResource(R.string.two)) }
+                                onClick = { navController.navigate("/first/a") },
+                        ) { Text(stringResource(R.string.foobar)) }
 
                         Button(
-                                onClick = { navController.navigate("/third") },
-                        ) { Text(stringResource(R.string.three)) }
+                                onClick = { navController.navigate("/second") },
+                        ) { Text(stringResource(R.string.two)) }
                 }
         }
 }
