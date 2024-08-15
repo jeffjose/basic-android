@@ -46,7 +46,7 @@ Column(verticalArrangement = Arrangement.SpaceBetween,
                         ) { Text(stringResource(R.string.nested)) }
 
                         Button(
-                                onClick = { navController.navigate("/blog/123") },
+                                onClick = { navController.navigate("/blog/999") },
                         ) { Text(stringResource(R.string.blogpost)) }
                 }
         }

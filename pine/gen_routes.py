@@ -176,19 +176,22 @@ def create_screen(template, file):
     write_file(get_screen_dir() / Path(get_screenfile_name(slug)), final)
 
 
-def get_route(file):
+def get_route(file, routable=False):
     route = str(file.parent).replace("src/routes", "")
 
     # Handle top-level
     if route == "":
         route = "/"
 
+    if routable:
+        route = route.replace('[', '{').replace(']', '}')
+
     return route
 
 
 def get_composable(template_composable, file):
 
-    route = get_route(file)
+    route = get_route(file, routable=True)
 
     return template_composable.replace("%%ROUTE%%", route).replace(
         "%%NAME%%", get_slug(file)
@@ -218,7 +221,8 @@ def create_navigation(template_navigation, template_composable, files):
 
 def get_static_route_files(files):
 
-    return [x for x in files if not x.parent.name.startswith("[")]
+    return files
+    #return [x for x in files if not x.parent.name.startswith("[")]
 
 
 def get_param_route_files(files):
@@ -242,10 +246,10 @@ def main():
 
     create_navigation(template_navigation, template_composable, files)
 
-    print("Working on param routes")
+    # print("Working on param routes")
 
-    for file in get_param_route_files(files):
-        create_screen(template_screen, file)
+    # for file in get_param_route_files(files):
+    #     create_screen(template_screen, file)
 
 
 if __name__ == "__main__":

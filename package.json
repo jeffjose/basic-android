@@ -7,11 +7,9 @@
   "author": "",
   "main": "index.js",
   "scripts": {
-    "build": "cd .pine-app && ./gradlew buildDebug",
-    "dist": "cd dist/cupcake && ./gradlew buildDebug",
+    "build": "pnpm gen && cd dist/cupcake && ./gradlew buildDebug",
     "gen": "./pine/scripts/gen.sh",
-    "install": "cd .pine-app && ./gradlew installDebug",
-    "push": "pnpm gen && cd dist/cupcake && ./gradlew installDebug",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "install": "pnpm gen && cd dist/cupcake && ./gradlew installDebug",
+    "preview": "cd dist/cupcake && ./gradlew installDebug"
   }
 }
