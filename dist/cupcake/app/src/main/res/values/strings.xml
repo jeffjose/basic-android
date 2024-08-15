@@ -16,6 +16,7 @@
 <resources>
     <string name="app_name">Cupcake</string>
     <string name="foobar">Foobar</string>
+    <string name="blogpost">Blog entry</string>
     <string name="root">/</string>
     <string name="home">Home</string>
     <string name="about">About</string>

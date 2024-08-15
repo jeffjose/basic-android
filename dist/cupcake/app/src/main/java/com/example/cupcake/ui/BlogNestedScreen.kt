@@ -37,10 +37,8 @@ Column(
                 verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_small))
         ) {}
 
-  Button(onClick={}) {
-    Text(stringResource(R.string.foobar))
+    Text(stringResource(R.string.blogpost))
 
-  }
 
 }
 

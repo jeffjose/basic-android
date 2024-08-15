@@ -45,6 +45,11 @@ Column(
                         Button(
                                 onClick = { navController.navigate("/") },
                         ) { Text(stringResource(R.string.home)) }
+
+                        Button(
+                                onClick = { navController.navigate("/blog") },
+                        ) { Text(stringResource(R.string.blog)) }
+
                         Button(
                                 onClick = { navController.navigate("/settings") },
                         ) { Text(stringResource(R.string.settings)) }

@@ -42,12 +42,12 @@ Column(verticalArrangement = Arrangement.SpaceBetween,
         ) {
                 Row(horizontalArrangement = Arrangement.SpaceEvenly) {
                         Button(
-                                onClick = { navController.navigate("/second") },
-                        ) { Text(stringResource(R.string.two)) }
+                                onClick = { navController.navigate("/blog/nested") },
+                        ) { Text(stringResource(R.string.nested)) }
 
                         Button(
-                                onClick = { navController.navigate("/") },
-                        ) { Text(stringResource(R.string.root)) }
+                                onClick = { navController.navigate("/blog/123") },
+                        ) { Text(stringResource(R.string.blogpost)) }
                 }
         }
 }

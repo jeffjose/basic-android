@@ -19,6 +19,7 @@ import com.example.cupcake.ui.SettingsSecurityScreen
 import com.example.cupcake.ui.SettingsGeneralScreen
 import com.example.cupcake.ui.AboutScreen
 import com.example.cupcake.ui.BlogScreen
+import com.example.cupcake.ui.BlogIdScreen
 import com.example.cupcake.ui.BlogNestedScreen
 
 @Composable
@@ -69,6 +70,13 @@ fun Navigation(navController: NavHostController) {
 
     composable(route = "/blog") {
       BlogScreen(
+              navController = navController,
+      )
+    }
+
+
+    composable(route = "/blog/id") {
+      BlogIdScreen(
               navController = navController,
       )
     }
