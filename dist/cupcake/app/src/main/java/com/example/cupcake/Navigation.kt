@@ -67,9 +67,7 @@ fun Navigation(navController: NavHostController) {
             route = "/blog/{id}",
             arguments = listOf(navArgument("id") { type = NavType.StringType })
     ) { backStackEntry ->
-      backStackEntry.arguments?.getString("id")?.let { id ->
-        BlogRouteParamIdScreen(navController = navController, id = id)
-      }
+      BlogRouteParamIdScreen(navController = navController, params = backStackEntry.arguments)
     }
 
     composable(route = "/blog/nested") { BlogNestedScreen(navController = navController) }

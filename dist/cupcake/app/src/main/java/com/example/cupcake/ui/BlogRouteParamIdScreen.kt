@@ -1,5 +1,6 @@
 package com.example.cupcake.ui
 
+import android.os.Bundle
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -15,7 +16,7 @@ import androidx.navigation.NavHostController
 import com.example.cupcake.R
 
 @Composable
-fun BlogRouteParamIdScreen(navController: NavHostController, id: String) {
+fun BlogRouteParamIdScreen(navController: NavHostController, params: Bundle?) {
     Column(
             verticalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier.fillMaxHeight().padding(dimensionResource(R.dimen.padding_medium))
@@ -27,6 +28,6 @@ fun BlogRouteParamIdScreen(navController: NavHostController, id: String) {
         ) {}
 
         Text(stringResource(R.string.blogpost))
-        Text(id)
+        Text(params?.getString("id") ?: "000")
     }
 }
