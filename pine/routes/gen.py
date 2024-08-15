@@ -17,7 +17,7 @@ def collect_files():
 
 def get_template():
 
-    lines = _read_file(TEMPLATE)
+    lines = _read_file(Path(TEMPLATE))
 
     return lines
 
@@ -37,8 +37,6 @@ def create_screen(template, file):
 
     contents = _read_file(file)
 
-    import pdb; pdb.set_trace()
-    
     slug = get_slug(file)
 
     final = template.replace("%%CONTENT%%", contents).replace("%%NAME%%", slug)
