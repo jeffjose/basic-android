@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import re
 import glob
 from pathlib import Path
 
@@ -12,6 +13,8 @@ from utils import (
     get_project_namespace,
     get_app_dir,
 )
+
+ROUTE_PARAM_REGEX = re.compile(r"\[(.*?)\]")
 
 INPUT_PATTERN = "src/routes/**/*.pine"
 TEMPLATE_SCREEN = """%%PACKAGENAME%%
@@ -87,7 +90,9 @@ TEMPLATE_COMPOSABLE = """
 def collect_files():
 
     files = [Path(x) for x in glob.glob(INPUT_PATTERN, recursive=True)]
-    print(files)
+
+    print("Collected routes -")
+    print("\n".join([f"- {x}" for x in files]))
 
     return files
 
@@ -114,9 +119,15 @@ def get_slug(file):
     if route == "/":
         route = "root"
 
-    route = "".join([x.capitalize() for x in route.strip("/").split("/")])
+    route = (
+        "".join([x.capitalize() for x in route.strip("/").split("/")])
+        #  .replace("[", "RouteParam")
+        #  .replace("]", "")
+    )
+    route = ROUTE_PARAM_REGEX.sub(
+        lambda x: f"RouteParam{x.group(1).capitalize()}", route
+    )
 
-    print(file, route)
     return route
 
 
@@ -205,18 +216,36 @@ def create_navigation(template_navigation, template_composable, files):
     write_file(get_app_dir() / "Navigation.kt", final)
 
 
+def get_static_route_files(files):
+
+    return [x for x in files if not x.parent.name.startswith("[")]
+
+
+def get_param_route_files(files):
+
+    return [x for x in files if x.parent.name.startswith("[")]
+
+
 def main():
     files = collect_files()
 
     template_screen = get_template_screen()
 
-    for file in files:
+    ### Static routes
+    print("Working on static routes")
+
+    for file in get_static_route_files(files):
         create_screen(template_screen, file)
 
     template_composable = get_template_composable()
     template_navigation = get_template_navigation()
 
     create_navigation(template_navigation, template_composable, files)
+
+    print("Working on param routes")
+
+    for file in get_param_route_files(files):
+        create_screen(template_screen, file)
 
 
 if __name__ == "__main__":

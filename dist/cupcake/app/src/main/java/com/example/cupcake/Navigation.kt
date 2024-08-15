@@ -19,7 +19,8 @@ import com.example.cupcake.ui.SettingsSecurityScreen
 import com.example.cupcake.ui.SettingsGeneralScreen
 import com.example.cupcake.ui.AboutScreen
 import com.example.cupcake.ui.BlogScreen
-import com.example.cupcake.ui.BlogIdScreen
+import com.example.cupcake.ui.BlogRouteParamIdScreen
+import com.example.cupcake.ui.BlogRouteParamIdRouteParamModeScreen
 import com.example.cupcake.ui.BlogNestedScreen
 
 @Composable
@@ -75,8 +76,15 @@ fun Navigation(navController: NavHostController) {
     }
 
 
-    composable(route = "/blog/id") {
-      BlogIdScreen(
+    composable(route = "/blog/[id]") {
+      BlogRouteParamIdScreen(
+              navController = navController,
+      )
+    }
+
+
+    composable(route = "/blog/[id]/[mode]") {
+      BlogRouteParamIdRouteParamModeScreen(
               navController = navController,
       )
     }
