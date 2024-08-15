@@ -47,11 +47,15 @@ cp -v pine/_template/settings.gradle.kts dist/cupcake/settings.gradle.kts
 cp -rv pine/_template/gradle* dist/cupcake/
 
 # 13. app/src/main/java/com/example/cupcake/ui/theme/
-mkdir -p dist/cupcake/app/src/main/main/java/com/example/cupcacke/ui
+mkdir -p dist/cupcake/app/src/main/java/com/example/cupcake/ui/
 cp -rv pine/_template/app/src/main/java/com/example/cupcake/ui/theme dist/cupcake/app/src/main/java/com/example/cupcake/ui/
 
 # 14. src/CupcakeScreen.kt
-cp -rv pine/_template/app/src/main/java/com/example/cupcake/CupcakeScreen.kt dist/cupcake/app/src/main/java/com/example/cupcake/
+#cp -rv pine/_template/app/src/main/java/com/example/cupcake/CupcakeScreen.kt dist/cupcake/app/src/main/java/com/example/cupcake/
+cp -rv src/CupcakeScreen.kt dist/cupcake/app/src/main/java/com/example/cupcake/
+
+# 14a. src/CupcakeScreen.kt
+cp -rv src/Navigation.kt dist/cupcake/app/src/main/java/com/example/cupcake/
 
 # 15. src/MainActivity.kt
 cp -rv pine/_template/app/src/main/java/com/example/cupcake/MainActivity.kt dist/cupcake/app/src/main/java/com/example/cupcake/
