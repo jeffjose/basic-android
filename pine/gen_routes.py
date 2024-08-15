@@ -3,6 +3,8 @@
 import glob
 from pathlib import Path
 
+from patterns import import_pattern
+
 from utils import get_screen_path
 
 TEMPLATE = "pine/routes/screen.kt.template"
@@ -34,13 +36,27 @@ def get_slug(file):
 
     return file.parent.name.capitalize()
 
+def parse(data):
+    lines = data.split('\n')
+
+    imports = []
+    contents = []
+
+    for line in lines:
+        if import_pattern.match(line):
+            imports.append(line)
+        else:
+            contents.append(line)
+
+    return {'imports': '\n'.join(imports), 'contents': '\n'.join(contents)}
+
 def create_screen(template, file):
 
-    contents = _read_file(file)
+    parcel = parse(_read_file(file))
 
     slug = get_slug(file)
 
-    final = template.replace("%%CONTENT%%", contents).replace("%%NAME%%", slug)
+    final = template.replace('%%IMPORT%%', parcel['imports']).replace("%%CONTENT%%", parcel['contents']).replace("%%NAME%%", slug)
 
     _write_file(get_screen_path() / Path(slug + '.kt'), final)
 

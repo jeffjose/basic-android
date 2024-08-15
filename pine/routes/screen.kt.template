@@ -1,3 +1,5 @@
+%%IMPORT%%
+
 @Composable
 fun %%NAME%%Screen(navController: NavHostController, modifier: Modifier = Modifier) {
     %%CONTENT%%

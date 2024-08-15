@@ -1,6 +1,4 @@
-@Composable
-fun SecondScreen(navController: NavHostController, modifier: Modifier = Modifier) {
-    import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -19,6 +17,9 @@ import androidx.navigation.compose.rememberNavController
 import com.example.cupcake.R
 import com.example.cupcake.ui.theme.CupcakeTheme
 
+@Composable
+fun SecondScreen(navController: NavHostController, modifier: Modifier = Modifier) {
+    
 Column(modifier = modifier, verticalArrangement = Arrangement.SpaceBetween) {
         Column(
                 modifier = Modifier.fillMaxWidth(),
