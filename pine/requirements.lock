@@ -22,3 +22,5 @@ pyinstaller-hooks-contrib==2024.8
 setuptools==72.2.0
     # via pyinstaller
     # via pyinstaller-hooks-contrib
+ujson==5.10.0
+    # via basic-android

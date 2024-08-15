@@ -1,0 +1,13 @@
+{
+  "label": "@string/app_name",
+  "icon": "@mipmap/ic_launcher",
+  "roundIcon": "@mipmap/ic_launcher_round",
+  "supportsRtl": "true",
+  "theme": "@style/Theme.Cupcake",
+  "targetApi": 33,
+  "activity": "MainActivity",
+  "intent": {
+    "action": "android.intent.action.MAIN",
+    "category": "android.intent.category.LAUNCHER"
+  }
+}

@@ -5,13 +5,34 @@ from pathlib import Path
 
 from patterns import import_pattern
 
-from utils import get_screen_path
+from utils import get_screen_path, read_file, write_file
 
-TEMPLATE = "pine/routes/screen.kt.template"
+INPUT_PATTERN = 'src/routes/**/*.pine'
+TEMPLATE = '''
+
+%%IMPORT%%
+
+@Composable
+fun %%NAME%%Screen(navController: NavHostController, modifier: Modifier = Modifier) {
+    %%CONTENT%%
+}
+
+@Preview
+@Composable
+fun %%NAME%%ScreenPreview() {
+    CupcakeTheme {
+        %%NAME%%Screen(
+                navController = rememberNavController(),
+                modifier = Modifier.fillMaxSize().padding(dimensionResource(R.dimen.padding_medium))
+        )
+    }
+}
+
+'''
 
 def collect_files():
 
-    files = [Path(x) for x in glob.glob("src/routes/**/*.pine")]
+    files = [Path(x) for x in glob.glob(INPUT_PATTERN)]
     print(files)
 
     return files
@@ -19,18 +40,9 @@ def collect_files():
 
 def get_template():
 
-    lines = _read_file(Path(TEMPLATE))
-
-    return lines
+    return TEMPLATE
 
 
-def _read_file(file: Path):
-    return file.read_text()
-
-
-def _write_file(file, lines):
-    print('Writing ', file)
-    file.write_text(lines)
 
 def get_slug(file):
 
@@ -52,13 +64,13 @@ def parse(data):
 
 def create_screen(template, file):
 
-    parcel = parse(_read_file(file))
+    parcel = parse(read_file(file))
 
     slug = get_slug(file)
 
     final = template.replace('%%IMPORT%%', parcel['imports']).replace("%%CONTENT%%", parcel['contents']).replace("%%NAME%%", slug)
 
-    _write_file(get_screen_path() / Path(slug + '.kt'), final)
+    write_file(get_screen_path() / Path(slug + '.kt'), final)
 
 
 def main():
