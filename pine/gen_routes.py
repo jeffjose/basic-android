@@ -73,7 +73,7 @@ def create_screen(template, file):
 
     final = template.replace('%%NAMESPACE%%', mkpackage_string()).replace('%%IMPORT%%', parcel['imports']).replace("%%CONTENT%%", parcel['contents']).replace("%%NAME%%", slug).strip()
 
-    write_file(get_screen_path() / Path(slug + '.kt'), final)
+    write_file(get_screen_path() / Path(slug + 'Screen.kt'), final)
 
 
 def main():
