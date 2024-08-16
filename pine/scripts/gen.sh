@@ -10,6 +10,9 @@ rye run --pyproject pine/pyproject.toml python pine/init.py
 # 1. routes/
 rye run --pyproject pine/pyproject.toml python pine/gen_routes.py
 
+# 1a. components/
+rye run --pyproject pine/pyproject.toml python pine/gen_components.py
+
 # 2. src/main/AndroidManifest.xml
 rye run --pyproject pine/pyproject.toml python pine/gen_manifest.py
 

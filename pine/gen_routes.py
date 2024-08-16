@@ -16,7 +16,7 @@ from utils import (
 
 ROUTE_PARAM_REGEX = re.compile(r"\[(.*?)\]")
 
-INPUT_PATTERN = "src/routes/**/*.pine"
+INPUT_PATTERN = "src/routes/**/+screen.pine"
 TEMPLATE_SCREEN = """%%PACKAGENAME%%
 
 import androidx.compose.runtime.Composable

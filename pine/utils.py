@@ -50,6 +50,16 @@ def get_screen_dir():
 
     return ui_dir
 
+def get_components_dir():
+
+    app_dir = get_app_dir()
+
+    components_dir = app_dir / "ui/components"
+
+    mkdir(components_dir)
+
+    return components_dir
+
 
 ##############
 def get_project_name_capitalized():
