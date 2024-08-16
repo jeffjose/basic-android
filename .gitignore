@@ -37,3 +37,4 @@ proguard-project.txt
 
 __pycache__
 pnpm-lock.yaml
+node_modules

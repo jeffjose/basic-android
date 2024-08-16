@@ -28,6 +28,10 @@ import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
 import retrofit2.http.GET
 import com.google.gson.annotations.SerializedName
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.ui.unit.dp
+
 
 import android.util.Log
 
@@ -37,35 +41,21 @@ fun ThirdScreen(navController: NavHostController, modifier: Modifier = Modifier)
 
     val viewModel: ViewModel2 = viewModel()
 
-    Log.d("XXX", "Loading ${viewModel.loading}")
+    val todos = viewModel.todos.collectAsState()
 
-    Column(modifier = modifier, verticalArrangement = Arrangement.SpaceBetween) {
-        Column(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_small))
-        ) {}
-        Column(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement =
-                        Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium))
-        ) {
-            Row(horizontalArrangement = Arrangement.SpaceEvenly) {
-                Button(
-                        onClick = { navController.navigate("/first") },
-                ) { Text(stringResource(R.string.one)) }
-                Button(
-                        onClick = { navController.navigate("/second") },
-                ) { Text(stringResource(R.string.two)) }
-
-                Button(
-                        onClick = { navController.navigate("/third") },
-                ) { Text(stringResource(R.string.three)) }
+    Log.d("XXX", "Loading ${viewModel.loading} ${todos.value.size}")
+    Log.d("XXX", "Loading ${viewModel.loading} ${todos.value.size}")
+    Log.d("XXX", "Loading ${viewModel.loading} ${todos.value.size}")
+    
+    LazyColumn(
+        //verticalArrangement = Arrangement.spacedBy(10.dp),
+        // modifier = Modifier.fillMaxSize()
+    ) {
+            items(todos.value){  todo ->
+                Text(todo.title)
             }
         }
     }
-}
 
 @Preview
 @Composable
@@ -135,6 +125,7 @@ class ViewModel2 : ViewModel() {
                             if (response.isSuccessful) {
                                 // val responseData: List<Todo>? = response.body()?.data
                                 val responseData: List<Todo>? = response.body()
+                                Log.d("XXX", responseData.toString())
                                 if (responseData != null) {
                                     _todos.value = responseData
                                 }

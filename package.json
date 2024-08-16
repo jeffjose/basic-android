@@ -13,6 +13,44 @@
     "install": "pnpm gen && cd dist/cupcake && ./gradlew installDebug",
     "install:canonical": "cd .canonical-app && ./gradlew installDebug",
     "preview": "cd dist/cupcake && ./gradlew installDebug",
-    "sync": "cd pine && rye sync"
+    "sync": "cd pine && rye sync",
+    "w:build": "npm-watch build",
+    "w:build:canonical": "npm-watch build:canonical",
+    "w:install": "npm-watch install",
+    "w:install:canonical": "npm-watch install:canonical",
+    "watch": "npm-watch"
+  },
+  "devDependencies": {
+    "npm-watch": "^0.13.0"
+  },
+  "watch": {
+    "build:canonical": {
+      "quiet": true,
+      "patterns": [
+        ".canonical-app/*"
+      ],
+      "extensions": "pine,kt,json,xml"
+    },
+    "install:canonical": {
+      "quiet": true,
+      "patterns": [
+        ".canonical-app/*"
+      ],
+      "extensions": "pine,kt,json,xml"
+    },
+    "install": {
+      "quiet": true,
+      "patterns": [
+        ""
+      ],
+      "extensions": "pine,kt,json,xml,py"
+    },
+    "build": {
+      "quiet": true,
+      "patterns": [
+        ""
+      ],
+      "extensions": "pine,kt,json,xml,py"
+    }
   }
 }
