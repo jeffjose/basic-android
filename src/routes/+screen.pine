@@ -17,6 +17,7 @@ import kotlinx.coroutines.launch
 
 import android.util.Log
 
+Log.d("XXX", data.value?.toString() ?: "default")
 
 Column(
         verticalArrangement = Arrangement.SpaceBetween,
