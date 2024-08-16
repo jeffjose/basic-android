@@ -43,8 +43,14 @@ def analyze_for_imports(lines):
     for line in lines:
         if 'rememberSaveable' in line:
             imports.append('import androidx.compose.runtime.saveable.rememberSaveable')
+            imports.append('import androidx.compose.runtime.mutableStateOf')
+            imports.append('import androidx.compose.runtime.getValue')
+            imports.append('import androidx.compose.runtime.setValue')
         elif 'remember' in line:
             imports.append('import androidx.compose.runtime.remember')
+            imports.append('import androidx.compose.runtime.mutableStateOf')
+            imports.append('import androidx.compose.runtime.getValue')
+            imports.append('import androidx.compose.runtime.setValue')
     
     return imports
 
