@@ -63,20 +63,13 @@ fun ThirdScreen(navController: NavHostController, modifier: Modifier = Modifier)
         val url = "https://jsonplaceholder.typicode.com/todos"
         val response: HttpResponse = client.get(url)
         client.close()
-    Log.d("XXX: inside", response.bodyAsText())
-    //Log.d("XXX: inside", response.bodyAsText())
-    //var x : List<Todo> = response.body()
-    //Log.d("XXX: inside", x.toString())
-        val todos: List<Todo> =  response.body()
-    Log.d("XXX: inside", todos.size.toString())
 
-        //return response.bodyAsText()
-        return todos
+        return response.body()
     }
 
         val scope = rememberCoroutineScope()
-    val data = remember { mutableStateOf<List<Todo>?>(null)}
-    LaunchedEffect(scope) {
+        val data = remember { mutableStateOf<List<Todo>>(emptyList<Todo>())}
+        LaunchedEffect(scope) {
         data.value = getData()
     }
 
@@ -84,25 +77,27 @@ fun ThirdScreen(navController: NavHostController, modifier: Modifier = Modifier)
     //Log.d("XXX: data", data.value.toString())
     //val viewModel: ViewModel2 = viewModel()
 
-    Text(data.value?.toString() ?: "default")
+    Log.d("XXX", "before")
+    Log.d("XXX", data.value.size.toString())
+    //Text(data.value.toString())
 
     //Log.d("XXX", "Loading ${viewModel.loading} ${todos.value.size}")
 
-        //   LazyColumn(
-        //              modifier = Modifier.height(100.dp)
-        //          ) {
-        //              items(data.value) {
+           LazyColumn(
+                      modifier = Modifier.height(100.dp)
+                  ) {
+                      items(data.value) {
 
-        //                  Box(
-        //                      modifier = Modifier.fillMaxWidth(),
-        //                  ) {
-        //                      Text(
-        //                          text = it.title
-        //                      )
-        //                  }
+                          Box(
+                              modifier = Modifier.fillMaxWidth(),
+                          ) {
+                              Text(
+                                  text = it.title
+                              )
+                          }
 
-        //              }
-        //          }
+                      }
+                  }
 
 
 
