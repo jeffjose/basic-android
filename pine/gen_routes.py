@@ -4,8 +4,6 @@ import re
 import glob
 from pathlib import Path
 
-from patterns import import_pattern
-
 from utils import (
     get_screen_dir,
     read_file,
@@ -13,6 +11,8 @@ from utils import (
     get_project_namespace,
     get_app_dir,
 )
+
+from compiler.parser import parse_component
 
 ROUTE_PARAM_REGEX = re.compile(r"\[(.*?)\]")
 
@@ -135,20 +135,6 @@ def get_slug(file):
     return route
 
 
-def parse(data):
-    lines = data.split("\n")
-
-    imports = []
-    contents = []
-
-    for line in lines:
-        if import_pattern.match(line):
-            imports.append(line)
-        else:
-            contents.append(line)
-
-    return {"imports": "\n".join(imports), "contents": "\n".join(contents)}
-
 
 def mkpackage_string_screen():
     return f"package {get_project_namespace()}.ui"
@@ -164,7 +150,7 @@ def get_screenfile_name(slug, include_ext=True):
 
 def create_screen(template, file):
 
-    parcel = parse(read_file(file))
+    parcel = parse_component(read_file(file))
 
     slug = get_slug(file)
 

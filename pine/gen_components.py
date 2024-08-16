@@ -4,8 +4,6 @@ import re
 import glob
 from pathlib import Path
 
-from patterns import import_pattern
-
 from utils import (
     get_components_dir,
     read_file,
@@ -14,8 +12,7 @@ from utils import (
     get_app_dir,
     mkdir
 )
-
-ROUTE_PARAM_REGEX = re.compile(r"\[(.*?)\]")
+from compiler.parser import parse_component
 
 INPUT_PATTERN = "src/**/**.pine"
 TEMPLATE_COMPONENT = """%%PACKAGENAME%%
@@ -66,20 +63,6 @@ def get_slug(file):
     return name.capitalize()
 
 
-def parse(data):
-    lines = data.split("\n")
-
-    imports = []
-    contents = []
-
-    for line in lines:
-        if import_pattern.match(line):
-            imports.append(line)
-        else:
-            contents.append(line)
-
-    return {"imports": "\n".join(imports), "contents": "\n".join(contents)}
-
 
 def mkpackage_string_component(output_dir_base):
     return f"package {get_project_namespace()}.ui.components{"." + output_dir_base.replace('/', '.') if output_dir_base != '' else ''}"
@@ -97,7 +80,7 @@ def create_component(template, file):
 
     output_dir_base = get_output_dir_base(file)
 
-    parcel = parse(read_file(file))
+    parcel = parse_component(read_file(file))
 
     slug = get_slug(file)
 

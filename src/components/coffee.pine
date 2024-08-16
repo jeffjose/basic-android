@@ -12,8 +12,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 
-var coffeeCount by remember { mutableStateOf(0) }
-var count by remember { mutableStateOf(0) }
+
+var $coffeeCount  = 0
+var *count = 0
+
+val $xcoffeeCount  = 0
+val *xcount = 0
 
 
 Column(
@@ -42,10 +46,6 @@ Column(
       Text("Count is $count.",
         modifier = Modifier.padding(16.dp)
       )
-
-        Button(onClick = { count-- }, Modifier.padding(top = 8.dp)) {
-            Text("Subtract one")
-        }
 
         Button(onClick = { count++ }, Modifier.padding(top = 8.dp)) {
             Text("Add one")

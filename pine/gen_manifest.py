@@ -4,8 +4,6 @@ import glob
 from pathlib import Path
 import ujson as json
 
-from patterns import import_pattern
-
 from utils import get_screen_dir, read_file, write_file, get_main_dir, write_json, read_json, get_project_name_capitalized
 
 INPUT_MANIFEST = 'src/manifest.json'
