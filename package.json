@@ -8,8 +8,10 @@
   "main": "index.js",
   "scripts": {
     "build": "pnpm gen && cd dist/cupcake && ./gradlew buildDebug",
+    "build:canonical": "cd .canonical-app && ./gradlew buildDebug",
     "gen": "./pine/scripts/gen.sh",
     "install": "pnpm gen && cd dist/cupcake && ./gradlew installDebug",
+    "install:canonical": "cd .canonical-app && ./gradlew installDebug",
     "preview": "cd dist/cupcake && ./gradlew installDebug"
   }
 }
