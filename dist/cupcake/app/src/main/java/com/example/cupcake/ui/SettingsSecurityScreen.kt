@@ -39,7 +39,7 @@ import com.example.cupcake.R
 
 
 @Composable
-fun SettingsGeneralScreen(navController: NavHostController, params: Bundle?, http: HttpClient) {
+fun SettingsSecurityScreen(navController: NavHostController, params: Bundle?, http: HttpClient) {
 
 
     suspend fun getData() : HttpResponse {
@@ -71,10 +71,9 @@ Column(
                 verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_small))
         ) {}
 
-  Button(onClick={}) {
-    Text(stringResource(R.string.foobar))
-
-  }
+                        Button(
+                                onClick = { navController.navigate("/settings/security") },
+                        ) { Text(stringResource(R.string.security)) }
 
 }
 
@@ -83,9 +82,9 @@ Column(
 /*
 @Preview
 @Composable
-fun SettingsGeneralScreenPreview() {
+fun SettingsSecurityScreenPreview() {
     CupcakeTheme {
-        SettingsGeneralScreen(
+        SettingsSecurityScreen(
             navController = rememberNavController(),
             params = Bundle?
         )

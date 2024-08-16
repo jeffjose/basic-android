@@ -39,7 +39,7 @@ import com.example.cupcake.R
 
 
 @Composable
-fun SettingsGeneralScreen(navController: NavHostController, params: Bundle?, http: HttpClient) {
+fun BlogNestedScreen(navController: NavHostController, params: Bundle?, http: HttpClient) {
 
 
     suspend fun getData() : HttpResponse {
@@ -71,10 +71,8 @@ Column(
                 verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_small))
         ) {}
 
-  Button(onClick={}) {
-    Text(stringResource(R.string.foobar))
+    Text(stringResource(R.string.blogpost))
 
-  }
 
 }
 
@@ -83,9 +81,9 @@ Column(
 /*
 @Preview
 @Composable
-fun SettingsGeneralScreenPreview() {
+fun BlogNestedScreenPreview() {
     CupcakeTheme {
-        SettingsGeneralScreen(
+        BlogNestedScreen(
             navController = rememberNavController(),
             params = Bundle?
         )

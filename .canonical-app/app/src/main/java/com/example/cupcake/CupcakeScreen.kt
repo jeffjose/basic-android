@@ -78,6 +78,12 @@ fun CupcakeApp(navController: NavHostController = rememberNavController()) {
     // Get the name of the current screen
     val currentScreen = backStackEntry?.destination?.route ?: "/first"
 
+    val http = HttpClient(CIO) {
+            install(ContentNegotiation) {
+                json()
+            }
+        }
+
     Scaffold(
             topBar = {
                 CupcakeAppBar(

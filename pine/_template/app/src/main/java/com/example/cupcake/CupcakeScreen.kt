@@ -42,6 +42,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.cupcake.ui.FirstScreen
 import com.example.cupcake.ui.SecondScreen
 import com.example.cupcake.ui.ThirdScreen
+import io.ktor.client.*
 
 /** Composable that displays the topBar and displays back button if back navigation is possible. */
 @Composable

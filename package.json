@@ -16,6 +16,7 @@
     "sync": "cd pine && rye sync",
     "w:build": "npm-watch build",
     "w:build:canonical": "npm-watch build:canonical",
+    "w:gen": "npm-watch gen",
     "w:install": "npm-watch install",
     "w:install:canonical": "npm-watch install:canonical",
     "watch": "npm-watch"
@@ -24,6 +25,14 @@
     "npm-watch": "^0.13.0"
   },
   "watch": {
+    "gen": {
+      "quiet": true,
+      "patterns": [
+        ".canonical-app/*"
+      ],
+      "extensions": "pine,kt,json,xml,kts",
+      "delay": 3000
+    },
     "build:canonical": {
       "quiet": true,
       "patterns": [

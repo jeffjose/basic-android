@@ -52,7 +52,7 @@ import kotlinx.serialization.json.*
 
 
 @Composable
-fun ThirdScreen(navController: NavHostController, modifier: Modifier = Modifier) {
+fun ThirdScreen(navController: NavHostController, modifier: Modifier = Modifier, http: HttpClient) {
 
     suspend fun getData(): List<Todo> {
         val client = HttpClient(CIO) {
@@ -125,65 +125,3 @@ data class Todo(
 
     val completed: Boolean
     )
-interface APIService {
-    @GET("todos") 
-    fun getTodos(): Call<List<Todo>>
-}
-
-object RetrofitInstance {
-    private const val BASE_URL = "https://jsonplaceholder.typicode.com/"
-
-    private val retrofit: Retrofit by lazy {
-        Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-    }
-    val apiService: APIService by lazy { retrofit.create(APIService::class.java) }
-}
-
-
-class ViewModel2 : ViewModel() {
-    var loading: Boolean by mutableStateOf(false)
-    private val _todos: MutableStateFlow<List<Todo>> = MutableStateFlow(listOf())
-    val todos: StateFlow<List<Todo>> = _todos
-
-    init {
-        Log.d("XXX", "here")
-        getTodosData()
-    }
-
-    private fun getTodosData() {
-        viewModelScope.launch {
-            Log.d("XXX", "Launch")
-            loading = true
-            val call: Call<List<Todo>> = RetrofitInstance.apiService.getTodos()
-            Log.d("XXX", "Launch 2 $call")
-            call.enqueue(
-                    object : Callback<List<Todo>> {
-
-                        override fun onResponse( call: Call<List<Todo>>, response: Response<List<Todo>>) {
-                            Log.d("XXX", response.toString())
-                            if (response.isSuccessful) {
-                                // val responseData: List<Todo>? = response.body()?.data
-                                val responseData: List<Todo>? = response.body()
-                                Log.d("XXX", responseData.toString())
-                                if (responseData != null) {
-                                    _todos.value = responseData
-                                }
-
-                                loading = false
-                            } else {
-                                loading = false
-                            }
-                        }
-
-                        override fun onFailure(call: Call<List<Todo>>, t: Throwable) {
-                            Log.e("XXX", "error!", t)
-                            loading = false
-                        }
-                    }
-            )
-        }
-    }
-}

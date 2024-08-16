@@ -24,13 +24,46 @@ import androidx.navigation.NavHostController
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import android.os.Bundle
+import io.ktor.client.*
+import io.ktor.client.engine.cio.*
+import io.ktor.client.request.*
+import io.ktor.client.statement.*
+import io.ktor.client.call.body
+import io.ktor.client.plugins.contentnegotiation.*
+import io.ktor.serialization.kotlinx.json.*
+import kotlinx.serialization.*
+import kotlinx.serialization.json.*
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.LaunchedEffect
+
+
 import %%NAMESPACE%%.ui.theme.CupcakeTheme
 
 %%IMPORT%%
 
 
 @Composable
-fun %%NAME%%Screen(navController: NavHostController, params: Bundle?) {
+fun %%NAME%%Screen(navController: NavHostController, params: Bundle?, http: HttpClient) {
+
+
+    suspend fun getData() : HttpResponse {
+        val url = "https://jsonplaceholder.typicode.com/todos"
+
+        return http.get(url)
+    }
+
+        val scope = rememberCoroutineScope()
+        val data  = remember { mutableStateOf<HttpResponse?>(null)}
+
+        LaunchedEffect(scope) {
+            data.value = getData()
+    }
+
+
     %%CONTENT%%
 }
 
@@ -63,11 +96,26 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.layout.fillMaxSize
 import com.example.cupcake.R
+import io.ktor.client.*
+import io.ktor.client.plugins.contentnegotiation.*
+import io.ktor.serialization.kotlinx.json.*
+import kotlinx.serialization.*
+import kotlinx.serialization.json.*
+import io.ktor.client.engine.cio.*
+import kotlinx.coroutines.launch
+import androidx.compose.runtime.LaunchedEffect
+
 
 %%IMPORTS%%
 
 @Composable
 fun Navigation(navController: NavHostController) {
+
+    val http = HttpClient(CIO) {
+            install(ContentNegotiation) {
+                json()
+            }
+        }
 
   NavHost(
           navController = navController,
@@ -86,7 +134,7 @@ TEMPLATE_COMPOSABLE = """
     composable(
             route = "%%ROUTE%%",
             ) { backStackEntry ->
-      %%NAME%%Screen(navController = navController, params = backStackEntry.arguments)
+      %%NAME%%Screen(navController = navController, params = backStackEntry.arguments, http = http)
     }
 """
 
@@ -133,7 +181,6 @@ def get_slug(file):
     )
 
     return route
-
 
 
 def mkpackage_string_screen():
