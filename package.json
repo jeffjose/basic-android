@@ -12,6 +12,7 @@
     "gen": "./pine/scripts/gen.sh",
     "install": "pnpm gen && cd dist/cupcake && ./gradlew installDebug",
     "install:canonical": "cd .canonical-app && ./gradlew installDebug",
-    "preview": "cd dist/cupcake && ./gradlew installDebug"
+    "preview": "cd dist/cupcake && ./gradlew installDebug",
+    "sync": "cd pine && rye sync"
   }
 }

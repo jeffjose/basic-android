@@ -34,6 +34,11 @@ fun FirstScreen(navController: NavHostController, modifier: Modifier = Modifier)
                         Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium))
         ) {
             Row(horizontalArrangement = Arrangement.SpaceEvenly) {
+                Text("Canonical")
+            }
+            Row(horizontalArrangement = Arrangement.SpaceEvenly) {
+
+
                 Button(
                         onClick = { navController.navigate("/first") },
                 ) { Text(stringResource(R.string.one)) }

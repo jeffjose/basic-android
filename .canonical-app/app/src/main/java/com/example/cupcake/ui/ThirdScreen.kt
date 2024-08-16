@@ -24,12 +24,20 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import kotlinx.parcelize.Parcelize
+import android.os.Parcelable
 import retrofit2.http.GET
+import com.google.gson.annotations.SerializedName
+
+import android.util.Log
+
 
 @Composable
 fun ThirdScreen(navController: NavHostController, modifier: Modifier = Modifier) {
 
     val viewModel: ViewModel2 = viewModel()
+
+    Log.d("XXX", "Loading ${viewModel.loading}")
 
     Column(modifier = modifier, verticalArrangement = Arrangement.SpaceBetween) {
         Column(
@@ -70,31 +78,24 @@ fun ThirdScreenPreview() {
     }
 }
 
-data class Todo(var userId: Int, var id: Int, var title: String, var completed: Boolean)
+@Parcelize
+data class Todo(
+    @field:SerializedName("userId")
+    val userId: Int, 
 
-// const val BASE_URL = "https://jsonplaceholder.typicode.com/"
-//
-// interface APIService {
-//    @GET("todos") suspend fun getTodos(): Todo
-//
-//    companion object {
-//        var apiService: APIService? = null
-//        fun getInstance(): APIService {
-//            if (apiService == null) {
-//                apiService =
-//                        Retrofit.Builder()
-//                                .baseUrl(BASE_URL)
-//                                .addConverterFactory(GsonConverterFactory.create())
-//                                .build()
-//                                .create(APIService::class.java)
-//            }
-//            return apiService!!
-//        }
-//    }
-// }
+    @field:SerializedName("id")
+    val id: Int, 
+
+    @field:SerializedName("title")
+    val title: String, 
+
+    @field:SerializedName("completed")
+    val completed: Boolean
+    ) : Parcelable
 
 interface ApiService2 {
-    @GET("todos") fun getTodos(): Call<List<Todo>>
+    @GET("todos") 
+    fun getTodos(): Call<List<Todo>>
 }
 
 object RetrofitInstance {
@@ -109,24 +110,6 @@ object RetrofitInstance {
     val apiService: ApiService2 by lazy { retrofit.create(ApiService2::class.java) }
 }
 
-// class TodoViewModel : ViewModel() {
-//    private val _todoList = mutableStateListOf<Todo>()
-//    var errorMessage: String by mutableStateOf("")
-//    val todoList: List<Todo>
-//        get() = _todoList
-//
-//    fun getTodoList() {
-//        viewModelScope.launch {
-//            val apiService = APIService.getInstance()
-//            try {
-//                _todoList.clear()
-//                _todoList.addAll(apiService.getTodos())
-//            } catch (e: Exception) {
-//                errorMessage = e.message.toString()
-//            }
-//        }
-//    }
-// }
 
 class ViewModel2 : ViewModel() {
     var loading: Boolean by mutableStateOf(false)
@@ -134,19 +117,21 @@ class ViewModel2 : ViewModel() {
     val todos: StateFlow<List<Todo>> = _todos
 
     init {
+        Log.d("XXX", "here")
         getTodosData()
     }
 
     private fun getTodosData() {
         viewModelScope.launch {
+            Log.d("XXX", "Launch")
             loading = true
             val call: Call<List<Todo>> = RetrofitInstance.apiService.getTodos()
+            Log.d("XXX", "Launch 2 $call")
             call.enqueue(
                     object : Callback<List<Todo>> {
-                        override fun onResponse(
-                                call: Call<List<Todo>>,
-                                response: Response<List<Todo>>
-                        ) {
+
+                        override fun onResponse( call: Call<List<Todo>>, response: Response<List<Todo>>) {
+                            Log.d("XXX", response.toString())
                             if (response.isSuccessful) {
                                 // val responseData: List<Todo>? = response.body()?.data
                                 val responseData: List<Todo>? = response.body()
@@ -161,6 +146,7 @@ class ViewModel2 : ViewModel() {
                         }
 
                         override fun onFailure(call: Call<List<Todo>>, t: Throwable) {
+                            Log.e("XXX", "error!", t)
                             loading = false
                         }
                     }
