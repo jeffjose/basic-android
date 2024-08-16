@@ -29,28 +29,32 @@
       "patterns": [
         ".canonical-app/*"
       ],
-      "extensions": "pine,kt,json,xml"
+      "extensions": "pine,kt,json,xml",
+      "delay": 3000
     },
     "install:canonical": {
       "quiet": true,
       "patterns": [
         ".canonical-app/*"
       ],
-      "extensions": "pine,kt,json,xml"
+      "extensions": "pine,kt,json,xml",
+      "delay": 3000
     },
     "install": {
       "quiet": true,
       "patterns": [
         ""
       ],
-      "extensions": "pine,kt,json,xml,py"
+      "extensions": "pine,kt,json,xml,py",
+      "delay": 3000
     },
     "build": {
       "quiet": true,
       "patterns": [
         ""
       ],
-      "extensions": "pine,kt,json,xml,py"
+      "extensions": "pine,kt,json,xml,py",
+      "delay": 3000
     }
   }
 }

@@ -5,10 +5,14 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.*
 import androidx.compose.ui.res.*
 import androidx.compose.ui.tooling.preview.*
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -29,11 +33,12 @@ import android.os.Parcelable
 import retrofit2.http.GET
 import com.google.gson.annotations.SerializedName
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.*
 import androidx.compose.ui.unit.dp
-
-
+import androidx.compose.runtime.saveable.rememberSaveable
 import android.util.Log
+import androidx.compose.foundation.layout.PaddingValues
+
 
 
 @Composable
@@ -41,21 +46,32 @@ fun ThirdScreen(navController: NavHostController, modifier: Modifier = Modifier)
 
     val viewModel: ViewModel2 = viewModel()
 
-    val todos = viewModel.todos.collectAsState()
+    var todos = viewModel.todos.collectAsState()
 
     Log.d("XXX", "Loading ${viewModel.loading} ${todos.value.size}")
     Log.d("XXX", "Loading ${viewModel.loading} ${todos.value.size}")
     Log.d("XXX", "Loading ${viewModel.loading} ${todos.value.size}")
+
+         LazyColumn(
+                    modifier = Modifier.height(100.dp)
+                ) {
+                    items(todos.value) {
+
+                        Box(
+                            modifier = Modifier.fillMaxWidth(),
+                        ) {
+                            Text(
+                                text = it.title
+                            )
+                        }
+
+                    }
+                }
+
+
+
     
-    LazyColumn(
-        //verticalArrangement = Arrangement.spacedBy(10.dp),
-        // modifier = Modifier.fillMaxSize()
-    ) {
-            items(todos.value){  todo ->
-                Text(todo.title)
-            }
-        }
-    }
+}
 
 @Preview
 @Composable

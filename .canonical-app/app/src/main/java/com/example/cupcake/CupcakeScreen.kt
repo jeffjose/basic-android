@@ -89,7 +89,7 @@ fun CupcakeApp(navController: NavHostController = rememberNavController()) {
     ) { innerPadding ->
         NavHost(
                 navController = navController,
-                startDestination = "/first",
+                startDestination = "/third",
                 modifier =
                         Modifier.fillMaxSize()
                                 .verticalScroll(rememberScrollState())
