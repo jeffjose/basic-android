@@ -43,49 +43,62 @@ import io.ktor.client.*
 import io.ktor.client.engine.cio.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
+import io.ktor.client.call.body
+import io.ktor.client.plugins.contentnegotiation.*
+import io.ktor.serialization.kotlinx.json.*
+import kotlinx.serialization.*
+import kotlinx.serialization.json.*
+
 
 
 @Composable
 fun ThirdScreen(navController: NavHostController, modifier: Modifier = Modifier) {
 
-    suspend fun getData(): HttpResponse {
-        val client = HttpClient(CIO)
-        val url = "https://jsonplaceholder.typicode.com/"
+    suspend fun getData(): String {
+        val client = HttpClient(CIO) {
+            install(ContentNegotiation) {
+                json()
+            }
+        }
+        val url = "https://jsonplaceholder.typicode.com/todos"
         val response: HttpResponse = client.get(url)
-        Log.d("XXX", response.toString())
         client.close()
-        return response
+    Log.d("XXX: inside", response.toString())
+    //Log.d("XXX: inside", response.bodyAsText())
+    //var x : List<Todo> = response.body()
+    //Log.d("XXX: inside", x.toString())
+        return response.bodyAsText()
     }
 
         val scope = rememberCoroutineScope()
-    val data = remember { mutableStateOf<HttpResponse?>(null)}
+    val data = remember { mutableStateOf<String?>(null)}
     LaunchedEffect(scope) {
         data.value = getData()
     }
 
 
-    Log.d("XXX: data", data.value.toString())
+    //Log.d("XXX: data", data.value.toString())
     //val viewModel: ViewModel2 = viewModel()
 
-
+    Text(data.value ?: "default")
 
     //Log.d("XXX", "Loading ${viewModel.loading} ${todos.value.size}")
 
-        //  LazyColumn(
-        //             modifier = Modifier.height(100.dp)
-        //         ) {
-        //             items(todos.value) {
+        //   LazyColumn(
+        //              modifier = Modifier.height(100.dp)
+        //          ) {
+        //              items(data.value) {
 
-        //                 Box(
-        //                     modifier = Modifier.fillMaxWidth(),
-        //                 ) {
-        //                     Text(
-        //                         text = it.title
-        //                     )
-        //                 }
+        //                  Box(
+        //                      modifier = Modifier.fillMaxWidth(),
+        //                  ) {
+        //                      Text(
+        //                          text = it.title
+        //                      )
+        //                  }
 
-        //             }
-        //         }
+        //              }
+        //          }
 
 
 
@@ -103,21 +116,16 @@ fun ThirdScreenPreview() {
     }
 }
 
-@Parcelize
+@Serializable
 data class Todo(
-    @field:SerializedName("userId")
     val userId: Int, 
 
-    @field:SerializedName("id")
     val id: Int, 
 
-    @field:SerializedName("title")
     val title: String, 
 
-    @field:SerializedName("completed")
     val completed: Boolean
-    ) : Parcelable
-
+    )
 interface APIService {
     @GET("todos") 
     fun getTodos(): Call<List<Todo>>
