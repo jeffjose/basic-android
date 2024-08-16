@@ -13,6 +13,8 @@ TEMPLATE = '''<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    %%PERMISSIONS%%
+
     <application
         android:icon="{icon}"
         android:label="{label}"
@@ -32,6 +34,10 @@ TEMPLATE = '''<?xml version="1.0" encoding="utf-8"?>
     </application>
 
 </manifest>
+'''
+
+TEMPLATE_PERMISSION = '''
+<uses-permission android:name="{permission}" />
 '''
 
 def get_template():
@@ -85,6 +91,9 @@ def _handle_intentAction(text):
 def _handle_intentCategory(text):
     return text
 
+def _handle_permissions(permissions):
+    return [f'android.permission.{permission}' for permission in permissions]
+
 def parse(data):
 
     return {
@@ -98,6 +107,7 @@ def parse(data):
         'exported':       _handle_exported(data.get('exported', 'true')),
         'intentAction':   _handle_intentAction(data.get('intent', {}).get('action')),
         'intentCategory': _handle_intentCategory(data.get('intent', {}).get('category')),
+        'permissions':    _handle_permissions(data.get('permissions', []))
         
     }
 
@@ -106,6 +116,12 @@ def create_manifest(template, manifest):
     parcel = parse(manifest)
 
     final = template.format(**parcel).strip()
+
+    permission_lines = []
+    for permission in parcel['permissions']:
+        permission_lines.append(TEMPLATE_PERMISSION.format(permission = permission))
+
+    final = final.replace('%%PERMISSIONS%%', "\n".join(permission_lines))
 
     write_file(OUTPUT_MANIFEST, final)
 
