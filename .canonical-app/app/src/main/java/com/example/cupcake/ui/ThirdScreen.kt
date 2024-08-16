@@ -39,34 +39,53 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import android.util.Log
 import androidx.compose.foundation.layout.PaddingValues
 
+import io.ktor.client.*
+import io.ktor.client.engine.cio.*
+import io.ktor.client.request.*
+import io.ktor.client.statement.*
 
 
 @Composable
 fun ThirdScreen(navController: NavHostController, modifier: Modifier = Modifier) {
 
-    val viewModel: ViewModel2 = viewModel()
+    suspend fun getData(): HttpResponse {
+        val client = HttpClient(CIO)
+        val url = "https://jsonplaceholder.typicode.com/"
+        val response: HttpResponse = client.get(url)
+        Log.d("XXX", response.toString())
+        client.close()
+        return response
+    }
 
-    var todos = viewModel.todos.collectAsState()
+        val scope = rememberCoroutineScope()
+    val data = remember { mutableStateOf<HttpResponse?>(null)}
+    LaunchedEffect(scope) {
+        data.value = getData()
+    }
 
-    Log.d("XXX", "Loading ${viewModel.loading} ${todos.value.size}")
-    Log.d("XXX", "Loading ${viewModel.loading} ${todos.value.size}")
-    Log.d("XXX", "Loading ${viewModel.loading} ${todos.value.size}")
 
-         LazyColumn(
-                    modifier = Modifier.height(100.dp)
-                ) {
-                    items(todos.value) {
+    Log.d("XXX: data", data.value.toString())
+    //val viewModel: ViewModel2 = viewModel()
 
-                        Box(
-                            modifier = Modifier.fillMaxWidth(),
-                        ) {
-                            Text(
-                                text = it.title
-                            )
-                        }
 
-                    }
-                }
+
+    //Log.d("XXX", "Loading ${viewModel.loading} ${todos.value.size}")
+
+        //  LazyColumn(
+        //             modifier = Modifier.height(100.dp)
+        //         ) {
+        //             items(todos.value) {
+
+        //                 Box(
+        //                     modifier = Modifier.fillMaxWidth(),
+        //                 ) {
+        //                     Text(
+        //                         text = it.title
+        //                     )
+        //                 }
+
+        //             }
+        //         }
 
 
 
@@ -99,7 +118,7 @@ data class Todo(
     val completed: Boolean
     ) : Parcelable
 
-interface ApiService2 {
+interface APIService {
     @GET("todos") 
     fun getTodos(): Call<List<Todo>>
 }
@@ -113,7 +132,7 @@ object RetrofitInstance {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
     }
-    val apiService: ApiService2 by lazy { retrofit.create(ApiService2::class.java) }
+    val apiService: APIService by lazy { retrofit.create(APIService::class.java) }
 }
 
 
