@@ -54,7 +54,7 @@ import kotlinx.serialization.json.*
 @Composable
 fun ThirdScreen(navController: NavHostController, modifier: Modifier = Modifier) {
 
-    suspend fun getData(): String {
+    suspend fun getData(): List<Todo> {
         val client = HttpClient(CIO) {
             install(ContentNegotiation) {
                 json()
@@ -63,15 +63,19 @@ fun ThirdScreen(navController: NavHostController, modifier: Modifier = Modifier)
         val url = "https://jsonplaceholder.typicode.com/todos"
         val response: HttpResponse = client.get(url)
         client.close()
-    Log.d("XXX: inside", response.toString())
+    Log.d("XXX: inside", response.bodyAsText())
     //Log.d("XXX: inside", response.bodyAsText())
     //var x : List<Todo> = response.body()
     //Log.d("XXX: inside", x.toString())
-        return response.bodyAsText()
+        val todos: List<Todo> =  response.body()
+    Log.d("XXX: inside", todos.size.toString())
+
+        //return response.bodyAsText()
+        return todos
     }
 
         val scope = rememberCoroutineScope()
-    val data = remember { mutableStateOf<String?>(null)}
+    val data = remember { mutableStateOf<List<Todo>?>(null)}
     LaunchedEffect(scope) {
         data.value = getData()
     }
@@ -80,7 +84,7 @@ fun ThirdScreen(navController: NavHostController, modifier: Modifier = Modifier)
     //Log.d("XXX: data", data.value.toString())
     //val viewModel: ViewModel2 = viewModel()
 
-    Text(data.value ?: "default")
+    Text(data.value?.toString() ?: "default")
 
     //Log.d("XXX", "Loading ${viewModel.loading} ${todos.value.size}")
 
