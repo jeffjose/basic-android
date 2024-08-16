@@ -6,7 +6,7 @@
   "theme": "@style/Theme.Cupcake",
   "targetApi": 33,
   "activity": "MainActivity",
-  "permissions": ["INTERNET"],
+  "permissions": ["android.permission.INTERNET"],
   "intent": {
     "action": "android.intent.action.MAIN",
     "category": "android.intent.category.LAUNCHER"

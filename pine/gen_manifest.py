@@ -92,7 +92,7 @@ def _handle_intentCategory(text):
     return text
 
 def _handle_permissions(permissions):
-    return [f'android.permission.{permission}' for permission in permissions]
+    return permissions
 
 def parse(data):
 
