@@ -14,13 +14,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import com.example.cupcake.R
 
 import com.example.cupcake.ui.RootScreen
-import com.example.cupcake.ui.AboutScreen
 import com.example.cupcake.ui.BlogScreen
-import com.example.cupcake.ui.BlogRouteParamIdScreen
 import com.example.cupcake.ui.BlogNestedScreen
+import com.example.cupcake.ui.BlogRouteParamIdScreen
 import com.example.cupcake.ui.SettingsScreen
 import com.example.cupcake.ui.SettingsSecurityScreen
 import com.example.cupcake.ui.SettingsGeneralScreen
+import com.example.cupcake.ui.AboutScreen
 
 @Composable
 fun Navigation(navController: NavHostController) {
@@ -41,13 +41,6 @@ fun Navigation(navController: NavHostController) {
 
 
     composable(
-            route = "/about",
-            ) { backStackEntry ->
-      AboutScreen(navController = navController, params = backStackEntry.arguments)
-    }
-
-
-    composable(
             route = "/blog",
             ) { backStackEntry ->
       BlogScreen(navController = navController, params = backStackEntry.arguments)
@@ -55,16 +48,16 @@ fun Navigation(navController: NavHostController) {
 
 
     composable(
-            route = "/blog/{id}",
+            route = "/blog/nested",
             ) { backStackEntry ->
-      BlogRouteParamIdScreen(navController = navController, params = backStackEntry.arguments)
+      BlogNestedScreen(navController = navController, params = backStackEntry.arguments)
     }
 
 
     composable(
-            route = "/blog/nested",
+            route = "/blog/{id}",
             ) { backStackEntry ->
-      BlogNestedScreen(navController = navController, params = backStackEntry.arguments)
+      BlogRouteParamIdScreen(navController = navController, params = backStackEntry.arguments)
     }
 
 
@@ -86,6 +79,13 @@ fun Navigation(navController: NavHostController) {
             route = "/settings/general",
             ) { backStackEntry ->
       SettingsGeneralScreen(navController = navController, params = backStackEntry.arguments)
+    }
+
+
+    composable(
+            route = "/about",
+            ) { backStackEntry ->
+      AboutScreen(navController = navController, params = backStackEntry.arguments)
     }
 
   }
