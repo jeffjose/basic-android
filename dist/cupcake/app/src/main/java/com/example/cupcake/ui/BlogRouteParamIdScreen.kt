@@ -42,6 +42,7 @@ import com.example.cupcake.R
 fun BlogRouteParamIdScreen(navController: NavHostController, params: Bundle?, http: HttpClient) {
 
 
+    /*
     suspend fun getData() : HttpResponse {
         val url = "https://jsonplaceholder.typicode.com/todos"
 
@@ -54,6 +55,7 @@ fun BlogRouteParamIdScreen(navController: NavHostController, params: Bundle?, ht
         LaunchedEffect(scope) {
             data.value = getData()
     }
+    */
 
 
     

@@ -50,58 +50,74 @@ fun Navigation(navController: NavHostController) {
     
     composable(
             route = "/",
-            ) { backStackEntry ->
+            ) { backStackEntry -> 
+
+
       RootScreen(navController = navController, params = backStackEntry.arguments, http = http)
-    }
+      }
 
 
     composable(
             route = "/about",
-            ) { backStackEntry ->
+            ) { backStackEntry -> 
+
+
       AboutScreen(navController = navController, params = backStackEntry.arguments, http = http)
-    }
+      }
 
 
     composable(
             route = "/settings",
-            ) { backStackEntry ->
+            ) { backStackEntry -> 
+
+
       SettingsScreen(navController = navController, params = backStackEntry.arguments, http = http)
-    }
+      }
 
 
     composable(
             route = "/settings/general",
-            ) { backStackEntry ->
+            ) { backStackEntry -> 
+
+
       SettingsGeneralScreen(navController = navController, params = backStackEntry.arguments, http = http)
-    }
+      }
 
 
     composable(
             route = "/settings/security",
-            ) { backStackEntry ->
+            ) { backStackEntry -> 
+
+
       SettingsSecurityScreen(navController = navController, params = backStackEntry.arguments, http = http)
-    }
+      }
 
 
     composable(
             route = "/blog",
-            ) { backStackEntry ->
+            ) { backStackEntry -> 
+
+
       BlogScreen(navController = navController, params = backStackEntry.arguments, http = http)
-    }
+      }
 
 
     composable(
             route = "/blog/nested",
-            ) { backStackEntry ->
+            ) { backStackEntry -> 
+
+
       BlogNestedScreen(navController = navController, params = backStackEntry.arguments, http = http)
-    }
+      }
 
 
     composable(
             route = "/blog/{id}",
-            ) { backStackEntry ->
+            ) { backStackEntry -> 
+
+
       BlogRouteParamIdScreen(navController = navController, params = backStackEntry.arguments, http = http)
-    }
+      }
 
   }
 }

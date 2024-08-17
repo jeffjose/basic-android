@@ -47,6 +47,7 @@ import kotlinx.coroutines.launch
 fun RootScreen(navController: NavHostController, params: Bundle?, http: HttpClient) {
 
 
+    /*
     suspend fun getData() : HttpResponse {
         val url = "https://jsonplaceholder.typicode.com/todos"
 
@@ -59,11 +60,12 @@ fun RootScreen(navController: NavHostController, params: Bundle?, http: HttpClie
         LaunchedEffect(scope) {
             data.value = getData()
     }
+    */
 
 
     
 
-Log.d("XXX", data.value?.toString() ?: "default")
+//Log.d("XXX", data.value?.toString() ?: "default")
 
 Column(
         verticalArrangement = Arrangement.SpaceBetween,

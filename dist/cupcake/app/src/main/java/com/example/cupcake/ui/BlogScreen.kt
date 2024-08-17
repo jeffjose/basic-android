@@ -44,6 +44,7 @@ import com.example.cupcake.R
 fun BlogScreen(navController: NavHostController, params: Bundle?, http: HttpClient) {
 
 
+    /*
     suspend fun getData() : HttpResponse {
         val url = "https://jsonplaceholder.typicode.com/todos"
 
@@ -56,6 +57,7 @@ fun BlogScreen(navController: NavHostController, params: Bundle?, http: HttpClie
         LaunchedEffect(scope) {
             data.value = getData()
     }
+    */
 
 
     

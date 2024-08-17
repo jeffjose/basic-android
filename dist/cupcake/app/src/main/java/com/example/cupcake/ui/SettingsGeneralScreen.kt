@@ -42,6 +42,7 @@ import com.example.cupcake.R
 fun SettingsGeneralScreen(navController: NavHostController, params: Bundle?, http: HttpClient) {
 
 
+    /*
     suspend fun getData() : HttpResponse {
         val url = "https://jsonplaceholder.typicode.com/todos"
 
@@ -54,6 +55,7 @@ fun SettingsGeneralScreen(navController: NavHostController, params: Bundle?, htt
         LaunchedEffect(scope) {
             data.value = getData()
     }
+    */
 
 
     
