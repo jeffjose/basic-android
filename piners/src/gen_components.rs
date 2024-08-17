@@ -161,7 +161,7 @@ pub fn get_param_route_files(files: &[PathBuf]) -> Vec<PathBuf> {
         .collect()
 }
 
-fn main() {
+pub fn main() {
     let files = collect_files();
     let template_screen = get_template_component();
 

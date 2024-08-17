@@ -1,34 +1,22 @@
-use clap::{App, ArgMatches, Subcommand};
-
-mod gen_components;
+use clap::{Command, SubCommand};
 mod gen_manifest;
+mod gen_components;
 mod gen_routes;
 
 fn main() {
-    let matches = App::new("App")
+    let matches = Command::new("MyApp")
         .version("1.0")
-        .about("CLI tool")
-        .subcommand(SubCommand::with_name("manifest").about("Generates the manifest"))
-        .subcommand(SubCommand::with_name("components").about("Generates the components"))
-        .subcommand(SubCommand::with_name("routes").about("Generates the routes"))
+        .author("Author Name")
+        .about("Generates routes, components, and manifests")
+        .subcommand(Command::new("manifest").about("Generates a manifest"))
+        .subcommand(Command::new("components").about("Generates components"))
+        .subcommand(Command::new("routes").about("Generates routes"))
         .get_matches();
 
     match matches.subcommand() {
-        ("manifest", Some(_)) => gen_manifest(),
-        ("components", Some(_)) => gen_components(),
-        ("routes", Some(_)) => gen_routes(),
-        _ => eprintln!("Invalid command. Use --help to see available commands."),
+        Some(("manifest", _sub_m)) => gen_manifest::main(),
+        Some(("components", _sub_m)) => gen_components::main(),
+        Some(("routes", _sub_m)) => gen_routes::main(),
+        _ => eprintln!("Invalid command. Use `--help` to see available commands."),
     }
-}
-
-fn gen_manifest() {
-    gen_manifest::main();
-}
-
-fn gen_components() {
-    gen_components::main();
-}
-
-fn gen_routes() {
-    gen_routes::main();
 }

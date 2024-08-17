@@ -248,7 +248,7 @@ pub fn get_manifest() -> Result<Value, String> {
     read_json(Path::new(INPUT_MANIFEST)).map_err(|e| e.to_string())
 }
 
-fn main() -> Result<(), String> {
+pub fn main() -> Result<(), String> {
     let manifest = get_manifest()?;
     let template = get_template();
     create_manifest(template, &manifest)
