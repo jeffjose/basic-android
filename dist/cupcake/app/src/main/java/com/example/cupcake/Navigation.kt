@@ -24,12 +24,12 @@ import androidx.compose.runtime.LaunchedEffect
 
 import com.example.cupcake.ui.RootScreen
 import com.example.cupcake.ui.AboutScreen
+import com.example.cupcake.ui.BlogScreen
+import com.example.cupcake.ui.BlogRouteParamIdScreen
+import com.example.cupcake.ui.BlogNestedScreen
 import com.example.cupcake.ui.SettingsScreen
 import com.example.cupcake.ui.SettingsGeneralScreen
 import com.example.cupcake.ui.SettingsSecurityScreen
-import com.example.cupcake.ui.BlogScreen
-import com.example.cupcake.ui.BlogNestedScreen
-import com.example.cupcake.ui.BlogRouteParamIdScreen
 
 @Composable
 fun Navigation(navController: NavHostController) {
@@ -67,6 +67,33 @@ fun Navigation(navController: NavHostController) {
 
 
     composable(
+            route = "/blog",
+            ) { backStackEntry -> 
+
+
+      BlogScreen(navController = navController, params = backStackEntry.arguments, http = http)
+      }
+
+
+    composable(
+            route = "/blog/{id}",
+            ) { backStackEntry -> 
+
+
+      BlogRouteParamIdScreen(navController = navController, params = backStackEntry.arguments, http = http)
+      }
+
+
+    composable(
+            route = "/blog/nested",
+            ) { backStackEntry -> 
+
+
+      BlogNestedScreen(navController = navController, params = backStackEntry.arguments, http = http)
+      }
+
+
+    composable(
             route = "/settings",
             ) { backStackEntry -> 
 
@@ -90,33 +117,6 @@ fun Navigation(navController: NavHostController) {
 
 
       SettingsSecurityScreen(navController = navController, params = backStackEntry.arguments, http = http)
-      }
-
-
-    composable(
-            route = "/blog",
-            ) { backStackEntry -> 
-
-
-      BlogScreen(navController = navController, params = backStackEntry.arguments, http = http)
-      }
-
-
-    composable(
-            route = "/blog/nested",
-            ) { backStackEntry -> 
-
-
-      BlogNestedScreen(navController = navController, params = backStackEntry.arguments, http = http)
-      }
-
-
-    composable(
-            route = "/blog/{id}",
-            ) { backStackEntry -> 
-
-
-      BlogRouteParamIdScreen(navController = navController, params = backStackEntry.arguments, http = http)
       }
 
   }

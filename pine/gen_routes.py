@@ -147,7 +147,7 @@ fun %%NAME%%ScreenPreview() {
 
 def collect_files():
 
-    files = [Path(x) for x in glob.glob(INPUT_PATTERN, recursive=True)]
+    files = sorted([Path(x) for x in glob.glob(INPUT_PATTERN, recursive=True)])
 
     print("Collected routes -")
     print("\n".join([f"- {x}" for x in files]))
