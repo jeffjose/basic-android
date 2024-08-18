@@ -12,6 +12,8 @@
 -e file:.
 altgraph==0.17.4
     # via pyinstaller
+antlr4-python3-runtime==4.9.3
+    # via basic-android
 click==8.1.7
     # via typer
 markdown-it-py==3.0.0

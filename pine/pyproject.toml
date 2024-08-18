@@ -2,13 +2,12 @@
 name = "basic-android"
 version = "0.1.0"
 description = "Add your description here"
-authors = [
-    { name = "Jeffrey Jose", email = "jeffjosejeff@gmail.com" }
-]
+authors = [{ name = "Jeffrey Jose", email = "jeffjosejeff@gmail.com" }]
 dependencies = [
     "pyinstaller>=6.10.0",
     "ujson>=5.10.0",
     "typer>=0.12.4",
+    "antlr4-python3-runtime==4.9.3",
 ]
 readme = "README.md"
 requires-python = ">= 3.8"
