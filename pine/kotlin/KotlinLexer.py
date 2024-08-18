@@ -13,8 +13,8 @@ def serializedATN():
         buf.write("\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4")
         buf.write("\22\t\22\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27")
         buf.write("\t\27\4\30\t\30\4\31\t\31\4\32\t\32\4\33\t\33\4\34\t\34")
-        buf.write("\4\35\t\35\4\36\t\36\4\37\t\37\4 \t \4!\t!\4\"\t\"\4#")
-        buf.write("\t#\4$\t$\4%\t%\4&\t&\4\'\t\'\4(\t(\4)\t)\4*\t*\4+\t+")
+        buf.write('\4\35\t\35\4\36\t\36\4\37\t\37\4 \t \4!\t!\4"\t"\4#')
+        buf.write("\t#\4$\t$\4%\t%\4&\t&\4'\t'\4(\t(\4)\t)\4*\t*\4+\t+")
         buf.write("\4,\t,\4-\t-\4.\t.\4/\t/\4\60\t\60\4\61\t\61\4\62\t\62")
         buf.write("\4\63\t\63\4\64\t\64\4\65\t\65\4\66\t\66\4\67\t\67\48")
         buf.write("\t8\49\t9\4:\t:\4;\t;\4<\t<\4=\t=\4>\t>\4?\t?\4@\t@\4")
@@ -90,8 +90,8 @@ def serializedATN():
         buf.write("\3\23\3\24\3\24\3\25\3\25\3\26\3\26\3\26\3\27\3\27\3\27")
         buf.write("\3\30\3\30\3\30\3\31\3\31\3\31\3\32\3\32\3\32\3\33\3\33")
         buf.write("\3\34\3\34\3\35\3\35\3\36\3\36\3\37\3\37\3\37\3 \3 \3")
-        buf.write(" \3!\3!\3!\3\"\3\"\3\"\3#\3#\3#\3$\3$\3$\3%\3%\3%\3&\3")
-        buf.write("&\3&\3\'\3\'\3\'\3\'\3(\3(\3(\3)\3)\3)\3*\3*\3+\3+\3,")
+        buf.write(' \3!\3!\3!\3"\3"\3"\3#\3#\3#\3$\3$\3$\3%\3%\3%\3&\3')
+        buf.write("&\3&\3'\3'\3'\3'\3(\3(\3(\3)\3)\3)\3*\3*\3+\3+\3,")
         buf.write("\3,\3,\5,\u0317\n,\3-\3-\5-\u031b\n-\3-\3-\3.\3.\5.\u0321")
         buf.write("\n.\3.\3.\3.\5.\u0326\n.\3/\3/\3/\3\60\3\60\3\61\3\61")
         buf.write("\3\62\3\62\3\63\3\63\3\63\3\64\3\64\3\64\3\65\3\65\3\65")
@@ -266,9 +266,9 @@ def serializedATN():
         buf.write("\n\u013a\3\u013a\3\u013a\3\u013b\3\u013b\3\u013b\3\u013b")
         buf.write("\3\u013c\3\u013c\3\u013c\3\u013c\3\u013d\3\u013d\3\u028e")
         buf.write("\2\u013e\6\3\b\4\n\5\f\6\16\7\20\2\22\b\24\t\26\n\30\13")
-        buf.write("\32\f\34\r\36\16 \17\"\20$\21&\22(\23*\24,\25.\26\60\27")
-        buf.write("\62\30\64\31\66\328\33:\34<\35>\36@\37B D!F\"H#J$L%N&")
-        buf.write("P\'R(T)V*X+Z,\\-^.`/b\60d\61f\62h\63j\64l\65n\66p\67r")
+        buf.write('\32\f\34\r\36\16 \17"\20$\21&\22(\23*\24,\25.\26\60\27')
+        buf.write('\62\30\64\31\66\328\33:\34<\35>\36@\37B D!F"H#J$L%N&')
+        buf.write("P'R(T)V*X+Z,\\-^.`/b\60d\61f\62h\63j\64l\65n\66p\67r")
         buf.write("8t9v:x;z<|=~>\u0080?\u0082@\u0084A\u0086B\u0088C\u008a")
         buf.write("D\u008cE\u008eF\u0090G\u0092H\u0094I\u0096J\u0098K\u009a")
         buf.write("L\u009cM\u009eN\u00a0O\u00a2P\u00a4Q\u00a6R\u00a8S\u00aa")
@@ -309,7 +309,7 @@ def serializedATN():
         buf.write("\2\u0264\2\u0266\2\u0268\2\u026a\2\u026c\2\u026e\2\u0270")
         buf.write("\2\u0272\2\u0274\2\u0276\u00ac\u0278\u00ad\u027a\u00ae")
         buf.write("\u027c\u00af\6\2\3\4\5\31\4\2\f\f\17\17\5\2\13\13\16\16")
-        buf.write("\"\"\4\2GGgg\4\2--//\4\2HHhh\5\2\62;CHch\4\2ZZzz\3\2\62")
+        buf.write('""\4\2GGgg\4\2--//\4\2HHhh\5\2\62;CHch\4\2ZZzz\3\2\62')
         buf.write("\63\4\2DDdd\4\2WWww\4\2NNnn\6\2\f\f\17\17))^^\5\2\f\f")
         buf.write("\17\17bb\n\2$$&&))^^ddppttvv\u0248\2c|\u00b7\u00b7\u00e1")
         buf.write("\u00f8\u00fa\u0101\u0103\u0103\u0105\u0105\u0107\u0107")
@@ -659,7 +659,7 @@ def serializedATN():
         buf.write("\5\2$$&&^^\4\2$$&&\2\u0923\2\6\3\2\2\2\2\b\3\2\2\2\2\n")
         buf.write("\3\2\2\2\2\f\3\2\2\2\2\16\3\2\2\2\2\22\3\2\2\2\2\24\3")
         buf.write("\2\2\2\2\26\3\2\2\2\2\30\3\2\2\2\2\32\3\2\2\2\2\34\3\2")
-        buf.write("\2\2\2\36\3\2\2\2\2 \3\2\2\2\2\"\3\2\2\2\2$\3\2\2\2\2")
+        buf.write('\2\2\2\36\3\2\2\2\2 \3\2\2\2\2"\3\2\2\2\2$\3\2\2\2\2')
         buf.write("&\3\2\2\2\2(\3\2\2\2\2*\3\2\2\2\2,\3\2\2\2\2.\3\2\2\2")
         buf.write("\2\60\3\2\2\2\2\62\3\2\2\2\2\64\3\2\2\2\2\66\3\2\2\2\2")
         buf.write("8\3\2\2\2\2:\3\2\2\2\2<\3\2\2\2\2>\3\2\2\2\2@\3\2\2\2")
@@ -742,7 +742,7 @@ def serializedATN():
         buf.write("\3\2\2\2\f\u02a1\3\2\2\2\16\u02aa\3\2\2\2\20\u02af\3\2")
         buf.write("\2\2\22\u02b1\3\2\2\2\24\u02b5\3\2\2\2\26\u02b7\3\2\2")
         buf.write("\2\30\u02b9\3\2\2\2\32\u02bd\3\2\2\2\34\u02bf\3\2\2\2")
-        buf.write("\36\u02c3\3\2\2\2 \u02c5\3\2\2\2\"\u02c9\3\2\2\2$\u02cc")
+        buf.write('\36\u02c3\3\2\2\2 \u02c5\3\2\2\2"\u02c9\3\2\2\2$\u02cc')
         buf.write("\3\2\2\2&\u02ce\3\2\2\2(\u02d0\3\2\2\2*\u02d2\3\2\2\2")
         buf.write(",\u02d4\3\2\2\2.\u02d6\3\2\2\2\60\u02d9\3\2\2\2\62\u02dc")
         buf.write("\3\2\2\2\64\u02df\3\2\2\2\66\u02e2\3\2\2\28\u02e5\3\2")
@@ -879,7 +879,7 @@ def serializedATN():
         buf.write("\7_\2\2\u02c4\37\3\2\2\2\u02c5\u02c6\7}\2\2\u02c6\u02c7")
         buf.write("\3\2\2\2\u02c7\u02c8\b\17\4\2\u02c8!\3\2\2\2\u02c9\u02ca")
         buf.write("\7\177\2\2\u02ca\u02cb\b\20\5\2\u02cb#\3\2\2\2\u02cc\u02cd")
-        buf.write("\7,\2\2\u02cd%\3\2\2\2\u02ce\u02cf\7\'\2\2\u02cf\'\3\2")
+        buf.write("\7,\2\2\u02cd%\3\2\2\2\u02ce\u02cf\7'\2\2\u02cf'\3\2")
         buf.write("\2\2\u02d0\u02d1\7\61\2\2\u02d1)\3\2\2\2\u02d2\u02d3\7")
         buf.write("-\2\2\u02d3+\3\2\2\2\u02d4\u02d5\7/\2\2\u02d5-\3\2\2\2")
         buf.write("\u02d6\u02d7\7-\2\2\u02d7\u02d8\7-\2\2\u02d8/\3\2\2\2")
@@ -893,7 +893,7 @@ def serializedATN():
         buf.write("\2\u02ee\u02ef\7?\2\2\u02efA\3\2\2\2\u02f0\u02f1\7/\2")
         buf.write("\2\u02f1\u02f2\7?\2\2\u02f2C\3\2\2\2\u02f3\u02f4\7,\2")
         buf.write("\2\u02f4\u02f5\7?\2\2\u02f5E\3\2\2\2\u02f6\u02f7\7\61")
-        buf.write("\2\2\u02f7\u02f8\7?\2\2\u02f8G\3\2\2\2\u02f9\u02fa\7\'")
+        buf.write("\2\2\u02f7\u02f8\7?\2\2\u02f8G\3\2\2\2\u02f9\u02fa\7'")
         buf.write("\2\2\u02fa\u02fb\7?\2\2\u02fbI\3\2\2\2\u02fc\u02fd\7/")
         buf.write("\2\2\u02fd\u02fe\7@\2\2\u02feK\3\2\2\2\u02ff\u0300\7?")
         buf.write("\2\2\u0300\u0301\7@\2\2\u0301M\3\2\2\2\u0302\u0303\7\60")
@@ -1280,7 +1280,7 @@ def serializedATN():
         buf.write("\3\2\u06c0\u06c1\b\u00bd\f\2\u06c1\u017d\3\2\2\2\u06c2")
         buf.write("\u06c3\5 \17\2\u06c3\u06c4\3\2\2\2\u06c4\u06c5\b\u00be")
         buf.write("\4\2\u06c5\u06c6\b\u00be\r\2\u06c6\u017f\3\2\2\2\u06c7")
-        buf.write("\u06c8\5\"\20\2\u06c8\u06c9\3\2\2\2\u06c9\u06ca\b\u00bf")
+        buf.write('\u06c8\5"\20\2\u06c8\u06c9\3\2\2\2\u06c9\u06ca\b\u00bf')
         buf.write("\b\2\u06ca\u06cb\b\u00bf\16\2\u06cb\u0181\3\2\2\2\u06cc")
         buf.write("\u06cd\5\24\t\2\u06cd\u06ce\3\2\2\2\u06ce\u06cf\b\u00c0")
         buf.write("\17\2\u06cf\u0183\3\2\2\2\u06d0\u06d1\5\26\n\2\u06d1\u06d2")
@@ -1312,16 +1312,16 @@ def serializedATN():
         buf.write("\u0711\u0712\b\u00d0\37\2\u0712\u01a3\3\2\2\2\u0713\u0714")
         buf.write("\5B \2\u0714\u0715\3\2\2\2\u0715\u0716\b\u00d1 \2\u0716")
         buf.write("\u01a5\3\2\2\2\u0717\u0718\5D!\2\u0718\u0719\3\2\2\2\u0719")
-        buf.write("\u071a\b\u00d2!\2\u071a\u01a7\3\2\2\2\u071b\u071c\5F\"")
-        buf.write("\2\u071c\u071d\3\2\2\2\u071d\u071e\b\u00d3\"\2\u071e\u01a9")
+        buf.write('\u071a\b\u00d2!\2\u071a\u01a7\3\2\2\2\u071b\u071c\5F"')
+        buf.write('\2\u071c\u071d\3\2\2\2\u071d\u071e\b\u00d3"\2\u071e\u01a9')
         buf.write("\3\2\2\2\u071f\u0720\5H#\2\u0720\u0721\3\2\2\2\u0721\u0722")
         buf.write("\b\u00d4#\2\u0722\u01ab\3\2\2\2\u0723\u0724\5J$\2\u0724")
         buf.write("\u0725\3\2\2\2\u0725\u0726\b\u00d5$\2\u0726\u01ad\3\2")
         buf.write("\2\2\u0727\u0728\5L%\2\u0728\u0729\3\2\2\2\u0729\u072a")
         buf.write("\b\u00d6%\2\u072a\u01af\3\2\2\2\u072b\u072c\5N&\2\u072c")
         buf.write("\u072d\3\2\2\2\u072d\u072e\b\u00d7&\2\u072e\u01b1\3\2")
-        buf.write("\2\2\u072f\u0730\5P\'\2\u0730\u0731\3\2\2\2\u0731\u0732")
-        buf.write("\b\u00d8\'\2\u0732\u01b3\3\2\2\2\u0733\u0734\5\22\b\2")
+        buf.write("\2\2\u072f\u0730\5P'\2\u0730\u0731\3\2\2\2\u0731\u0732")
+        buf.write("\b\u00d8'\2\u0732\u01b3\3\2\2\2\u0733\u0734\5\22\b\2")
         buf.write("\u0734\u0735\3\2\2\2\u0735\u0736\b\u00d9(\2\u0736\u01b5")
         buf.write("\3\2\2\2\u0737\u0738\5R(\2\u0738\u0739\3\2\2\2\u0739\u073a")
         buf.write("\b\u00da)\2\u073a\u01b7\3\2\2\2\u073b\u073c\5T)\2\u073c")
@@ -1491,7 +1491,7 @@ def serializedATN():
         buf.write("\2\6\2\2\t\f\2\t\16\2\t\13\2\t\r\2\t\17\2\t\20\2\t\t\2")
         buf.write("\t\n\2\t\21\2\t\22\2\t\23\2\t\24\2\t\25\2\t\26\2\t\27")
         buf.write("\2\t\30\2\t\31\2\t\32\2\t\33\2\t\34\2\t\35\2\t\36\2\t")
-        buf.write("\37\2\t \2\t!\2\t\"\2\t#\2\t$\2\t%\2\t&\2\t\'\2\t\b\2")
+        buf.write("\37\2\t \2\t!\2\t\"\2\t#\2\t$\2\t%\2\t&\2\t'\2\t\b\2")
         buf.write("\t(\2\t)\2\t*\2\t+\2\t,\2\t-\2\t.\2\t/\2\t\60\2\t\61\2")
         buf.write("\t\62\2\t\63\2\t\64\2\t\65\2\t\66\2\ti\2\tk\2\tl\2\th")
         buf.write("\2\t\67\2\t8\2\t9\2\t:\2\t;\2\t\u0099\2\t\u009a\2\tP\2")
@@ -1511,7 +1511,7 @@ class KotlinLexer(Lexer):
 
     atn = ATNDeserializer().deserialize(serializedATN())
 
-    decisionsToDFA = [ DFA(ds, i) for i, ds in enumerate(atn.decisionToState) ]
+    decisionsToDFA = [DFA(ds, i) for i, ds in enumerate(atn.decisionToState)]
 
     LineString = 1
     MultiLineString = 2
@@ -1691,156 +1691,646 @@ class KotlinLexer(Lexer):
     Inside_NL = 172
     ErrorCharacter = 173
 
-    channelNames = [ u"DEFAULT_TOKEN_CHANNEL", u"HIDDEN" ]
+    channelNames = ["DEFAULT_TOKEN_CHANNEL", "HIDDEN"]
 
-    modeNames = [ "DEFAULT_MODE", "LineString", "MultiLineString", "Inside" ]
+    modeNames = ["DEFAULT_MODE", "LineString", "MultiLineString", "Inside"]
 
-    literalNames = [ "<INVALID>",
-            "'...'", "'.'", "','", "'('", "')'", "'['", "']'", "'{'", "'}'", 
-            "'*'", "'%'", "'/'", "'+'", "'-'", "'++'", "'--'", "'&&'", "'||'", 
-            "'!'", "':'", "';'", "'='", "'+='", "'-='", "'*='", "'/='", 
-            "'%='", "'->'", "'=>'", "'..'", "'..<'", "'::'", "';;'", "'#'", 
-            "'@'", "'?'", "'<'", "'>'", "'<='", "'>='", "'!='", "'!=='", 
-            "'as?'", "'=='", "'==='", "'''", "'&'", "'file'", "'field'", 
-            "'property'", "'get'", "'set'", "'receiver'", "'param'", "'setparam'", 
-            "'delegate'", "'package'", "'import'", "'class'", "'interface'", 
-            "'fun'", "'object'", "'val'", "'var'", "'typealias'", "'constructor'", 
-            "'by'", "'companion'", "'init'", "'this'", "'super'", "'typeof'", 
-            "'where'", "'if'", "'else'", "'when'", "'try'", "'catch'", "'finally'", 
-            "'for'", "'do'", "'while'", "'throw'", "'return'", "'continue'", 
-            "'break'", "'as'", "'is'", "'in'", "'out'", "'dynamic'", "'public'", 
-            "'private'", "'protected'", "'internal'", "'enum'", "'sealed'", 
-            "'annotation'", "'data'", "'inner'", "'value'", "'tailrec'", 
-            "'operator'", "'inline'", "'infix'", "'external'", "'suspend'", 
-            "'override'", "'abstract'", "'final'", "'open'", "'const'", 
-            "'lateinit'", "'vararg'", "'noinline'", "'crossinline'", "'reified'", 
-            "'expect'", "'actual'", "'null'", "'\"\"\"'" ]
+    literalNames = [
+        "<INVALID>",
+        "'...'",
+        "'.'",
+        "','",
+        "'('",
+        "')'",
+        "'['",
+        "']'",
+        "'{'",
+        "'}'",
+        "'*'",
+        "'%'",
+        "'/'",
+        "'+'",
+        "'-'",
+        "'++'",
+        "'--'",
+        "'&&'",
+        "'||'",
+        "'!'",
+        "':'",
+        "';'",
+        "'='",
+        "'+='",
+        "'-='",
+        "'*='",
+        "'/='",
+        "'%='",
+        "'->'",
+        "'=>'",
+        "'..'",
+        "'..<'",
+        "'::'",
+        "';;'",
+        "'#'",
+        "'@'",
+        "'?'",
+        "'<'",
+        "'>'",
+        "'<='",
+        "'>='",
+        "'!='",
+        "'!=='",
+        "'as?'",
+        "'=='",
+        "'==='",
+        "'''",
+        "'&'",
+        "'file'",
+        "'field'",
+        "'property'",
+        "'get'",
+        "'set'",
+        "'receiver'",
+        "'param'",
+        "'setparam'",
+        "'delegate'",
+        "'package'",
+        "'import'",
+        "'class'",
+        "'interface'",
+        "'fun'",
+        "'object'",
+        "'val'",
+        "'var'",
+        "'typealias'",
+        "'constructor'",
+        "'by'",
+        "'companion'",
+        "'init'",
+        "'this'",
+        "'super'",
+        "'typeof'",
+        "'where'",
+        "'if'",
+        "'else'",
+        "'when'",
+        "'try'",
+        "'catch'",
+        "'finally'",
+        "'for'",
+        "'do'",
+        "'while'",
+        "'throw'",
+        "'return'",
+        "'continue'",
+        "'break'",
+        "'as'",
+        "'is'",
+        "'in'",
+        "'out'",
+        "'dynamic'",
+        "'public'",
+        "'private'",
+        "'protected'",
+        "'internal'",
+        "'enum'",
+        "'sealed'",
+        "'annotation'",
+        "'data'",
+        "'inner'",
+        "'value'",
+        "'tailrec'",
+        "'operator'",
+        "'inline'",
+        "'infix'",
+        "'external'",
+        "'suspend'",
+        "'override'",
+        "'abstract'",
+        "'final'",
+        "'open'",
+        "'const'",
+        "'lateinit'",
+        "'vararg'",
+        "'noinline'",
+        "'crossinline'",
+        "'reified'",
+        "'expect'",
+        "'actual'",
+        "'null'",
+        '\'"""\'',
+    ]
 
-    symbolicNames = [ "<INVALID>",
-            "ShebangLine", "DelimitedComment", "LineComment", "WS", "NL", 
-            "RESERVED", "DOT", "COMMA", "LPAREN", "RPAREN", "LSQUARE", "RSQUARE", 
-            "LCURL", "RCURL", "MULT", "MOD", "DIV", "ADD", "SUB", "INCR", 
-            "DECR", "CONJ", "DISJ", "EXCL_WS", "EXCL_NO_WS", "COLON", "SEMICOLON", 
-            "ASSIGNMENT", "ADD_ASSIGNMENT", "SUB_ASSIGNMENT", "MULT_ASSIGNMENT", 
-            "DIV_ASSIGNMENT", "MOD_ASSIGNMENT", "ARROW", "DOUBLE_ARROW", 
-            "RANGE", "RANGE_UNTIL", "COLONCOLON", "DOUBLE_SEMICOLON", "HASH", 
-            "AT_NO_WS", "AT_POST_WS", "AT_PRE_WS", "AT_BOTH_WS", "QUEST_WS", 
-            "QUEST_NO_WS", "LANGLE", "RANGLE", "LE", "GE", "EXCL_EQ", "EXCL_EQEQ", 
-            "AS_SAFE", "EQEQ", "EQEQEQ", "SINGLE_QUOTE", "AMP", "RETURN_AT", 
-            "CONTINUE_AT", "BREAK_AT", "THIS_AT", "SUPER_AT", "FILE", "FIELD", 
-            "PROPERTY", "GET", "SET", "RECEIVER", "PARAM", "SETPARAM", "DELEGATE", 
-            "PACKAGE", "IMPORT", "CLASS", "INTERFACE", "FUN", "OBJECT", 
-            "VAL", "VAR", "TYPE_ALIAS", "CONSTRUCTOR", "BY", "COMPANION", 
-            "INIT", "THIS", "SUPER", "TYPEOF", "WHERE", "IF", "ELSE", "WHEN", 
-            "TRY", "CATCH", "FINALLY", "FOR", "DO", "WHILE", "THROW", "RETURN", 
-            "CONTINUE", "BREAK", "AS", "IS", "IN", "NOT_IS", "NOT_IN", "OUT", 
-            "DYNAMIC", "PUBLIC", "PRIVATE", "PROTECTED", "INTERNAL", "ENUM", 
-            "SEALED", "ANNOTATION", "DATA", "INNER", "VALUE", "TAILREC", 
-            "OPERATOR", "INLINE", "INFIX", "EXTERNAL", "SUSPEND", "OVERRIDE", 
-            "ABSTRACT", "FINAL", "OPEN", "CONST", "LATEINIT", "VARARG", 
-            "NOINLINE", "CROSSINLINE", "REIFIED", "EXPECT", "ACTUAL", "RealLiteral", 
-            "FloatLiteral", "DoubleLiteral", "IntegerLiteral", "HexLiteral", 
-            "BinLiteral", "UnsignedLiteral", "LongLiteral", "BooleanLiteral", 
-            "NullLiteral", "CharacterLiteral", "Identifier", "IdentifierOrSoftKey", 
-            "FieldIdentifier", "QUOTE_OPEN", "TRIPLE_QUOTE_OPEN", "UNICODE_CLASS_LL", 
-            "UNICODE_CLASS_LM", "UNICODE_CLASS_LO", "UNICODE_CLASS_LT", 
-            "UNICODE_CLASS_LU", "UNICODE_CLASS_ND", "UNICODE_CLASS_NL", 
-            "QUOTE_CLOSE", "LineStrRef", "LineStrText", "LineStrEscapedChar", 
-            "LineStrExprStart", "TRIPLE_QUOTE_CLOSE", "MultiLineStringQuote", 
-            "MultiLineStrRef", "MultiLineStrText", "MultiLineStrExprStart", 
-            "Inside_Comment", "Inside_WS", "Inside_NL", "ErrorCharacter" ]
+    symbolicNames = [
+        "<INVALID>",
+        "ShebangLine",
+        "DelimitedComment",
+        "LineComment",
+        "WS",
+        "NL",
+        "RESERVED",
+        "DOT",
+        "COMMA",
+        "LPAREN",
+        "RPAREN",
+        "LSQUARE",
+        "RSQUARE",
+        "LCURL",
+        "RCURL",
+        "MULT",
+        "MOD",
+        "DIV",
+        "ADD",
+        "SUB",
+        "INCR",
+        "DECR",
+        "CONJ",
+        "DISJ",
+        "EXCL_WS",
+        "EXCL_NO_WS",
+        "COLON",
+        "SEMICOLON",
+        "ASSIGNMENT",
+        "ADD_ASSIGNMENT",
+        "SUB_ASSIGNMENT",
+        "MULT_ASSIGNMENT",
+        "DIV_ASSIGNMENT",
+        "MOD_ASSIGNMENT",
+        "ARROW",
+        "DOUBLE_ARROW",
+        "RANGE",
+        "RANGE_UNTIL",
+        "COLONCOLON",
+        "DOUBLE_SEMICOLON",
+        "HASH",
+        "AT_NO_WS",
+        "AT_POST_WS",
+        "AT_PRE_WS",
+        "AT_BOTH_WS",
+        "QUEST_WS",
+        "QUEST_NO_WS",
+        "LANGLE",
+        "RANGLE",
+        "LE",
+        "GE",
+        "EXCL_EQ",
+        "EXCL_EQEQ",
+        "AS_SAFE",
+        "EQEQ",
+        "EQEQEQ",
+        "SINGLE_QUOTE",
+        "AMP",
+        "RETURN_AT",
+        "CONTINUE_AT",
+        "BREAK_AT",
+        "THIS_AT",
+        "SUPER_AT",
+        "FILE",
+        "FIELD",
+        "PROPERTY",
+        "GET",
+        "SET",
+        "RECEIVER",
+        "PARAM",
+        "SETPARAM",
+        "DELEGATE",
+        "PACKAGE",
+        "IMPORT",
+        "CLASS",
+        "INTERFACE",
+        "FUN",
+        "OBJECT",
+        "VAL",
+        "VAR",
+        "TYPE_ALIAS",
+        "CONSTRUCTOR",
+        "BY",
+        "COMPANION",
+        "INIT",
+        "THIS",
+        "SUPER",
+        "TYPEOF",
+        "WHERE",
+        "IF",
+        "ELSE",
+        "WHEN",
+        "TRY",
+        "CATCH",
+        "FINALLY",
+        "FOR",
+        "DO",
+        "WHILE",
+        "THROW",
+        "RETURN",
+        "CONTINUE",
+        "BREAK",
+        "AS",
+        "IS",
+        "IN",
+        "NOT_IS",
+        "NOT_IN",
+        "OUT",
+        "DYNAMIC",
+        "PUBLIC",
+        "PRIVATE",
+        "PROTECTED",
+        "INTERNAL",
+        "ENUM",
+        "SEALED",
+        "ANNOTATION",
+        "DATA",
+        "INNER",
+        "VALUE",
+        "TAILREC",
+        "OPERATOR",
+        "INLINE",
+        "INFIX",
+        "EXTERNAL",
+        "SUSPEND",
+        "OVERRIDE",
+        "ABSTRACT",
+        "FINAL",
+        "OPEN",
+        "CONST",
+        "LATEINIT",
+        "VARARG",
+        "NOINLINE",
+        "CROSSINLINE",
+        "REIFIED",
+        "EXPECT",
+        "ACTUAL",
+        "RealLiteral",
+        "FloatLiteral",
+        "DoubleLiteral",
+        "IntegerLiteral",
+        "HexLiteral",
+        "BinLiteral",
+        "UnsignedLiteral",
+        "LongLiteral",
+        "BooleanLiteral",
+        "NullLiteral",
+        "CharacterLiteral",
+        "Identifier",
+        "IdentifierOrSoftKey",
+        "FieldIdentifier",
+        "QUOTE_OPEN",
+        "TRIPLE_QUOTE_OPEN",
+        "UNICODE_CLASS_LL",
+        "UNICODE_CLASS_LM",
+        "UNICODE_CLASS_LO",
+        "UNICODE_CLASS_LT",
+        "UNICODE_CLASS_LU",
+        "UNICODE_CLASS_ND",
+        "UNICODE_CLASS_NL",
+        "QUOTE_CLOSE",
+        "LineStrRef",
+        "LineStrText",
+        "LineStrEscapedChar",
+        "LineStrExprStart",
+        "TRIPLE_QUOTE_CLOSE",
+        "MultiLineStringQuote",
+        "MultiLineStrRef",
+        "MultiLineStrText",
+        "MultiLineStrExprStart",
+        "Inside_Comment",
+        "Inside_WS",
+        "Inside_NL",
+        "ErrorCharacter",
+    ]
 
-    ruleNames = [ "ShebangLine", "DelimitedComment", "LineComment", "WS", 
-                  "NL", "Hidden", "RESERVED", "DOT", "COMMA", "LPAREN", 
-                  "RPAREN", "LSQUARE", "RSQUARE", "LCURL", "RCURL", "MULT", 
-                  "MOD", "DIV", "ADD", "SUB", "INCR", "DECR", "CONJ", "DISJ", 
-                  "EXCL_WS", "EXCL_NO_WS", "COLON", "SEMICOLON", "ASSIGNMENT", 
-                  "ADD_ASSIGNMENT", "SUB_ASSIGNMENT", "MULT_ASSIGNMENT", 
-                  "DIV_ASSIGNMENT", "MOD_ASSIGNMENT", "ARROW", "DOUBLE_ARROW", 
-                  "RANGE", "RANGE_UNTIL", "COLONCOLON", "DOUBLE_SEMICOLON", 
-                  "HASH", "AT_NO_WS", "AT_POST_WS", "AT_PRE_WS", "AT_BOTH_WS", 
-                  "QUEST_WS", "QUEST_NO_WS", "LANGLE", "RANGLE", "LE", "GE", 
-                  "EXCL_EQ", "EXCL_EQEQ", "AS_SAFE", "EQEQ", "EQEQEQ", "SINGLE_QUOTE", 
-                  "AMP", "RETURN_AT", "CONTINUE_AT", "BREAK_AT", "THIS_AT", 
-                  "SUPER_AT", "FILE", "FIELD", "PROPERTY", "GET", "SET", 
-                  "RECEIVER", "PARAM", "SETPARAM", "DELEGATE", "PACKAGE", 
-                  "IMPORT", "CLASS", "INTERFACE", "FUN", "OBJECT", "VAL", 
-                  "VAR", "TYPE_ALIAS", "CONSTRUCTOR", "BY", "COMPANION", 
-                  "INIT", "THIS", "SUPER", "TYPEOF", "WHERE", "IF", "ELSE", 
-                  "WHEN", "TRY", "CATCH", "FINALLY", "FOR", "DO", "WHILE", 
-                  "THROW", "RETURN", "CONTINUE", "BREAK", "AS", "IS", "IN", 
-                  "NOT_IS", "NOT_IN", "OUT", "DYNAMIC", "PUBLIC", "PRIVATE", 
-                  "PROTECTED", "INTERNAL", "ENUM", "SEALED", "ANNOTATION", 
-                  "DATA", "INNER", "VALUE", "TAILREC", "OPERATOR", "INLINE", 
-                  "INFIX", "EXTERNAL", "SUSPEND", "OVERRIDE", "ABSTRACT", 
-                  "FINAL", "OPEN", "CONST", "LATEINIT", "VARARG", "NOINLINE", 
-                  "CROSSINLINE", "REIFIED", "EXPECT", "ACTUAL", "DecDigit", 
-                  "DecDigitNoZero", "DecDigitOrSeparator", "DecDigits", 
-                  "DoubleExponent", "RealLiteral", "FloatLiteral", "DoubleLiteral", 
-                  "IntegerLiteral", "HexDigit", "HexDigitOrSeparator", "HexLiteral", 
-                  "BinDigit", "BinDigitOrSeparator", "BinLiteral", "UnsignedLiteral", 
-                  "LongLiteral", "BooleanLiteral", "NullLiteral", "CharacterLiteral", 
-                  "UnicodeDigit", "Identifier", "IdentifierOrSoftKey", "FieldIdentifier", 
-                  "UniCharacterLiteral", "EscapedIdentifier", "EscapeSeq", 
-                  "Letter", "QUOTE_OPEN", "TRIPLE_QUOTE_OPEN", "UNICODE_CLASS_LL", 
-                  "UNICODE_CLASS_LM", "UNICODE_CLASS_LO", "UNICODE_CLASS_LT", 
-                  "UNICODE_CLASS_LU", "UNICODE_CLASS_ND", "UNICODE_CLASS_NL", 
-                  "QUOTE_CLOSE", "LineStrRef", "LineStrText", "LineStrEscapedChar", 
-                  "LineStrExprStart", "TRIPLE_QUOTE_CLOSE", "MultiLineStringQuote", 
-                  "MultiLineStrRef", "MultiLineStrText", "MultiLineStrExprStart", 
-                  "Inside_RPAREN", "Inside_RSQUARE", "Inside_LPAREN", "Inside_LSQUARE", 
-                  "Inside_LCURL", "Inside_RCURL", "Inside_DOT", "Inside_COMMA", 
-                  "Inside_MULT", "Inside_MOD", "Inside_DIV", "Inside_ADD", 
-                  "Inside_SUB", "Inside_INCR", "Inside_DECR", "Inside_CONJ", 
-                  "Inside_DISJ", "Inside_EXCL_WS", "Inside_EXCL_NO_WS", 
-                  "Inside_COLON", "Inside_SEMICOLON", "Inside_ASSIGNMENT", 
-                  "Inside_ADD_ASSIGNMENT", "Inside_SUB_ASSIGNMENT", "Inside_MULT_ASSIGNMENT", 
-                  "Inside_DIV_ASSIGNMENT", "Inside_MOD_ASSIGNMENT", "Inside_ARROW", 
-                  "Inside_DOUBLE_ARROW", "Inside_RANGE", "Inside_RANGE_UNTIL", 
-                  "Inside_RESERVED", "Inside_COLONCOLON", "Inside_DOUBLE_SEMICOLON", 
-                  "Inside_HASH", "Inside_AT_NO_WS", "Inside_AT_POST_WS", 
-                  "Inside_AT_PRE_WS", "Inside_AT_BOTH_WS", "Inside_QUEST_WS", 
-                  "Inside_QUEST_NO_WS", "Inside_LANGLE", "Inside_RANGLE", 
-                  "Inside_LE", "Inside_GE", "Inside_EXCL_EQ", "Inside_EXCL_EQEQ", 
-                  "Inside_IS", "Inside_NOT_IS", "Inside_NOT_IN", "Inside_AS", 
-                  "Inside_AS_SAFE", "Inside_EQEQ", "Inside_EQEQEQ", "Inside_SINGLE_QUOTE", 
-                  "Inside_AMP", "Inside_QUOTE_OPEN", "Inside_TRIPLE_QUOTE_OPEN", 
-                  "Inside_VAL", "Inside_VAR", "Inside_FUN", "Inside_OBJECT", 
-                  "Inside_SUPER", "Inside_IN", "Inside_OUT", "Inside_FIELD", 
-                  "Inside_FILE", "Inside_PROPERTY", "Inside_GET", "Inside_SET", 
-                  "Inside_RECEIVER", "Inside_PARAM", "Inside_SETPARAM", 
-                  "Inside_DELEGATE", "Inside_THROW", "Inside_RETURN", "Inside_CONTINUE", 
-                  "Inside_BREAK", "Inside_RETURN_AT", "Inside_CONTINUE_AT", 
-                  "Inside_BREAK_AT", "Inside_IF", "Inside_ELSE", "Inside_WHEN", 
-                  "Inside_TRY", "Inside_CATCH", "Inside_FINALLY", "Inside_FOR", 
-                  "Inside_DO", "Inside_WHILE", "Inside_PUBLIC", "Inside_PRIVATE", 
-                  "Inside_PROTECTED", "Inside_INTERNAL", "Inside_ENUM", 
-                  "Inside_SEALED", "Inside_ANNOTATION", "Inside_DATA", "Inside_INNER", 
-                  "Inside_VALUE", "Inside_TAILREC", "Inside_OPERATOR", "Inside_INLINE", 
-                  "Inside_INFIX", "Inside_EXTERNAL", "Inside_SUSPEND", "Inside_OVERRIDE", 
-                  "Inside_ABSTRACT", "Inside_FINAL", "Inside_OPEN", "Inside_CONST", 
-                  "Inside_LATEINIT", "Inside_VARARG", "Inside_NOINLINE", 
-                  "Inside_CROSSINLINE", "Inside_REIFIED", "Inside_EXPECT", 
-                  "Inside_ACTUAL", "Inside_BooleanLiteral", "Inside_IntegerLiteral", 
-                  "Inside_HexLiteral", "Inside_BinLiteral", "Inside_CharacterLiteral", 
-                  "Inside_RealLiteral", "Inside_NullLiteral", "Inside_LongLiteral", 
-                  "Inside_UnsignedLiteral", "Inside_Identifier", "Inside_Comment", 
-                  "Inside_WS", "Inside_NL", "ErrorCharacter" ]
+    ruleNames = [
+        "ShebangLine",
+        "DelimitedComment",
+        "LineComment",
+        "WS",
+        "NL",
+        "Hidden",
+        "RESERVED",
+        "DOT",
+        "COMMA",
+        "LPAREN",
+        "RPAREN",
+        "LSQUARE",
+        "RSQUARE",
+        "LCURL",
+        "RCURL",
+        "MULT",
+        "MOD",
+        "DIV",
+        "ADD",
+        "SUB",
+        "INCR",
+        "DECR",
+        "CONJ",
+        "DISJ",
+        "EXCL_WS",
+        "EXCL_NO_WS",
+        "COLON",
+        "SEMICOLON",
+        "ASSIGNMENT",
+        "ADD_ASSIGNMENT",
+        "SUB_ASSIGNMENT",
+        "MULT_ASSIGNMENT",
+        "DIV_ASSIGNMENT",
+        "MOD_ASSIGNMENT",
+        "ARROW",
+        "DOUBLE_ARROW",
+        "RANGE",
+        "RANGE_UNTIL",
+        "COLONCOLON",
+        "DOUBLE_SEMICOLON",
+        "HASH",
+        "AT_NO_WS",
+        "AT_POST_WS",
+        "AT_PRE_WS",
+        "AT_BOTH_WS",
+        "QUEST_WS",
+        "QUEST_NO_WS",
+        "LANGLE",
+        "RANGLE",
+        "LE",
+        "GE",
+        "EXCL_EQ",
+        "EXCL_EQEQ",
+        "AS_SAFE",
+        "EQEQ",
+        "EQEQEQ",
+        "SINGLE_QUOTE",
+        "AMP",
+        "RETURN_AT",
+        "CONTINUE_AT",
+        "BREAK_AT",
+        "THIS_AT",
+        "SUPER_AT",
+        "FILE",
+        "FIELD",
+        "PROPERTY",
+        "GET",
+        "SET",
+        "RECEIVER",
+        "PARAM",
+        "SETPARAM",
+        "DELEGATE",
+        "PACKAGE",
+        "IMPORT",
+        "CLASS",
+        "INTERFACE",
+        "FUN",
+        "OBJECT",
+        "VAL",
+        "VAR",
+        "TYPE_ALIAS",
+        "CONSTRUCTOR",
+        "BY",
+        "COMPANION",
+        "INIT",
+        "THIS",
+        "SUPER",
+        "TYPEOF",
+        "WHERE",
+        "IF",
+        "ELSE",
+        "WHEN",
+        "TRY",
+        "CATCH",
+        "FINALLY",
+        "FOR",
+        "DO",
+        "WHILE",
+        "THROW",
+        "RETURN",
+        "CONTINUE",
+        "BREAK",
+        "AS",
+        "IS",
+        "IN",
+        "NOT_IS",
+        "NOT_IN",
+        "OUT",
+        "DYNAMIC",
+        "PUBLIC",
+        "PRIVATE",
+        "PROTECTED",
+        "INTERNAL",
+        "ENUM",
+        "SEALED",
+        "ANNOTATION",
+        "DATA",
+        "INNER",
+        "VALUE",
+        "TAILREC",
+        "OPERATOR",
+        "INLINE",
+        "INFIX",
+        "EXTERNAL",
+        "SUSPEND",
+        "OVERRIDE",
+        "ABSTRACT",
+        "FINAL",
+        "OPEN",
+        "CONST",
+        "LATEINIT",
+        "VARARG",
+        "NOINLINE",
+        "CROSSINLINE",
+        "REIFIED",
+        "EXPECT",
+        "ACTUAL",
+        "DecDigit",
+        "DecDigitNoZero",
+        "DecDigitOrSeparator",
+        "DecDigits",
+        "DoubleExponent",
+        "RealLiteral",
+        "FloatLiteral",
+        "DoubleLiteral",
+        "IntegerLiteral",
+        "HexDigit",
+        "HexDigitOrSeparator",
+        "HexLiteral",
+        "BinDigit",
+        "BinDigitOrSeparator",
+        "BinLiteral",
+        "UnsignedLiteral",
+        "LongLiteral",
+        "BooleanLiteral",
+        "NullLiteral",
+        "CharacterLiteral",
+        "UnicodeDigit",
+        "Identifier",
+        "IdentifierOrSoftKey",
+        "FieldIdentifier",
+        "UniCharacterLiteral",
+        "EscapedIdentifier",
+        "EscapeSeq",
+        "Letter",
+        "QUOTE_OPEN",
+        "TRIPLE_QUOTE_OPEN",
+        "UNICODE_CLASS_LL",
+        "UNICODE_CLASS_LM",
+        "UNICODE_CLASS_LO",
+        "UNICODE_CLASS_LT",
+        "UNICODE_CLASS_LU",
+        "UNICODE_CLASS_ND",
+        "UNICODE_CLASS_NL",
+        "QUOTE_CLOSE",
+        "LineStrRef",
+        "LineStrText",
+        "LineStrEscapedChar",
+        "LineStrExprStart",
+        "TRIPLE_QUOTE_CLOSE",
+        "MultiLineStringQuote",
+        "MultiLineStrRef",
+        "MultiLineStrText",
+        "MultiLineStrExprStart",
+        "Inside_RPAREN",
+        "Inside_RSQUARE",
+        "Inside_LPAREN",
+        "Inside_LSQUARE",
+        "Inside_LCURL",
+        "Inside_RCURL",
+        "Inside_DOT",
+        "Inside_COMMA",
+        "Inside_MULT",
+        "Inside_MOD",
+        "Inside_DIV",
+        "Inside_ADD",
+        "Inside_SUB",
+        "Inside_INCR",
+        "Inside_DECR",
+        "Inside_CONJ",
+        "Inside_DISJ",
+        "Inside_EXCL_WS",
+        "Inside_EXCL_NO_WS",
+        "Inside_COLON",
+        "Inside_SEMICOLON",
+        "Inside_ASSIGNMENT",
+        "Inside_ADD_ASSIGNMENT",
+        "Inside_SUB_ASSIGNMENT",
+        "Inside_MULT_ASSIGNMENT",
+        "Inside_DIV_ASSIGNMENT",
+        "Inside_MOD_ASSIGNMENT",
+        "Inside_ARROW",
+        "Inside_DOUBLE_ARROW",
+        "Inside_RANGE",
+        "Inside_RANGE_UNTIL",
+        "Inside_RESERVED",
+        "Inside_COLONCOLON",
+        "Inside_DOUBLE_SEMICOLON",
+        "Inside_HASH",
+        "Inside_AT_NO_WS",
+        "Inside_AT_POST_WS",
+        "Inside_AT_PRE_WS",
+        "Inside_AT_BOTH_WS",
+        "Inside_QUEST_WS",
+        "Inside_QUEST_NO_WS",
+        "Inside_LANGLE",
+        "Inside_RANGLE",
+        "Inside_LE",
+        "Inside_GE",
+        "Inside_EXCL_EQ",
+        "Inside_EXCL_EQEQ",
+        "Inside_IS",
+        "Inside_NOT_IS",
+        "Inside_NOT_IN",
+        "Inside_AS",
+        "Inside_AS_SAFE",
+        "Inside_EQEQ",
+        "Inside_EQEQEQ",
+        "Inside_SINGLE_QUOTE",
+        "Inside_AMP",
+        "Inside_QUOTE_OPEN",
+        "Inside_TRIPLE_QUOTE_OPEN",
+        "Inside_VAL",
+        "Inside_VAR",
+        "Inside_FUN",
+        "Inside_OBJECT",
+        "Inside_SUPER",
+        "Inside_IN",
+        "Inside_OUT",
+        "Inside_FIELD",
+        "Inside_FILE",
+        "Inside_PROPERTY",
+        "Inside_GET",
+        "Inside_SET",
+        "Inside_RECEIVER",
+        "Inside_PARAM",
+        "Inside_SETPARAM",
+        "Inside_DELEGATE",
+        "Inside_THROW",
+        "Inside_RETURN",
+        "Inside_CONTINUE",
+        "Inside_BREAK",
+        "Inside_RETURN_AT",
+        "Inside_CONTINUE_AT",
+        "Inside_BREAK_AT",
+        "Inside_IF",
+        "Inside_ELSE",
+        "Inside_WHEN",
+        "Inside_TRY",
+        "Inside_CATCH",
+        "Inside_FINALLY",
+        "Inside_FOR",
+        "Inside_DO",
+        "Inside_WHILE",
+        "Inside_PUBLIC",
+        "Inside_PRIVATE",
+        "Inside_PROTECTED",
+        "Inside_INTERNAL",
+        "Inside_ENUM",
+        "Inside_SEALED",
+        "Inside_ANNOTATION",
+        "Inside_DATA",
+        "Inside_INNER",
+        "Inside_VALUE",
+        "Inside_TAILREC",
+        "Inside_OPERATOR",
+        "Inside_INLINE",
+        "Inside_INFIX",
+        "Inside_EXTERNAL",
+        "Inside_SUSPEND",
+        "Inside_OVERRIDE",
+        "Inside_ABSTRACT",
+        "Inside_FINAL",
+        "Inside_OPEN",
+        "Inside_CONST",
+        "Inside_LATEINIT",
+        "Inside_VARARG",
+        "Inside_NOINLINE",
+        "Inside_CROSSINLINE",
+        "Inside_REIFIED",
+        "Inside_EXPECT",
+        "Inside_ACTUAL",
+        "Inside_BooleanLiteral",
+        "Inside_IntegerLiteral",
+        "Inside_HexLiteral",
+        "Inside_BinLiteral",
+        "Inside_CharacterLiteral",
+        "Inside_RealLiteral",
+        "Inside_NullLiteral",
+        "Inside_LongLiteral",
+        "Inside_UnsignedLiteral",
+        "Inside_Identifier",
+        "Inside_Comment",
+        "Inside_WS",
+        "Inside_NL",
+        "ErrorCharacter",
+    ]
 
     grammarFileName = "KotlinLexer.g4"
 
-    def __init__(self, input=None, output:TextIO = sys.stdout):
+    def __init__(self, input=None, output: TextIO = sys.stdout):
         super().__init__(input, output)
         self.checkVersion("4.7.2")
-        self._interp = LexerATNSimulator(self, self.atn, self.decisionsToDFA, PredictionContextCache())
+        self._interp = LexerATNSimulator(
+            self, self.atn, self.decisionsToDFA, PredictionContextCache()
+        )
         self._actions = None
         self._predicates = None
 
-
-    def action(self, localctx:RuleContext, ruleIndex:int, actionIndex:int):
+    def action(self, localctx: RuleContext, ruleIndex: int, actionIndex: int):
         if self._actions is None:
             actions = dict()
-            actions[14] = self.RCURL_action 
+            actions[14] = self.RCURL_action
             self._actions = actions
         action = self._actions.get(ruleIndex, None)
         if action is not None:
@@ -1848,8 +2338,7 @@ class KotlinLexer(Lexer):
         else:
             raise Exception("No registered action for:" + str(ruleIndex))
 
-    def RCURL_action(self, localctx:RuleContext , actionIndex:int):
+    def RCURL_action(self, localctx: RuleContext, actionIndex: int):
         if actionIndex == 0:
-             if not _modeStack.isEmpty(): 
+            if not len(self._modeStack):
                 popMode()
-     
