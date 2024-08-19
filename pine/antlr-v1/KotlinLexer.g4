@@ -253,6 +253,8 @@ NullLiteral: 'null';
 
 Identifier: (Letter | '_') (Letter | '_' | DecDigit)* | '`' ~('`')+ '`';
 
+PineIdentifier: '$' (Letter | '_' | DecDigit)* | '`' ~('`')+ '`';
+
 LabelReference: '@' Identifier;
 
 LabelDefinition: Identifier '@';

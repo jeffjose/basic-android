@@ -18,11 +18,22 @@ code = fp.read()
 # }
 # """
 
-lexer = KotlinLexer(InputStream(code))
-stream = CommonTokenStream(lexer)
-parser = KotlinParser(stream)
+def get_parser(code):
+
+    lexer = KotlinLexer(InputStream(code))
+    stream = CommonTokenStream(lexer)
+    parser = KotlinParser(stream)
+    return parser
+
+parser = get_parser(code)
 tree = parser.kotlinFile()
-#print(tree.toStringTree(recog=parser))
+print(tree.toStringTree(recog=parser))
+
+print('----')
+parser = get_parser(code)
+tree = parser.propertyDeclaration()
+print(tree.toStringTree(recog=parser))
+#print(list(tree.getChildren()))
 
 #children =  list(tree.getChildren())
 #for child in children:
@@ -30,7 +41,7 @@ tree = parser.kotlinFile()
     #pass
 
 print('----')
-for t in lexer.getAllTokens():
-    print(t.text, t.type)
+#for t in lexer.getAllTokens():
+    #print(t.text, t.type)
 
     

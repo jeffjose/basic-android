@@ -1,4 +1,4 @@
-# Generated from KotlinParser.g4 by ANTLR 4.7.2
+# Generated from KotlinParser.g4 by ANTLR 4.9.2
 from antlr4 import *
 if __name__ is not None and "." in __name__:
     from .KotlinParser import KotlinParser
@@ -26,12 +26,21 @@ class KotlinParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by KotlinParser#shebangLine.
-    def enterShebangLine(self, ctx:KotlinParser.ShebangLineContext):
+    # Enter a parse tree produced by KotlinParser#preamble.
+    def enterPreamble(self, ctx:KotlinParser.PreambleContext):
         pass
 
-    # Exit a parse tree produced by KotlinParser#shebangLine.
-    def exitShebangLine(self, ctx:KotlinParser.ShebangLineContext):
+    # Exit a parse tree produced by KotlinParser#preamble.
+    def exitPreamble(self, ctx:KotlinParser.PreambleContext):
+        pass
+
+
+    # Enter a parse tree produced by KotlinParser#fileAnnotations.
+    def enterFileAnnotations(self, ctx:KotlinParser.FileAnnotationsContext):
+        pass
+
+    # Exit a parse tree produced by KotlinParser#fileAnnotations.
+    def exitFileAnnotations(self, ctx:KotlinParser.FileAnnotationsContext):
         pass
 
 
@@ -89,24 +98,6 @@ class KotlinParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by KotlinParser#typeAlias.
-    def enterTypeAlias(self, ctx:KotlinParser.TypeAliasContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#typeAlias.
-    def exitTypeAlias(self, ctx:KotlinParser.TypeAliasContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#declaration.
-    def enterDeclaration(self, ctx:KotlinParser.DeclarationContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#declaration.
-    def exitDeclaration(self, ctx:KotlinParser.DeclarationContext):
-        pass
-
-
     # Enter a parse tree produced by KotlinParser#classDeclaration.
     def enterClassDeclaration(self, ctx:KotlinParser.ClassDeclarationContext):
         pass
@@ -122,15 +113,6 @@ class KotlinParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by KotlinParser#primaryConstructor.
     def exitPrimaryConstructor(self, ctx:KotlinParser.PrimaryConstructorContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#classBody.
-    def enterClassBody(self, ctx:KotlinParser.ClassBodyContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#classBody.
-    def exitClassBody(self, ctx:KotlinParser.ClassBodyContext):
         pass
 
 
@@ -179,15 +161,6 @@ class KotlinParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by KotlinParser#annotatedDelegationSpecifier.
-    def enterAnnotatedDelegationSpecifier(self, ctx:KotlinParser.AnnotatedDelegationSpecifierContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#annotatedDelegationSpecifier.
-    def exitAnnotatedDelegationSpecifier(self, ctx:KotlinParser.AnnotatedDelegationSpecifierContext):
-        pass
-
-
     # Enter a parse tree produced by KotlinParser#explicitDelegation.
     def enterExplicitDelegation(self, ctx:KotlinParser.ExplicitDelegationContext):
         pass
@@ -197,48 +170,12 @@ class KotlinParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by KotlinParser#typeParameters.
-    def enterTypeParameters(self, ctx:KotlinParser.TypeParametersContext):
+    # Enter a parse tree produced by KotlinParser#classBody.
+    def enterClassBody(self, ctx:KotlinParser.ClassBodyContext):
         pass
 
-    # Exit a parse tree produced by KotlinParser#typeParameters.
-    def exitTypeParameters(self, ctx:KotlinParser.TypeParametersContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#typeParameter.
-    def enterTypeParameter(self, ctx:KotlinParser.TypeParameterContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#typeParameter.
-    def exitTypeParameter(self, ctx:KotlinParser.TypeParameterContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#typeConstraints.
-    def enterTypeConstraints(self, ctx:KotlinParser.TypeConstraintsContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#typeConstraints.
-    def exitTypeConstraints(self, ctx:KotlinParser.TypeConstraintsContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#typeConstraint.
-    def enterTypeConstraint(self, ctx:KotlinParser.TypeConstraintContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#typeConstraint.
-    def exitTypeConstraint(self, ctx:KotlinParser.TypeConstraintContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#classMemberDeclarations.
-    def enterClassMemberDeclarations(self, ctx:KotlinParser.ClassMemberDeclarationsContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#classMemberDeclarations.
-    def exitClassMemberDeclarations(self, ctx:KotlinParser.ClassMemberDeclarationsContext):
+    # Exit a parse tree produced by KotlinParser#classBody.
+    def exitClassBody(self, ctx:KotlinParser.ClassBodyContext):
         pass
 
 
@@ -257,150 +194,6 @@ class KotlinParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by KotlinParser#anonymousInitializer.
     def exitAnonymousInitializer(self, ctx:KotlinParser.AnonymousInitializerContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#companionObject.
-    def enterCompanionObject(self, ctx:KotlinParser.CompanionObjectContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#companionObject.
-    def exitCompanionObject(self, ctx:KotlinParser.CompanionObjectContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#functionValueParameters.
-    def enterFunctionValueParameters(self, ctx:KotlinParser.FunctionValueParametersContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#functionValueParameters.
-    def exitFunctionValueParameters(self, ctx:KotlinParser.FunctionValueParametersContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#functionValueParameter.
-    def enterFunctionValueParameter(self, ctx:KotlinParser.FunctionValueParameterContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#functionValueParameter.
-    def exitFunctionValueParameter(self, ctx:KotlinParser.FunctionValueParameterContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#functionDeclaration.
-    def enterFunctionDeclaration(self, ctx:KotlinParser.FunctionDeclarationContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#functionDeclaration.
-    def exitFunctionDeclaration(self, ctx:KotlinParser.FunctionDeclarationContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#functionBody.
-    def enterFunctionBody(self, ctx:KotlinParser.FunctionBodyContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#functionBody.
-    def exitFunctionBody(self, ctx:KotlinParser.FunctionBodyContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#variableDeclaration.
-    def enterVariableDeclaration(self, ctx:KotlinParser.VariableDeclarationContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#variableDeclaration.
-    def exitVariableDeclaration(self, ctx:KotlinParser.VariableDeclarationContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#multiVariableDeclaration.
-    def enterMultiVariableDeclaration(self, ctx:KotlinParser.MultiVariableDeclarationContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#multiVariableDeclaration.
-    def exitMultiVariableDeclaration(self, ctx:KotlinParser.MultiVariableDeclarationContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#propertyDeclaration.
-    def enterPropertyDeclaration(self, ctx:KotlinParser.PropertyDeclarationContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#propertyDeclaration.
-    def exitPropertyDeclaration(self, ctx:KotlinParser.PropertyDeclarationContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#propertyDelegate.
-    def enterPropertyDelegate(self, ctx:KotlinParser.PropertyDelegateContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#propertyDelegate.
-    def exitPropertyDelegate(self, ctx:KotlinParser.PropertyDelegateContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#getter.
-    def enterGetter(self, ctx:KotlinParser.GetterContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#getter.
-    def exitGetter(self, ctx:KotlinParser.GetterContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#setter.
-    def enterSetter(self, ctx:KotlinParser.SetterContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#setter.
-    def exitSetter(self, ctx:KotlinParser.SetterContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#parametersWithOptionalType.
-    def enterParametersWithOptionalType(self, ctx:KotlinParser.ParametersWithOptionalTypeContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#parametersWithOptionalType.
-    def exitParametersWithOptionalType(self, ctx:KotlinParser.ParametersWithOptionalTypeContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#functionValueParameterWithOptionalType.
-    def enterFunctionValueParameterWithOptionalType(self, ctx:KotlinParser.FunctionValueParameterWithOptionalTypeContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#functionValueParameterWithOptionalType.
-    def exitFunctionValueParameterWithOptionalType(self, ctx:KotlinParser.FunctionValueParameterWithOptionalTypeContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#parameterWithOptionalType.
-    def enterParameterWithOptionalType(self, ctx:KotlinParser.ParameterWithOptionalTypeContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#parameterWithOptionalType.
-    def exitParameterWithOptionalType(self, ctx:KotlinParser.ParameterWithOptionalTypeContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#parameter.
-    def enterParameter(self, ctx:KotlinParser.ParameterContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#parameter.
-    def exitParameter(self, ctx:KotlinParser.ParameterContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#objectDeclaration.
-    def enterObjectDeclaration(self, ctx:KotlinParser.ObjectDeclarationContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#objectDeclaration.
-    def exitObjectDeclaration(self, ctx:KotlinParser.ObjectDeclarationContext):
         pass
 
 
@@ -449,6 +242,150 @@ class KotlinParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by KotlinParser#functionDeclaration.
+    def enterFunctionDeclaration(self, ctx:KotlinParser.FunctionDeclarationContext):
+        pass
+
+    # Exit a parse tree produced by KotlinParser#functionDeclaration.
+    def exitFunctionDeclaration(self, ctx:KotlinParser.FunctionDeclarationContext):
+        pass
+
+
+    # Enter a parse tree produced by KotlinParser#functionValueParameters.
+    def enterFunctionValueParameters(self, ctx:KotlinParser.FunctionValueParametersContext):
+        pass
+
+    # Exit a parse tree produced by KotlinParser#functionValueParameters.
+    def exitFunctionValueParameters(self, ctx:KotlinParser.FunctionValueParametersContext):
+        pass
+
+
+    # Enter a parse tree produced by KotlinParser#functionValueParameter.
+    def enterFunctionValueParameter(self, ctx:KotlinParser.FunctionValueParameterContext):
+        pass
+
+    # Exit a parse tree produced by KotlinParser#functionValueParameter.
+    def exitFunctionValueParameter(self, ctx:KotlinParser.FunctionValueParameterContext):
+        pass
+
+
+    # Enter a parse tree produced by KotlinParser#parameter.
+    def enterParameter(self, ctx:KotlinParser.ParameterContext):
+        pass
+
+    # Exit a parse tree produced by KotlinParser#parameter.
+    def exitParameter(self, ctx:KotlinParser.ParameterContext):
+        pass
+
+
+    # Enter a parse tree produced by KotlinParser#receiverType.
+    def enterReceiverType(self, ctx:KotlinParser.ReceiverTypeContext):
+        pass
+
+    # Exit a parse tree produced by KotlinParser#receiverType.
+    def exitReceiverType(self, ctx:KotlinParser.ReceiverTypeContext):
+        pass
+
+
+    # Enter a parse tree produced by KotlinParser#functionBody.
+    def enterFunctionBody(self, ctx:KotlinParser.FunctionBodyContext):
+        pass
+
+    # Exit a parse tree produced by KotlinParser#functionBody.
+    def exitFunctionBody(self, ctx:KotlinParser.FunctionBodyContext):
+        pass
+
+
+    # Enter a parse tree produced by KotlinParser#objectDeclaration.
+    def enterObjectDeclaration(self, ctx:KotlinParser.ObjectDeclarationContext):
+        pass
+
+    # Exit a parse tree produced by KotlinParser#objectDeclaration.
+    def exitObjectDeclaration(self, ctx:KotlinParser.ObjectDeclarationContext):
+        pass
+
+
+    # Enter a parse tree produced by KotlinParser#companionObject.
+    def enterCompanionObject(self, ctx:KotlinParser.CompanionObjectContext):
+        pass
+
+    # Exit a parse tree produced by KotlinParser#companionObject.
+    def exitCompanionObject(self, ctx:KotlinParser.CompanionObjectContext):
+        pass
+
+
+    # Enter a parse tree produced by KotlinParser#propertyDeclaration.
+    def enterPropertyDeclaration(self, ctx:KotlinParser.PropertyDeclarationContext):
+        pass
+
+    # Exit a parse tree produced by KotlinParser#propertyDeclaration.
+    def exitPropertyDeclaration(self, ctx:KotlinParser.PropertyDeclarationContext):
+        pass
+
+
+    # Enter a parse tree produced by KotlinParser#multiVariableDeclaration.
+    def enterMultiVariableDeclaration(self, ctx:KotlinParser.MultiVariableDeclarationContext):
+        pass
+
+    # Exit a parse tree produced by KotlinParser#multiVariableDeclaration.
+    def exitMultiVariableDeclaration(self, ctx:KotlinParser.MultiVariableDeclarationContext):
+        pass
+
+
+    # Enter a parse tree produced by KotlinParser#variableDeclaration.
+    def enterVariableDeclaration(self, ctx:KotlinParser.VariableDeclarationContext):
+        pass
+
+    # Exit a parse tree produced by KotlinParser#variableDeclaration.
+    def exitVariableDeclaration(self, ctx:KotlinParser.VariableDeclarationContext):
+        pass
+
+
+    # Enter a parse tree produced by KotlinParser#getter.
+    def enterGetter(self, ctx:KotlinParser.GetterContext):
+        pass
+
+    # Exit a parse tree produced by KotlinParser#getter.
+    def exitGetter(self, ctx:KotlinParser.GetterContext):
+        pass
+
+
+    # Enter a parse tree produced by KotlinParser#setter.
+    def enterSetter(self, ctx:KotlinParser.SetterContext):
+        pass
+
+    # Exit a parse tree produced by KotlinParser#setter.
+    def exitSetter(self, ctx:KotlinParser.SetterContext):
+        pass
+
+
+    # Enter a parse tree produced by KotlinParser#typeAlias.
+    def enterTypeAlias(self, ctx:KotlinParser.TypeAliasContext):
+        pass
+
+    # Exit a parse tree produced by KotlinParser#typeAlias.
+    def exitTypeAlias(self, ctx:KotlinParser.TypeAliasContext):
+        pass
+
+
+    # Enter a parse tree produced by KotlinParser#typeParameters.
+    def enterTypeParameters(self, ctx:KotlinParser.TypeParametersContext):
+        pass
+
+    # Exit a parse tree produced by KotlinParser#typeParameters.
+    def exitTypeParameters(self, ctx:KotlinParser.TypeParametersContext):
+        pass
+
+
+    # Enter a parse tree produced by KotlinParser#typeParameter.
+    def enterTypeParameter(self, ctx:KotlinParser.TypeParameterContext):
+        pass
+
+    # Exit a parse tree produced by KotlinParser#typeParameter.
+    def exitTypeParameter(self, ctx:KotlinParser.TypeParameterContext):
+        pass
+
+
     # Enter a parse tree produced by KotlinParser#type.
     def enterType(self, ctx:KotlinParser.TypeContext):
         pass
@@ -458,12 +395,21 @@ class KotlinParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by KotlinParser#typeReference.
-    def enterTypeReference(self, ctx:KotlinParser.TypeReferenceContext):
+    # Enter a parse tree produced by KotlinParser#typeModifierList.
+    def enterTypeModifierList(self, ctx:KotlinParser.TypeModifierListContext):
         pass
 
-    # Exit a parse tree produced by KotlinParser#typeReference.
-    def exitTypeReference(self, ctx:KotlinParser.TypeReferenceContext):
+    # Exit a parse tree produced by KotlinParser#typeModifierList.
+    def exitTypeModifierList(self, ctx:KotlinParser.TypeModifierListContext):
+        pass
+
+
+    # Enter a parse tree produced by KotlinParser#parenthesizedType.
+    def enterParenthesizedType(self, ctx:KotlinParser.ParenthesizedTypeContext):
+        pass
+
+    # Exit a parse tree produced by KotlinParser#parenthesizedType.
+    def exitParenthesizedType(self, ctx:KotlinParser.ParenthesizedTypeContext):
         pass
 
 
@@ -476,12 +422,30 @@ class KotlinParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by KotlinParser#quest.
-    def enterQuest(self, ctx:KotlinParser.QuestContext):
+    # Enter a parse tree produced by KotlinParser#typeReference.
+    def enterTypeReference(self, ctx:KotlinParser.TypeReferenceContext):
         pass
 
-    # Exit a parse tree produced by KotlinParser#quest.
-    def exitQuest(self, ctx:KotlinParser.QuestContext):
+    # Exit a parse tree produced by KotlinParser#typeReference.
+    def exitTypeReference(self, ctx:KotlinParser.TypeReferenceContext):
+        pass
+
+
+    # Enter a parse tree produced by KotlinParser#functionType.
+    def enterFunctionType(self, ctx:KotlinParser.FunctionTypeContext):
+        pass
+
+    # Exit a parse tree produced by KotlinParser#functionType.
+    def exitFunctionType(self, ctx:KotlinParser.FunctionTypeContext):
+        pass
+
+
+    # Enter a parse tree produced by KotlinParser#functionTypeReceiver.
+    def enterFunctionTypeReceiver(self, ctx:KotlinParser.FunctionTypeReceiverContext):
+        pass
+
+    # Exit a parse tree produced by KotlinParser#functionTypeReceiver.
+    def exitFunctionTypeReceiver(self, ctx:KotlinParser.FunctionTypeReceiverContext):
         pass
 
 
@@ -503,42 +467,6 @@ class KotlinParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by KotlinParser#typeProjection.
-    def enterTypeProjection(self, ctx:KotlinParser.TypeProjectionContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#typeProjection.
-    def exitTypeProjection(self, ctx:KotlinParser.TypeProjectionContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#typeProjectionModifiers.
-    def enterTypeProjectionModifiers(self, ctx:KotlinParser.TypeProjectionModifiersContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#typeProjectionModifiers.
-    def exitTypeProjectionModifiers(self, ctx:KotlinParser.TypeProjectionModifiersContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#typeProjectionModifier.
-    def enterTypeProjectionModifier(self, ctx:KotlinParser.TypeProjectionModifierContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#typeProjectionModifier.
-    def exitTypeProjectionModifier(self, ctx:KotlinParser.TypeProjectionModifierContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#functionType.
-    def enterFunctionType(self, ctx:KotlinParser.FunctionTypeContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#functionType.
-    def exitFunctionType(self, ctx:KotlinParser.FunctionTypeContext):
-        pass
-
-
     # Enter a parse tree produced by KotlinParser#functionTypeParameters.
     def enterFunctionTypeParameters(self, ctx:KotlinParser.FunctionTypeParametersContext):
         pass
@@ -548,39 +476,30 @@ class KotlinParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by KotlinParser#parenthesizedType.
-    def enterParenthesizedType(self, ctx:KotlinParser.ParenthesizedTypeContext):
+    # Enter a parse tree produced by KotlinParser#typeConstraints.
+    def enterTypeConstraints(self, ctx:KotlinParser.TypeConstraintsContext):
         pass
 
-    # Exit a parse tree produced by KotlinParser#parenthesizedType.
-    def exitParenthesizedType(self, ctx:KotlinParser.ParenthesizedTypeContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#receiverType.
-    def enterReceiverType(self, ctx:KotlinParser.ReceiverTypeContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#receiverType.
-    def exitReceiverType(self, ctx:KotlinParser.ReceiverTypeContext):
+    # Exit a parse tree produced by KotlinParser#typeConstraints.
+    def exitTypeConstraints(self, ctx:KotlinParser.TypeConstraintsContext):
         pass
 
 
-    # Enter a parse tree produced by KotlinParser#parenthesizedUserType.
-    def enterParenthesizedUserType(self, ctx:KotlinParser.ParenthesizedUserTypeContext):
+    # Enter a parse tree produced by KotlinParser#typeConstraint.
+    def enterTypeConstraint(self, ctx:KotlinParser.TypeConstraintContext):
         pass
 
-    # Exit a parse tree produced by KotlinParser#parenthesizedUserType.
-    def exitParenthesizedUserType(self, ctx:KotlinParser.ParenthesizedUserTypeContext):
+    # Exit a parse tree produced by KotlinParser#typeConstraint.
+    def exitTypeConstraint(self, ctx:KotlinParser.TypeConstraintContext):
         pass
 
 
-    # Enter a parse tree produced by KotlinParser#definitelyNonNullableType.
-    def enterDefinitelyNonNullableType(self, ctx:KotlinParser.DefinitelyNonNullableTypeContext):
+    # Enter a parse tree produced by KotlinParser#block.
+    def enterBlock(self, ctx:KotlinParser.BlockContext):
         pass
 
-    # Exit a parse tree produced by KotlinParser#definitelyNonNullableType.
-    def exitDefinitelyNonNullableType(self, ctx:KotlinParser.DefinitelyNonNullableTypeContext):
+    # Exit a parse tree produced by KotlinParser#block.
+    def exitBlock(self, ctx:KotlinParser.BlockContext):
         pass
 
 
@@ -602,93 +521,21 @@ class KotlinParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by KotlinParser#label.
-    def enterLabel(self, ctx:KotlinParser.LabelContext):
+    # Enter a parse tree produced by KotlinParser#blockLevelExpression.
+    def enterBlockLevelExpression(self, ctx:KotlinParser.BlockLevelExpressionContext):
         pass
 
-    # Exit a parse tree produced by KotlinParser#label.
-    def exitLabel(self, ctx:KotlinParser.LabelContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#controlStructureBody.
-    def enterControlStructureBody(self, ctx:KotlinParser.ControlStructureBodyContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#controlStructureBody.
-    def exitControlStructureBody(self, ctx:KotlinParser.ControlStructureBodyContext):
+    # Exit a parse tree produced by KotlinParser#blockLevelExpression.
+    def exitBlockLevelExpression(self, ctx:KotlinParser.BlockLevelExpressionContext):
         pass
 
 
-    # Enter a parse tree produced by KotlinParser#block.
-    def enterBlock(self, ctx:KotlinParser.BlockContext):
+    # Enter a parse tree produced by KotlinParser#declaration.
+    def enterDeclaration(self, ctx:KotlinParser.DeclarationContext):
         pass
 
-    # Exit a parse tree produced by KotlinParser#block.
-    def exitBlock(self, ctx:KotlinParser.BlockContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#loopStatement.
-    def enterLoopStatement(self, ctx:KotlinParser.LoopStatementContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#loopStatement.
-    def exitLoopStatement(self, ctx:KotlinParser.LoopStatementContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#forStatement.
-    def enterForStatement(self, ctx:KotlinParser.ForStatementContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#forStatement.
-    def exitForStatement(self, ctx:KotlinParser.ForStatementContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#whileStatement.
-    def enterWhileStatement(self, ctx:KotlinParser.WhileStatementContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#whileStatement.
-    def exitWhileStatement(self, ctx:KotlinParser.WhileStatementContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#doWhileStatement.
-    def enterDoWhileStatement(self, ctx:KotlinParser.DoWhileStatementContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#doWhileStatement.
-    def exitDoWhileStatement(self, ctx:KotlinParser.DoWhileStatementContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#assignment.
-    def enterAssignment(self, ctx:KotlinParser.AssignmentContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#assignment.
-    def exitAssignment(self, ctx:KotlinParser.AssignmentContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#semi.
-    def enterSemi(self, ctx:KotlinParser.SemiContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#semi.
-    def exitSemi(self, ctx:KotlinParser.SemiContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#semis.
-    def enterSemis(self, ctx:KotlinParser.SemisContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#semis.
-    def exitSemis(self, ctx:KotlinParser.SemisContext):
+    # Exit a parse tree produced by KotlinParser#declaration.
+    def exitDeclaration(self, ctx:KotlinParser.DeclarationContext):
         pass
 
 
@@ -719,12 +566,12 @@ class KotlinParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by KotlinParser#equality.
-    def enterEquality(self, ctx:KotlinParser.EqualityContext):
+    # Enter a parse tree produced by KotlinParser#equalityComparison.
+    def enterEqualityComparison(self, ctx:KotlinParser.EqualityComparisonContext):
         pass
 
-    # Exit a parse tree produced by KotlinParser#equality.
-    def exitEquality(self, ctx:KotlinParser.EqualityContext):
+    # Exit a parse tree produced by KotlinParser#equalityComparison.
+    def exitEqualityComparison(self, ctx:KotlinParser.EqualityComparisonContext):
         pass
 
 
@@ -737,21 +584,12 @@ class KotlinParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by KotlinParser#genericCallLikeComparison.
-    def enterGenericCallLikeComparison(self, ctx:KotlinParser.GenericCallLikeComparisonContext):
+    # Enter a parse tree produced by KotlinParser#namedInfix.
+    def enterNamedInfix(self, ctx:KotlinParser.NamedInfixContext):
         pass
 
-    # Exit a parse tree produced by KotlinParser#genericCallLikeComparison.
-    def exitGenericCallLikeComparison(self, ctx:KotlinParser.GenericCallLikeComparisonContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#infixOperation.
-    def enterInfixOperation(self, ctx:KotlinParser.InfixOperationContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#infixOperation.
-    def exitInfixOperation(self, ctx:KotlinParser.InfixOperationContext):
+    # Exit a parse tree produced by KotlinParser#namedInfix.
+    def exitNamedInfix(self, ctx:KotlinParser.NamedInfixContext):
         pass
 
 
@@ -761,15 +599,6 @@ class KotlinParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by KotlinParser#elvisExpression.
     def exitElvisExpression(self, ctx:KotlinParser.ElvisExpressionContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#elvis.
-    def enterElvis(self, ctx:KotlinParser.ElvisContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#elvis.
-    def exitElvis(self, ctx:KotlinParser.ElvisContext):
         pass
 
 
@@ -809,12 +638,12 @@ class KotlinParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by KotlinParser#asExpression.
-    def enterAsExpression(self, ctx:KotlinParser.AsExpressionContext):
+    # Enter a parse tree produced by KotlinParser#typeRHS.
+    def enterTypeRHS(self, ctx:KotlinParser.TypeRHSContext):
         pass
 
-    # Exit a parse tree produced by KotlinParser#asExpression.
-    def exitAsExpression(self, ctx:KotlinParser.AsExpressionContext):
+    # Exit a parse tree produced by KotlinParser#typeRHS.
+    def exitTypeRHS(self, ctx:KotlinParser.TypeRHSContext):
         pass
 
 
@@ -827,15 +656,6 @@ class KotlinParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by KotlinParser#unaryPrefix.
-    def enterUnaryPrefix(self, ctx:KotlinParser.UnaryPrefixContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#unaryPrefix.
-    def exitUnaryPrefix(self, ctx:KotlinParser.UnaryPrefixContext):
-        pass
-
-
     # Enter a parse tree produced by KotlinParser#postfixUnaryExpression.
     def enterPostfixUnaryExpression(self, ctx:KotlinParser.PostfixUnaryExpressionContext):
         pass
@@ -845,75 +665,21 @@ class KotlinParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by KotlinParser#postfixUnarySuffix.
-    def enterPostfixUnarySuffix(self, ctx:KotlinParser.PostfixUnarySuffixContext):
+    # Enter a parse tree produced by KotlinParser#atomicExpression.
+    def enterAtomicExpression(self, ctx:KotlinParser.AtomicExpressionContext):
         pass
 
-    # Exit a parse tree produced by KotlinParser#postfixUnarySuffix.
-    def exitPostfixUnarySuffix(self, ctx:KotlinParser.PostfixUnarySuffixContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#directlyAssignableExpression.
-    def enterDirectlyAssignableExpression(self, ctx:KotlinParser.DirectlyAssignableExpressionContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#directlyAssignableExpression.
-    def exitDirectlyAssignableExpression(self, ctx:KotlinParser.DirectlyAssignableExpressionContext):
+    # Exit a parse tree produced by KotlinParser#atomicExpression.
+    def exitAtomicExpression(self, ctx:KotlinParser.AtomicExpressionContext):
         pass
 
 
-    # Enter a parse tree produced by KotlinParser#parenthesizedDirectlyAssignableExpression.
-    def enterParenthesizedDirectlyAssignableExpression(self, ctx:KotlinParser.ParenthesizedDirectlyAssignableExpressionContext):
+    # Enter a parse tree produced by KotlinParser#parenthesizedExpression.
+    def enterParenthesizedExpression(self, ctx:KotlinParser.ParenthesizedExpressionContext):
         pass
 
-    # Exit a parse tree produced by KotlinParser#parenthesizedDirectlyAssignableExpression.
-    def exitParenthesizedDirectlyAssignableExpression(self, ctx:KotlinParser.ParenthesizedDirectlyAssignableExpressionContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#assignableExpression.
-    def enterAssignableExpression(self, ctx:KotlinParser.AssignableExpressionContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#assignableExpression.
-    def exitAssignableExpression(self, ctx:KotlinParser.AssignableExpressionContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#parenthesizedAssignableExpression.
-    def enterParenthesizedAssignableExpression(self, ctx:KotlinParser.ParenthesizedAssignableExpressionContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#parenthesizedAssignableExpression.
-    def exitParenthesizedAssignableExpression(self, ctx:KotlinParser.ParenthesizedAssignableExpressionContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#assignableSuffix.
-    def enterAssignableSuffix(self, ctx:KotlinParser.AssignableSuffixContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#assignableSuffix.
-    def exitAssignableSuffix(self, ctx:KotlinParser.AssignableSuffixContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#indexingSuffix.
-    def enterIndexingSuffix(self, ctx:KotlinParser.IndexingSuffixContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#indexingSuffix.
-    def exitIndexingSuffix(self, ctx:KotlinParser.IndexingSuffixContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#navigationSuffix.
-    def enterNavigationSuffix(self, ctx:KotlinParser.NavigationSuffixContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#navigationSuffix.
-    def exitNavigationSuffix(self, ctx:KotlinParser.NavigationSuffixContext):
+    # Exit a parse tree produced by KotlinParser#parenthesizedExpression.
+    def exitParenthesizedExpression(self, ctx:KotlinParser.ParenthesizedExpressionContext):
         pass
 
 
@@ -935,12 +701,12 @@ class KotlinParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by KotlinParser#typeArguments.
-    def enterTypeArguments(self, ctx:KotlinParser.TypeArgumentsContext):
+    # Enter a parse tree produced by KotlinParser#arrayAccess.
+    def enterArrayAccess(self, ctx:KotlinParser.ArrayAccessContext):
         pass
 
-    # Exit a parse tree produced by KotlinParser#typeArguments.
-    def exitTypeArguments(self, ctx:KotlinParser.TypeArgumentsContext):
+    # Exit a parse tree produced by KotlinParser#arrayAccess.
+    def exitArrayAccess(self, ctx:KotlinParser.ArrayAccessContext):
         pass
 
 
@@ -953,39 +719,39 @@ class KotlinParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by KotlinParser#typeArguments.
+    def enterTypeArguments(self, ctx:KotlinParser.TypeArgumentsContext):
+        pass
+
+    # Exit a parse tree produced by KotlinParser#typeArguments.
+    def exitTypeArguments(self, ctx:KotlinParser.TypeArgumentsContext):
+        pass
+
+
+    # Enter a parse tree produced by KotlinParser#typeProjection.
+    def enterTypeProjection(self, ctx:KotlinParser.TypeProjectionContext):
+        pass
+
+    # Exit a parse tree produced by KotlinParser#typeProjection.
+    def exitTypeProjection(self, ctx:KotlinParser.TypeProjectionContext):
+        pass
+
+
+    # Enter a parse tree produced by KotlinParser#typeProjectionModifierList.
+    def enterTypeProjectionModifierList(self, ctx:KotlinParser.TypeProjectionModifierListContext):
+        pass
+
+    # Exit a parse tree produced by KotlinParser#typeProjectionModifierList.
+    def exitTypeProjectionModifierList(self, ctx:KotlinParser.TypeProjectionModifierListContext):
+        pass
+
+
     # Enter a parse tree produced by KotlinParser#valueArgument.
     def enterValueArgument(self, ctx:KotlinParser.ValueArgumentContext):
         pass
 
     # Exit a parse tree produced by KotlinParser#valueArgument.
     def exitValueArgument(self, ctx:KotlinParser.ValueArgumentContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#primaryExpression.
-    def enterPrimaryExpression(self, ctx:KotlinParser.PrimaryExpressionContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#primaryExpression.
-    def exitPrimaryExpression(self, ctx:KotlinParser.PrimaryExpressionContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#parenthesizedExpression.
-    def enterParenthesizedExpression(self, ctx:KotlinParser.ParenthesizedExpressionContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#parenthesizedExpression.
-    def exitParenthesizedExpression(self, ctx:KotlinParser.ParenthesizedExpressionContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#collectionLiteral.
-    def enterCollectionLiteral(self, ctx:KotlinParser.CollectionLiteralContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#collectionLiteral.
-    def exitCollectionLiteral(self, ctx:KotlinParser.CollectionLiteralContext):
         pass
 
 
@@ -1061,12 +827,12 @@ class KotlinParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by KotlinParser#lambdaLiteral.
-    def enterLambdaLiteral(self, ctx:KotlinParser.LambdaLiteralContext):
+    # Enter a parse tree produced by KotlinParser#functionLiteral.
+    def enterFunctionLiteral(self, ctx:KotlinParser.FunctionLiteralContext):
         pass
 
-    # Exit a parse tree produced by KotlinParser#lambdaLiteral.
-    def exitLambdaLiteral(self, ctx:KotlinParser.LambdaLiteralContext):
+    # Exit a parse tree produced by KotlinParser#functionLiteral.
+    def exitFunctionLiteral(self, ctx:KotlinParser.FunctionLiteralContext):
         pass
 
 
@@ -1088,30 +854,21 @@ class KotlinParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by KotlinParser#anonymousFunction.
-    def enterAnonymousFunction(self, ctx:KotlinParser.AnonymousFunctionContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#anonymousFunction.
-    def exitAnonymousFunction(self, ctx:KotlinParser.AnonymousFunctionContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#functionLiteral.
-    def enterFunctionLiteral(self, ctx:KotlinParser.FunctionLiteralContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#functionLiteral.
-    def exitFunctionLiteral(self, ctx:KotlinParser.FunctionLiteralContext):
-        pass
-
-
     # Enter a parse tree produced by KotlinParser#objectLiteral.
     def enterObjectLiteral(self, ctx:KotlinParser.ObjectLiteralContext):
         pass
 
     # Exit a parse tree produced by KotlinParser#objectLiteral.
     def exitObjectLiteral(self, ctx:KotlinParser.ObjectLiteralContext):
+        pass
+
+
+    # Enter a parse tree produced by KotlinParser#collectionLiteral.
+    def enterCollectionLiteral(self, ctx:KotlinParser.CollectionLiteralContext):
+        pass
+
+    # Exit a parse tree produced by KotlinParser#collectionLiteral.
+    def exitCollectionLiteral(self, ctx:KotlinParser.CollectionLiteralContext):
         pass
 
 
@@ -1133,6 +890,15 @@ class KotlinParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by KotlinParser#conditionalExpression.
+    def enterConditionalExpression(self, ctx:KotlinParser.ConditionalExpressionContext):
+        pass
+
+    # Exit a parse tree produced by KotlinParser#conditionalExpression.
+    def exitConditionalExpression(self, ctx:KotlinParser.ConditionalExpressionContext):
+        pass
+
+
     # Enter a parse tree produced by KotlinParser#ifExpression.
     def enterIfExpression(self, ctx:KotlinParser.IfExpressionContext):
         pass
@@ -1142,12 +908,12 @@ class KotlinParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by KotlinParser#whenSubject.
-    def enterWhenSubject(self, ctx:KotlinParser.WhenSubjectContext):
+    # Enter a parse tree produced by KotlinParser#controlStructureBody.
+    def enterControlStructureBody(self, ctx:KotlinParser.ControlStructureBodyContext):
         pass
 
-    # Exit a parse tree produced by KotlinParser#whenSubject.
-    def exitWhenSubject(self, ctx:KotlinParser.WhenSubjectContext):
+    # Exit a parse tree produced by KotlinParser#controlStructureBody.
+    def exitControlStructureBody(self, ctx:KotlinParser.ControlStructureBodyContext):
         pass
 
 
@@ -1223,6 +989,42 @@ class KotlinParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by KotlinParser#loopExpression.
+    def enterLoopExpression(self, ctx:KotlinParser.LoopExpressionContext):
+        pass
+
+    # Exit a parse tree produced by KotlinParser#loopExpression.
+    def exitLoopExpression(self, ctx:KotlinParser.LoopExpressionContext):
+        pass
+
+
+    # Enter a parse tree produced by KotlinParser#forExpression.
+    def enterForExpression(self, ctx:KotlinParser.ForExpressionContext):
+        pass
+
+    # Exit a parse tree produced by KotlinParser#forExpression.
+    def exitForExpression(self, ctx:KotlinParser.ForExpressionContext):
+        pass
+
+
+    # Enter a parse tree produced by KotlinParser#whileExpression.
+    def enterWhileExpression(self, ctx:KotlinParser.WhileExpressionContext):
+        pass
+
+    # Exit a parse tree produced by KotlinParser#whileExpression.
+    def exitWhileExpression(self, ctx:KotlinParser.WhileExpressionContext):
+        pass
+
+
+    # Enter a parse tree produced by KotlinParser#doWhileExpression.
+    def enterDoWhileExpression(self, ctx:KotlinParser.DoWhileExpressionContext):
+        pass
+
+    # Exit a parse tree produced by KotlinParser#doWhileExpression.
+    def exitDoWhileExpression(self, ctx:KotlinParser.DoWhileExpressionContext):
+        pass
+
+
     # Enter a parse tree produced by KotlinParser#jumpExpression.
     def enterJumpExpression(self, ctx:KotlinParser.JumpExpressionContext):
         pass
@@ -1241,21 +1043,21 @@ class KotlinParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by KotlinParser#assignmentAndOperator.
-    def enterAssignmentAndOperator(self, ctx:KotlinParser.AssignmentAndOperatorContext):
+    # Enter a parse tree produced by KotlinParser#assignmentOperator.
+    def enterAssignmentOperator(self, ctx:KotlinParser.AssignmentOperatorContext):
         pass
 
-    # Exit a parse tree produced by KotlinParser#assignmentAndOperator.
-    def exitAssignmentAndOperator(self, ctx:KotlinParser.AssignmentAndOperatorContext):
+    # Exit a parse tree produced by KotlinParser#assignmentOperator.
+    def exitAssignmentOperator(self, ctx:KotlinParser.AssignmentOperatorContext):
         pass
 
 
-    # Enter a parse tree produced by KotlinParser#equalityOperator.
-    def enterEqualityOperator(self, ctx:KotlinParser.EqualityOperatorContext):
+    # Enter a parse tree produced by KotlinParser#equalityOperation.
+    def enterEqualityOperation(self, ctx:KotlinParser.EqualityOperationContext):
         pass
 
-    # Exit a parse tree produced by KotlinParser#equalityOperator.
-    def exitEqualityOperator(self, ctx:KotlinParser.EqualityOperatorContext):
+    # Exit a parse tree produced by KotlinParser#equalityOperation.
+    def exitEqualityOperation(self, ctx:KotlinParser.EqualityOperationContext):
         pass
 
 
@@ -1295,48 +1097,39 @@ class KotlinParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by KotlinParser#multiplicativeOperator.
-    def enterMultiplicativeOperator(self, ctx:KotlinParser.MultiplicativeOperatorContext):
+    # Enter a parse tree produced by KotlinParser#multiplicativeOperation.
+    def enterMultiplicativeOperation(self, ctx:KotlinParser.MultiplicativeOperationContext):
         pass
 
-    # Exit a parse tree produced by KotlinParser#multiplicativeOperator.
-    def exitMultiplicativeOperator(self, ctx:KotlinParser.MultiplicativeOperatorContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#asOperator.
-    def enterAsOperator(self, ctx:KotlinParser.AsOperatorContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#asOperator.
-    def exitAsOperator(self, ctx:KotlinParser.AsOperatorContext):
+    # Exit a parse tree produced by KotlinParser#multiplicativeOperation.
+    def exitMultiplicativeOperation(self, ctx:KotlinParser.MultiplicativeOperationContext):
         pass
 
 
-    # Enter a parse tree produced by KotlinParser#prefixUnaryOperator.
-    def enterPrefixUnaryOperator(self, ctx:KotlinParser.PrefixUnaryOperatorContext):
+    # Enter a parse tree produced by KotlinParser#typeOperation.
+    def enterTypeOperation(self, ctx:KotlinParser.TypeOperationContext):
         pass
 
-    # Exit a parse tree produced by KotlinParser#prefixUnaryOperator.
-    def exitPrefixUnaryOperator(self, ctx:KotlinParser.PrefixUnaryOperatorContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#postfixUnaryOperator.
-    def enterPostfixUnaryOperator(self, ctx:KotlinParser.PostfixUnaryOperatorContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#postfixUnaryOperator.
-    def exitPostfixUnaryOperator(self, ctx:KotlinParser.PostfixUnaryOperatorContext):
+    # Exit a parse tree produced by KotlinParser#typeOperation.
+    def exitTypeOperation(self, ctx:KotlinParser.TypeOperationContext):
         pass
 
 
-    # Enter a parse tree produced by KotlinParser#excl.
-    def enterExcl(self, ctx:KotlinParser.ExclContext):
+    # Enter a parse tree produced by KotlinParser#prefixUnaryOperation.
+    def enterPrefixUnaryOperation(self, ctx:KotlinParser.PrefixUnaryOperationContext):
         pass
 
-    # Exit a parse tree produced by KotlinParser#excl.
-    def exitExcl(self, ctx:KotlinParser.ExclContext):
+    # Exit a parse tree produced by KotlinParser#prefixUnaryOperation.
+    def exitPrefixUnaryOperation(self, ctx:KotlinParser.PrefixUnaryOperationContext):
+        pass
+
+
+    # Enter a parse tree produced by KotlinParser#postfixUnaryOperation.
+    def enterPostfixUnaryOperation(self, ctx:KotlinParser.PostfixUnaryOperationContext):
+        pass
+
+    # Exit a parse tree produced by KotlinParser#postfixUnaryOperation.
+    def exitPostfixUnaryOperation(self, ctx:KotlinParser.PostfixUnaryOperationContext):
         pass
 
 
@@ -1349,30 +1142,12 @@ class KotlinParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by KotlinParser#safeNav.
-    def enterSafeNav(self, ctx:KotlinParser.SafeNavContext):
+    # Enter a parse tree produced by KotlinParser#modifierList.
+    def enterModifierList(self, ctx:KotlinParser.ModifierListContext):
         pass
 
-    # Exit a parse tree produced by KotlinParser#safeNav.
-    def exitSafeNav(self, ctx:KotlinParser.SafeNavContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#modifiers.
-    def enterModifiers(self, ctx:KotlinParser.ModifiersContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#modifiers.
-    def exitModifiers(self, ctx:KotlinParser.ModifiersContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#parameterModifiers.
-    def enterParameterModifiers(self, ctx:KotlinParser.ParameterModifiersContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#parameterModifiers.
-    def exitParameterModifiers(self, ctx:KotlinParser.ParameterModifiersContext):
+    # Exit a parse tree produced by KotlinParser#modifierList.
+    def exitModifierList(self, ctx:KotlinParser.ModifierListContext):
         pass
 
 
@@ -1382,24 +1157,6 @@ class KotlinParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by KotlinParser#modifier.
     def exitModifier(self, ctx:KotlinParser.ModifierContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#typeModifiers.
-    def enterTypeModifiers(self, ctx:KotlinParser.TypeModifiersContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#typeModifiers.
-    def exitTypeModifiers(self, ctx:KotlinParser.TypeModifiersContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#typeModifier.
-    def enterTypeModifier(self, ctx:KotlinParser.TypeModifierContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#typeModifier.
-    def exitTypeModifier(self, ctx:KotlinParser.TypeModifierContext):
         pass
 
 
@@ -1430,30 +1187,12 @@ class KotlinParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by KotlinParser#varianceModifier.
-    def enterVarianceModifier(self, ctx:KotlinParser.VarianceModifierContext):
+    # Enter a parse tree produced by KotlinParser#varianceAnnotation.
+    def enterVarianceAnnotation(self, ctx:KotlinParser.VarianceAnnotationContext):
         pass
 
-    # Exit a parse tree produced by KotlinParser#varianceModifier.
-    def exitVarianceModifier(self, ctx:KotlinParser.VarianceModifierContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#typeParameterModifiers.
-    def enterTypeParameterModifiers(self, ctx:KotlinParser.TypeParameterModifiersContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#typeParameterModifiers.
-    def exitTypeParameterModifiers(self, ctx:KotlinParser.TypeParameterModifiersContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#typeParameterModifier.
-    def enterTypeParameterModifier(self, ctx:KotlinParser.TypeParameterModifierContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#typeParameterModifier.
-    def exitTypeParameterModifier(self, ctx:KotlinParser.TypeParameterModifierContext):
+    # Exit a parse tree produced by KotlinParser#varianceAnnotation.
+    def exitVarianceAnnotation(self, ctx:KotlinParser.VarianceAnnotationContext):
         pass
 
 
@@ -1493,21 +1232,30 @@ class KotlinParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by KotlinParser#reificationModifier.
-    def enterReificationModifier(self, ctx:KotlinParser.ReificationModifierContext):
+    # Enter a parse tree produced by KotlinParser#typeParameterModifier.
+    def enterTypeParameterModifier(self, ctx:KotlinParser.TypeParameterModifierContext):
         pass
 
-    # Exit a parse tree produced by KotlinParser#reificationModifier.
-    def exitReificationModifier(self, ctx:KotlinParser.ReificationModifierContext):
+    # Exit a parse tree produced by KotlinParser#typeParameterModifier.
+    def exitTypeParameterModifier(self, ctx:KotlinParser.TypeParameterModifierContext):
         pass
 
 
-    # Enter a parse tree produced by KotlinParser#platformModifier.
-    def enterPlatformModifier(self, ctx:KotlinParser.PlatformModifierContext):
+    # Enter a parse tree produced by KotlinParser#labelDefinition.
+    def enterLabelDefinition(self, ctx:KotlinParser.LabelDefinitionContext):
         pass
 
-    # Exit a parse tree produced by KotlinParser#platformModifier.
-    def exitPlatformModifier(self, ctx:KotlinParser.PlatformModifierContext):
+    # Exit a parse tree produced by KotlinParser#labelDefinition.
+    def exitLabelDefinition(self, ctx:KotlinParser.LabelDefinitionContext):
+        pass
+
+
+    # Enter a parse tree produced by KotlinParser#annotations.
+    def enterAnnotations(self, ctx:KotlinParser.AnnotationsContext):
+        pass
+
+    # Exit a parse tree produced by KotlinParser#annotations.
+    def exitAnnotations(self, ctx:KotlinParser.AnnotationsContext):
         pass
 
 
@@ -1520,21 +1268,12 @@ class KotlinParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by KotlinParser#singleAnnotation.
-    def enterSingleAnnotation(self, ctx:KotlinParser.SingleAnnotationContext):
+    # Enter a parse tree produced by KotlinParser#annotationList.
+    def enterAnnotationList(self, ctx:KotlinParser.AnnotationListContext):
         pass
 
-    # Exit a parse tree produced by KotlinParser#singleAnnotation.
-    def exitSingleAnnotation(self, ctx:KotlinParser.SingleAnnotationContext):
-        pass
-
-
-    # Enter a parse tree produced by KotlinParser#multiAnnotation.
-    def enterMultiAnnotation(self, ctx:KotlinParser.MultiAnnotationContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#multiAnnotation.
-    def exitMultiAnnotation(self, ctx:KotlinParser.MultiAnnotationContext):
+    # Exit a parse tree produced by KotlinParser#annotationList.
+    def exitAnnotationList(self, ctx:KotlinParser.AnnotationListContext):
         pass
 
 
@@ -1556,15 +1295,6 @@ class KotlinParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by KotlinParser#simpleIdentifier.
-    def enterSimpleIdentifier(self, ctx:KotlinParser.SimpleIdentifierContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#simpleIdentifier.
-    def exitSimpleIdentifier(self, ctx:KotlinParser.SimpleIdentifierContext):
-        pass
-
-
     # Enter a parse tree produced by KotlinParser#identifier.
     def enterIdentifier(self, ctx:KotlinParser.IdentifierContext):
         pass
@@ -1574,3 +1304,41 @@ class KotlinParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by KotlinParser#pineIdentifier.
+    def enterPineIdentifier(self, ctx:KotlinParser.PineIdentifierContext):
+        pass
+
+    # Exit a parse tree produced by KotlinParser#pineIdentifier.
+    def exitPineIdentifier(self, ctx:KotlinParser.PineIdentifierContext):
+        pass
+
+
+    # Enter a parse tree produced by KotlinParser#simpleIdentifier.
+    def enterSimpleIdentifier(self, ctx:KotlinParser.SimpleIdentifierContext):
+        pass
+
+    # Exit a parse tree produced by KotlinParser#simpleIdentifier.
+    def exitSimpleIdentifier(self, ctx:KotlinParser.SimpleIdentifierContext):
+        pass
+
+
+    # Enter a parse tree produced by KotlinParser#semi.
+    def enterSemi(self, ctx:KotlinParser.SemiContext):
+        pass
+
+    # Exit a parse tree produced by KotlinParser#semi.
+    def exitSemi(self, ctx:KotlinParser.SemiContext):
+        pass
+
+
+    # Enter a parse tree produced by KotlinParser#anysemi.
+    def enterAnysemi(self, ctx:KotlinParser.AnysemiContext):
+        pass
+
+    # Exit a parse tree produced by KotlinParser#anysemi.
+    def exitAnysemi(self, ctx:KotlinParser.AnysemiContext):
+        pass
+
+
+
+del KotlinParser
