@@ -12,11 +12,14 @@ FILE = "src/components/simple.pine"
 fp = open(FILE, "r")
 code = fp.read()
 
+print(code)
+
 # code = """
 # fun hello() {
 # println("foo")
 # }
 # """
+
 
 def get_parser(code):
 
@@ -25,23 +28,22 @@ def get_parser(code):
     parser = KotlinParser(stream)
     return parser
 
+
+#parser = get_parser(code)
+#tree = parser.kotlinFile()
+#print(tree.toStringTree(recog=parser))
+
+print("----")
 parser = get_parser(code)
 tree = parser.kotlinFile()
-print(tree.toStringTree(recog=parser))
+for i, t in enumerate(list(tree.getChildren())):
+    print(i, t.getText())
 
-print('----')
-parser = get_parser(code)
-tree = parser.propertyDeclaration()
-print(tree.toStringTree(recog=parser))
-#print(list(tree.getChildren()))
+# children =  list(tree.getChildren())
+# for child in children:
+# print(child)
+# pass
 
-#children =  list(tree.getChildren())
-#for child in children:
-    #print(child)
-    #pass
-
-print('----')
-#for t in lexer.getAllTokens():
-    #print(t.text, t.type)
-
-    
+print("----")
+# for t in lexer.getAllTokens():
+# print(t.text, t.type)

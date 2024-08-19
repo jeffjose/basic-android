@@ -1304,15 +1304,6 @@ class KotlinParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by KotlinParser#pineIdentifier.
-    def enterPineIdentifier(self, ctx:KotlinParser.PineIdentifierContext):
-        pass
-
-    # Exit a parse tree produced by KotlinParser#pineIdentifier.
-    def exitPineIdentifier(self, ctx:KotlinParser.PineIdentifierContext):
-        pass
-
-
     # Enter a parse tree produced by KotlinParser#simpleIdentifier.
     def enterSimpleIdentifier(self, ctx:KotlinParser.SimpleIdentifierContext):
         pass

@@ -169,6 +169,7 @@ StrExpr_IN=168
 StrExpr_Comment=169
 StrExpr_WS=170
 StrExpr_NL=171
+COLOR=172
 '...'=6
 '.'=7
 ','=8

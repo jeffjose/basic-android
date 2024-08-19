@@ -1,1 +1,3 @@
-var *foo = "foovalue"
+var foo = "foovalue"
+var *bar = "barvalue"
+var $baz = "bazvalue"

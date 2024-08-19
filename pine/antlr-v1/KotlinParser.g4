@@ -199,7 +199,7 @@ multiVariableDeclaration
     ;
 
 variableDeclaration
-    : pineIdentifier (COLON type)?
+    : PineIdentifier (COLON type)? |  Identifier (COLOR type)?
     ;
 
 getter
@@ -763,10 +763,6 @@ unescapedAnnotation
 
 identifier
     : simpleIdentifier (NL* DOT simpleIdentifier)*
-    ;
-
-pineIdentifier
-    : PineIdentifier
     ;
 
 simpleIdentifier
