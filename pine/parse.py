@@ -7,6 +7,7 @@ from kotlin.KotlinParser import KotlinParser
 
 FILE = "src/routes/+screen.pine"
 FILE = "dist/cupcake/app/src/main/java/com/example/cupcake/ui/RootScreen.kt"
+FILE = "src/components/coffee.pine"
 
 fp = open(FILE, "r")
 code = fp.read()
