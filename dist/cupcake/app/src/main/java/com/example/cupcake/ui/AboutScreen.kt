@@ -28,7 +28,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -61,34 +60,37 @@ fun AboutScreen(navController: NavHostController, params: Bundle?, http: HttpCli
 
 
     
-Column(verticalArrangement = Arrangement.SpaceBetween,
-        modifier = Modifier.fillMaxHeight()
-                                        .padding(dimensionResource(R.dimen.padding_medium))
+Column(
+    verticalArrangement = Arrangement.SpaceBetween,
+    modifier =
+        Modifier
+            .fillMaxHeight()
+            .padding(dimensionResource(R.dimen.padding_medium)),
 ) {
-        Column(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_small))
-        ) {}
-        Column(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement =
-                        Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium))
-        ) {
-                Row(horizontalArrangement = Arrangement.SpaceEvenly) {
-                        Button(
-                                onClick = { navController.navigate("/first") },
-                        ) { Text(stringResource(R.string.one)) }
-                        Button(
-                                onClick = { navController.navigate("/second") },
-                        ) { Text(stringResource(R.string.two)) }
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_small)),
+    ) {}
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement =
+            Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium)),
+    ) {
+        Row(horizontalArrangement = Arrangement.SpaceEvenly) {
+            Button(
+                onClick = { navController.navigate("/first") },
+            ) { Text(stringResource(R.string.one)) }
+            Button(
+                onClick = { navController.navigate("/second") },
+            ) { Text(stringResource(R.string.two)) }
 
-                        Button(
-                                onClick = { navController.navigate("/third") },
-                        ) { Text(stringResource(R.string.three)) }
-                }
+            Button(
+                onClick = { navController.navigate("/third") },
+            ) { Text(stringResource(R.string.three)) }
         }
+    }
 }
 
 }

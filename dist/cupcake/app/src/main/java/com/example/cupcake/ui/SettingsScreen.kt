@@ -28,7 +28,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -61,34 +60,37 @@ fun SettingsScreen(navController: NavHostController, params: Bundle?, http: Http
 
 
     
-Column(verticalArrangement = Arrangement.SpaceBetween,
-        modifier = Modifier.fillMaxHeight()
-                                        .padding(dimensionResource(R.dimen.padding_medium))
+Column(
+    verticalArrangement = Arrangement.SpaceBetween,
+    modifier =
+        Modifier
+            .fillMaxHeight()
+            .padding(dimensionResource(R.dimen.padding_medium)),
 ) {
-        Column(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_small))
-        ) {}
-        Column(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement =
-                        Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium))
-        ) {
-                Row(horizontalArrangement = Arrangement.SpaceEvenly) {
-                        Button(
-                                onClick = { navController.navigate("/") },
-                        ) { Text(stringResource(R.string.home)) }
-                        Button(
-                                onClick = { navController.navigate("/settings/general") },
-                        ) { Text(stringResource(R.string.general)) }
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_small)),
+    ) {}
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement =
+            Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium)),
+    ) {
+        Row(horizontalArrangement = Arrangement.SpaceEvenly) {
+            Button(
+                onClick = { navController.navigate("/") },
+            ) { Text(stringResource(R.string.home)) }
+            Button(
+                onClick = { navController.navigate("/settings/general") },
+            ) { Text(stringResource(R.string.general)) }
 
-                        Button(
-                                onClick = { navController.navigate("/settings/security") },
-                        ) { Text(stringResource(R.string.security)) }
-                }
+            Button(
+                onClick = { navController.navigate("/settings/security") },
+            ) { Text(stringResource(R.string.security)) }
         }
+    }
 }
 
 }

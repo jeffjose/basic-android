@@ -12,6 +12,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import com.example.cupcake.R
 import com.example.cupcake.ui.components.Coffee
+import com.example.cupcake.ui.components.Simple
 
 // Log.d("XXX", data.value?.toString() ?: "default")
 
@@ -29,6 +30,7 @@ Column(
     ) {
 
         Coffee()
+        Simple()
     }
 
     Column(

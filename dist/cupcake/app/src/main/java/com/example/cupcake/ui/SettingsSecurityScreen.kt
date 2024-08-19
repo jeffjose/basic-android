@@ -59,24 +59,23 @@ fun SettingsSecurityScreen(navController: NavHostController, params: Bundle?, ht
 
 
     
-
 Column(
-        verticalArrangement = Arrangement.SpaceBetween,
-        modifier = Modifier.fillMaxHeight()
-                                        .padding(dimensionResource(R.dimen.padding_medium))
-
+    verticalArrangement = Arrangement.SpaceBetween,
+    modifier =
+        Modifier
+            .fillMaxHeight()
+            .padding(dimensionResource(R.dimen.padding_medium)),
 ) {
 
-        Column(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_small))
-        ) {}
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_small)),
+    ) {}
 
-                        Button(
-                                onClick = { navController.navigate("/settings/security") },
-                        ) { Text(stringResource(R.string.security)) }
-
+    Button(
+        onClick = { navController.navigate("/settings/security") },
+    ) { Text(stringResource(R.string.security)) }
 }
 
 }

@@ -1,0 +1,11 @@
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
+
+
+var $coffeeCount  = 0
+var *count = 0
+
+Text(text = "S: You've had $coffeeCount cups of coffee")
+
+Button(onClick = { coffeeCount++ }) 
+        { Text("S: Add one") }
