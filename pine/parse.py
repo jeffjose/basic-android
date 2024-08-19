@@ -29,9 +29,9 @@ def get_parser(code):
     return parser
 
 
-#parser = get_parser(code)
-#tree = parser.kotlinFile()
-#print(tree.toStringTree(recog=parser))
+parser = get_parser(code)
+tree = parser.kotlinFile()
+print(tree.toStringTree(recog=parser))
 
 print("----")
 parser = get_parser(code)
