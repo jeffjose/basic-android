@@ -7,6 +7,7 @@ import com.example.cupcake.ui.theme.CupcakeTheme
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -16,24 +17,23 @@ fun If() {
     
 
 var count by remember { mutableStateOf(0) }
-val user by remember { mutableStateOf(mutableMapOf( "loggedIn" to false)) }
+val user by remember { mutableStateOf(mutableStateMapOf("loggedIn" to false)) }
 println(user)
 
-Button(onClick={ count-- }){
+Button(onClick={ 
+  user["loggedIn"] = true
+  }){
   Text(text="Log in ")
 }
 
 
 Button(onClick={ 
-  println("hi $user") 
-  user["loggedIn"] = true
-  println("bye $user") 
+  user["loggedIn"] = false
   }){
   Text(text="Log out ")
 }
 
-Text(text="$count")
-Text(text="$user")
+Text(text="${user.getValue("loggedIn")}")
 
 }
 
