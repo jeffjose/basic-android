@@ -2,19 +2,22 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.Button
 
 
-val user = mutableMapOf(
-  "loggedIn" to false
-)
-
+var $count = 0
+val $user = mutableMapOf( "loggedIn" to false)
 println(user)
 
-Button(onClick={ user["loggedIn" ] = true }){
+Button(onClick={ count-- }){
   Text(text="Log in ")
 }
 
 
-Button(onClick={ user["loggedIn" ] = false }){
+Button(onClick={ 
+  println("hi $user") 
+  user["loggedIn"] = true
+  println("bye $user") 
+  }){
   Text(text="Log out ")
 }
 
+Text(text="$count")
 Text(text="$user")
