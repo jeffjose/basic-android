@@ -1,25 +1,59 @@
+---
+
+import kotlinx.parcelize.Parcelize
+import android.os.Parcelable
+
+@Parcelize
+data class User(val loggedIn: Boolean) : Parcelable
+
+---
+
 import androidx.compose.material3.Text
 import androidx.compose.material3.Button
 import androidx.compose.runtime.mutableStateMapOf
 
+//println("if - before")
 
-println("if - before")
+
+var foo = 0
 var $count = 0
-val $user = mutableStateMapOf("loggedIn" to false)
-println("if - after")
+val *user1 = User(false)
+val user = mutableStateMapOf<String,Boolean>("loggedIn" to false)
+
+//println("if - after ${user["loggedIn"]}")
 
 if (user["loggedIn"] == false) {
-Button(onClick={ 
-  user["loggedIn"] = true
-  }){
-  Text(text="Log in ")
-}
+  Button(onClick={ 
+    user["loggedIn"] = true
+    println("login! ${user["loggedIn"]}")
+    foo++
+    }){
+    Text(text="Log in ")
+  }
 }
 else {
 
+  Button(onClick={ 
+    user["loggedIn"] = false
+    println("logout! ${user["loggedIn"]}")
+    foo++
+    }){
+    Text(text="Log out ")
+  }
+}
+
 Button(onClick={ 
-  user["loggedIn"] = false
+  if (user["loggedIn"] == true) {
+
+user["loggedIn"] = false
+  }
+  else {
+user["loggedIn"] = true
+
+  }
+    foo++
   }){
-  Text(text="Log out ")
+  Text(text="Toggle")
 }
-}
+
+  Text(text="${user.getValue("loggedIn")}. Clicked $foo times")

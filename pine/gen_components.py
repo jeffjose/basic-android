@@ -23,6 +23,8 @@ import %%NAMESPACE%%.ui.theme.CupcakeTheme
 
 %%IMPORT%%
 
+%%FRONTMATTER%%
+
 @Composable
 fun %%NAME%%(%%PARAMS%%) {
     %%CONTENT%%
@@ -105,6 +107,7 @@ def create_component(template, file):
         .replace("%%CONTENT%%", parcel["contents"])
         .replace("%%NAME%%", slug)
         .replace("%%PARAMS%%", mkexport_string_component(parcel["exports"]))
+        .replace("%%FRONTMATTER%%", parcel['frontmatter'])
         .strip()
     )
 

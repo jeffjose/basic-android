@@ -13,38 +13,76 @@ remembersaveable_mutablestate_pattern = re.compile(r"(val|var)\s+\*(.*)\s+=\s+(.
 remember_derivedstateof_pattern = re.compile(
     r"(val|var)\s+(.*)\s+=\s+\$derived\((.*)\)"
 )
-remember_sideeffect_pattern = re.compile(
-    r"(val|var)\s+(.*)\s+=\s+\$effect\((.*)\)"
-)
+remember_sideeffect_pattern = re.compile(r"(val|var)\s+(.*)\s+=\s+\$effect\((.*)\)")
+
+
+def get_frontmatter(lines):
+
+    first_line = lines[0]
+    if first_line == "---":
+
+        end_of_frontmatter_index = (
+            lines[1:].index("---") + 2
+        )  # Adding 1 since first item is ignored, and go beyond the final `---`
+
+        frontmatter = lines[0:end_of_frontmatter_index]
+    else:
+        frontmatter = []
+        end_of_frontmatter_index = 0
+
+    parcel = get_imports_and_contents(frontmatter)
+
+    return {
+        "frontmatter": parcel["contents"],
+        "imports": parcel["imports"],
+        "rest": lines[end_of_frontmatter_index:],
+    }
 
 
 def parse_component(data):
 
     lines = data.split("\n")
 
+    frontmatter = get_frontmatter(lines)
+
+    # `get_frontmatter` removes the frontmatter, so use the `rest` of the lines
+    lines = frontmatter["rest"]
+
     # This needs to come before `expand_component_lines`
     # since one of the things expand_compomnent_lines
     # does is remove `external var foo..` lines
     exports = get_exports(lines)
 
-    lines = [expand_component_line(x) for x in data.split("\n")]
+    lines = [expand_component_line(x) for x in lines]
+
+    parcel = get_imports_and_contents(lines)
+
+    imports = cleanup_imports(
+        parcel["imports"] + analyze_for_imports(lines) + frontmatter["imports"]
+    )
+
+    return {
+        "imports": "\n".join(imports),
+        "exports": exports,
+        "contents": "\n".join(parcel["contents"]),
+        "frontmatter": "\n".join(frontmatter["frontmatter"]),
+    }
+
+
+def get_imports_and_contents(lines):
 
     imports = []
     contents = []
 
     for line in lines:
-        if import_pattern.match(line):
+        if line == "---":
+            pass
+        elif import_pattern.match(line):
             imports.append(line)
         else:
             contents.append(line)
 
-    imports = cleanup_imports(imports + analyze_for_imports(lines))
-
-    return {
-        "imports": "\n".join(imports),
-        "exports": exports,
-        "contents": "\n".join(contents),
-    }
+    return {"imports": imports, "contents": contents}
 
 
 def get_exports(lines):
@@ -92,8 +130,8 @@ def expand_component_line(line):
         t, vname, value = matched.groups()
         return f"{t} {vname} by remember {{ derivedStateOf {{  {value}  }} }}"
 
-    #matched = remember_derivedstateof_pattern.match(line)
-    #if matched:
+    # matched = remember_derivedstateof_pattern.match(line)
+    # if matched:
 
     #    t, vname, value = matched.groups()
     #    return f"{t} {vname} by remember {{ derivedStateOf {{  {value}  }} }}"
