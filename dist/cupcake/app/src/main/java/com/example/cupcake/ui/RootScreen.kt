@@ -39,11 +39,7 @@ import androidx.compose.ui.res.stringResource
 import com.example.cupcake.R
 import com.example.cupcake.ui.components.Coffee
 import com.example.cupcake.ui.components.If
-import com.example.cupcake.ui.components.Nested
-import com.example.cupcake.ui.components.ReactiveAssignments
-import com.example.cupcake.ui.components.ReactiveDeclarations
-import com.example.cupcake.ui.components.ReactiveStatements
-import com.example.cupcake.ui.components.Simple
+import com.example.cupcake.ui.components.Loop
 
 
 @Composable
@@ -83,15 +79,16 @@ Column(
     ) {
 
         Coffee()
-        //Simple(good="buh-bye")
-        //ReactiveAssignments()
-        //ReactiveDeclarations()
-        //ReactiveStatements()
-        //Nested(answer=42)
-        //Nested()
+        // Simple(good="buh-bye")
+        // ReactiveAssignments()
+        // ReactiveDeclarations()
+        // ReactiveStatements()
+        // Nested(answer=42)
+        // Nested()
         If()
+        If()
+        Loop()
     }
-    
 
     Column(
         modifier = Modifier.fillMaxWidth(),
