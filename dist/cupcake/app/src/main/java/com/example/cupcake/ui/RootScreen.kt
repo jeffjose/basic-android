@@ -38,6 +38,8 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import com.example.cupcake.R
 import com.example.cupcake.ui.components.Coffee
+import com.example.cupcake.ui.components.ReactiveAssignments
+import com.example.cupcake.ui.components.ReactiveDeclarations
 import com.example.cupcake.ui.components.Simple
 
 
@@ -79,6 +81,8 @@ Column(
 
         Coffee()
         Simple(good="buh-bye")
+        ReactiveAssignments()
+        ReactiveDeclarations()
     }
 
     Column(

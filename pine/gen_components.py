@@ -60,7 +60,7 @@ def get_slug(file):
 
     name = get_name(file)
 
-    return name.capitalize()
+    return "".join([n.capitalize() for  n in name.split('-')])
 
 
 
@@ -113,6 +113,7 @@ def create_component(template, file):
 
 
 def get_name(file):
+    
     return file.stem
 
 def get_route(file, routable=False):

@@ -1,0 +1,20 @@
+import androidx.compose.material3.Text
+import androidx.compose.material3.Button
+
+var *count = 0
+
+fun handleClick() {
+  count++
+}
+
+
+Button(onClick={handleClick()}) {
+
+Text(text = "Clicked $count " + if (count == 1) "time" else "times")
+}
+
+
+Button(onClick={count++ }) {
+
+Text(text = "Clicked $count " + if (count == 1) "time" else "times")
+}
