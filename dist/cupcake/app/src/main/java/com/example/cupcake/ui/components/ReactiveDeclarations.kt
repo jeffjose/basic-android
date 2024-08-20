@@ -21,9 +21,19 @@ fun ReactiveDeclarations() {
 
 
 var count by rememberSaveable { mutableStateOf(1) }
+var x by remember { mutableStateOf(0) }
 
-val doubled by remember {derivedStateOf { count * 2}}
-val quadrupled by remember {derivedStateOf { doubled * 2}}
+//val doubled by remember {derivedStateOf { count * 2}}
+//val quadrupled by remember {derivedStateOf { doubled * 2}}
+
+val doubled  by remember { derivedStateOf {  count * 2  } }
+val quadrupled  by remember { derivedStateOf {  doubled * 2  } }
+
+// val x = $derived({ doubled * 2 })
+// val $x = 0
+// val $x = $derived(doubled * 2) 
+// val $x = {doubled * 2}
+
 
 fun handleClick() {
   count++

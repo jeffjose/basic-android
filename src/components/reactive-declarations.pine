@@ -10,9 +10,19 @@ import androidx.compose.runtime.getValue
 
 
 var *count = 1
+var $x = 0
 
-val doubled by remember {derivedStateOf { count * 2}}
-val quadrupled by remember {derivedStateOf { doubled * 2}}
+//val doubled by remember {derivedStateOf { count * 2}}
+//val quadrupled by remember {derivedStateOf { doubled * 2}}
+
+val doubled  = $derived(count * 2)
+val quadrupled  = $derived(doubled * 2)
+
+// val x = $derived({ doubled * 2 })
+// val $x = 0
+// val $x = $derived(doubled * 2) 
+// val $x = {doubled * 2}
+
 
 fun handleClick() {
   count++

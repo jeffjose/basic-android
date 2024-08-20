@@ -10,6 +10,10 @@ external_variable_pattern = re.compile(r"^external\s+(val|var)\s+(.*)")
 remember_mutablestate_pattern = re.compile(r"(val|var)\s+\$(.*)\s+=\s+(.*)")
 remembersaveable_mutablestate_pattern = re.compile(r"(val|var)\s+\*(.*)\s+=\s+(.*)")
 
+remember_derivedstateof_pattern = re.compile(
+    r"(val|var)\s+(.*)\s+=\s+\$derived\((.*)\)"
+)
+
 
 def parse_component(data):
 
@@ -78,6 +82,12 @@ def expand_component_line(line):
 
         t, vname, value = matched.groups()
         return f"{t} {vname} by rememberSaveable {{ mutableStateOf({value}) }}"
+
+    matched = remember_derivedstateof_pattern.match(line)
+    if matched:
+
+        t, vname, value = matched.groups()
+        return f"{t} {vname} by remember {{ derivedStateOf {{  {value}  }} }}"
 
     matched = external_variable_w_default_value_pattern.match(line)
     if matched:
