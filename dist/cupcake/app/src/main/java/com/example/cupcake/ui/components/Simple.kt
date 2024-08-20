@@ -4,25 +4,53 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.cupcake.ui.theme.CupcakeTheme
 
-import androidx.compose.material3.Button
 import androidx.compose.material3.Text
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 
 @Composable
 fun Simple() {
     
+var foo = "foo-value"
+var bar by rememberSaveable { mutableStateOf("bar-value") }
+var baz by remember { mutableStateOf("baz-value") }
+var x = 1
+var y = 2
+println("------------------")
+println("This is a test")
 
-var coffeeCount  by remember { mutableStateOf(0) }
-var count by rememberSaveable { mutableStateOf(0) }
+val scope = rememberCoroutineScope()
+LaunchedEffect(scope) {
+        println("LaunchedEffect")
+        println(x)
+        println(y)
 
-Text(text = "S: You've had $coffeeCount cups of coffee")
+        x = 10
+        y = 20
 
-Button(onClick = { coffeeCount++ }) 
-        { Text("S: Add one") }
+        println(x)
+        println(y)
+}
+
+DisposableEffect(scope) {
+        println("DisposableEffect")
+        println(x)
+        println(y)
+        onDispose {
+        println("DisposableEffect: onDispose")
+
+        }
+}
+
+
+Text("Simple $foo $bar $baz")
+Text("x=$x y=$y")
 
 }
 

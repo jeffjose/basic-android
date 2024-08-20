@@ -1,3 +1,39 @@
-var foo = "foovalue"
-var *bar = "barvalue"
-var $baz = "bazvalue"
+import androidx.compose.material3.Text
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.rememberCoroutineScope
+
+var foo = "foo-value"
+var *bar = "bar-value"
+var $baz = "baz-value"
+var x = 1
+var y = 2
+println("------------------")
+println("This is a test")
+
+val scope = rememberCoroutineScope()
+LaunchedEffect(scope) {
+        println("LaunchedEffect")
+        println(x)
+        println(y)
+
+        x = 10
+        y = 20
+
+        println(x)
+        println(y)
+}
+
+DisposableEffect(scope) {
+        println("DisposableEffect")
+        println(x)
+        println(y)
+        onDispose {
+        println("DisposableEffect: onDispose")
+
+        }
+}
+
+
+Text("Simple $foo $bar $baz")
+Text("x=$x y=$y")
