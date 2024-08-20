@@ -15,6 +15,7 @@ import com.example.cupcake.ui.components.Coffee
 import com.example.cupcake.ui.components.Simple
 import com.example.cupcake.ui.components.ReactiveAssignments
 import com.example.cupcake.ui.components.ReactiveDeclarations
+import com.example.cupcake.ui.components.ReactiveStatements
 
 // Log.d("XXX", data.value?.toString() ?: "default")
 
@@ -35,6 +36,7 @@ Column(
         Simple(good="buh-bye")
         ReactiveAssignments()
         ReactiveDeclarations()
+        ReactiveStatements()
     }
 
     Column(

@@ -40,6 +40,7 @@ import com.example.cupcake.R
 import com.example.cupcake.ui.components.Coffee
 import com.example.cupcake.ui.components.ReactiveAssignments
 import com.example.cupcake.ui.components.ReactiveDeclarations
+import com.example.cupcake.ui.components.ReactiveStatements
 import com.example.cupcake.ui.components.Simple
 
 
@@ -83,6 +84,7 @@ Column(
         Simple(good="buh-bye")
         ReactiveAssignments()
         ReactiveDeclarations()
+        ReactiveStatements()
     }
 
     Column(
