@@ -7,7 +7,7 @@ dependencies = [
     "pyinstaller>=6.10.0",
     "ujson>=5.10.0",
     "typer>=0.12.4",
-    "antlr4-python3-runtime==4.9.2",
+    "antlr4-python3-runtime==4.13.2",
 ]
 readme = "README.md"
 requires-python = ">= 3.8"
