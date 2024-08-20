@@ -83,12 +83,12 @@ Column(
     ) {
 
         Coffee()
-        Simple(good="buh-bye")
-        ReactiveAssignments()
-        ReactiveDeclarations()
-        ReactiveStatements()
-        Nested(answer=42)
-        Nested()
+        //Simple(good="buh-bye")
+        //ReactiveAssignments()
+        //ReactiveDeclarations()
+        //ReactiveStatements()
+        //Nested(answer=42)
+        //Nested()
         If()
     }
     

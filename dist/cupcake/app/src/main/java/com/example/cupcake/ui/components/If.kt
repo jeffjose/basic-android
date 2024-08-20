@@ -16,9 +16,10 @@ import androidx.compose.runtime.setValue
 fun If() {
     
 
+println("if - before")
 var count by remember { mutableStateOf(0) }
 val user by remember { mutableStateOf(mutableStateMapOf("loggedIn" to false)) }
-println(user)
+println("if - after")
 
 if (user["loggedIn"] == false) {
 Button(onClick={ 

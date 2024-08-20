@@ -3,9 +3,10 @@ import androidx.compose.material3.Button
 import androidx.compose.runtime.mutableStateMapOf
 
 
+println("if - before")
 var $count = 0
 val $user = mutableStateMapOf("loggedIn" to false)
-println(user)
+println("if - after")
 
 if (user["loggedIn"] == false) {
 Button(onClick={ 
