@@ -5,6 +5,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.LaunchedEffect
 
 var *count = 1
 
@@ -12,7 +13,11 @@ fun check() {
   println("The $count is ridiculously high")
 }
 
-SideEffect {println("hi there $count")}
+//LaunchedEffect(true) {
+//  println("LE: hi there $count")
+//  }
+//
+SideEffect {println("SE: hi there $count")}
 
 fun handleClick() {
   count++

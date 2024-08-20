@@ -38,6 +38,8 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import com.example.cupcake.R
 import com.example.cupcake.ui.components.Coffee
+import com.example.cupcake.ui.components.If
+import com.example.cupcake.ui.components.Nested
 import com.example.cupcake.ui.components.ReactiveAssignments
 import com.example.cupcake.ui.components.ReactiveDeclarations
 import com.example.cupcake.ui.components.ReactiveStatements
@@ -85,7 +87,11 @@ Column(
         ReactiveAssignments()
         ReactiveDeclarations()
         ReactiveStatements()
+        Nested(answer=42)
+        Nested()
+        If()
     }
+    
 
     Column(
         modifier = Modifier.fillMaxWidth(),

@@ -1,0 +1,5 @@
+import androidx.compose.material3.Text
+
+external var answer: Int=0
+
+Text(text = "The answer is $answer")
