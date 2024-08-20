@@ -24,14 +24,14 @@ import %%NAMESPACE%%.ui.theme.CupcakeTheme
 %%IMPORT%%
 
 @Composable
-fun %%NAME%%() {
+fun %%NAME%%(%%PARAMS%%) {
     %%CONTENT%%
 }
 
 /*
 @Preview
 @Composable
-fun %%NAME%%Preview() {
+fun %%NAME%%Preview(%%PARAMS%%) {
     CupcakeTheme {
         %%NAME%%(
         )
@@ -67,6 +67,18 @@ def get_slug(file):
 def mkpackage_string_component(output_dir_base):
     return f"package {get_project_namespace()}.ui.components{"." + output_dir_base.replace('/', '.') if output_dir_base != '' else ''}"
 
+def mkexport_string_component(exports):
+
+    s = []
+
+    for e in exports:
+        if e['value']:
+            s.append(f'{e["name"]}={e["value"]}')
+        else:
+            s.append(f'{e["name"]}')
+
+    return ", ".join(s)
+
 
 def get_component_name(slug, include_ext=True):
     return f"{slug}{'.kt' if include_ext else ''}"
@@ -92,6 +104,7 @@ def create_component(template, file):
         .replace("%%IMPORT%%", parcel["imports"])
         .replace("%%CONTENT%%", parcel["contents"])
         .replace("%%NAME%%", slug)
+        .replace("%%PARAMS%%", mkexport_string_component(parcel["exports"]))
         .strip()
     )
 

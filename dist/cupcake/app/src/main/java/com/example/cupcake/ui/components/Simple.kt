@@ -13,10 +13,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import kotlinx.coroutines.launch
 
 @Composable
-fun Simple() {
+fun Simple(good:String="bye") {
     
+
 var foo = "foo-value"
 var bar by rememberSaveable { mutableStateOf("bar-value") }
 var baz by remember { mutableStateOf("baz-value") }
@@ -26,24 +28,28 @@ println("------------------")
 println("This is a test")
 
 val scope = rememberCoroutineScope()
-LaunchedEffect(scope) {
-        println("LaunchedEffect")
-        println(x)
-        println(y)
+LaunchedEffect(true) {
+        println("LaunchedEffect: $x $y")
 
         x = 10
         y = 20
 
-        println(x)
-        println(y)
+        println("LaunchedEffect: $x $y")
+}
+
+scope.launch {
+
+        println("scope.launch: $x $y")
+        x = 100
+        y = 200
+        println("scope.launch: $x $y")
+
 }
 
 DisposableEffect(scope) {
-        println("DisposableEffect")
-        println(x)
-        println(y)
+        println("DisposableEffect: $x $y")
         onDispose {
-        println("DisposableEffect: onDispose")
+        println("DisposableEffect:onDispose : $x $y")
 
         }
 }
@@ -57,7 +63,7 @@ Text("x=$x y=$y")
 /*
 @Preview
 @Composable
-fun SimplePreview() {
+fun SimplePreview(good:String="bye") {
     CupcakeTheme {
         Simple(
         )

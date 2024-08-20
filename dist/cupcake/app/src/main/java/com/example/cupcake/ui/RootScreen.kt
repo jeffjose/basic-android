@@ -78,7 +78,7 @@ Column(
     ) {
 
         Coffee()
-        Simple()
+        Simple(good="buh-bye")
     }
 
     Column(

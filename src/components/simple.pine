@@ -2,7 +2,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.rememberCoroutineScope
+import kotlinx.coroutines.launch
 
+external var good:String="bye"
 var foo = "foo-value"
 var *bar = "bar-value"
 var $baz = "baz-value"
@@ -12,24 +14,28 @@ println("------------------")
 println("This is a test")
 
 val scope = rememberCoroutineScope()
-LaunchedEffect(scope) {
-        println("LaunchedEffect")
-        println(x)
-        println(y)
+LaunchedEffect(true) {
+        println("LaunchedEffect: $x $y")
 
         x = 10
         y = 20
 
-        println(x)
-        println(y)
+        println("LaunchedEffect: $x $y")
+}
+
+scope.launch {
+
+        println("scope.launch: $x $y")
+        x = 100
+        y = 200
+        println("scope.launch: $x $y")
+
 }
 
 DisposableEffect(scope) {
-        println("DisposableEffect")
-        println(x)
-        println(y)
+        println("DisposableEffect: $x $y")
         onDispose {
-        println("DisposableEffect: onDispose")
+        println("DisposableEffect:onDispose : $x $y")
 
         }
 }
