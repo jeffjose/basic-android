@@ -20,20 +20,21 @@ var count by remember { mutableStateOf(0) }
 val user by remember { mutableStateOf(mutableStateMapOf("loggedIn" to false)) }
 println(user)
 
+if (user["loggedIn"] == false) {
 Button(onClick={ 
   user["loggedIn"] = true
   }){
   Text(text="Log in ")
 }
-
+}
+else {
 
 Button(onClick={ 
   user["loggedIn"] = false
   }){
   Text(text="Log out ")
 }
-
-Text(text="${user.getValue("loggedIn")}")
+}
 
 }
 
