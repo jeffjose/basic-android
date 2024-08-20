@@ -1,31 +1,27 @@
 ---
-
-import kotlinx.parcelize.Parcelize
-import android.os.Parcelable
-
 @Parcelize
-data class User(val loggedIn: Boolean) : Parcelable
-
+data class User(var loggedIn: Boolean) : Parcelable
 ---
 
 import androidx.compose.material3.Text
 import androidx.compose.material3.Button
 import androidx.compose.runtime.mutableStateMapOf
+import kotlinx.parcelize.Parcelize
+import android.os.Parcelable
 
 //println("if - before")
 
 
 var foo = 0
 var $count = 0
-val *user1 = User(false)
-val user = mutableStateMapOf<String,Boolean>("loggedIn" to false)
+var *user = User(false)
 
 //println("if - after ${user["loggedIn"]}")
 
-if (user["loggedIn"] == false) {
+if (user.loggedIn == false) {
   Button(onClick={ 
-    user["loggedIn"] = true
-    println("login! ${user["loggedIn"]}")
+    user  = user.copy(loggedIn = true)
+    println("login! ${user.loggedIn}")
     foo++
     }){
     Text(text="Log in ")
@@ -34,8 +30,8 @@ if (user["loggedIn"] == false) {
 else {
 
   Button(onClick={ 
-    user["loggedIn"] = false
-    println("logout! ${user["loggedIn"]}")
+    user  = user.copy(loggedIn = false)
+    println("logout! ${user.loggedIn}")
     foo++
     }){
     Text(text="Log out ")
@@ -43,12 +39,12 @@ else {
 }
 
 Button(onClick={ 
-  if (user["loggedIn"] == true) {
+  if (user.loggedIn == true) {
 
-user["loggedIn"] = false
+    user  = user.copy(loggedIn = false)
   }
   else {
-user["loggedIn"] = true
+    user  = user.copy(loggedIn = true)
 
   }
     foo++
@@ -56,4 +52,4 @@ user["loggedIn"] = true
   Text(text="Toggle")
 }
 
-  Text(text="${user.getValue("loggedIn")}. Clicked $foo times")
+  Text(text="${user.loggedIn}. Clicked $foo times")
