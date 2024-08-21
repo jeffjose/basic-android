@@ -1,0 +1,21 @@
+import androidx.compose.material3.Button
+
+external var value
+
+Row {
+    Button { Text(text = "1") }
+    Button { Text(text = "2") }
+    Button { Text(text = "3") }
+}
+
+Row {
+    Button { Text(text = "4") }
+    Button { Text(text = "5") }
+    Button { Text(text = "6") }
+}
+
+Row {
+    Button { Text(text = "4") }
+    Button { Text(text = "5") }
+    Button { Text(text = "6") }
+}

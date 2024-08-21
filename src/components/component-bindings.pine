@@ -1,0 +1,15 @@
+import androidx.compose.material3.Text
+import androidx.compose.material3.Button
+
+import com.example.cupcake.ui.components.Keypad
+
+
+
+var *pin = 0
+
+fun handleSubmit() {
+  println("You entererd $pin")
+}
+
+Text("$pin")
+Keypad(value=pin)
