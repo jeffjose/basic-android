@@ -14,6 +14,7 @@ import com.example.cupcake.R
 import com.example.cupcake.ui.components.Coffee
 import com.example.cupcake.ui.components.If
 import com.example.cupcake.ui.components.Loop
+import com.example.cupcake.ui.components.BindingText
 
 // Log.d("XXX", data.value?.toString() ?: "default")
 
@@ -37,9 +38,10 @@ Column(
         // ReactiveStatements()
         // Nested(answer=42)
         // Nested()
-        If()
-        If()
-        Loop()
+        //If()
+        //If()
+        //Loop()
+        BindingText()
     }
 
     Column(

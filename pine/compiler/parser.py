@@ -110,19 +110,42 @@ def get_exports(lines):
     return exports
 
 
+def _extract_between_paren(s):
+
+    if "(" in s:
+        vname, saver = s.split("(")
+    else:
+        vname = s
+        saver = ""
+
+    saver = saver.replace(")", "")
+    return vname, saver
+
+
 def expand_component_line(line):
 
     matched = remember_mutablestate_pattern.match(line)
     if matched:
 
         t, vname, value = matched.groups()
-        return f"{t} {vname} by remember {{ mutableStateOf({value}) }}"
+
+        vname, saver = _extract_between_paren(vname)
+
+        stateSaverString = "" if not saver else f"({saver})"
+
+        return (
+            f"{t} {vname} by remember{stateSaverString} {{ mutableStateOf({value}) }}"
+        )
 
     matched = remembersaveable_mutablestate_pattern.match(line)
     if matched:
 
         t, vname, value = matched.groups()
-        return f"{t} {vname} by rememberSaveable {{ mutableStateOf({value}) }}"
+
+        vname, saver = _extract_between_paren(vname)
+
+        stateSaverString = "" if not saver else f"({saver})"
+        return f"{t} {vname} by rememberSaveable{stateSaverString} {{ mutableStateOf({value}) }}"
 
     matched = remember_derivedstateof_pattern.match(line)
     if matched:

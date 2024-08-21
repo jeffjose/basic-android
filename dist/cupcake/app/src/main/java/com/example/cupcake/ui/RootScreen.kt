@@ -37,6 +37,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import com.example.cupcake.R
+import com.example.cupcake.ui.components.BindingText
 import com.example.cupcake.ui.components.Coffee
 import com.example.cupcake.ui.components.If
 import com.example.cupcake.ui.components.Loop
@@ -85,9 +86,10 @@ Column(
         // ReactiveStatements()
         // Nested(answer=42)
         // Nested()
-        If()
-        If()
-        Loop()
+        //If()
+        //If()
+        //Loop()
+        BindingText()
     }
 
     Column(
