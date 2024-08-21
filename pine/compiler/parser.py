@@ -212,5 +212,4 @@ def cleanup_imports(imports):
 
     # Dedupes by splitting the `import` statement into components and joining it back together
     # Sorts
-    return set([" ".join(t.strip() for t in x.split()) for x in imports])
     return sorted(set([" ".join(t.strip() for t in x.split()) for x in imports]))
