@@ -1,5 +1,7 @@
 import re
 
+# A greedy pattern to capture everything inside paren
+saver_pattern = re.compile(r'(\w+)\((.*)\)')
 
 import_pattern = re.compile(r"import\s+.*")
 
@@ -118,17 +120,40 @@ def get_exports(lines):
 
 def _extract_between_paren(s):
 
-    if "(" in s:
-        vname, saver = s.split("(")
+    # This is hacky. We're checking for `(` instead of having a better/more compilcated regex
+    if '(' in s:
+        vname, saver =  saver_pattern.search(s).groups()
     else:
-        vname = s
-        saver = ""
+        vname  = s
+        saver = ''
+        
 
-    saver = saver.replace(")", "")
     return vname, saver
 
 
 def expand_component_line(line):
+
+    # This needs to come first, and the next 2 blocks dont return but pass it along to `remember` blocks
+    matched = external_variable_w_default_value_pattern.match(line)
+    if matched:
+
+
+        t, vname_type, value = matched.groups()
+        vname = vname_type.split(":")[0]
+
+        # Dont return, but pass along
+        # The `*` exists so that external variables are rememberSaveable
+        line = f"{t} *{_clean_vname(vname)}(inputs=arrayOf({_clean_vname(vname)})) = {_clean_vname(vname)}"
+
+    matched = external_variable_pattern.match(line)
+    if matched:
+
+        t, vname_type = matched.groups()
+        vname = vname_type.split(":")[0]
+
+        # Dont return, but pass along
+        # The `*` exists so that external variables are rememberSaveable
+        line = f"{t} *{_clean_vname(vname)}(inputs=arrayOf({_clean_vname(vname)})) = {_clean_vname(vname)}"
 
     matched = remember_mutablestate_pattern.match(line)
     if matched:
@@ -143,25 +168,6 @@ def expand_component_line(line):
             f"{t} {vname} by remember{stateSaverString} {{ mutableStateOf({value}) }}"
         )
 
-    # This needs to come first, and the next 2 blocks dont return but pass it along to `remember` blocks
-    matched = external_variable_w_default_value_pattern.match(line)
-    if matched:
-
-
-        t, vname_type, value = matched.groups()
-        vname = vname_type.split(":")[0]
-
-        # Dont return, but pass along
-        line = f"{t} {vname} = {vname.strip("*$")}"
-
-    matched = external_variable_pattern.match(line)
-    if matched:
-
-        t, vname_type = matched.groups()
-        vname = vname_type.split(":")[0]
-
-        # Dont return, but pass along
-        line =  f"{t} {vname} = {vname.strip("*$")}"
 
 
     matched = remembersaveable_mutablestate_pattern.match(line)
@@ -172,6 +178,7 @@ def expand_component_line(line):
         vname, saver = _extract_between_paren(vname)
 
         stateSaverString = "" if not saver else f"({saver})"
+
         return f"{t} {vname} by rememberSaveable{stateSaverString} {{ mutableStateOf({value}) }}"
 
     matched = remember_derivedstateof_pattern.match(line)
@@ -189,6 +196,9 @@ def expand_component_line(line):
 
     return line
 
+
+def _clean_vname(s):
+    return s.strip("*$")
 
 def analyze_for_imports(lines):
     imports = []

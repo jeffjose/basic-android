@@ -22,7 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 fun BindingText() {
     
 
-var text2 by rememberSaveable(stateSaver = TextFieldValue.Saver ) { mutableStateOf(TextFieldValue("", TextRange(0, 7))) }
+var text2 by rememberSaveable(stateSaver = TextFieldValue.Saver) { mutableStateOf(TextFieldValue("", TextRange(0, 7))) }
 
 TextField(value=text2, onValueChange={text2=it})
 Text("Entered ${text2.text}")

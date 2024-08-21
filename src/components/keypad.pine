@@ -4,7 +4,8 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 
 external var first: Int = 0
-external var *second: Int = 0
+external var second: Int = 0
+
 var third: Int = 0
 var *fourth: Int = 0
 println("first=$first, second=$second, third=$third, fourth=$fourth")

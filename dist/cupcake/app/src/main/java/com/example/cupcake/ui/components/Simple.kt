@@ -21,7 +21,7 @@ import kotlinx.coroutines.launch
 //fun Simple(good:String="bye",  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
 fun Simple(good:String="bye", ) {
     
-var good = good
+var good by rememberSaveable(inputs=arrayOf(good)) { mutableStateOf(good) }
 var foo = "foo-value"
 var bar by rememberSaveable { mutableStateOf("bar-value") }
 var baz by remember { mutableStateOf("baz-value") }

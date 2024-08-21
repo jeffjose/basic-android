@@ -21,13 +21,14 @@ fun Keypad(first: Int=0, second: Int=0, value: String="", setFirst: (Int) -> Uni
     
 var first by rememberSaveable(inputs=arrayOf(first)) { mutableStateOf(first) }
 var second by rememberSaveable(inputs=arrayOf(second)) { mutableStateOf(second) }
+
 var third: Int = 0
 var fourth: Int by rememberSaveable { mutableStateOf(0) }
 println("first=$first, second=$second, third=$third, fourth=$fourth")
 
-var value by rememberSaveable { mutableStateOf(value) }
+var value by rememberSaveable(inputs=arrayOf(value)) { mutableStateOf(value) }
 
-var setFirst = setFirst
+var setFirst by rememberSaveable(inputs=arrayOf(setFirst)) { mutableStateOf(setFirst) }
 
 fun select(num: Int) {
   value = Regex("\\w").replace(value, "x") + num.toString()
