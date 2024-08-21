@@ -1,5 +1,6 @@
 import re
 
+
 import_pattern = re.compile(r"import\s+.*")
 
 external_variable_w_default_value_pattern = re.compile(
@@ -39,7 +40,7 @@ def get_frontmatter(lines):
     }
 
 
-def parse_component(data):
+def parse_component(data, default_imports):
 
     lines = data.split("\n")
 
@@ -57,8 +58,10 @@ def parse_component(data):
 
     parcel = get_imports_and_contents(lines)
 
+
     imports = cleanup_imports(
-        parcel["imports"] + analyze_for_imports(lines) + frontmatter["imports"]
+        parcel["imports"] + analyze_for_imports(lines) + frontmatter["imports"] + 
+        default_imports
     )
 
     return {
@@ -209,4 +212,5 @@ def cleanup_imports(imports):
 
     # Dedupes by splitting the `import` statement into components and joining it back together
     # Sorts
+    return set([" ".join(t.strip() for t in x.split()) for x in imports])
     return sorted(set([" ".join(t.strip() for t in x.split()) for x in imports]))

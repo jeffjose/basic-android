@@ -13,12 +13,14 @@ from utils import (
     mkdir
 )
 from compiler.parser import parse_component
+DEFAULT_IMPORTS = [
+'import androidx.compose.runtime.Composable',
+'import androidx.compose.ui.tooling.preview.Preview',
+]
 
 INPUT_PATTERN = "src/**/**.pine"
 TEMPLATE_COMPONENT = """%%PACKAGENAME%%
 
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
 import %%NAMESPACE%%.ui.theme.CupcakeTheme
 
 %%IMPORT%%
@@ -94,7 +96,7 @@ def create_component(template, file):
 
     output_dir_base = get_output_dir_base(file)
 
-    parcel = parse_component(read_file(file))
+    parcel = parse_component(read_file(file), DEFAULT_IMPORTS)
 
     slug = get_slug(file)
 

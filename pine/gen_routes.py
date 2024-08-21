@@ -29,6 +29,29 @@ TEMPLATE_COMPOSABLE = """
       }
 """
 
+DEFAULT_IMPORTS = [
+    "import androidx.compose.runtime.Composable",
+    "import androidx.navigation.NavHostController",
+    "import androidx.compose.ui.tooling.preview.Preview",
+    "import androidx.navigation.compose.rememberNavController",
+    "import android.os.Bundle",
+    "import io.ktor.client.*",
+    "import io.ktor.client.engine.cio.*",
+    "import io.ktor.client.request.*",
+    "import io.ktor.client.statement.*",
+    "import io.ktor.client.call.body",
+    "import io.ktor.client.plugins.contentnegotiation.*",
+    "import io.ktor.serialization.kotlinx.json.*",
+    "import kotlinx.serialization.*",
+    "import kotlinx.serialization.json.*",
+    "import androidx.compose.runtime.getValue",
+    "import androidx.compose.runtime.mutableStateOf",
+    "import androidx.compose.runtime.setValue",
+    "import androidx.compose.runtime.rememberCoroutineScope",
+    "import androidx.compose.runtime.remember",
+    "import androidx.compose.runtime.LaunchedEffect",
+]
+
 TEMPLATE_NAVIGATION = """%%PACKAGENAME%%
 
 import androidx.compose.foundation.rememberScrollState
@@ -78,28 +101,6 @@ fun Navigation(navController: NavHostController) {
 """
 
 TEMPLATE_SCREEN = """%%PACKAGENAME%%
-
-import androidx.compose.runtime.Composable
-import androidx.navigation.NavHostController
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.compose.rememberNavController
-import android.os.Bundle
-import io.ktor.client.*
-import io.ktor.client.engine.cio.*
-import io.ktor.client.request.*
-import io.ktor.client.statement.*
-import io.ktor.client.call.body
-import io.ktor.client.plugins.contentnegotiation.*
-import io.ktor.serialization.kotlinx.json.*
-import kotlinx.serialization.*
-import kotlinx.serialization.json.*
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.LaunchedEffect
-
 
 import %%NAMESPACE%%.ui.theme.CupcakeTheme
 
@@ -203,10 +204,11 @@ def get_screenfile_name(slug, include_ext=True):
 
 def create_screen(template, file):
 
-    parcel = parse_component(read_file(file))
+    parcel = parse_component(read_file(file), default_imports=DEFAULT_IMPORTS)
 
     slug = get_slug(file)
 
+    print("xxxxxxx", len(parcel["imports"].split("\n")))
     final = (
         template.replace("%%PACKAGENAME%%", mkpackage_string_screen())
         .replace("%%NAMESPACE%%", get_project_namespace())
