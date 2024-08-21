@@ -3,31 +3,61 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 
-external var first: String = ""
-external var second: String = ""
+external var first: Int = 0
+external var *second: Int = 0
+var third: Int = 0
+var *fourth: Int = 0
+println("first=$first, second=$second, third=$third, fourth=$fourth")
 
 external var *value: String = ""
 
-external var setFirst: (String) -> Unit
-external var setSecond: (String) -> Unit
+external var setFirst: (Int) -> Unit
 
 fun select(num: Int) {
   value = Regex("\\w").replace(value, "x") + num.toString()
-  println("Here $num $value")
+  println("Here $num $value ")
 }
 
 //println("INSIDE - params - $params")
 
 Text(text="INSIDE: value=$value first=$first second=$second")
 
-    TextField(
-        value = first,
-        onValueChange = setFirst
-    )
-    TextField(
-        value = second,
-        onValueChange = setSecond
-    )
+Button(onClick={
+  first = first + 1
+  setFirst(first)
+  }) {
+Text( text = "INSIDE (2way): $first")
+}
+
+Button(onClick={
+  println(second)
+  second = second + 1
+  println(second)
+  }) {
+
+Text( text = "INSIDE (1way): $second")
+}
+
+
+Button(onClick={
+  println(third)
+  third = third + 1
+  println(third)
+  }) {
+
+Text( text = "INSIDE var third $third")
+}
+
+
+Button(onClick={
+  println(fourth)
+  fourth = fourth + 1
+  println(fourth)
+  }) {
+
+Text( text = "INSIDE var *fourth: $fourth")
+}
+
 
 Row() {
   Button(onClick={select(1)}){Text(text="1")}

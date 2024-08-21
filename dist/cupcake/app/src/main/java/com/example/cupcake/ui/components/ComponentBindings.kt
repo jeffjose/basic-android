@@ -18,8 +18,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 
 
 class ViewModel {
-    val first = MutableStateFlow("")
-    val second = MutableStateFlow("")
+    var first = MutableStateFlow(0)
+    var second = MutableStateFlow(0)
 }
 
 @Composable
@@ -29,8 +29,10 @@ fun ComponentBindings() {
 
 
 val viewModel = remember { ViewModel() } // or viewModel() etc.
-val (first, setFirst) = viewModel.first.collectAsMutableState()
-val (second, setSecond) = viewModel.second.collectAsMutableState()
+var (first, setFirst) = viewModel.first.collectAsMutableState()
+//var (second, setSecond) = viewModel.second.collectAsMutableState()
+
+var second by rememberSaveable { mutableStateOf(0) }
 
 
 
@@ -41,15 +43,20 @@ fun handleSubmit() {
 }
 
 Text("OUTSIDE: pin=$pin first=$first second=$second")
-    TextField(
-        value = first,
-        onValueChange = setFirst
-    )
-    TextField(
-        value = second,
-        onValueChange = setSecond
-    )
-Keypad(value=pin, first = first, second=second, setFirst = setFirst, setSecond = setSecond)
+    
+Button(onClick={
+  first = first + 1
+  setFirst(first)
+  }) {
+Text( text = "OUTSIDE (2way): $first")
+}
+
+Button(onClick={
+  second = second + 1
+  }) {
+Text( text = "OUTSIDE (1way): $second")
+}
+Keypad(value=pin, first = first, second=second, setFirst = setFirst)
 //Keypad(value=pin, bind:v = v)
 
 }

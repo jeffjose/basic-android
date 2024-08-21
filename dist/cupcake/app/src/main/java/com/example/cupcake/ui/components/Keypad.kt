@@ -16,34 +16,64 @@ import androidx.compose.ui.tooling.preview.Preview
 
 
 @Composable
-//fun Keypad(first: String="", second: String="", value: String="", setFirst: (String) -> Unit, setSecond: (String) -> Unit,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
-fun Keypad(first: String="", second: String="", value: String="", setFirst: (String) -> Unit, setSecond: (String) -> Unit, ) {
+//fun Keypad(first: Int=0, second: Int=0, value: String="", setFirst: (Int) -> Unit,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
+fun Keypad(first: Int=0, second: Int=0, value: String="", setFirst: (Int) -> Unit, ) {
     
 var first = first
-var second = second
+var second by rememberSaveable(inputs=arrayOf(second)) { mutableStateOf(second) }
+var third: Int = 0
+var fourth: Int by rememberSaveable { mutableStateOf(0) }
+println("first=$first, second=$second, third=$third, fourth=$fourth")
 
 var value by rememberSaveable { mutableStateOf(value) }
 
 var setFirst = setFirst
-var setSecond = setSecond
 
 fun select(num: Int) {
   value = Regex("\\w").replace(value, "x") + num.toString()
-  println("Here $num $value")
+  println("Here $num $value ")
 }
 
 //println("INSIDE - params - $params")
 
 Text(text="INSIDE: value=$value first=$first second=$second")
 
-    TextField(
-        value = first,
-        onValueChange = setFirst
-    )
-    TextField(
-        value = second,
-        onValueChange = setSecond
-    )
+Button(onClick={
+  first = first + 1
+  setFirst(first)
+  }) {
+Text( text = "INSIDE (2way): $first")
+}
+
+Button(onClick={
+  println(second)
+  second = second + 1
+  println(second)
+  }) {
+
+Text( text = "INSIDE (1way): $second")
+}
+
+
+Button(onClick={
+  println(third)
+  third = third + 1
+  println(third)
+  }) {
+
+Text( text = "INSIDE var third $third")
+}
+
+
+Button(onClick={
+  println(fourth)
+  fourth = fourth + 1
+  println(fourth)
+  }) {
+
+Text( text = "INSIDE var *fourth: $fourth")
+}
+
 
 Row() {
   Button(onClick={select(1)}){Text(text="1")}
@@ -81,7 +111,7 @@ Row() {
 @Suppress("unused_parameter")
 @Preview
 @Composable
-fun KeypadPreview(first: String="", second: String="", value: String="", setFirst: (String) -> Unit, setSecond: (String) -> Unit,  @Suppress("UNUSED_PARAMETER")) {
+fun KeypadPreview(first: Int=0, second: Int=0, value: String="", setFirst: (Int) -> Unit,  @Suppress("UNUSED_PARAMETER")) {
     CupcakeTheme {
         Keypad(
         )

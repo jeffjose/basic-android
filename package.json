@@ -14,6 +14,7 @@
     "gen": "./pine/scripts/gen.sh",
     "install": "pnpm gen && cd dist/cupcake && ./gradlew installDebug",
     "install:canonical": "cd .canonical-app && ./gradlew installDebug",
+    "install:nogen": "cd dist/cupcake && ./gradlew installDebug",
     "preview": "cd dist/cupcake && ./gradlew installDebug",
     "sync": "cd pine && rye sync",
     "w:build": "npm-watch build",
