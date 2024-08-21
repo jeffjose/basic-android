@@ -61,3 +61,6 @@ $COPY -r src/CupcakeScreen.kt dist/cupcake/app/src/main/java/com/example/cupcake
 
 # 15. src/MainActivity.kt
 $COPY -r pine/_template/app/src/main/java/com/example/cupcake/MainActivity.kt dist/cupcake/app/src/main/java/com/example/cupcake/
+
+# 16. src/MainActivity.kt
+$COPY -r src/utils.kt dist/cupcake/app/src/main/java/com/example/cupcake/
