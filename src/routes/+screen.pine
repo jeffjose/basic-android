@@ -12,6 +12,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import com.example.cupcake.R
 import com.example.cupcake.ui.components.Coffee
+import com.example.cupcake.ui.components.Spacer
 import com.example.cupcake.ui.components.If
 import com.example.cupcake.ui.components.Loop
 import com.example.cupcake.ui.components.BindingText
@@ -32,7 +33,8 @@ Column(
         verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_small)),
     ) {
 
-        Coffee()
+        Spacer()
+        //Coffee()
         // Simple(good="buh-bye")
         // ReactiveAssignments()
         // ReactiveDeclarations()

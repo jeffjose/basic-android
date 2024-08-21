@@ -4,9 +4,12 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 
 external var first: String = ""
+external var second: String = ""
+
 external var *value: String = ""
 
 external var setFirst: (String) -> Unit
+external var setSecond: (String) -> Unit
 
 fun select(num: Int) {
   value = Regex("\\w").replace(value, "x") + num.toString()
@@ -15,11 +18,15 @@ fun select(num: Int) {
 
 //println("INSIDE - params - $params")
 
-Text(text="INSIDE: value=$value first=$first")
+Text(text="INSIDE: value=$value first=$first second=$second")
 
     TextField(
         value = first,
         onValueChange = setFirst
+    )
+    TextField(
+        value = second,
+        onValueChange = setSecond
     )
 
 Row() {

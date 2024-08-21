@@ -31,6 +31,7 @@ import com.example.cupcake.ui.components.Coffee
 import com.example.cupcake.ui.components.ComponentBindings
 import com.example.cupcake.ui.components.If
 import com.example.cupcake.ui.components.Loop
+import com.example.cupcake.ui.components.Spacer
 import io.ktor.client.*
 import io.ktor.client.call.body
 import io.ktor.client.engine.cio.*
@@ -78,7 +79,8 @@ Column(
         verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_small)),
     ) {
 
-        Coffee()
+        Spacer()
+        //Coffee()
         // Simple(good="buh-bye")
         // ReactiveAssignments()
         // ReactiveDeclarations()
