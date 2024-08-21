@@ -19,7 +19,7 @@ import kotlinx.parcelize.Parcelize
 data class User(var loggedIn: Boolean) : Parcelable
 
 @Composable
-fun If() {
+fun If( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
     
 
 //println("if - before")
@@ -70,9 +70,11 @@ Button(onClick={
 }
 
 /*
+@Suppress("unused")
+@Suppress("unused_parameter")
 @Preview
 @Composable
-fun IfPreview() {
+fun IfPreview( @Suppress("UNUSED_PARAMETER")) {
     CupcakeTheme {
         If(
         )

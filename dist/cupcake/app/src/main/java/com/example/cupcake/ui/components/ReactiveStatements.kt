@@ -18,7 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 
 
 @Composable
-fun ReactiveStatements() {
+fun ReactiveStatements( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
     
 var count by rememberSaveable { mutableStateOf(1) }
 
@@ -46,9 +46,11 @@ Button(onClick={handleClick()}) {
 }
 
 /*
+@Suppress("unused")
+@Suppress("unused_parameter")
 @Preview
 @Composable
-fun ReactiveStatementsPreview() {
+fun ReactiveStatementsPreview( @Suppress("UNUSED_PARAMETER")) {
     CupcakeTheme {
         ReactiveStatements(
         )

@@ -9,7 +9,7 @@ import androidx.compose.ui.tooling.preview.Preview
 
 
 @Composable
-fun Nested(answer: Int=0) {
+fun Nested(answer: Int=0,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
     
 var answer = answer
 
@@ -18,9 +18,11 @@ Text(text = "The answer is $answer")
 }
 
 /*
+@Suppress("unused")
+@Suppress("unused_parameter")
 @Preview
 @Composable
-fun NestedPreview(answer: Int=0) {
+fun NestedPreview(answer: Int=0,  @Suppress("UNUSED_PARAMETER")) {
     CupcakeTheme {
         Nested(
         )

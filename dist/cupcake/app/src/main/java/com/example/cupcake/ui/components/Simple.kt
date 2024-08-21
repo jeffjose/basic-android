@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 
 
 @Composable
-fun Simple(good:String="bye") {
+fun Simple(good:String="bye",  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
     
 var good = good
 var foo = "foo-value"
@@ -63,9 +63,11 @@ Text("x=$x y=$y")
 }
 
 /*
+@Suppress("unused")
+@Suppress("unused_parameter")
 @Preview
 @Composable
-fun SimplePreview(good:String="bye") {
+fun SimplePreview(good:String="bye",  @Suppress("UNUSED_PARAMETER")) {
     CupcakeTheme {
         Simple(
         )

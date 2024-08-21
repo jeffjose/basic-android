@@ -16,7 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 
 
 @Composable
-fun Keypad(v: String="", value: String="", setV: (String) -> Unit) {
+fun Keypad(v: String="", value: String="", setV: (String) -> Unit,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
     
 var v = v
 var value by rememberSaveable { mutableStateOf(value) }
@@ -27,6 +27,8 @@ fun select(num: Int) {
   value = Regex("\\w").replace(value, "x") + num.toString()
   println("Here $num $value")
 }
+
+println("INSIDE - params - $params")
 
 Text(text="INSIDE: value=$value v=$v")
 
@@ -67,9 +69,11 @@ Row() {
 }
 
 /*
+@Suppress("unused")
+@Suppress("unused_parameter")
 @Preview
 @Composable
-fun KeypadPreview(v: String="", value: String="", setV: (String) -> Unit) {
+fun KeypadPreview(v: String="", value: String="", setV: (String) -> Unit,  @Suppress("UNUSED_PARAMETER")) {
     CupcakeTheme {
         Keypad(
         )

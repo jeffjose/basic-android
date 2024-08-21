@@ -21,7 +21,7 @@ class ViewModel {
 }
 
 @Composable
-fun ComponentBindings() {
+fun ComponentBindings( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
     
 
 
@@ -37,15 +37,17 @@ fun handleSubmit() {
 }
 
 Text("OUTSIDE: pin=$pin v=$v")
-Keypad(value=pin, v = v, setV = setV)
-//Keypad(value=pin, bind:v = v, setV = setV)
+Keypad(value=pin, v = v, setV = setV, params = *[setV])
+//Keypad(value=pin, bind:v = v)
 
 }
 
 /*
+@Suppress("unused")
+@Suppress("unused_parameter")
 @Preview
 @Composable
-fun ComponentBindingsPreview() {
+fun ComponentBindingsPreview( @Suppress("UNUSED_PARAMETER")) {
     CupcakeTheme {
         ComponentBindings(
         )

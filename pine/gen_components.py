@@ -28,14 +28,16 @@ import %%NAMESPACE%%.ui.theme.CupcakeTheme
 %%FRONTMATTER%%
 
 @Composable
-fun %%NAME%%(%%PARAMS%%) {
+fun %%NAME%%(%%PARAMS%% @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
     %%CONTENT%%
 }
 
 /*
+@Suppress("unused")
+@Suppress("unused_parameter")
 @Preview
 @Composable
-fun %%NAME%%Preview(%%PARAMS%%) {
+fun %%NAME%%Preview(%%PARAMS%% @Suppress("UNUSED_PARAMETER")) {
     CupcakeTheme {
         %%NAME%%(
         )
@@ -81,7 +83,13 @@ def mkexport_string_component(exports):
         else:
             s.append(f'{e["name"]}')
 
-    return ", ".join(s)
+    final = ", ".join(s)
+
+    if final:
+        # THis is for the next param `vararg params` in the template
+        return f"{final}, " 
+    else:
+        return final
 
 
 def get_component_name(slug, include_ext=True):

@@ -13,6 +13,8 @@ fun select(num: Int) {
   println("Here $num $value")
 }
 
+println("INSIDE - params - $params")
+
 Text(text="INSIDE: value=$value v=$v")
 
     TextField(

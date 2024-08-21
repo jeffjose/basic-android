@@ -14,7 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 
 
 @Composable
-fun ReactiveAssignments() {
+fun ReactiveAssignments( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
     
 var count by rememberSaveable { mutableStateOf(0) }
 
@@ -37,9 +37,11 @@ Text(text = "Clicked $count " + if (count == 1) "time" else "times")
 }
 
 /*
+@Suppress("unused")
+@Suppress("unused_parameter")
 @Preview
 @Composable
-fun ReactiveAssignmentsPreview() {
+fun ReactiveAssignmentsPreview( @Suppress("UNUSED_PARAMETER")) {
     CupcakeTheme {
         ReactiveAssignments(
         )
