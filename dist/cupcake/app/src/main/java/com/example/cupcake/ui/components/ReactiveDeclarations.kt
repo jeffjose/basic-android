@@ -16,7 +16,8 @@ import androidx.compose.ui.tooling.preview.Preview
 
 
 @Composable
-fun ReactiveDeclarations( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
+//fun ReactiveDeclarations( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
+fun ReactiveDeclarations() {
     
 
 

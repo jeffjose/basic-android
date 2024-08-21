@@ -4,6 +4,7 @@ import com.example.cupcake.ui.theme.CupcakeTheme
 
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -17,16 +18,17 @@ import kotlinx.coroutines.flow.MutableStateFlow
 
 
 class ViewModel {
-    val v = MutableStateFlow("")
+    val first = MutableStateFlow("")
 }
 
 @Composable
-fun ComponentBindings( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
+//fun ComponentBindings( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
+fun ComponentBindings() {
     
 
 
 val viewModel = remember { ViewModel() } // or viewModel() etc.
-val (v, setV) = viewModel.v.collectAsMutableState()
+val (first, setFirst) = viewModel.first.collectAsMutableState()
 
 
 
@@ -36,8 +38,12 @@ fun handleSubmit() {
   println("You entererd $pin")
 }
 
-Text("OUTSIDE: pin=$pin v=$v")
-Keypad(value=pin, v = v, setV = setV, params = *[setV])
+Text("OUTSIDE: pin=$pin first=$first")
+    TextField(
+        value = first,
+        onValueChange = setFirst
+    )
+Keypad(value=pin, first = first, setFirst = setFirst)
 //Keypad(value=pin, bind:v = v)
 
 }

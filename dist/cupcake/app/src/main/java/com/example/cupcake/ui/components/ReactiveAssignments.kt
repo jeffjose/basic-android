@@ -14,7 +14,8 @@ import androidx.compose.ui.tooling.preview.Preview
 
 
 @Composable
-fun ReactiveAssignments( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
+//fun ReactiveAssignments( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
+fun ReactiveAssignments() {
     
 var count by rememberSaveable { mutableStateOf(0) }
 

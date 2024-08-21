@@ -18,7 +18,8 @@ import kotlinx.coroutines.launch
 
 
 @Composable
-fun Simple(good:String="bye",  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
+//fun Simple(good:String="bye",  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
+fun Simple(good:String="bye", ) {
     
 var good = good
 var foo = "foo-value"

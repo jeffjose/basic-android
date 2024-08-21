@@ -19,7 +19,8 @@ import kotlinx.parcelize.Parcelize
 data class User(var loggedIn: Boolean) : Parcelable
 
 @Composable
-fun If( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
+//fun If( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
+fun If() {
     
 
 //println("if - before")

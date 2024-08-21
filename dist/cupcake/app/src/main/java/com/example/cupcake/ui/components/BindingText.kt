@@ -18,7 +18,8 @@ import androidx.compose.ui.tooling.preview.Preview
 
 
 @Composable
-fun BindingText( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
+//fun BindingText( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
+fun BindingText() {
     
 
 var text2 by rememberSaveable(stateSaver = TextFieldValue.Saver ) { mutableStateOf(TextFieldValue("", TextRange(0, 7))) }

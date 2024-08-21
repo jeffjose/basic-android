@@ -28,7 +28,8 @@ import %%NAMESPACE%%.ui.theme.CupcakeTheme
 %%FRONTMATTER%%
 
 @Composable
-fun %%NAME%%(%%PARAMS%% @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
+//fun %%NAME%%(%%PARAMS%% @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
+fun %%NAME%%(%%PARAMS%%) {
     %%CONTENT%%
 }
 

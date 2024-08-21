@@ -10,7 +10,8 @@ import androidx.compose.ui.tooling.preview.Preview
 data class Cat(val id: String, val name: String)
 
 @Composable
-fun Loop( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
+//fun Loop( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
+fun Loop() {
     
 val cats = listOf(
   Cat(id="123", name="Keyboard Cat"),
