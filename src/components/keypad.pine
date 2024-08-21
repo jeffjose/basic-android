@@ -1,15 +1,24 @@
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 
+external var v: String = ""
 external var *value: String = ""
+
+external var setV: (String) -> Unit
 
 fun select(num: Int) {
   value = Regex("\\w").replace(value, "x") + num.toString()
   println("Here $num $value")
 }
 
-Text(text="value=$value")
+Text(text="INSIDE: value=$value v=$v")
+
+    TextField(
+        value = v,
+        onValueChange = setV
+    )
 
 Row() {
   Button(onClick={select(1)}){Text(text="1")}

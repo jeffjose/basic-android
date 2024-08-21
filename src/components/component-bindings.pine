@@ -32,11 +32,19 @@ fun <T> MutableStateFlow<T>.collectAsMutableState(
     state = collectAsState(context),
     mutate = { value = it }
 )
+
+
+class ViewModel {
+    val v = MutableStateFlow("")
+}
 ---
 import androidx.compose.material3.Text
 import androidx.compose.material3.Button
 
 import com.example.cupcake.ui.components.Keypad
+
+val viewModel = remember { ViewModel() } // or viewModel() etc.
+val (v, setV) = viewModel.v.collectAsMutableState()
 
 
 
@@ -46,5 +54,5 @@ fun handleSubmit() {
   println("You entererd $pin")
 }
 
-Text("pin=$pin")
-Keypad(value=pin)
+Text("OUTSIDE: pin=$pin v=$v")
+Keypad(value=pin, v = v, setV = setV)

@@ -2,9 +2,9 @@ package com.example.cupcake.ui.components
 
 import com.example.cupcake.ui.theme.CupcakeTheme
 
-import androidx.compose.runtime.Composable
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 
 data class Cat(val id: String, val name: String)

@@ -2,29 +2,38 @@ package com.example.cupcake.ui.components
 
 import com.example.cupcake.ui.theme.CupcakeTheme
 
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.getValue
 import androidx.compose.foundation.layout.Row
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.Composable
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
 
 
 
 @Composable
-fun Keypad(value: String="") {
+fun Keypad(v: String="", value: String="", setV: (String) -> Unit) {
     
+var v = v
 var value by rememberSaveable { mutableStateOf(value) }
+
+var setV = setV
 
 fun select(num: Int) {
   value = Regex("\\w").replace(value, "x") + num.toString()
   println("Here $num $value")
 }
 
-Text(text="value=$value")
+Text(text="INSIDE: value=$value v=$v")
+
+    TextField(
+        value = v,
+        onValueChange = setV
+    )
 
 Row() {
   Button(onClick={select(1)}){Text(text="1")}
@@ -60,7 +69,7 @@ Row() {
 /*
 @Preview
 @Composable
-fun KeypadPreview(value: String="") {
+fun KeypadPreview(v: String="", value: String="", setV: (String) -> Unit) {
     CupcakeTheme {
         Keypad(
         )
