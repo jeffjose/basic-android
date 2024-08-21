@@ -39,6 +39,7 @@ import androidx.compose.ui.res.stringResource
 import com.example.cupcake.R
 import com.example.cupcake.ui.components.BindingText
 import com.example.cupcake.ui.components.Coffee
+import com.example.cupcake.ui.components.ComponentBindings
 import com.example.cupcake.ui.components.If
 import com.example.cupcake.ui.components.Loop
 
@@ -89,7 +90,8 @@ Column(
         //If()
         //If()
         //Loop()
-        BindingText()
+        //BindingText()
+        ComponentBindings()
     }
 
     Column(

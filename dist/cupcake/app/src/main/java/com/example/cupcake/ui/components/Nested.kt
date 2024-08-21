@@ -11,7 +11,7 @@ import androidx.compose.material3.Text
 @Composable
 fun Nested(answer: Int=0) {
     
-
+var answer = answer
 
 Text(text = "The answer is $answer")
 

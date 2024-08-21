@@ -95,17 +95,20 @@ def get_exports(lines):
 
             t, vname, value = matched.groups()
 
-            export = {"name": vname, "value": value}
+            export = {"name": vname.strip("*$"), "value": value}
             exports.append(export)
+
+            continue
 
         matched = external_variable_pattern.match(line)
         if matched:
 
             t, vname = matched.groups()
 
-            export = {"name": vname, "value": None}
+            export = {"name": vname.strip("*$"), "value": None}
 
             exports.append(export)
+            continue
 
     return exports
 
@@ -137,6 +140,27 @@ def expand_component_line(line):
             f"{t} {vname} by remember{stateSaverString} {{ mutableStateOf({value}) }}"
         )
 
+    # This needs to come first, and the next 2 blocks dont return but pass it along to `remember` blocks
+    matched = external_variable_w_default_value_pattern.match(line)
+    if matched:
+
+
+        t, vname_type, value = matched.groups()
+        vname = vname_type.split(":")[0]
+
+        # Dont return, but pass along
+        line = f"{t} {vname} = {vname.strip("*$")}"
+
+    matched = external_variable_pattern.match(line)
+    if matched:
+
+        t, vname_type = matched.groups()
+        vname = vname_type.split(":")[0]
+
+        # Dont return, but pass along
+        line =  f"{t} {vname} = {vname.strip("*$")}"
+
+
     matched = remembersaveable_mutablestate_pattern.match(line)
     if matched:
 
@@ -159,19 +183,6 @@ def expand_component_line(line):
     #    t, vname, value = matched.groups()
     #    return f"{t} {vname} by remember {{ derivedStateOf {{  {value}  }} }}"
 
-    matched = external_variable_w_default_value_pattern.match(line)
-    if matched:
-
-        # If this is an `external var foo = 10`, we'll pass that as in fun argument
-        # No need for a line in the component body
-        return ""
-
-    matched = external_variable_pattern.match(line)
-    if matched:
-
-        # If this is an `external var foo`, we'll pass that as in fun argument
-        # No need for a line in the component body
-        return ""
 
     return line
 

@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun Simple(good:String="bye") {
     
-
+var good = good
 var foo = "foo-value"
 var bar by rememberSaveable { mutableStateOf("bar-value") }
 var baz by remember { mutableStateOf("baz-value") }

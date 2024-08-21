@@ -15,6 +15,7 @@ import com.example.cupcake.ui.components.Coffee
 import com.example.cupcake.ui.components.If
 import com.example.cupcake.ui.components.Loop
 import com.example.cupcake.ui.components.BindingText
+import com.example.cupcake.ui.components.ComponentBindings
 
 // Log.d("XXX", data.value?.toString() ?: "default")
 
@@ -41,7 +42,8 @@ Column(
         //If()
         //If()
         //Loop()
-        BindingText()
+        //BindingText()
+        ComponentBindings()
     }
 
     Column(

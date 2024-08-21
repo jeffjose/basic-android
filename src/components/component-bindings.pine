@@ -5,11 +5,11 @@ import com.example.cupcake.ui.components.Keypad
 
 
 
-var *pin = 0
+var *pin = ""
 
 fun handleSubmit() {
   println("You entererd $pin")
 }
 
-Text("$pin")
+Text("pin=$pin")
 Keypad(value=pin)

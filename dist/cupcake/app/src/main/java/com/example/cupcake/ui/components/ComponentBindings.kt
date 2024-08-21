@@ -20,13 +20,13 @@ fun ComponentBindings() {
 
 
 
-var pin by rememberSaveable { mutableStateOf(0) }
+var pin by rememberSaveable { mutableStateOf("") }
 
 fun handleSubmit() {
   println("You entererd $pin")
 }
 
-Text("$pin")
+Text("pin=$pin")
 Keypad(value=pin)
 
 }
