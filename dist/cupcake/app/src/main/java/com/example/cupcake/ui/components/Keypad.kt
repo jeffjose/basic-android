@@ -19,7 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 //fun Keypad(first: Int=0, second: Int=0, value: String="", setFirst: (Int) -> Unit,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
 fun Keypad(first: Int=0, second: Int=0, value: String="", setFirst: (Int) -> Unit, ) {
     
-var first = first
+var first by rememberSaveable(inputs=arrayOf(first)) { mutableStateOf(first) }
 var second by rememberSaveable(inputs=arrayOf(second)) { mutableStateOf(second) }
 var third: Int = 0
 var fourth: Int by rememberSaveable { mutableStateOf(0) }
