@@ -6,9 +6,7 @@ import androidx.compose.material3.TextField
 external var first: Int = 0
 external var second: Int = 0
 
-var third: Int = 0
-var *fourth: Int = 0
-println("first=$first, second=$second, third=$third, fourth=$fourth")
+println("first=$first, second=$second")
 
 external var *value: String = ""
 
@@ -38,27 +36,6 @@ Button(onClick={
 
 Text( text = "INSIDE (1way): $second")
 }
-
-
-Button(onClick={
-  println(third)
-  third = third + 1
-  println(third)
-  }) {
-
-Text( text = "INSIDE var third $third")
-}
-
-
-Button(onClick={
-  println(fourth)
-  fourth = fourth + 1
-  println(fourth)
-  }) {
-
-Text( text = "INSIDE var *fourth: $fourth")
-}
-
 
 Row() {
   Button(onClick={select(1)}){Text(text="1")}

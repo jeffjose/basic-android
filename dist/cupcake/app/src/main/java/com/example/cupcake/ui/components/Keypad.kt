@@ -16,19 +16,20 @@ import androidx.compose.ui.tooling.preview.Preview
 
 
 @Composable
-//fun Keypad(first: Int=0, second: Int=0, value: String="", setFirst: (Int) -> Unit,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
-fun Keypad(first: Int=0, second: Int=0, value: String="", setFirst: (Int) -> Unit, ) {
+fun Keypad(first: Int=0, second: Int=0, value: String="",  @Suppress("UNUSED_PARAMETER") vararg _params: Pair<String, (Int) -> Unit>) {
+//fun Keypad(first: Int=0, second: Int=0, value: String="", setFirst: (Int) -> Unit, ) {
+
+val params = _params.toMap()
+println(params)
     
 var first by rememberSaveable(inputs=arrayOf(first)) { mutableStateOf(first) }
 var second by rememberSaveable(inputs=arrayOf(second)) { mutableStateOf(second) }
 
-var third: Int = 0
-var fourth: Int by rememberSaveable { mutableStateOf(0) }
-println("first=$first, second=$second, third=$third, fourth=$fourth")
+println("first=$first, second=$second")
 
 var value by rememberSaveable(inputs=arrayOf(value)) { mutableStateOf(value) }
 
-var setFirst by rememberSaveable(inputs=arrayOf(setFirst)) { mutableStateOf(setFirst) }
+//var setFirst  = setFirst
 
 fun select(num: Int) {
   value = Regex("\\w").replace(value, "x") + num.toString()
@@ -41,7 +42,7 @@ Text(text="INSIDE: value=$value first=$first second=$second")
 
 Button(onClick={
   first = first + 1
-  setFirst(first)
+  //setFirst(first)
   }) {
 Text( text = "INSIDE (2way): $first")
 }
@@ -54,27 +55,6 @@ Button(onClick={
 
 Text( text = "INSIDE (1way): $second")
 }
-
-
-Button(onClick={
-  println(third)
-  third = third + 1
-  println(third)
-  }) {
-
-Text( text = "INSIDE var third $third")
-}
-
-
-Button(onClick={
-  println(fourth)
-  fourth = fourth + 1
-  println(fourth)
-  }) {
-
-Text( text = "INSIDE var *fourth: $fourth")
-}
-
 
 Row() {
   Button(onClick={select(1)}){Text(text="1")}
