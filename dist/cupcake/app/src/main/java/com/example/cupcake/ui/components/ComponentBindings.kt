@@ -33,7 +33,7 @@ fun ComponentBindings() {
 
 
 val viewModel = remember { ViewModel() } // or viewModel() etc.
-var (first, setFirst) = viewModel.first.collectAsMutableState()
+var (first, _set_first) = viewModel.first.collectAsMutableState()
 //var (second, setSecond) = viewModel.second.collectAsMutableState()
 
 var second by rememberSaveable { mutableStateOf(0) }
@@ -50,7 +50,7 @@ Text("OUTSIDE: pin=$pin first=$first second=$second")
     
 Button(onClick={
   first = first + 1
-  setFirst(first)
+  _set_first(first)
   }) {
 Text( text = "OUTSIDE (2way): $first")
 }
