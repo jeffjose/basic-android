@@ -17,8 +17,8 @@ import androidx.compose.ui.tooling.preview.Preview
 
 
 @Composable
-//fun Keypad(first: Int =0, _set_first : (( Int ) -> Unit)? = null, second: Int =0, _set_second : (( Int ) -> Unit)? = null, value: String ="", _set_value : (( String ) -> Unit)? = null,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
-fun Keypad(first: Int =0, _set_first : (( Int ) -> Unit)? = null, second: Int =0, _set_second : (( Int ) -> Unit)? = null, value: String ="", _set_value : (( String ) -> Unit)? = null, ) {
+//fun Keypad(first: Int, _set_first : (( Int) -> Unit)? = null, second: Int, _set_second : (( Int) -> Unit)? = null, value: String ="", _set_value : (( String ) -> Unit)? = null,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
+fun Keypad(first: Int, _set_first : (( Int) -> Unit)? = null, second: Int, _set_second : (( Int) -> Unit)? = null, value: String ="", _set_value : (( String ) -> Unit)? = null, ) {
 
     
 LaunchedEffect(first) {
@@ -105,7 +105,7 @@ Row() {
 @Suppress("unused_parameter")
 @Preview
 @Composable
-fun KeypadPreview(first: Int =0, _set_first : (( Int ) -> Unit)? = null, second: Int =0, _set_second : (( Int ) -> Unit)? = null, value: String ="", _set_value : (( String ) -> Unit)? = null,  @Suppress("UNUSED_PARAMETER")) {
+fun KeypadPreview(first: Int, _set_first : (( Int) -> Unit)? = null, second: Int, _set_second : (( Int) -> Unit)? = null, value: String ="", _set_value : (( String ) -> Unit)? = null,  @Suppress("UNUSED_PARAMETER")) {
     CupcakeTheme {
         Keypad(
         )

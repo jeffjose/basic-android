@@ -3,8 +3,8 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 
-external var first: Int = 0
-external var second: Int = 0
+external var first: Int
+external var second: Int
 
 println("first=$first, second=$second")
 
