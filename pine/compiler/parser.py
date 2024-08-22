@@ -1,21 +1,39 @@
 import re
+from utils import mksetter
 
+#
 # A greedy pattern to capture everything inside paren
 saver_pattern = re.compile(r"(\w+)\((.*)\)")
 
+# import androidx.foo.bar.Baz
 import_pattern = re.compile(r"import\s+.*")
 
+# external val foo = "bar"
 external_variable_w_default_value_pattern = re.compile(
     r"^external\s+(val|var)\s*(.*)\s*=\s*(.*)"
 )
+
+# external val foo
 external_variable_pattern = re.compile(r"^external\s+(val|var)\s+(.*)")
 
+
+# Component(bind:foo="bar")
+bind_variable_pattern = re.compile(r"bind:(\w+)\s*=\s*\w+")
+
+# var $foo = "bar"
 remember_mutablestate_pattern = re.compile(r"(val|var)\s+\$(.*)\s+=\s+(.*)")
+
+# var *foo = "bar"
 remembersaveable_mutablestate_pattern = re.compile(r"(val|var)\s+\*(.*)\s+=\s+(.*)")
 
+# Implemented in this file, but not used
+# var count = $derived(count * 2)
 remember_derivedstateof_pattern = re.compile(
     r"(val|var)\s+(.*)\s+=\s+\$derived\((.*)\)"
 )
+
+# Unused
+# var count = $effect("bar")
 remember_sideeffect_pattern = re.compile(r"(val|var)\s+(.*)\s+=\s+\$effect\((.*)\)")
 
 
@@ -133,8 +151,6 @@ def _extract_between_paren(s):
     return vname, saver
 
 
-
-
 def expand_component_line(line):
 
     # This needs to come first, and the next 2 blocks dont return but pass it along to `remember` blocks
@@ -171,8 +187,6 @@ def expand_component_line(line):
             f"{t} {vname} by remember{stateSaverString} {{ mutableStateOf({value}) }}"
         )
 
-
-
     matched = remembersaveable_mutablestate_pattern.match(line)
     if matched:
 
@@ -196,6 +210,19 @@ def expand_component_line(line):
     #    t, vname, value = matched.groups()
     #    return f"{t} {vname} by remember {{ derivedStateOf {{  {value}  }} }}"
 
+    matched = bind_variable_pattern.search(line)
+    if "bind:" in line:
+        vname = matched.groups()[0]
+
+        return line.replace("bind:", f"{mksetter(vname)}={mksetter(vname)}, ")
+
+    if matched:
+
+        import pdb
+
+        pdb.set_trace()
+
+        return f"{t} {vname} by remember {{ derivedStateOf {{  {value}  }} }}"
 
     return line
 

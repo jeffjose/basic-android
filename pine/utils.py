@@ -50,6 +50,7 @@ def get_screen_dir():
 
     return ui_dir
 
+
 def get_components_dir():
 
     app_dir = get_app_dir()
@@ -100,3 +101,7 @@ def read_json(file: str):
 
 def write_json(file: str, obj: any):
     return json.dump(obj, open(file, "w"))
+
+
+def mksetter(name):
+    return f"_set_{name}"

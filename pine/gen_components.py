@@ -10,7 +10,8 @@ from utils import (
     write_file,
     get_project_namespace,
     get_app_dir,
-    mkdir
+    mkdir,
+    mksetter
 )
 from compiler.parser import parse_component
 DEFAULT_IMPORTS = [
@@ -80,9 +81,6 @@ def get_slug(file):
     return "".join([n.capitalize() for  n in name.split('-')])
 
 
-
-def mksetter(name):
-    return f'_set_{name}'
 
 def mkpackage_string_component(output_dir_base):
     return f"package {get_project_namespace()}.ui.components{"." + output_dir_base.replace('/', '.') if output_dir_base != '' else ''}"
