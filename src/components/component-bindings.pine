@@ -20,6 +20,9 @@ var (first, _set_first) = viewModel.first.collectAsMutableState()
 
 var *second = 0
 
+LaunchedEffect(first) {
+  _set_first(first)
+}
 
 
 var *pin = ""
@@ -32,7 +35,6 @@ Text("OUTSIDE: pin=$pin first=$first second=$second")
     
 Button(onClick={
   first = first + 1
-  _set_first(first)
   }) {
 Text( text = "OUTSIDE (2way): $first")
 }
