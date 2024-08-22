@@ -17,12 +17,8 @@ import androidx.compose.runtime.LaunchedEffect
 
 
 @Composable
-fun Keypad(first: Int=0, second: Int=0, value: String="",  @Suppress("UNUSED_PARAMETER") vararg _params: Pair<String, (Int) -> Unit>) {
+fun Keypad(first: Int=0, second: Int=0, value: String="",  setFirst : ((Int) -> Unit)? = null, setSecond: ((Int) -> Unit)? = null) {
 //fun Keypad(first: Int=0, second: Int=0, value: String="", setFirst: (Int) -> Unit, ) {
-
-val params = _params.toMap()
-println(params)
-    
 var first by rememberSaveable(inputs=arrayOf(first)) { mutableStateOf(first) }
 var second by rememberSaveable(inputs=arrayOf(second)) { mutableStateOf(second) }
 
@@ -33,13 +29,15 @@ var value by rememberSaveable(inputs=arrayOf(value)) { mutableStateOf(value) }
 //var setFirst  = setFirst
 LaunchedEffect(first) {
   println("launchedeffect: setFirst($first)")
-  params.get("first")?.invoke(first)
+  //params.get("first")?.invoke(first)
+  setFirst?.invoke(first)
   
 }
 
 LaunchedEffect(second) {
   println("2. launchedeffect: setSecond($second)")
-  params.get("second")?.invoke(first)
+  //params.get("second")?.invoke(first)
+  setSecond?.invoke(second)
   
 }
 
