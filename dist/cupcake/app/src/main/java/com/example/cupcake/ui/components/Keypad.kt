@@ -12,6 +12,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.runtime.LaunchedEffect
 
 
 
@@ -30,6 +31,18 @@ println("first=$first, second=$second")
 var value by rememberSaveable(inputs=arrayOf(value)) { mutableStateOf(value) }
 
 //var setFirst  = setFirst
+LaunchedEffect(first) {
+  println("launchedeffect: setFirst($first)")
+  params.get("first")?.invoke(first)
+  
+}
+
+LaunchedEffect(second) {
+  println("2. launchedeffect: setSecond($second)")
+  params.get("second")?.invoke(first)
+  
+}
+
 
 fun select(num: Int) {
   value = Regex("\\w").replace(value, "x") + num.toString()
