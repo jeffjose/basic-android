@@ -5,6 +5,7 @@ import com.example.cupcake.ui.theme.CupcakeTheme
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.tooling.preview.Preview
 
 data class Cat(val id: String, val name: String)
@@ -12,6 +13,9 @@ data class Cat(val id: String, val name: String)
 @Composable
 //fun Loop( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
 fun Loop() {
+
+    
+
     
 val cats = listOf(
   Cat(id="123", name="Keyboard Cat"),

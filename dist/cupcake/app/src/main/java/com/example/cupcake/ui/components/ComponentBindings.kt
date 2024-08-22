@@ -6,6 +6,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -25,6 +26,9 @@ class ViewModel {
 @Composable
 //fun ComponentBindings( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
 fun ComponentBindings() {
+
+    
+
     
 
 
@@ -56,7 +60,7 @@ Button(onClick={
   }) {
 Text( text = "OUTSIDE (1way): $second")
 }
-Keypad(value=pin, first = first, second=second, setFirst=setFirst)
+Keypad(value=pin, first = first, second=second)
 //Keypad(value=pin, bind:v = v)
 
 }

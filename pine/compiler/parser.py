@@ -1,12 +1,12 @@
 import re
 
 # A greedy pattern to capture everything inside paren
-saver_pattern = re.compile(r'(\w+)\((.*)\)')
+saver_pattern = re.compile(r"(\w+)\((.*)\)")
 
 import_pattern = re.compile(r"import\s+.*")
 
 external_variable_w_default_value_pattern = re.compile(
-    r"^external\s+(val|var)\s+(.*)\s+=\s+(.*)"
+    r"^external\s+(val|var)\s*(.*)\s*=\s*(.*)"
 )
 external_variable_pattern = re.compile(r"^external\s+(val|var)\s+(.*)")
 
@@ -60,10 +60,11 @@ def parse_component(data, default_imports):
 
     parcel = get_imports_and_contents(lines)
 
-
     imports = cleanup_imports(
-        parcel["imports"] + analyze_for_imports(lines) + frontmatter["imports"] + 
-        default_imports
+        parcel["imports"]
+        + analyze_for_imports(lines)
+        + frontmatter["imports"]
+        + default_imports
     )
 
     return {
@@ -95,7 +96,9 @@ def get_exports(lines):
     exports = []
 
     for line in lines:
+
         matched = external_variable_w_default_value_pattern.match(line)
+
         if matched:
 
             t, vname, value = matched.groups()
@@ -121,14 +124,15 @@ def get_exports(lines):
 def _extract_between_paren(s):
 
     # This is hacky. We're checking for `(` instead of having a better/more compilcated regex
-    if '(' in s:
-        vname, saver =  saver_pattern.search(s).groups()
+    if "(" in s:
+        vname, saver = saver_pattern.search(s).groups()
     else:
-        vname  = s
-        saver = ''
-        
+        vname = s
+        saver = ""
 
     return vname, saver
+
+
 
 
 def expand_component_line(line):
@@ -136,7 +140,6 @@ def expand_component_line(line):
     # This needs to come first, and the next 2 blocks dont return but pass it along to `remember` blocks
     matched = external_variable_w_default_value_pattern.match(line)
     if matched:
-
 
         t, vname_type, value = matched.groups()
         vname = vname_type.split(":")[0]
@@ -199,6 +202,7 @@ def expand_component_line(line):
 
 def _clean_vname(s):
     return s.strip("*$")
+
 
 def analyze_for_imports(lines):
     imports = []

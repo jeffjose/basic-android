@@ -18,8 +18,15 @@ import kotlinx.coroutines.launch
 
 
 @Composable
-//fun Simple(good:String="bye",  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
-fun Simple(good:String="bye", ) {
+//fun Simple(good:String="bye", _set_good : ((String) -> Unit)? = null,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
+fun Simple(good:String="bye", _set_good : ((String) -> Unit)? = null, ) {
+
+    
+LaunchedEffect(good) {
+    _set_good?.invoke(good)
+}
+
+
     
 var good by rememberSaveable(inputs=arrayOf(good)) { mutableStateOf(good) }
 var foo = "foo-value"
@@ -68,7 +75,7 @@ Text("x=$x y=$y")
 @Suppress("unused_parameter")
 @Preview
 @Composable
-fun SimplePreview(good:String="bye",  @Suppress("UNUSED_PARAMETER")) {
+fun SimplePreview(good:String="bye", _set_good : ((String) -> Unit)? = null,  @Suppress("UNUSED_PARAMETER")) {
     CupcakeTheme {
         Simple(
         )

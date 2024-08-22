@@ -7,18 +7,34 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.runtime.LaunchedEffect
 
 
 
 @Composable
-fun Keypad(first: Int=0, second: Int=0, value: String="",  setFirst : ((Int) -> Unit)? = null, setSecond: ((Int) -> Unit)? = null) {
-//fun Keypad(first: Int=0, second: Int=0, value: String="", setFirst: (Int) -> Unit, ) {
+//fun Keypad(first: Int =0, _set_first : (( Int ) -> Unit)? = null, second: Int =0, _set_second : (( Int ) -> Unit)? = null, value: String ="", _set_value : (( String ) -> Unit)? = null,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
+fun Keypad(first: Int =0, _set_first : (( Int ) -> Unit)? = null, second: Int =0, _set_second : (( Int ) -> Unit)? = null, value: String ="", _set_value : (( String ) -> Unit)? = null, ) {
+
+    
+LaunchedEffect(first) {
+    _set_first?.invoke(first)
+}
+
+LaunchedEffect(second) {
+    _set_second?.invoke(second)
+}
+
+LaunchedEffect(value) {
+    _set_value?.invoke(value)
+}
+
+
+    
 var first by rememberSaveable(inputs=arrayOf(first)) { mutableStateOf(first) }
 var second by rememberSaveable(inputs=arrayOf(second)) { mutableStateOf(second) }
 
@@ -26,21 +42,7 @@ println("first=$first, second=$second")
 
 var value by rememberSaveable(inputs=arrayOf(value)) { mutableStateOf(value) }
 
-//var setFirst  = setFirst
-LaunchedEffect(first) {
-  println("launchedeffect: setFirst($first)")
-  //params.get("first")?.invoke(first)
-  setFirst?.invoke(first)
-  
-}
-
-LaunchedEffect(second) {
-  println("2. launchedeffect: setSecond($second)")
-  //params.get("second")?.invoke(first)
-  setSecond?.invoke(second)
-  
-}
-
+//external var setFirst: (Int) -> Unit
 
 fun select(num: Int) {
   value = Regex("\\w").replace(value, "x") + num.toString()
@@ -103,7 +105,7 @@ Row() {
 @Suppress("unused_parameter")
 @Preview
 @Composable
-fun KeypadPreview(first: Int=0, second: Int=0, value: String="", setFirst: (Int) -> Unit,  @Suppress("UNUSED_PARAMETER")) {
+fun KeypadPreview(first: Int =0, _set_first : (( Int ) -> Unit)? = null, second: Int =0, _set_second : (( Int ) -> Unit)? = null, value: String ="", _set_value : (( String ) -> Unit)? = null,  @Suppress("UNUSED_PARAMETER")) {
     CupcakeTheme {
         Keypad(
         )

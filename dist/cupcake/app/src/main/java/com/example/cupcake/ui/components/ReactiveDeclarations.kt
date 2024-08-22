@@ -5,6 +5,7 @@ import com.example.cupcake.ui.theme.CupcakeTheme
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -18,6 +19,9 @@ import androidx.compose.ui.tooling.preview.Preview
 @Composable
 //fun ReactiveDeclarations( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
 fun ReactiveDeclarations() {
+
+    
+
     
 
 

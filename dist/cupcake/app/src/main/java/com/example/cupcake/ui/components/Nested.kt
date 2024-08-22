@@ -4,6 +4,7 @@ import com.example.cupcake.ui.theme.CupcakeTheme
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -13,8 +14,15 @@ import androidx.compose.ui.tooling.preview.Preview
 
 
 @Composable
-//fun Nested(answer: Int=0,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
-fun Nested(answer: Int=0, ) {
+//fun Nested(answer: Int=0, _set_answer : (( Int) -> Unit)? = null,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
+fun Nested(answer: Int=0, _set_answer : (( Int) -> Unit)? = null, ) {
+
+    
+LaunchedEffect(answer) {
+    _set_answer?.invoke(answer)
+}
+
+
     
 var answer by rememberSaveable(inputs=arrayOf(answer)) { mutableStateOf(answer) }
 
@@ -27,7 +35,7 @@ Text(text = "The answer is $answer")
 @Suppress("unused_parameter")
 @Preview
 @Composable
-fun NestedPreview(answer: Int=0,  @Suppress("UNUSED_PARAMETER")) {
+fun NestedPreview(answer: Int=0, _set_answer : (( Int) -> Unit)? = null,  @Suppress("UNUSED_PARAMETER")) {
     CupcakeTheme {
         Nested(
         )

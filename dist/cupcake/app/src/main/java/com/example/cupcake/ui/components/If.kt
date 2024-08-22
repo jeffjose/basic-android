@@ -6,6 +6,7 @@ import android.os.Parcelable
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
@@ -21,6 +22,9 @@ data class User(var loggedIn: Boolean) : Parcelable
 @Composable
 //fun If( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
 fun If() {
+
+    
+
     
 
 //println("if - before")

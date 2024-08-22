@@ -16,6 +16,7 @@ from compiler.parser import parse_component
 DEFAULT_IMPORTS = [
 'import androidx.compose.runtime.Composable',
 'import androidx.compose.ui.tooling.preview.Preview',
+'import androidx.compose.runtime.LaunchedEffect'
 ]
 
 INPUT_PATTERN = "src/**/**.pine"
@@ -30,6 +31,9 @@ import %%NAMESPACE%%.ui.theme.CupcakeTheme
 @Composable
 //fun %%NAME%%(%%PARAMS%% @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
 fun %%NAME%%(%%PARAMS%%) {
+
+    %%PARAMSETTERS%%
+
     %%CONTENT%%
 }
 
@@ -47,6 +51,12 @@ fun %%NAME%%Preview(%%PARAMS%% @Suppress("UNUSED_PARAMETER")) {
     */
 
 """
+
+TEMPLATE_SETTER = '''
+LaunchedEffect(%%NAME%%) {
+    %%SETTER%%?.invoke(%%NAME%%)
+}
+'''
 
 def collect_files():
 
@@ -71,18 +81,38 @@ def get_slug(file):
 
 
 
+def mksetter(name):
+    return f'_set_{name}'
+
 def mkpackage_string_component(output_dir_base):
     return f"package {get_project_namespace()}.ui.components{"." + output_dir_base.replace('/', '.') if output_dir_base != '' else ''}"
+
+def mkexport_param_setters_components(exports):
+
+    final = ''
+    for e in exports:
+        vname, t = e['name'].split(':')
+        setter = TEMPLATE_SETTER.replace("%%NAME%%", vname).replace("%%SETTER%%", mksetter(vname))
+
+        final = final + setter
+        
+    return final
 
 def mkexport_string_component(exports):
 
     s = []
 
     for e in exports:
+
+            
         if e['value']:
             s.append(f'{e["name"]}={e["value"]}')
         else:
             s.append(f'{e["name"]}')
+
+        # Add a setXXXX function
+        vname, t = e['name'].split(':')
+        s.append(f'{mksetter(vname)} : (({t}) -> Unit)? = null')
 
     final = ", ".join(s)
 
@@ -118,6 +148,7 @@ def create_component(template, file):
         .replace("%%CONTENT%%", parcel["contents"])
         .replace("%%NAME%%", slug)
         .replace("%%PARAMS%%", mkexport_string_component(parcel["exports"]))
+        .replace("%%PARAMSETTERS%%", mkexport_param_setters_components(parcel["exports"]))
         .replace("%%FRONTMATTER%%", parcel['frontmatter'])
         .strip()
     )

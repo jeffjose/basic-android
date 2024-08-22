@@ -42,5 +42,5 @@ Button(onClick={
   }) {
 Text( text = "OUTSIDE (1way): $second")
 }
-Keypad(value=pin, first = first, second=second, params=arrayOf(setFirst ))
+Keypad(value=pin, first = first, second=second)
 //Keypad(value=pin, bind:v = v)

@@ -10,7 +10,7 @@ println("first=$first, second=$second")
 
 external var *value: String = ""
 
-external var setFirst: (Int) -> Unit
+//external var setFirst: (Int) -> Unit
 
 fun select(num: Int) {
   value = Regex("\\w").replace(value, "x") + num.toString()
@@ -23,7 +23,7 @@ Text(text="INSIDE: value=$value first=$first second=$second")
 
 Button(onClick={
   first = first + 1
-  setFirst(first)
+  //setFirst(first)
   }) {
 Text( text = "INSIDE (2way): $first")
 }
