@@ -33,11 +33,11 @@ fun ComponentBindings() {
 
 
 val viewModel = remember { ViewModel() } // or viewModel() etc.
-var (first, _set_first) = viewModel.first.collectAsMutableState()
+//var (first, _set_first) = viewModel.first.collectAsMutableState()
 //var (second, setSecond) = viewModel.second.collectAsMutableState()
 
+var first by rememberSaveable { mutableStateOf(0) }
 var second by rememberSaveable { mutableStateOf(0) }
-
 
 
 var pin by rememberSaveable { mutableStateOf("") }
@@ -46,11 +46,16 @@ fun handleSubmit() {
   println("You entererd $pin")
 }
 
+var _set_first = {it: Int -> first = it}
+
+fun _set_first2(value : Int) {
+  first = value
+}
+
 Text("OUTSIDE: pin=$pin first=$first second=$second")
     
 Button(onClick={
   first = first + 1
-  _set_first(first)
   }) {
 Text( text = "OUTSIDE (2way): $first")
 }
@@ -60,7 +65,7 @@ Button(onClick={
   }) {
 Text( text = "OUTSIDE (1way): $second")
 }
-Keypad(value=pin, _set_first=_set_first, first = first, second=second)
+Keypad(value=pin, _set_first=::_set_first2, first = first, second=second)
 //Keypad(value=pin, _set_v=_set_v, v = v)
 
 }
