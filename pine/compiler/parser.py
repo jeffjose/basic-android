@@ -218,10 +218,6 @@ def expand_component_line(line):
 
     if matched:
 
-        import pdb
-
-        pdb.set_trace()
-
         return f"{t} {vname} by remember {{ derivedStateOf {{  {value}  }} }}"
 
     return line
