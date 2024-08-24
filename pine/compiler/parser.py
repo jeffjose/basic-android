@@ -74,6 +74,11 @@ def parse_component(data, default_imports):
     # does is remove `external var foo..` lines
     exports = get_exports(lines)
 
+    # This needs to come before `expand_component_lines`
+    # since one of the things expand_compomnent_lines
+    # does is modify `bind:var` lines
+    bindings = get_bindings(lines)
+
     lines = [expand_component_line(x) for x in lines]
 
     parcel = get_imports_and_contents(lines)
@@ -107,6 +112,25 @@ def get_imports_and_contents(lines):
             contents.append(line)
 
     return {"imports": imports, "contents": contents}
+
+
+def get_bindings(lines):
+
+    bindings = []
+
+    for line in lines:
+
+        matched = bind_variable_pattern.search(line)
+        if "bind:" in line:
+            vname = matched.groups()[0]
+
+            # Find variable declaration here
+
+            import pdb
+
+            pdb.set_trace()
+
+    return bindings
 
 
 def get_exports(lines):
