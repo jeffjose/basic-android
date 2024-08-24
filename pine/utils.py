@@ -69,12 +69,10 @@ def get_project_name_capitalized():
 
 def mkdir(path):
 
-    print("mkdir ", path)
     path.mkdir(exist_ok=True, parents=True)
 
 
 def clean(path):
-    print("Removing path", path)
     shutil.rmtree(path, ignore_errors=True)
 
 
@@ -91,7 +89,6 @@ def read_file(file: Path):
 
 
 def write_file(file, lines):
-    print("Writing ", file)
     file.write_text(lines)
 
 

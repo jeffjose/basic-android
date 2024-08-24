@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import re
+import time
 import glob
 from pathlib import Path
 
@@ -138,8 +138,6 @@ def create_component(template, file):
 
     slug = get_slug(file)
 
-    print(mkpackage_string_component(output_dir_base))
-
     final = (
         template.replace("%%PACKAGENAME%%", mkpackage_string_component(output_dir_base))
         .replace("%%NAMESPACE%%", get_project_namespace())
@@ -199,9 +197,12 @@ def main():
     template_screen = get_template_component()
 
     print("Working on components")
-
+    
     for file in get_static_route_files(files):
+        t1 = time.time()
         create_component(template_screen, file)
+        t2 = time.time()
+        print(f"[{round(t2 - t1, 5)}s]: {file}")
 
     #template_composable = get_template_composable()
     #template_navigation = get_template_navigation()
