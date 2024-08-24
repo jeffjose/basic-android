@@ -20,7 +20,6 @@ import androidx.compose.ui.tooling.preview.Preview
 //fun Keypad(first: Int, _set_first : (( Int) -> Unit)? = null, second: Int, _set_second : (( Int) -> Unit)? = null, value: String ="", _set_value : (( String ) -> Unit)? = null,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
 fun Keypad(first: Int, _set_first : (( Int) -> Unit)? = null, second: Int, _set_second : (( Int) -> Unit)? = null, value: String ="", _set_value : (( String ) -> Unit)? = null, ) {
 
-    
 
     
 var first by rememberSaveable(inputs=arrayOf(first)) { mutableStateOf(first) }
@@ -29,21 +28,6 @@ var second by rememberSaveable(inputs=arrayOf(second)) { mutableStateOf(second) 
 println("first=$first, second=$second")
 
 var value by rememberSaveable(inputs=arrayOf(value)) { mutableStateOf(value) }
-
-
-
-LaunchedEffect(first) {
-  println("KP: LaunchedEffect first=$first")
-    _set_first?.invoke(first)
-}
-
-LaunchedEffect(second) {
-    _set_second?.invoke(second)
-}
-
-LaunchedEffect(value) {
-    _set_value?.invoke(value)
-}
 
 //external var setFirst: (Int) -> Unit
 
@@ -99,6 +83,20 @@ Row() {
   Button(onClick={}){Text(text="Clear")}
   Button(onClick={}){Text(text="0")}
   Button(onClick={}){Text(text="Submit")}
+}
+
+
+    
+LaunchedEffect(first) {
+    _set_first?.invoke(first)
+}
+
+LaunchedEffect(second) {
+    _set_second?.invoke(second)
+}
+
+LaunchedEffect(value) {
+    _set_value?.invoke(value)
 }
 
 }

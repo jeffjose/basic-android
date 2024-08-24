@@ -22,7 +22,6 @@ import androidx.compose.ui.tooling.preview.Preview
 //fun BindingText( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
 fun BindingText() {
 
-    
 
     
 
@@ -31,6 +30,8 @@ var text2 by rememberSaveable(stateSaver = TextFieldValue.Saver) { mutableStateO
 TextField(value=text2, onValueChange={text2=it})
 Text("Entered ${text2.text}")
 
+
+    
 }
 
 /*

@@ -214,7 +214,7 @@ def expand_component_line(line):
     if "bind:" in line:
         vname = matched.groups()[0]
 
-        return line.replace("bind:", f"{mksetter(vname)}={mksetter(vname)}, ")
+        return line.replace("bind:", f"{mksetter(vname)}=::{mksetter(vname)}, ")
 
     if matched:
 

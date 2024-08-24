@@ -14,7 +14,6 @@ data class Cat(val id: String, val name: String)
 //fun Loop( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
 fun Loop() {
 
-    
 
     
 val cats = listOf(
@@ -39,6 +38,8 @@ for ((i, cat) in cats.withIndex()) {
   }
 }
 
+
+    
 }
 
 /*

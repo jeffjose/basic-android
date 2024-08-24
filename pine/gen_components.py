@@ -33,9 +33,10 @@ import %%NAMESPACE%%.ui.theme.CupcakeTheme
 //fun %%NAME%%(%%PARAMS%% @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
 fun %%NAME%%(%%PARAMS%%) {
 
-    %%PARAMSETTERS%%
 
     %%CONTENT%%
+
+    %%PARAMSETTERS%%
 }
 
 /*

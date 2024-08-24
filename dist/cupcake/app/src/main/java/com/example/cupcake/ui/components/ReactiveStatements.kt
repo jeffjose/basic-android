@@ -21,7 +21,6 @@ import androidx.compose.ui.tooling.preview.Preview
 //fun ReactiveStatements( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
 fun ReactiveStatements() {
 
-    
 
     
 var count by rememberSaveable { mutableStateOf(1) }
@@ -47,6 +46,8 @@ Button(onClick={handleClick()}) {
   Text(text = "RS: Count: $count")
 }
 
+
+    
 }
 
 /*

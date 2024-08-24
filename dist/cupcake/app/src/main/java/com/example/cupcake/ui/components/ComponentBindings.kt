@@ -9,47 +9,34 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.cupcake.ui.components.Keypad
 import com.example.cupcake.utils.*
-import kotlinx.coroutines.flow.MutableStateFlow
 
 
-class ViewModel {
-    var first = MutableStateFlow(0)
-    var second = MutableStateFlow(0)
-}
 
 @Composable
 //fun ComponentBindings( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
 fun ComponentBindings() {
 
-    
 
     
 
 
-val viewModel = remember { ViewModel() } // or viewModel() etc.
-//var (first, _set_first) = viewModel.first.collectAsMutableState()
-//var (second, setSecond) = viewModel.second.collectAsMutableState()
 
 var first by rememberSaveable { mutableStateOf(0) }
 var second by rememberSaveable { mutableStateOf(0) }
 
+fun _set_first(value: Int) {
+  first = value
+}
 
 var pin by rememberSaveable { mutableStateOf("") }
 
 fun handleSubmit() {
   println("You entererd $pin")
-}
-
-var _set_first = {it: Int -> first = it}
-
-fun _set_first2(value : Int) {
-  first = value
 }
 
 Text("OUTSIDE: pin=$pin first=$first second=$second")
@@ -65,9 +52,11 @@ Button(onClick={
   }) {
 Text( text = "OUTSIDE (1way): $second")
 }
-Keypad(value=pin, _set_first=::_set_first2, first = first, second=second)
-//Keypad(value=pin, _set_v=_set_v, v = v)
+Keypad(value=pin, _set_first=::_set_first, first = first, second=second)
+//Keypad(value=pin, _set_v=::_set_v, v = v)
 
+
+    
 }
 
 /*

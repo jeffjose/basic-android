@@ -23,7 +23,6 @@ data class User(var loggedIn: Boolean) : Parcelable
 //fun If( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
 fun If() {
 
-    
 
     
 
@@ -72,6 +71,8 @@ Button(onClick={
 
   Text(text="${user.loggedIn}. Clicked foo=$foo times")
 
+
+    
 }
 
 /*

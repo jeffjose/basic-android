@@ -17,16 +17,17 @@ import androidx.compose.ui.tooling.preview.Preview
 //fun Nested(answer: Int=0, _set_answer : (( Int) -> Unit)? = null,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
 fun Nested(answer: Int=0, _set_answer : (( Int) -> Unit)? = null, ) {
 
-    
-LaunchedEffect(answer) {
-    _set_answer?.invoke(answer)
-}
-
 
     
 var answer by rememberSaveable(inputs=arrayOf(answer)) { mutableStateOf(answer) }
 
 Text(text = "The answer is $answer")
+
+
+    
+LaunchedEffect(answer) {
+    _set_answer?.invoke(answer)
+}
 
 }
 
