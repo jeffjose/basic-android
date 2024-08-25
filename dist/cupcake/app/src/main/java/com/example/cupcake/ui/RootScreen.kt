@@ -94,6 +94,9 @@ Column(
         //BindingText()
         //ComponentBindings()
         DeepNested1()
+        Button(
+            onClick = {println("---")}
+        ) { Text(text="Reset") }
     }
 
     Column(

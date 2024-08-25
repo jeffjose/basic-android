@@ -11,13 +11,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import com.example.cupcake.R
-import com.example.cupcake.ui.components.Coffee
-import com.example.cupcake.ui.components.Spacer
-import com.example.cupcake.ui.components.If
-import com.example.cupcake.ui.components.Loop
-import com.example.cupcake.ui.components.BindingText
-import com.example.cupcake.ui.components.ComponentBindings
 import com.example.cupcake.ui.components.DeepNested1
+import com.example.cupcake.ui.components.Spacer
 
 // Log.d("XXX", data.value?.toString() ?: "default")
 
@@ -35,19 +30,22 @@ Column(
     ) {
 
         Spacer()
-        //Coffee()
+        // Coffee()
         // Simple(good="buh-bye")
         // ReactiveAssignments()
         // ReactiveDeclarations()
         // ReactiveStatements()
         // Nested(answer=42)
         // Nested()
-        //If()
-        //If()
-        //Loop()
-        //BindingText()
-        //ComponentBindings()
+        // If()
+        // If()
+        // Loop()
+        // BindingText()
+        // ComponentBindings()
         DeepNested1()
+        Button(
+            println("---"),
+        ) { Text(stringResource(R.string.home)) }
     }
 
     Column(

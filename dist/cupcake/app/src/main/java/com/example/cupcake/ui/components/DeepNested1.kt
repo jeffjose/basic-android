@@ -20,6 +20,7 @@ import com.example.cupcake.utils.*
 @Composable
 //fun DeepNested1( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
 fun DeepNested1() {
+println("1: top")
 
     
 
@@ -44,6 +45,7 @@ DeepNested2(_set_first_incoming_=::_set_first, first=first)
 
 
     
+println("1: bottom")
 }
 
 /*
