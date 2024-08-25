@@ -21,8 +21,6 @@ import androidx.compose.ui.tooling.preview.Preview
 fun Keypad(first: Int, _set_first : (( Int) -> Unit)? = null, second: Int, _set_second : (( Int) -> Unit)? = null, value: String ="", _set_value : (( String ) -> Unit)? = null, ) {
 
     
-
-    
 var first by rememberSaveable(inputs=arrayOf(first)) { mutableStateOf(first) }
 var second by rememberSaveable(inputs=arrayOf(second)) { mutableStateOf(second) }
 

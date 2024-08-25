@@ -18,8 +18,6 @@ import androidx.compose.ui.tooling.preview.Preview
 fun Nested(answer: Int=0, _set_answer : (( Int) -> Unit)? = null, ) {
 
     
-
-    
 var answer by rememberSaveable(inputs=arrayOf(answer)) { mutableStateOf(answer) }
 
 Text(text = "The answer is $answer")

@@ -22,8 +22,6 @@ import androidx.compose.ui.unit.dp
 fun Spacer() {
 
     
-
-    
 Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,

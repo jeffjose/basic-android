@@ -22,8 +22,6 @@ import kotlinx.coroutines.launch
 fun Simple(good:String="bye", _set_good : ((String) -> Unit)? = null, ) {
 
     
-
-    
 var good by rememberSaveable(inputs=arrayOf(good)) { mutableStateOf(good) }
 var foo = "foo-value"
 var bar by rememberSaveable { mutableStateOf("bar-value") }

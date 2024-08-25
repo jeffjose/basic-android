@@ -15,8 +15,6 @@ data class Cat(val id: String, val name: String)
 fun Loop() {
 
     
-
-    
 val cats = listOf(
   Cat(id="123", name="Keyboard Cat"),
   Cat(id="234", name="Smelly Cat"),

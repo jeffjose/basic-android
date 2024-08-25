@@ -22,16 +22,6 @@ import com.example.cupcake.utils.*
 fun ComponentBindings() {
 
     
-fun _set_first(value) {
-    first = value
-}
-
-fun _set_v(value) {
-    v = value
-}
-
-
-    
 
 
 
@@ -57,8 +47,13 @@ Button(onClick={
   }) {
 Text( text = "OUTSIDE (1way): $second")
 }
+
+        fun _set_first(value:  Int) {
+            first = value
+        }
+        
 Keypad(value=pin, _set_first=::_set_first, first = first, second=second)
-//Keypad(value=pin, _set_v=::_set_v, v = v)
+//Keypad(value=pin, bind:v = v)
 
 
 

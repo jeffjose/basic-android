@@ -24,8 +24,6 @@ fun BindingText() {
 
     
 
-    
-
 var text2 by rememberSaveable(stateSaver = TextFieldValue.Saver) { mutableStateOf(TextFieldValue("", TextRange(0, 7))) }
 
 TextField(value=text2, onValueChange={text2=it})

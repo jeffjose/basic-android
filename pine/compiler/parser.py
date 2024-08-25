@@ -77,9 +77,9 @@ def parse_component(data, default_imports):
     # This needs to come before `expand_component_lines`
     # since one of the things expand_compomnent_lines
     # does is modify `bind:var` lines
-    bindings = get_bindings(lines)
+    vars = get_var_declarations(lines)
 
-    lines = [expand_component_line(x) for x in lines]
+    lines = [expand_component_line(x, vars) for x in lines]
 
     parcel = get_imports_and_contents(lines)
 
@@ -95,7 +95,7 @@ def parse_component(data, default_imports):
         "exports": exports,
         "contents": "\n".join(parcel["contents"]),
         "frontmatter": "\n".join(frontmatter["frontmatter"]),
-        "bindings": bindings,
+        "vars": vars,
     }
 
 
@@ -115,21 +115,73 @@ def get_imports_and_contents(lines):
     return {"imports": imports, "contents": contents}
 
 
-def get_bindings(lines):
+def get_var_declarations(lines):
 
-    bindings = []
+    vars = []
 
     for line in lines:
 
-        matched = bind_variable_pattern.search(line)
-        if "bind:" in line:
-            vname = matched.groups()[0]
+        # external val foo = "bar"
+        matched = external_variable_w_default_value_pattern.match(line)
+        if matched:
 
-            # Find variable declaration here
+            t, vname_type, value = matched.groups()
+            vname = vname_type.split(":")[0]
 
-            bindings.append(vname)
+            var = {"vname": vname, "type": vname_type.split(":")[1], "line": line}
+            vars.append(var)
+            continue
 
-    return bindings
+        # external val foo
+        matched = external_variable_pattern.match(line)
+        if matched:
+
+            t, vname_type = matched.groups()
+            vname = vname_type.split(":")[0]
+
+            var = {"vname": vname, "type": vname_type.split(":")[1], "line": line}
+            vars.append(var)
+            continue
+
+        # var $foo = "bar"
+        matched = remember_mutablestate_pattern.match(line)
+        if matched:
+
+            t, vname, value = matched.groups()
+
+            # This section is updated (newer) than expand_component_line
+            # because we need `type` info
+            vname_type, saver = _extract_between_paren(vname)
+            try:
+                vname, type = vname_type.split(":")
+            except:
+                vname = vname_type
+                type = None
+
+            var = {"vname": vname, "type": type, "line": line}
+            vars.append(var)
+            continue
+
+        # var *foo = "bar"
+        matched = remembersaveable_mutablestate_pattern.match(line)
+        if matched:
+
+            t, vname, value = matched.groups()
+
+            # This section is updated (newer) than expand_component_line
+            # because we need `type` info
+            vname_type, saver = _extract_between_paren(vname)
+            try:
+                vname, type = vname_type.split(":")
+            except:
+                vname = vname_type
+                type = None
+
+            var = {"vname": vname, "type": type, "line": line}
+            vars.append(var)
+            continue
+
+    return vars
 
 
 def get_exports(lines):
@@ -174,7 +226,7 @@ def _extract_between_paren(s):
     return vname, saver
 
 
-def expand_component_line(line):
+def expand_component_line(line, vars):
 
     # This needs to come first, and the next 2 blocks dont return but pass it along to `remember` blocks
 
@@ -235,13 +287,24 @@ def expand_component_line(line):
 
     # Component(bind:foo="bar")
     matched = bind_variable_pattern.search(line)
-    if "bind:" in line:
+    if "bind:" in line and not line.strip().startswith("//"):
         vname = matched.groups()[0]
 
-        return line.replace("bind:", f"{mksetter(vname)}=::{mksetter(vname)}, ")
+        var_declaration = [v for v in vars if v['vname'] == vname][0]
 
-    if matched:
-        return f"{t} {vname} by remember {{ derivedStateOf {{  {value}  }} }}"
+
+        bindingsetter = f"""
+        fun {mksetter(vname)}(value: {var_declaration['type']}) {{
+            {vname} = value
+        }}
+        """
+
+        return f"{bindingsetter}\n" + line.replace(
+            "bind:", f"{mksetter(vname)}=::{mksetter(vname)}, "
+        )
+
+    # if matched:
+    #     return f"{t} {vname} by remember {{ derivedStateOf {{  {value}  }} }}"
 
     return line
 

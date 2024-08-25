@@ -33,8 +33,6 @@ import %%NAMESPACE%%.ui.theme.CupcakeTheme
 //fun %%NAME%%(%%PARAMS%% @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
 fun %%NAME%%(%%PARAMS%%) {
 
-    %%PARAMSETTERFUNCTIONS%%
-
     %%CONTENT%%
 
 
@@ -95,16 +93,6 @@ def mkpackage_string_component(output_dir_base):
     return f"package {get_project_namespace()}.ui.components{"." + output_dir_base.replace('/', '.') if output_dir_base != '' else ''}"
 
 
-def mkbinding_param_setters_functions_components(bindings):
-
-    final = ''
-    for b in bindings:
-        func = TEMPLATE_SETTERS_FUNCTION.replace("%%SETTER%%", mksetter(b)).replace("%%NAME%%", b)
-
-        final = final + func
-        
-    
-    return final
 def mkexport_param_setters_launched_effect_components(exports):
 
     final = ''
@@ -165,7 +153,6 @@ def create_component(template, file):
         .replace("%%NAME%%", slug)
         .replace("%%PARAMS%%", mkexport_string_component(parcel["exports"]))
         .replace("%%PARAMSETTERSLAUNCHEDEFFECTS%%", mkexport_param_setters_launched_effect_components(parcel["exports"]))
-        .replace("%%PARAMSETTERFUNCTIONS%%", mkbinding_param_setters_functions_components(parcel["bindings"]))
         .replace("%%FRONTMATTER%%", parcel['frontmatter'])
         .strip()
     )
