@@ -29,6 +29,7 @@ import com.example.cupcake.R
 import com.example.cupcake.ui.components.BindingText
 import com.example.cupcake.ui.components.Coffee
 import com.example.cupcake.ui.components.ComponentBindings
+import com.example.cupcake.ui.components.DeepNested1
 import com.example.cupcake.ui.components.If
 import com.example.cupcake.ui.components.Loop
 import com.example.cupcake.ui.components.Spacer
@@ -91,7 +92,8 @@ Column(
         //If()
         //Loop()
         //BindingText()
-        ComponentBindings()
+        //ComponentBindings()
+        DeepNested1()
     }
 
     Column(

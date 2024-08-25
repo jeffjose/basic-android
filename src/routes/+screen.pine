@@ -17,6 +17,7 @@ import com.example.cupcake.ui.components.If
 import com.example.cupcake.ui.components.Loop
 import com.example.cupcake.ui.components.BindingText
 import com.example.cupcake.ui.components.ComponentBindings
+import com.example.cupcake.ui.components.DeepNested1
 
 // Log.d("XXX", data.value?.toString() ?: "default")
 
@@ -45,7 +46,8 @@ Column(
         //If()
         //Loop()
         //BindingText()
-        ComponentBindings()
+        //ComponentBindings()
+        DeepNested1()
     }
 
     Column(
