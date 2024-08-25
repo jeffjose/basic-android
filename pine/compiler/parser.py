@@ -258,12 +258,23 @@ def expand_component_line(line, vars):
 
         t, vname, value = matched.groups()
 
-        vname, saver = _extract_between_paren(vname)
+        vname_type, saver = _extract_between_paren(vname)
+        try:
+            vname, type = vname_type.split(":")
+        except:
+            vname = vname_type
+            type = None
 
         stateSaverString = "" if not saver else f"({saver})"
 
+        suffix = (
+            "\n"
+            + f"var {mksetter_incoming(vname)} = {mksetter_incoming(vname)} ?:  {{ it }}"
+        )
+
         return (
-            f"{t} {vname} by remember{stateSaverString} {{ mutableStateOf({value}) }}"
+            f"{t} {vname_type} by remember{stateSaverString} {{ mutableStateOf({value}) }}"
+            + suffix
         )
 
     # var *foo = "bar"
@@ -272,11 +283,24 @@ def expand_component_line(line, vars):
 
         t, vname, value = matched.groups()
 
-        vname, saver = _extract_between_paren(vname)
+        vname_type, saver = _extract_between_paren(vname)
+        try:
+            vname, type = vname_type.split(":")
+        except:
+            vname = vname_type
+            type = None
 
         stateSaverString = "" if not saver else f"({saver})"
 
-        return f"{t} {vname} by rememberSaveable{stateSaverString} {{ mutableStateOf({value}) }}"
+        suffix = (
+            "\n"
+            + f"var {mksetter_incoming(vname)} = {mksetter_incoming(vname)} ?: {{ it }}"
+        )
+
+        return (
+            f"{t} {vname_type} by rememberSaveable{stateSaverString} {{ mutableStateOf({value}) }}"
+            + suffix
+        )
 
     # var count = $derived(count * 2)
     matched = remember_derivedstateof_pattern.match(line)
@@ -290,13 +314,12 @@ def expand_component_line(line, vars):
     if "bind:" in line and not line.strip().startswith("//"):
         vname = matched.groups()[0]
 
-        var_declaration = [v for v in vars if v['vname'] == vname][0]
-
+        var_declaration = [v for v in vars if v["vname"] == vname][0]
 
         bindingsetter = f"""
         fun {mksetter(vname)}(value: {var_declaration['type']}) {{
             {vname} = value
-            //{mksetter_incoming(vname)}?.invoke({vname})
+            {mksetter_incoming(vname)}_self({vname})
         }}
         """
 

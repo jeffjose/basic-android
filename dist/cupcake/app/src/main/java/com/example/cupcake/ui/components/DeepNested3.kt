@@ -24,6 +24,7 @@ fun DeepNested3(first: Int, _set_first_incoming_ : (( Int) -> Unit)? = null, ) {
 
 println("  3. top")
 var first by rememberSaveable(inputs=arrayOf(first)) { mutableStateOf(first) }
+var _set_first_incoming_ = _set_first_incoming_ ?: { it }
 
 Button(onClick={
   first = first + 1

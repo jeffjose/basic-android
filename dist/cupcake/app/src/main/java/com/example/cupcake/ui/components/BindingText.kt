@@ -25,6 +25,7 @@ fun BindingText() {
     
 
 var text2 by rememberSaveable(stateSaver = TextFieldValue.Saver) { mutableStateOf(TextFieldValue("", TextRange(0, 7))) }
+var _set_text2_incoming_ = _set_text2_incoming_ ?: { it }
 
 TextField(value=text2, onValueChange={text2=it})
 Text("Entered ${text2.text}")
