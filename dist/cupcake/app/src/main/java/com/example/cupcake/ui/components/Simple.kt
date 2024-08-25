@@ -21,6 +21,7 @@ import kotlinx.coroutines.launch
 //fun Simple(good:String="bye", _set_good : ((String) -> Unit)? = null,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
 fun Simple(good:String="bye", _set_good : ((String) -> Unit)? = null, ) {
 
+    
 
     
 var good by rememberSaveable(inputs=arrayOf(good)) { mutableStateOf(good) }
@@ -62,6 +63,7 @@ DisposableEffect(scope) {
 
 Text("Simple $foo $bar $baz")
 Text("x=$x y=$y")
+
 
 
     

@@ -33,10 +33,12 @@ import %%NAMESPACE%%.ui.theme.CupcakeTheme
 //fun %%NAME%%(%%PARAMS%% @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
 fun %%NAME%%(%%PARAMS%%) {
 
+    %%PARAMSETTERFUNCTIONS%%
 
     %%CONTENT%%
 
-    %%PARAMSETTERS%%
+
+    %%PARAMSETTERSLAUNCHEDEFFECTS%%
 }
 
 /*
@@ -54,7 +56,13 @@ fun %%NAME%%Preview(%%PARAMS%% @Suppress("UNUSED_PARAMETER")) {
 
 """
 
-TEMPLATE_SETTER = '''
+TEMPLATE_SETTERS_FUNCTION = '''
+fun %%SETTER%%(value) {
+    %%NAME%% = value
+}
+'''
+
+TEMPLATE_SETTER_LAUNCHED_EFFECT = '''
 LaunchedEffect(%%NAME%%) {
     %%SETTER%%?.invoke(%%NAME%%)
 }
@@ -86,12 +94,23 @@ def get_slug(file):
 def mkpackage_string_component(output_dir_base):
     return f"package {get_project_namespace()}.ui.components{"." + output_dir_base.replace('/', '.') if output_dir_base != '' else ''}"
 
-def mkexport_param_setters_components(exports):
+
+def mkbinding_param_setters_functions_components(bindings):
+
+    final = ''
+    for b in bindings:
+        func = TEMPLATE_SETTERS_FUNCTION.replace("%%SETTER%%", mksetter(b)).replace("%%NAME%%", b)
+
+        final = final + func
+        
+    
+    return final
+def mkexport_param_setters_launched_effect_components(exports):
 
     final = ''
     for e in exports:
         vname, t = e['name'].split(':')
-        setter = TEMPLATE_SETTER.replace("%%NAME%%", vname).replace("%%SETTER%%", mksetter(vname))
+        setter = TEMPLATE_SETTER_LAUNCHED_EFFECT.replace("%%NAME%%", vname).replace("%%SETTER%%", mksetter(vname))
 
         final = final + setter
         
@@ -145,7 +164,8 @@ def create_component(template, file):
         .replace("%%CONTENT%%", parcel["contents"])
         .replace("%%NAME%%", slug)
         .replace("%%PARAMS%%", mkexport_string_component(parcel["exports"]))
-        .replace("%%PARAMSETTERS%%", mkexport_param_setters_components(parcel["exports"]))
+        .replace("%%PARAMSETTERSLAUNCHEDEFFECTS%%", mkexport_param_setters_launched_effect_components(parcel["exports"]))
+        .replace("%%PARAMSETTERFUNCTIONS%%", mkbinding_param_setters_functions_components(parcel["bindings"]))
         .replace("%%FRONTMATTER%%", parcel['frontmatter'])
         .strip()
     )

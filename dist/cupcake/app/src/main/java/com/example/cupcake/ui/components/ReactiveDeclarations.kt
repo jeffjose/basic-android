@@ -20,6 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 //fun ReactiveDeclarations( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
 fun ReactiveDeclarations() {
 
+    
 
     
 
@@ -52,6 +53,7 @@ Button(onClick={handleClick()}) {
 
   Text(text = "$count * 2 = $doubled")
   Text(text = "$count * 2 = $quadrupled")
+
 
 
     

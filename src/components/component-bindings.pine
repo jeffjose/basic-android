@@ -7,12 +7,8 @@ import com.example.cupcake.utils.*
 import com.example.cupcake.ui.components.Keypad
 
 
-var *first = 0
-var *second = 0
-
-fun _set_first(value: Int) {
-  first = value
-}
+var *first: Int = 0
+var *second: Int = 0
 
 var *pin = ""
 

@@ -95,6 +95,7 @@ def parse_component(data, default_imports):
         "exports": exports,
         "contents": "\n".join(parcel["contents"]),
         "frontmatter": "\n".join(frontmatter["frontmatter"]),
+        "bindings": bindings,
     }
 
 
@@ -126,9 +127,7 @@ def get_bindings(lines):
 
             # Find variable declaration here
 
-            import pdb
-
-            pdb.set_trace()
+            bindings.append(vname)
 
     return bindings
 
@@ -178,6 +177,8 @@ def _extract_between_paren(s):
 def expand_component_line(line):
 
     # This needs to come first, and the next 2 blocks dont return but pass it along to `remember` blocks
+
+    # external val foo = "bar"
     matched = external_variable_w_default_value_pattern.match(line)
     if matched:
 
@@ -188,6 +189,7 @@ def expand_component_line(line):
         # The `*` exists so that external variables are rememberSaveable
         line = f"{t} *{_clean_vname(vname)}(inputs=arrayOf({_clean_vname(vname)})) = {_clean_vname(vname)}"
 
+    # external val foo
     matched = external_variable_pattern.match(line)
     if matched:
 
@@ -198,6 +200,7 @@ def expand_component_line(line):
         # The `*` exists so that external variables are rememberSaveable
         line = f"{t} *{_clean_vname(vname)}(inputs=arrayOf({_clean_vname(vname)})) = {_clean_vname(vname)}"
 
+    # var $foo = "bar"
     matched = remember_mutablestate_pattern.match(line)
     if matched:
 
@@ -211,6 +214,7 @@ def expand_component_line(line):
             f"{t} {vname} by remember{stateSaverString} {{ mutableStateOf({value}) }}"
         )
 
+    # var *foo = "bar"
     matched = remembersaveable_mutablestate_pattern.match(line)
     if matched:
 
@@ -222,18 +226,14 @@ def expand_component_line(line):
 
         return f"{t} {vname} by rememberSaveable{stateSaverString} {{ mutableStateOf({value}) }}"
 
+    # var count = $derived(count * 2)
     matched = remember_derivedstateof_pattern.match(line)
     if matched:
 
         t, vname, value = matched.groups()
         return f"{t} {vname} by remember {{ derivedStateOf {{  {value}  }} }}"
 
-    # matched = remember_derivedstateof_pattern.match(line)
-    # if matched:
-
-    #    t, vname, value = matched.groups()
-    #    return f"{t} {vname} by remember {{ derivedStateOf {{  {value}  }} }}"
-
+    # Component(bind:foo="bar")
     matched = bind_variable_pattern.search(line)
     if "bind:" in line:
         vname = matched.groups()[0]
@@ -241,7 +241,6 @@ def expand_component_line(line):
         return line.replace("bind:", f"{mksetter(vname)}=::{mksetter(vname)}, ")
 
     if matched:
-
         return f"{t} {vname} by remember {{ derivedStateOf {{  {value}  }} }}"
 
     return line
