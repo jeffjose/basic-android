@@ -7,6 +7,7 @@ import com.example.cupcake.utils.*
 import com.example.cupcake.ui.components.DeepNested3
 
 
+println(" 2. top")
 external var first: Int
 
 Button(onClick={
@@ -16,3 +17,5 @@ Button(onClick={
 }
 
 DeepNested3(bind:first=first)
+
+println(" 2. bottom")

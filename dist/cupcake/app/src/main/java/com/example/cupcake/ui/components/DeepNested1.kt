@@ -24,6 +24,7 @@ fun DeepNested1() {
     
 
 
+println("1. top")
 
 var first: Int by rememberSaveable { mutableStateOf(0) }
 
@@ -40,6 +41,8 @@ Button(onClick={
         }
         
 DeepNested2(_set_first_incoming_=::_set_first, first=first)
+
+println("1. bottom")
 
 
 

@@ -4,6 +4,7 @@ import androidx.compose.material3.TextField
 
 import com.example.cupcake.utils.*
 
+println("  3. top")
 external var first: Int
 
 Button(onClick={
@@ -11,3 +12,5 @@ Button(onClick={
   }) {
   Text( text = "3: $first")
 }
+
+println("  3. bottom")
