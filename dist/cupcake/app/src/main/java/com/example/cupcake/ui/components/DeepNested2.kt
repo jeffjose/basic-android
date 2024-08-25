@@ -20,7 +20,6 @@ import com.example.cupcake.utils.*
 @Composable
 //fun DeepNested2(first: Int, _set_first_incoming_ : (( Int) -> Unit)? = null,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
 fun DeepNested2(first: Int, _set_first_incoming_ : (( Int) -> Unit)? = null, ) {
-println(" 2: top")
 
     
 
@@ -36,9 +35,8 @@ Button(onClick={
 
 
         fun _set_first(value:  Int) {
-            println(" 2: _set_first $value")
             first = value
-            _set_first_incoming_?.invoke(value)
+            //_set_first_incoming_?.invoke(first)
         }
         
 DeepNested3(_set_first_incoming_=::_set_first, first=first)
@@ -47,11 +45,9 @@ DeepNested3(_set_first_incoming_=::_set_first, first=first)
 
     
 LaunchedEffect(first) {
-    println(" 2: Inside LE $first")
     _set_first_incoming_?.invoke(first)
 }
 
-println(" 2: bottom")
 }
 
 /*

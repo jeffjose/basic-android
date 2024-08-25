@@ -26,12 +26,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.cupcake.R
-import com.example.cupcake.ui.components.BindingText
-import com.example.cupcake.ui.components.Coffee
-import com.example.cupcake.ui.components.ComponentBindings
 import com.example.cupcake.ui.components.DeepNested1
-import com.example.cupcake.ui.components.If
-import com.example.cupcake.ui.components.Loop
 import com.example.cupcake.ui.components.Spacer
 import io.ktor.client.*
 import io.ktor.client.call.body
@@ -81,22 +76,23 @@ Column(
     ) {
 
         Spacer()
-        //Coffee()
+        // Coffee()
         // Simple(good="buh-bye")
         // ReactiveAssignments()
         // ReactiveDeclarations()
         // ReactiveStatements()
         // Nested(answer=42)
         // Nested()
-        //If()
-        //If()
-        //Loop()
-        //BindingText()
-        //ComponentBindings()
+        // If()
+        // If()
+        // Loop()
+        // BindingText()
+        // ComponentBindings()
         DeepNested1()
-        Button(
-            onClick = {println("---")}
-        ) { Text(text="Reset") }
+        Button(onClick={
+            println("---")
+        }
+        ) { Text(stringResource(R.string.home)) }
     }
 
     Column(

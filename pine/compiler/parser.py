@@ -296,6 +296,7 @@ def expand_component_line(line, vars):
         bindingsetter = f"""
         fun {mksetter(vname)}(value: {var_declaration['type']}) {{
             {vname} = value
+            //{mksetter_incoming(vname)}?.invoke({vname})
         }}
         """
 

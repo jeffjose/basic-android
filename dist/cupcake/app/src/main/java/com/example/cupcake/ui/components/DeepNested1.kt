@@ -20,7 +20,6 @@ import com.example.cupcake.utils.*
 @Composable
 //fun DeepNested1( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
 fun DeepNested1() {
-println("1: top")
 
     
 
@@ -36,8 +35,8 @@ Button(onClick={
 
 
         fun _set_first(value:  Int) {
-            println("1: _set_first $value")
             first = value
+            //_set_first_incoming_?.invoke(first)
         }
         
 DeepNested2(_set_first_incoming_=::_set_first, first=first)
@@ -45,7 +44,6 @@ DeepNested2(_set_first_incoming_=::_set_first, first=first)
 
 
     
-println("1: bottom")
 }
 
 /*

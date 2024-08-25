@@ -50,6 +50,7 @@ Text( text = "OUTSIDE (1way): $second")
 
         fun _set_first(value:  Int) {
             first = value
+            //_set_first_incoming_?.invoke(first)
         }
         
 Keypad(value=pin, _set_first_incoming_=::_set_first, first = first, second=second)
