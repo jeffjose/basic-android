@@ -1,5 +1,5 @@
 import re
-from utils import mksetter
+from utils import mksetter, mksetter_incoming
 
 #
 # A greedy pattern to capture everything inside paren
@@ -300,7 +300,7 @@ def expand_component_line(line, vars):
         """
 
         return f"{bindingsetter}\n" + line.replace(
-            "bind:", f"{mksetter(vname)}=::{mksetter(vname)}, "
+            "bind:", f"{mksetter_incoming(vname)}=::{mksetter(vname)}, "
         )
 
     # if matched:

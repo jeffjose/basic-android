@@ -11,7 +11,9 @@ from utils import (
     get_project_namespace,
     get_app_dir,
     mkdir,
-    mksetter
+    mksetter,
+    mksetter_incoming
+
 )
 from compiler.parser import parse_component
 DEFAULT_IMPORTS = [
@@ -98,7 +100,7 @@ def mkexport_param_setters_launched_effect_components(exports):
     final = ''
     for e in exports:
         vname, t = e['name'].split(':')
-        setter = TEMPLATE_SETTER_LAUNCHED_EFFECT.replace("%%NAME%%", vname).replace("%%SETTER%%", mksetter(vname))
+        setter = TEMPLATE_SETTER_LAUNCHED_EFFECT.replace("%%NAME%%", vname).replace("%%SETTER%%", mksetter_incoming(vname))
 
         final = final + setter
         
@@ -118,7 +120,7 @@ def mkexport_string_component(exports):
 
         # Add a setXXXX function
         vname, t = e['name'].split(':')
-        s.append(f'{mksetter(vname)} : (({t}) -> Unit)? = null')
+        s.append(f'{mksetter_incoming(vname)} : (({t}) -> Unit)? = null')
 
     final = ", ".join(s)
 

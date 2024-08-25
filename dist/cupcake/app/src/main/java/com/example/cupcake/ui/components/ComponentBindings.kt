@@ -52,7 +52,7 @@ Text( text = "OUTSIDE (1way): $second")
             first = value
         }
         
-Keypad(value=pin, _set_first=::_set_first, first = first, second=second)
+Keypad(value=pin, _set_first_incoming_=::_set_first, first = first, second=second)
 //Keypad(value=pin, bind:v = v)
 
 

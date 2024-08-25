@@ -102,3 +102,7 @@ def write_json(file: str, obj: any):
 
 def mksetter(name):
     return f"_set_{name}"
+
+
+def mksetter_incoming(name):
+    return f"_set_{name}_incoming_"
