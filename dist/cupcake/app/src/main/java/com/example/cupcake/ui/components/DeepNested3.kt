@@ -25,6 +25,10 @@ fun DeepNested3(first: Int, _set_first_incoming_ : (( Int) -> Unit)? = null, ) {
 println("  3. top")
 var first by rememberSaveable(inputs=arrayOf(first)) { mutableStateOf(first) }
 
+LaunchedEffect(true) {
+  println("Loaded 3")
+}
+
 Button(onClick={
   first = first + 1
   }) {

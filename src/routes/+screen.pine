@@ -12,6 +12,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import com.example.cupcake.R
 import com.example.cupcake.ui.components.DeepNested1
+import com.example.cupcake.ui.components.OnMount
 import com.example.cupcake.ui.components.Spacer
 
 // Log.d("XXX", data.value?.toString() ?: "default")
@@ -42,7 +43,8 @@ Column(
         // Loop()
         // BindingText()
         // ComponentBindings()
-        DeepNested1()
+        //DeepNested1()
+        OnMount()
         Button(onClick={
             println("---")
         }

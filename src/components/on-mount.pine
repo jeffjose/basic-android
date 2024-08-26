@@ -1,0 +1,19 @@
+import io.ktor.client.*
+import io.ktor.client.engine.cio.*
+import io.ktor.client.plugins.contentnegotiation.*
+import io.ktor.serialization.kotlinx.json.*
+import io.ktor.client.request.*
+import io.ktor.client.statement.*
+
+val http =
+    HttpClient(CIO) {
+        install(ContentNegotiation) {
+            json()
+        }
+    }
+
+var photos = arrayOf<String>()
+
+LaunchedEffect(true) {
+    val response : HttpResponse = http.get("https://picsum.photos/v2/list?limit=10")
+}

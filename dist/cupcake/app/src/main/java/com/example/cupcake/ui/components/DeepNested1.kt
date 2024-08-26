@@ -26,6 +26,10 @@ fun DeepNested1() {
 
 println("1. top")
 
+LaunchedEffect(true) {
+  println("Loaded 1")
+}
+
 var first: Int by rememberSaveable { mutableStateOf(0) }
 
 Button(onClick={

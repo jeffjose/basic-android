@@ -27,6 +27,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.cupcake.R
 import com.example.cupcake.ui.components.DeepNested1
+import com.example.cupcake.ui.components.OnMount
 import com.example.cupcake.ui.components.Spacer
 import io.ktor.client.*
 import io.ktor.client.call.body
@@ -88,7 +89,8 @@ Column(
         // Loop()
         // BindingText()
         // ComponentBindings()
-        DeepNested1()
+        //DeepNested1()
+        OnMount()
         Button(onClick={
             println("---")
         }

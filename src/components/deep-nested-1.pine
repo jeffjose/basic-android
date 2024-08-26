@@ -8,6 +8,10 @@ import com.example.cupcake.ui.components.DeepNested2
 
 println("1. top")
 
+LaunchedEffect(true) {
+  println("Loaded 1")
+}
+
 var *first: Int = 0
 
 Button(onClick={
