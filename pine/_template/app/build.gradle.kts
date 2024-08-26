@@ -96,10 +96,10 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
-        implementation("io.ktor:ktor-client-core:2.3.12")
+    implementation("io.ktor:ktor-client-core:2.3.12")
     implementation("io.ktor:ktor-client-cio:2.3.12")
     implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.12")
     implementation("io.ktor:ktor-client-content-negotiation:2.3.12")
-
-
+    implementation("com.hypercubetools:ktor-moshi:3.0.0")
+    implementation("com.squareup.moshi:moshi-kotlin:1.15.1")
 }
