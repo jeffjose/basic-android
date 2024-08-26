@@ -2,8 +2,14 @@ package com.example.cupcake.ui.components
 
 import com.example.cupcake.ui.theme.CupcakeTheme
 
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
 import com.hypercubetools.ktor.moshi.moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -34,6 +40,7 @@ fun OnMount() {
     
 
 
+
 val http =
     HttpClient(CIO) {
         install(ContentNegotiation) {
@@ -44,13 +51,15 @@ val http =
         }
     }
 
-var photos = listOf<Photo>()
+var photos by rememberSaveable { mutableStateOf(listOf<Photo>()) }
 
 LaunchedEffect(true) {
   println("onMount - A")
   photos = http.get("https://picsum.photos/v2/list?limit=10").body<List<Photo>>()
-  println("onMount - C")
+  println("onMount - C $photos")
 }
+
+Text(text = "Photos - $photos")
 
 
 

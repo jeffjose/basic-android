@@ -21,6 +21,9 @@ import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.client.call.body
 
+import androidx.compose.material3.Text
+import androidx.compose.material3.Button
+
 
 
 val http =
@@ -33,10 +36,12 @@ val http =
         }
     }
 
-var photos = listOf<Photo>()
+var *photos = listOf<Photo>()
 
 LaunchedEffect(true) {
   println("onMount - A")
   photos = http.get("https://picsum.photos/v2/list?limit=10").body<List<Photo>>()
-  println("onMount - C")
+  println("onMount - C $photos")
 }
+
+Text(text = "Photos - $photos")
