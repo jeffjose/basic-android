@@ -13,13 +13,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
 import com.hypercubetools.ktor.moshi.moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import io.ktor.client.*
+import io.ktor.client.HttpClient
 import io.ktor.client.call.body
-import io.ktor.client.engine.cio.*
-import io.ktor.client.plugins.contentnegotiation.*
+import io.ktor.client.engine.cio.CIO
+import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.request.*
-import io.ktor.client.statement.*
-import io.ktor.serialization.kotlinx.json.*
 
 
 data class Photo (
@@ -46,7 +44,6 @@ val http =
         install(ContentNegotiation) {
             moshi {
               add(KotlinJsonAdapterFactory())
-
             }
         }
     }
@@ -59,7 +56,7 @@ LaunchedEffect(true) {
   println("onMount - C $photos")
 }
 
-Text(text = "Photos - $photos")
+Text(text = "Photos - ${photos.size}")
 
 
 
