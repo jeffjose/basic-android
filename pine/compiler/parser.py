@@ -79,7 +79,7 @@ def parse_component(data, default_imports):
     # does is modify `bind:var` lines
     vars = get_var_declarations(lines)
 
-    lines = [expand_component_line(x, vars) for x in lines]
+    lines = [expand_component_line(x, vars, exports) for x in lines]
 
     parcel = get_imports_and_contents(lines)
 
@@ -194,9 +194,20 @@ def get_exports(lines):
 
         if matched:
 
-            t, vname, value = matched.groups()
+            t, vname_type, value = matched.groups()
 
-            export = {"name": vname.strip("*$"), "value": value}
+            try:
+                vname, type = vname_type.split(":")
+            except:
+                vname = vname_type
+                type = None
+
+            export = {
+                "name": vname_type.strip("*$"),
+                "value": value,
+                "vname": vname,
+                "type": type,
+            }
             exports.append(export)
 
             continue
@@ -204,9 +215,20 @@ def get_exports(lines):
         matched = external_variable_pattern.match(line)
         if matched:
 
-            t, vname = matched.groups()
+            t, vname_type = matched.groups()
 
-            export = {"name": vname.strip("*$"), "value": None}
+            try:
+                vname, type = vname_type.split(":")
+            except:
+                vname = vname_type
+                type = None
+
+            export = {
+                "name": vname_type.strip("*$"),
+                "value": None,
+                "vname": vname,
+                "type": type,
+            }
 
             exports.append(export)
             continue
@@ -226,7 +248,7 @@ def _extract_between_paren(s):
     return vname, saver
 
 
-def expand_component_line(line, vars):
+def expand_component_line(line, vars, exports):
 
     # This needs to come first, and the next 2 blocks dont return but pass it along to `remember` blocks
 
@@ -267,15 +289,7 @@ def expand_component_line(line, vars):
 
         stateSaverString = "" if not saver else f"({saver})"
 
-        suffix = (
-            "\n"
-            + f"var {mksetter_incoming(vname)} = {mksetter_incoming(vname)} ?:  {{ it }}"
-        )
-
-        return (
-            f"{t} {vname_type} by remember{stateSaverString} {{ mutableStateOf({value}) }}"
-            + suffix
-        )
+        return f"{t} {vname_type} by remember{stateSaverString} {{ mutableStateOf({value}) }}"
 
     # var *foo = "bar"
     matched = remembersaveable_mutablestate_pattern.match(line)
@@ -292,15 +306,7 @@ def expand_component_line(line, vars):
 
         stateSaverString = "" if not saver else f"({saver})"
 
-        suffix = (
-            "\n"
-            + f"var {mksetter_incoming(vname)} = {mksetter_incoming(vname)} ?: {{ it }}"
-        )
-
-        return (
-            f"{t} {vname_type} by rememberSaveable{stateSaverString} {{ mutableStateOf({value}) }}"
-            + suffix
-        )
+        return f"{t} {vname_type} by rememberSaveable{stateSaverString} {{ mutableStateOf({value}) }}"
 
     # var count = $derived(count * 2)
     matched = remember_derivedstateof_pattern.match(line)
@@ -315,13 +321,21 @@ def expand_component_line(line, vars):
         vname = matched.groups()[0]
 
         var_declaration = [v for v in vars if v["vname"] == vname][0]
+        try:
+            [e for e in exports if e["vname"] == vname][0]
+        except:
+            is_export = False
+        else:
+            is_export = True
 
         bindingsetter = f"""
         fun {mksetter(vname)}(value: {var_declaration['type']}) {{
             {vname} = value
-            {mksetter_incoming(vname)}_self({vname})
+            %%INCOMINGSETTER%%
         }}
         """
+
+        bindingsetter = bindingsetter.replace('%%INCOMINGSETTER%%', f'{mksetter_incoming(vname)}?.invoke({vname})' if is_export else '')
 
         return f"{bindingsetter}\n" + line.replace(
             "bind:", f"{mksetter_incoming(vname)}=::{mksetter(vname)}, "

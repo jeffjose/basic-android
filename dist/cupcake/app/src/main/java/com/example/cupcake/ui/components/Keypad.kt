@@ -22,14 +22,11 @@ fun Keypad(first: Int, _set_first_incoming_ : (( Int) -> Unit)? = null, second: 
 
     
 var first by rememberSaveable(inputs=arrayOf(first)) { mutableStateOf(first) }
-var _set_first_incoming_ = _set_first_incoming_ ?: { it }
 var second by rememberSaveable(inputs=arrayOf(second)) { mutableStateOf(second) }
-var _set_second_incoming_ = _set_second_incoming_ ?: { it }
 
 println("first=$first, second=$second")
 
 var value by rememberSaveable(inputs=arrayOf(value)) { mutableStateOf(value) }
-var _set_value_incoming_ = _set_value_incoming_ ?: { it }
 
 //external var setFirst: (Int) -> Unit
 

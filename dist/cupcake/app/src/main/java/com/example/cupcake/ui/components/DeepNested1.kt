@@ -27,7 +27,6 @@ fun DeepNested1() {
 println("1. top")
 
 var first: Int by rememberSaveable { mutableStateOf(0) }
-var _set_first_incoming_ = _set_first_incoming_ ?: { it }
 
 Button(onClick={
   first = first + 1
@@ -38,7 +37,7 @@ Button(onClick={
 
         fun _set_first(value:  Int) {
             first = value
-            _set_first_incoming__self(first)
+            
         }
         
 DeepNested2(_set_first_incoming_=::_set_first, first=first)

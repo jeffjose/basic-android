@@ -19,7 +19,6 @@ fun Nested(answer: Int=0, _set_answer_incoming_ : (( Int) -> Unit)? = null, ) {
 
     
 var answer by rememberSaveable(inputs=arrayOf(answer)) { mutableStateOf(answer) }
-var _set_answer_incoming_ = _set_answer_incoming_ ?: { it }
 
 Text(text = "The answer is $answer")
 

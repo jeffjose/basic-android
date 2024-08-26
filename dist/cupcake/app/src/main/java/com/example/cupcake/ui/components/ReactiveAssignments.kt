@@ -20,7 +20,6 @@ fun ReactiveAssignments() {
 
     
 var count by rememberSaveable { mutableStateOf(0) }
-var _set_count_incoming_ = _set_count_incoming_ ?: { it }
 
 fun handleClick() {
   count++

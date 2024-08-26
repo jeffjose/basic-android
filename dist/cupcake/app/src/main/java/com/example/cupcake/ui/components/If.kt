@@ -30,9 +30,7 @@ fun If() {
 
 var foo = 0
 var count by remember { mutableStateOf(0) }
-var _set_count_incoming_ = _set_count_incoming_ ?:  { it }
 var user by rememberSaveable { mutableStateOf(User(false)) }
-var _set_user_incoming_ = _set_user_incoming_ ?: { it }
 
 //println("if - after ${user["loggedIn"]}")
 

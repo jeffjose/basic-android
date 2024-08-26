@@ -29,14 +29,10 @@ fun Coffee() {
     
 
 var coffeeCount  by remember { mutableStateOf(0) }
-var _set_coffeeCount _incoming_ = _set_coffeeCount _incoming_ ?:  { it }
 var count by rememberSaveable { mutableStateOf(0) }
-var _set_count_incoming_ = _set_count_incoming_ ?: { it }
 
 val xcoffeeCount  by remember { mutableStateOf(0) }
-var _set_xcoffeeCount _incoming_ = _set_xcoffeeCount _incoming_ ?:  { it }
 val xcount by rememberSaveable { mutableStateOf(0) }
-var _set_xcount_incoming_ = _set_xcount_incoming_ ?: { it }
 
 
 Column(

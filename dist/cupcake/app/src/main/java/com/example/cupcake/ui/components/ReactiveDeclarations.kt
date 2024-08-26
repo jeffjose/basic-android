@@ -26,9 +26,7 @@ fun ReactiveDeclarations() {
 
 
 var count by rememberSaveable { mutableStateOf(1) }
-var _set_count_incoming_ = _set_count_incoming_ ?: { it }
 var x by remember { mutableStateOf(0) }
-var _set_x_incoming_ = _set_x_incoming_ ?:  { it }
 
 //val doubled by remember {derivedStateOf { count * 2}}
 //val quadrupled by remember {derivedStateOf { doubled * 2}}

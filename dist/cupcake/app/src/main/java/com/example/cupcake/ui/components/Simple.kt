@@ -23,12 +23,9 @@ fun Simple(good:String="bye", _set_good_incoming_ : ((String) -> Unit)? = null, 
 
     
 var good by rememberSaveable(inputs=arrayOf(good)) { mutableStateOf(good) }
-var _set_good_incoming_ = _set_good_incoming_ ?: { it }
 var foo = "foo-value"
 var bar by rememberSaveable { mutableStateOf("bar-value") }
-var _set_bar_incoming_ = _set_bar_incoming_ ?: { it }
 var baz by remember { mutableStateOf("baz-value") }
-var _set_baz_incoming_ = _set_baz_incoming_ ?:  { it }
 var x = 1
 var y = 2
 println("------------------")

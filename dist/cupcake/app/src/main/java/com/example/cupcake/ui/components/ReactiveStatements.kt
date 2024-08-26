@@ -23,7 +23,6 @@ fun ReactiveStatements() {
 
     
 var count by rememberSaveable { mutableStateOf(1) }
-var _set_count_incoming_ = _set_count_incoming_ ?: { it }
 
 fun check() {
   println("The $count is ridiculously high")

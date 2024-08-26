@@ -26,12 +26,9 @@ fun ComponentBindings() {
 
 
 var first: Int by rememberSaveable { mutableStateOf(0) }
-var _set_first_incoming_ = _set_first_incoming_ ?: { it }
 var second: Int by rememberSaveable { mutableStateOf(0) }
-var _set_second_incoming_ = _set_second_incoming_ ?: { it }
 
 var pin by rememberSaveable { mutableStateOf("") }
-var _set_pin_incoming_ = _set_pin_incoming_ ?: { it }
 
 fun handleSubmit() {
   println("You entererd $pin")
@@ -53,7 +50,7 @@ Text( text = "OUTSIDE (1way): $second")
 
         fun _set_first(value:  Int) {
             first = value
-            _set_first_incoming__self(first)
+            
         }
         
 Keypad(value=pin, _set_first_incoming_=::_set_first, first = first, second=second)
