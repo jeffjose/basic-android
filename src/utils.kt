@@ -11,6 +11,15 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.lifecycle.MutableLiveData
 
+import com.hypercubetools.ktor.moshi.moshi
+import io.ktor.client.HttpClient
+import io.ktor.client.engine.cio.CIO
+import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import io.ktor.client.request.*
+import io.ktor.client.call.body
+import com.example.cupcake.utils.http
+
 
 class MutableStateAdapter<T>(
     private val state: State<T>,
@@ -34,3 +43,12 @@ fun <T> MutableStateFlow<T>.collectAsMutableState(
     state = collectAsState(context),
     mutate = { value = it }
 )
+
+public val http =
+    HttpClient(CIO) {
+        install(ContentNegotiation) {
+            moshi {
+              add(KotlinJsonAdapterFactory())
+            }
+        }
+    }
