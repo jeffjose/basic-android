@@ -8,7 +8,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
@@ -38,8 +37,6 @@ fun OnMount() {
 
 
 var photos by rememberSaveable { mutableStateOf(listOf<Photo>()) }
-
-var foo : String by remember { mutableStateOf("bar") }
 
 LaunchedEffect(true) {
   println("onMount - A")

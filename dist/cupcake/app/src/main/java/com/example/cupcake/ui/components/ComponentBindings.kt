@@ -25,8 +25,8 @@ fun ComponentBindings() {
 
 
 
-var first: Int by rememberSaveable { mutableStateOf(0) }
-var second: Int by rememberSaveable { mutableStateOf(0) }
+var first : Int by rememberSaveable { mutableStateOf(0) }
+var second : Int by rememberSaveable { mutableStateOf(0) }
 
 var pin by rememberSaveable { mutableStateOf("") }
 
@@ -48,12 +48,11 @@ Button(onClick={
 Text( text = "OUTSIDE (1way): $second")
 }
 
-        fun _set_first(value:  Int) {
-            first = value
-            
-        }
-        
-Keypad(value=pin, _set_first_incoming_=::_set_first, first = first, second=second)
+            fun _set_first(value: Int) {
+                first = value
+                
+            }
+            Keypad(value=pin, _set_first_incoming_=::_set_first, first = first, second=second)
 //Keypad(value=pin, bind:v = v)
 
 

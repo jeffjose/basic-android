@@ -28,10 +28,10 @@ fun Coffee() {
 
     
 
-var coffeeCount  by remember { mutableStateOf(0) }
+var coffeeCount by remember { mutableStateOf(0) }
 var count by rememberSaveable { mutableStateOf(0) }
 
-val xcoffeeCount  by remember { mutableStateOf(0) }
+val xcoffeeCount by remember { mutableStateOf(0) }
 val xcount by rememberSaveable { mutableStateOf(0) }
 
 

@@ -30,7 +30,7 @@ LaunchedEffect(true) {
   println("Loaded 1")
 }
 
-var first: Int by rememberSaveable { mutableStateOf(0) }
+var first : Int by rememberSaveable { mutableStateOf(0) }
 
 Button(onClick={
   first = first + 1
@@ -39,12 +39,11 @@ Button(onClick={
 }
 
 
-        fun _set_first(value:  Int) {
-            first = value
-            
-        }
-        
-DeepNested2(_set_first_incoming_=::_set_first, first=first)
+            fun _set_first(value: Int) {
+                first = value
+                
+            }
+            DeepNested2(_set_first_incoming_=::_set_first, first=first)
 
 println("1. bottom")
 
