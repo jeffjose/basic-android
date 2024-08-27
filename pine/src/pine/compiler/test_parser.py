@@ -276,11 +276,48 @@ def test_get_multiple_var_declarations_(lines):
 
 @parametrize(
     lines=[
+        # var
         ['external var $foo : String = "baz"', 'external var $bar : String = "baz"'],
+        ['external var $foo:String="baz"', 'external var $bar:String="baz"'],
+        [
+            'external var $foo  :   String   =   "baz"',
+            'external var $bar  :  String  =  "baz"',
+        ],
         ['external var *foo : String = "baz"', 'external var *bar : String = "baz"'],
+        ['external var *foo:String="baz"', 'external var *bar:String="baz"'],
+        [
+            'external var *foo   :  String  =   "baz"',
+            'external var *bar  :  String  =  "baz"',
+        ],
+        ["external var *foo : String", "external var *bar : String"],
+        ["external var *foo:String", "external var *bar:String"],
+        ["external var foo : String", "external var bar : String"],
+        ["external var foo:String", "external var bar:String"],
+        # val
+        ['external val $foo : String = "baz"', 'external val $bar : String = "baz"'],
+        ['external val $foo:String="baz"', 'external val $bar:String="baz"'],
+        [
+            'external val $foo  :   String   =   "baz"',
+            'external val $bar  :  String  =  "baz"',
+        ],
+        ['external val *foo : String = "baz"', 'external val *bar : String = "baz"'],
+        ['external val *foo:String="baz"', 'external val *bar:String="baz"'],
+        [
+            'external val *foo   :  String  =   "baz"',
+            'external val *bar  :  String  =  "baz"',
+        ],
+        ["external val *foo : String", "external val *bar : String"],
+        ["external val *foo:String", "external val *bar:String"],
+        ["external val foo : String", "external val bar : String"],
+        ["external val foo:String", "external val bar:String"],
+        # mix and match
+        ['external var $foo : String = "baz"', 'external var *bar : String = "baz"'],
+        ['external var *foo : String = "baz"', 'external var $bar : String = "baz"'],
+        ["external var $foo : String", "external var *bar: String"],
+        ["external var *foo : String", "external var $bar: String"],
     ]
 )
-def case_get_multiple_exports(lines):
+def case_get_multiple_exports_lines(lines):
     return lines
 
 
