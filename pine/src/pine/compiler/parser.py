@@ -85,7 +85,7 @@ def parse_component(data, default_imports):
 
     imports = cleanup_imports(
         parcel["imports"]
-        + analyze_for_imports(lines)
+        + add_imports_for_remember_var_declarations(lines)
         + frontmatter["imports"]
         + default_imports
     )
@@ -365,7 +365,7 @@ def _clean_vname(s):
     return s.strip("*$").strip()
 
 
-def analyze_for_imports(lines):
+def add_imports_for_remember_var_declarations(lines):
     imports = []
 
     for line in lines:

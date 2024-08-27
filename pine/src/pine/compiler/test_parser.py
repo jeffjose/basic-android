@@ -1,4 +1,8 @@
-from pine.compiler.parser import expand_component_line, get_var_declarations, get_exports
+from pine.compiler.parser import (
+    expand_component_line,
+    get_var_declarations,
+    get_exports,
+)
 from pytest_cases import parametrize_with_cases, parametrize
 
 
@@ -44,13 +48,6 @@ def case_expand_component_line_external_val(vdef):
     )
 
 
-
-
-
-
-
-
-
 @parametrize(
     vdef=[
         "var $foo = 'bar'",
@@ -77,11 +74,6 @@ def case_expand_component_line_var_remember_with_type(vdef):
         vdef,
         "var foo : String by remember { mutableStateOf('bar') }",
     )
-
-
-
-
-
 
 
 @parametrize(
@@ -112,10 +104,6 @@ def case_expand_component_line_val_remember_with_type(vdef):
     )
 
 
-
-
-
-
 @parametrize(
     vdef=[
         "var *foo = 'bar'",
@@ -142,12 +130,6 @@ def case_expand_component_line_var_rememberSaveable_with_type(vdef):
         vdef,
         "var foo : String by rememberSaveable { mutableStateOf('bar') }",
     )
-
-
-
-
-
-
 
 
 @parametrize(
@@ -178,8 +160,6 @@ def case_expand_component_line_val_rememberSaveable_with_type(vdef):
     )
 
 
-
-
 @parametrize(
     vdef=[
         "var *text(stateSaver=TextFieldValue.Saver) = 'bar'",
@@ -192,7 +172,6 @@ def case_expand_component_line_val_rememberSaveable_with_saver(vdef):
         vdef,
         "var text by rememberSaveable(stateSaver=TextFieldValue.Saver) { mutableStateOf('bar') }",
     )
-
 
 
 @parametrize(
@@ -209,16 +188,9 @@ def case_expand_component_line_val_remember_with_saver(vdef):
     )
 
 
-
-
-
-
-
-
-
-
-
-@parametrize_with_cases("line,expected", cases=".", prefix="case_expand_component_line_")
+@parametrize_with_cases(
+    "line,expected", cases=".", prefix="case_expand_component_line_"
+)
 def test_expand_component_line(line, expected):
 
     assert expand_component_line(line, [], []) == expected
@@ -226,20 +198,18 @@ def test_expand_component_line(line, expected):
 
 #######################################################################
 
+
 @parametrize(
     lines=[
         ['var $foo : String = "bar"'],
         ['var $foo:String="bar"'],
         ['var       $foo       :         String         =          "bar"'],
-
         ['var *foo : String = "bar"'],
         ['var *foo:String="bar"'],
         ['var *foo       :        String       =          "bar"'],
-
         ['external var $foo : String = "bar"'],
         ['external var $foo:String="bar"'],
         ['external var       $foo        :         String       =           "bar"'],
-
         ['external var *foo : String = "bar"'],
         ['external var *foo:String="bar"'],
         ['external var *foo          :           String          =          "bar"'],
@@ -248,13 +218,14 @@ def test_expand_component_line(line, expected):
 def case_get_var_declarations_external_var_def(lines):
     return lines
 
+
 @parametrize_with_cases("lines", cases=".", prefix="case_get_var_declarations_")
 def test_get_var_declarations_(lines):
 
-    vars =  get_var_declarations(lines)
+    vars = get_var_declarations(lines)
 
-    assert vars[0]['vname'] == 'foo'
-    assert vars[0]['type'] == 'String'
+    assert vars[0]["vname"] == "foo"
+    assert vars[0]["type"] == "String"
 
 
 #######################################################################
@@ -262,51 +233,37 @@ def test_get_var_declarations_(lines):
 
 @parametrize(
     lines=[
-
-        # This is commented out because var x 
+        # This is commented out because var x
         # is pretty useless in Android Compose
-        #[
+        # [
         #    'var foo : String = "baz"',
         #    'var bar : String = "baz"'
         # ],
-
-        [
-            'var $foo : String = "baz"',
-            'var $bar : String = "baz"'
-         ],
-        [
-            'var *foo : String = "baz"',
-            'var *bar : String = "baz"'
-         ],
-        [
-            'external var foo : String = "baz"',
-            'external var bar : String = "baz"'
-         ],
-        [
-            'external var $foo : String = "baz"',
-            'external var $bar : String = "baz"'
-         ],
-        [
-            'external var *foo : String = "baz"',
-            'external var *bar : String = "baz"'
-         ],
+        ['var $foo : String = "baz"', 'var $bar : String = "baz"'],
+        ['var *foo : String = "baz"', 'var *bar : String = "baz"'],
+        ['external var foo : String = "baz"', 'external var bar : String = "baz"'],
+        ['external var $foo : String = "baz"', 'external var $bar : String = "baz"'],
+        ['external var *foo : String = "baz"', 'external var *bar : String = "baz"'],
     ]
 )
 def case_get_multiple_var_declarations_var_def(lines):
     return lines
 
-@parametrize_with_cases("lines", cases=".", prefix="case_get_multiple_var_declarations_")
+
+@parametrize_with_cases(
+    "lines", cases=".", prefix="case_get_multiple_var_declarations_"
+)
 def test_get_multiple_var_declarations_(lines):
 
-    vars =  get_var_declarations(lines)
+    vars = get_var_declarations(lines)
 
     assert len(vars) == 2
 
-    assert vars[0]['vname'] == 'foo'
-    assert vars[1]['vname'] == 'bar'
+    assert vars[0]["vname"] == "foo"
+    assert vars[1]["vname"] == "bar"
 
-    assert vars[0]['type'] == 'String'
-    assert vars[1]['type'] == 'String'
+    assert vars[0]["type"] == "String"
+    assert vars[1]["type"] == "String"
 
 
 #######################################################################
@@ -314,33 +271,90 @@ def test_get_multiple_var_declarations_(lines):
 
 @parametrize(
     lines=[
-        [
-            'external var $foo : String = "baz"',
-            'external var $bar : String = "baz"'
-         ],
-        [
-            'external var *foo : String = "baz"',
-            'external var *bar : String = "baz"'
-         ],
+        ['external var $foo : String = "baz"', 'external var $bar : String = "baz"'],
+        ['external var *foo : String = "baz"', 'external var *bar : String = "baz"'],
     ]
 )
 def case_get_multiple_exports(lines):
     return lines
 
+
 @parametrize_with_cases("lines", cases=".", prefix="case_get_multiple_exports_")
 def test_get_multiple_exports(lines):
 
-    exports =  get_exports(lines)
+    exports = get_exports(lines)
 
     assert len(exports) == 2
 
-    assert exports[0]['vname'] == 'foo'
-    assert exports[1]['vname'] == 'bar'
+    assert exports[0]["vname"] == "foo"
+    assert exports[1]["vname"] == "bar"
 
-    assert exports[0]['type'] == 'String'
-    assert exports[1]['type'] == 'String'
+    assert exports[0]["type"] == "String"
+    assert exports[1]["type"] == "String"
 
 
+#######################################################################
+
+
+@parametrize(
+    line_and_expected=[
+        [
+            "Component(bind:foo=foo)",
+            """
+        fun _set_foo(value: String) {
+            foo = value
+            _set_foo_incoming_?.invoke(foo)
+        }
+        
+Component(_set_foo_incoming_=::_set_foo, foo=foo)""",
+        ],
+        [
+            "Component(bind:foo=foo, bar=bar)",
+            """
+        fun _set_foo(value: String) {
+            foo = value
+            _set_foo_incoming_?.invoke(foo)
+        }
+        
+Component(_set_foo_incoming_=::_set_foo, foo=foo, bar=bar)""",
+        ],
+        [
+            "Component(bind:foo=first, bar=bar)",
+            """
+        fun _set_foo(value: String) {
+            foo = value
+            _set_foo_incoming_?.invoke(foo)
+        }
+        
+Component(_set_foo_incoming_=::_set_foo, foo=first, bar=bar)""",
+        ],
+        [
+            "Component(baz=baz, bind:foo=first, bar=bar)",
+            """
+        fun _set_foo(value: String) {
+            foo = value
+            _set_foo_incoming_?.invoke(foo)
+        }
+        
+Component(baz=baz, _set_foo_incoming_=::_set_foo, foo=first, bar=bar)""",
+        ],
+    ]
+)
+def case_expand_component_lines_binding_single_component(line_and_expected):
+    return line_and_expected
+
+
+@parametrize_with_cases(
+    "line_and_expected", cases=".", prefix="case_expand_component_lines_binding_"
+)
+def test_expand_component_lines_binding(line_and_expected):
+
+    line, expected = line_and_expected
+
+    vars = [{"vname": "foo", "type": "String"}]
+    exports = [{"vname": "foo", "type": "String"}]
+
+    assert expand_component_line(line, vars, exports) == expected
 
 
 #######################################################################
