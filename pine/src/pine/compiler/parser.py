@@ -213,6 +213,8 @@ def get_exports(lines):
                 "name": vname_type.strip(" *$"),
                 "value": value,
                 "vname": vname.strip("$* "),
+
+                # FIXME: remove `type` being None. And raise an error
                 "type": type.strip() if type else None,
             }
             exports.append(export)
@@ -234,6 +236,8 @@ def get_exports(lines):
                 "name": vname_type.strip(" *$"),
                 "value": None,
                 "vname": vname.strip("$* "),
+
+                # FIXME: remove `type` being None. And raise an error
                 "type": type.strip() if type else None,
             }
 

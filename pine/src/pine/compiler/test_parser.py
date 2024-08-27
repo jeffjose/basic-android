@@ -339,6 +339,8 @@ def test_get_multiple_exports(lines):
 
 
 
+# FIXME: Should this error? 
+# external should have a type, but
 @parametrize(
     lines=[
         # var
