@@ -1,4 +1,4 @@
-from pine.compiler.parser import expand_component_line
+from pine.compiler.parser import expand_component_line, get_var_declarations
 from pytest_cases import parametrize_with_cases, parametrize
 
 
@@ -16,7 +16,7 @@ from pytest_cases import parametrize_with_cases, parametrize
         "external var foo='bar'",
     ]
 )
-def case_external_var(vdef):
+def case_expand_component_line_external_var(vdef):
     return (
         vdef,
         "var foo by rememberSaveable(inputs=arrayOf(foo)) { mutableStateOf(foo) }",
@@ -37,7 +37,7 @@ def case_external_var(vdef):
         "external val foo='bar'",
     ]
 )
-def case_external_val(vdef):
+def case_expand_component_line_external_val(vdef):
     return (
         vdef,
         "val foo by rememberSaveable(inputs=arrayOf(foo)) { mutableStateOf(foo) }",
@@ -58,7 +58,7 @@ def case_external_val(vdef):
         "var $foo        =          'bar'",
     ]
 )
-def case_var_remember(vdef):
+def case_expand_component_line_var_remember(vdef):
     return (
         vdef,
         "var foo by remember { mutableStateOf('bar') }",
@@ -72,7 +72,7 @@ def case_var_remember(vdef):
         "var $foo : String = 'bar'",
     ]
 )
-def case_var_remember_with_type(vdef):
+def case_expand_component_line_var_remember_with_type(vdef):
     return (
         vdef,
         "var foo : String by remember { mutableStateOf('bar') }",
@@ -91,7 +91,7 @@ def case_var_remember_with_type(vdef):
         "val $foo        =          'bar'",
     ]
 )
-def case_val_remember(vdef):
+def case_expand_component_line_val_remember(vdef):
     return (
         vdef,
         "val foo by remember { mutableStateOf('bar') }",
@@ -105,7 +105,7 @@ def case_val_remember(vdef):
         "val $foo : String = 'bar'",
     ]
 )
-def case_val_remember_with_type(vdef):
+def case_expand_component_line_val_remember_with_type(vdef):
     return (
         vdef,
         "val foo : String by remember { mutableStateOf('bar') }",
@@ -123,7 +123,7 @@ def case_val_remember_with_type(vdef):
         "var *foo        =          'bar'",
     ]
 )
-def case_var_rememberSaveable(vdef):
+def case_expand_component_line_var_rememberSaveable(vdef):
     return (
         vdef,
         "var foo by rememberSaveable { mutableStateOf('bar') }",
@@ -137,7 +137,7 @@ def case_var_rememberSaveable(vdef):
         "var *foo : String = 'bar'",
     ]
 )
-def case_var_rememberSaveable_with_type(vdef):
+def case_expand_component_line_var_rememberSaveable_with_type(vdef):
     return (
         vdef,
         "var foo : String by rememberSaveable { mutableStateOf('bar') }",
@@ -157,7 +157,7 @@ def case_var_rememberSaveable_with_type(vdef):
         "val *foo        =          'bar'",
     ]
 )
-def case_val_rememberSaveable(vdef):
+def case_expand_component_line_val_rememberSaveable(vdef):
     return (
         vdef,
         "val foo by rememberSaveable { mutableStateOf('bar') }",
@@ -171,7 +171,7 @@ def case_val_rememberSaveable(vdef):
         "val *foo : String = 'bar'",
     ]
 )
-def case_val_rememberSaveable_with_type(vdef):
+def case_expand_component_line_val_rememberSaveable_with_type(vdef):
     return (
         vdef,
         "val foo : String by rememberSaveable { mutableStateOf('bar') }",
@@ -187,7 +187,7 @@ def case_val_rememberSaveable_with_type(vdef):
         "var       *text(   stateSaver=TextFieldValue.Saver   )     =    'bar'",
     ]
 )
-def case_val_rememberSaveable_with_saver(vdef):
+def case_expand_component_line_val_rememberSaveable_with_saver(vdef):
     return (
         vdef,
         "var text by rememberSaveable(stateSaver=TextFieldValue.Saver) { mutableStateOf('bar') }",
@@ -202,14 +202,80 @@ def case_val_rememberSaveable_with_saver(vdef):
         "var       $text(   stateSaver=TextFieldValue.Saver   )     =    'bar'",
     ]
 )
-def case_val_remember_with_saver(vdef):
+def case_expand_component_line_val_remember_with_saver(vdef):
     return (
         vdef,
         "var text by remember(stateSaver=TextFieldValue.Saver) { mutableStateOf('bar') }",
     )
 
 
-@parametrize_with_cases("line,expected", cases=".")
+
+
+
+
+
+
+
+
+
+@parametrize_with_cases("line,expected", cases=".", prefix="case_expand_component_line_")
 def test_expand_component_line(line, expected):
 
     assert expand_component_line(line, [], []) == expected
+
+
+#######################################################################
+
+@parametrize(
+    lines=[
+        ['var $foo : String = "bar"'],
+        ['var *foo : String = "bar"'],
+    ]
+)
+def case_get_var_declarations_var_def(lines):
+    return lines
+
+@parametrize_with_cases("lines", cases=".", prefix="case_get_var_declarations_")
+def test_get_var_declarations(lines):
+
+    vars =  get_var_declarations(lines)
+
+    assert vars[0]['vname'] == 'foo'
+    assert vars[0]['type'] == 'String'
+
+#######################################################################
+
+@parametrize(
+    lines=[
+        ['external var *foo : String = "bar"'],
+    ]
+)
+def case_get_var_declarations_external_remember_var_def(lines):
+    return lines
+
+@parametrize_with_cases("lines", cases=".", prefix="case_get_var_declarations_external_remember_")
+def test_get_var_declarations_external_remember(lines):
+
+    vars =  get_var_declarations(lines)
+
+    assert vars[0]['vname'] == '*foo'
+    assert vars[0]['type'] == 'String'
+
+
+#######################################################################
+
+@parametrize(
+    lines=[
+        ['external var $foo : String = "bar"'],
+    ]
+)
+def case_get_var_declarations_external_rememberSaveable_var_def(lines):
+    return lines
+
+@parametrize_with_cases("lines", cases=".", prefix="case_get_var_declarations_external_rememberSaveable_")
+def test_get_var_declarations_external_rememberSaveable(lines):
+
+    vars =  get_var_declarations(lines)
+
+    assert vars[0]['vname'] == '$foo'
+    assert vars[0]['type'] == 'String'
