@@ -28,6 +28,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.cupcake.R
 import com.example.cupcake.ui.components.DeepNested1
 import com.example.cupcake.ui.components.OnMount
+import com.example.cupcake.ui.components.Reactivity
 import com.example.cupcake.ui.components.Spacer
 import io.ktor.client.*
 import io.ktor.client.call.body
@@ -90,11 +91,8 @@ Column(
         // BindingText()
         // ComponentBindings()
         //DeepNested1()
-        OnMount()
-        Button(onClick={
-            println("---")
-        }
-        ) { Text(stringResource(R.string.home)) }
+        //OnMount()
+        Reactivity()
     }
 
     Column(

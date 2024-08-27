@@ -14,6 +14,7 @@ import com.example.cupcake.R
 import com.example.cupcake.ui.components.DeepNested1
 import com.example.cupcake.ui.components.OnMount
 import com.example.cupcake.ui.components.Spacer
+import com.example.cupcake.ui.components.Reactivity
 
 // Log.d("XXX", data.value?.toString() ?: "default")
 
@@ -44,11 +45,8 @@ Column(
         // BindingText()
         // ComponentBindings()
         //DeepNested1()
-        OnMount()
-        Button(onClick={
-            println("---")
-        }
-        ) { Text(stringResource(R.string.home)) }
+        //OnMount()
+        Reactivity()
     }
 
     Column(
