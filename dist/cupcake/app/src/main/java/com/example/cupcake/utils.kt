@@ -19,8 +19,12 @@ class MutableStateAdapter<T>(
     private val mutate: (T) -> Unit,
 ) : MutableState<T> {
     override var value: T
-        get() = state.value
+        get() {
+            println("get $state")
+            return state.value
+        }
         set(value) {
+            println("set $value")
             mutate(value)
         }
 

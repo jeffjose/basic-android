@@ -6,6 +6,8 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -18,8 +20,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 
  class ViewModel {
     val v = MutableStateFlow("")
-    val first = MutableStateFlow("")
+    val first = MutableStateFlow(0)
     val c = MutableStateFlow(0)
+    var signal = MutableStateFlow(0)
  }
  
 
@@ -28,18 +31,28 @@ import kotlinx.coroutines.flow.MutableStateFlow
 fun Reactivity(content: @Composable() (() -> Unit)? = null, ) {
 
     
-val viewModel = remember { ViewModel() } 
-val (first, setFirst) = viewModel.first.collectAsMutableState()
-
-var count by remember { mutableStateOf(0) }
 
 println("[components/reactivity.pine]: Top")
-Text(text="Simple count: $count first=$first")
+
+val viewModel = ViewModel() 
+
+//var (first, setFirst) = viewModel.first.collectAsMutableState()
+//var signal = viewModel.signal.collectAsState()
+
+val signal = remember { mutableStateOf(0)}
 
 Button(onClick={
-  count = count + 1
+  signal.value = signal.value + 1
 }) {
-  Text(text="Simple: Click me")
+
+  if (signal.value > 5) {
+
+  Text(text="Greater than 5")
+  }
+  else {
+  Text(text="Less than 5")
+
+  }
 }
 
 
