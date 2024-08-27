@@ -71,6 +71,33 @@ def case_var_remember_with_type(vdef):
         "var foo : String by remember { mutableStateOf('bar') }",
     )
 
+@parametrize(
+    vdef=[
+        "var *foo = 'bar'",
+        "var *foo='bar'",
+        "var *foo        =          'bar'",
+    ]
+)
+def case_var_rememberSaveable(vdef):
+    return (
+        vdef,
+        "var foo by rememberSaveable { mutableStateOf('bar') }",
+    )
+
+
+@parametrize(
+    vdef=[
+        "var *foo    :    String       =          'bar'",
+        "var *foo:String='bar'",
+        "var *foo : String = 'bar'",
+    ]
+)
+def case_var_rememberSaveable_with_type(vdef):
+    return (
+        vdef,
+        "var foo : String by rememberSaveable { mutableStateOf('bar') }",
+    )
+
 
 @parametrize_with_cases("line,expected", cases=".")
 def test_expand_component_line(line, expected):

@@ -24,7 +24,7 @@ bind_variable_pattern = re.compile(r"bind:(\w+)\s*=\s*\w+")
 remember_mutablestate_pattern = re.compile(r"(val|var)\s+\$(.*)\s*=\s*(.*)")
 
 # var *foo = "bar"
-remembersaveable_mutablestate_pattern = re.compile(r"(val|var)\s+\*(.*)\s+=\s+(.*)")
+remembersaveable_mutablestate_pattern = re.compile(r"(val|var)\s+\*(.*)\s*=\s*(.*)")
 
 # Implemented in this file, but not used
 # var count = $derived(count * 2)
@@ -299,14 +299,15 @@ def expand_component_line(line, vars, exports):
 
         vname_type, saver = _extract_between_paren(vname)
         try:
-            vname, type = vname_type.split(":")
+            vname, type = [x.strip() for x in vname_type.split(":")]
         except:
             vname = vname_type
             type = None
 
         stateSaverString = "" if not saver else f"({saver})"
 
-        return f"{t} {vname_type} by rememberSaveable{stateSaverString} {{ mutableStateOf({value}) }}"
+        #return f"{t} {vname_type} by rememberSaveable{stateSaverString} {{ mutableStateOf({value}) }}"
+        return f"{t} {_clean_vname(vname)}{' : ' + type if type else ''} by rememberSaveable{stateSaverString} {{ mutableStateOf({value}) }}"
 
     # var count = $derived(count * 2)
     matched = remember_derivedstateof_pattern.match(line)
