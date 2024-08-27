@@ -234,7 +234,7 @@ def get_exports(lines):
 
             export = {
                 "name": vname_type.strip(" *$"),
-                "value": value,
+                "value": None,
                 "vname": vname.strip("$* "),
                 "type": type.strip(),
             }
@@ -358,7 +358,8 @@ def expand_component_line(line, vars, exports):
             )
 
             final = final.replace(
-                f"bind:{vname}", f"{mksetter_incoming(vname)}=::{mksetter(vname)}, {vname}"
+                f"bind:{vname}",
+                f"{mksetter_incoming(vname)}=::{mksetter(vname)}, {vname}",
             )
 
         print(finalsetter + final)
