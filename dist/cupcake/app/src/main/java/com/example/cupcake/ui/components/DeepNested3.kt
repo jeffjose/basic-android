@@ -17,8 +17,8 @@ import com.example.cupcake.utils.*
 
 
 @Composable
-//fun DeepNested3(first: Int, _set_first_incoming_ : (( Int) -> Unit)? = null,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
-fun DeepNested3(first: Int, _set_first_incoming_ : (( Int) -> Unit)? = null, ) {
+//fun DeepNested3(first: Int, _set_first_incoming_ : (( Int) -> Unit)? = null, content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
+fun DeepNested3(first: Int, _set_first_incoming_ : (( Int) -> Unit)? = null, content: @Composable() (() -> Unit)? = null, ) {
 
     
 
@@ -51,7 +51,7 @@ LaunchedEffect(first) {
 @Suppress("unused_parameter")
 @Preview
 @Composable
-fun DeepNested3Preview(first: Int, _set_first_incoming_ : (( Int) -> Unit)? = null,  @Suppress("UNUSED_PARAMETER")) {
+fun DeepNested3Preview(first: Int, _set_first_incoming_ : (( Int) -> Unit)? = null, content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER")) {
     CupcakeTheme {
         DeepNested3(
         )

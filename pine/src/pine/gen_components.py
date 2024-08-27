@@ -125,8 +125,8 @@ def mkexport_string_component(exports):
     final = ", ".join(s)
 
     if final:
-        # THis is for the next param `vararg params` in the template
-        return f"{final}, " 
+        # This is for the next param `vararg params` in the template
+        return f"{final}, content: @Composable() (() -> Unit)? = null, " 
     else:
         return final
 

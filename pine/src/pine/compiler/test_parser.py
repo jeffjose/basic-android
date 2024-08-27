@@ -203,6 +203,28 @@ def test_expand_component_line(line, expected):
 
 #######################################################################
 
+@parametrize(
+    line=[
+        "content()",
+        "          content()",
+        "          content()              ",
+    ]
+)
+def case_expand_component_line_content_cases(line):
+    return (
+        line,
+        "content?.invoke()"
+    )
+
+
+@parametrize_with_cases(
+    "line,expected", cases=".", prefix="case_expand_component_line_content"
+)
+def test_expand_component_line_content(line, expected):
+
+    assert expand_component_line(line, [], []) == expected
+
+#######################################################################
 
 @parametrize(
     lines=[

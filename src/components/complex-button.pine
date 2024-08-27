@@ -9,5 +9,5 @@ external var count : Int
 Button(onClick={
   count = count + 1
 }) {
-  Text(text="Complex: Click me")
+  content()
 }

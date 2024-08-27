@@ -42,8 +42,8 @@ Button(onClick={
 //  Text(text="Complex: Click me")
 //}
 
-ComplexButton(count=count, text="xComplex count: $count") {
-  Text(text="Complex: Click me")
+ComplexButton(count=count, text="Complex count: $count") {
+  Text(text="Simple: Click me")
 }
 
 

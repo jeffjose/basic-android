@@ -1,6 +1,10 @@
 import re
 from pine.utils import mksetter, mksetter_incoming
 
+
+# content()
+content_pattern = re.compile(r"^content\(\)$")
+
 #
 # A greedy pattern to capture everything inside paren
 saver_pattern = re.compile(r"(\w+)\((.*)\)")
@@ -213,7 +217,6 @@ def get_exports(lines):
                 "name": vname_type.strip(" *$"),
                 "value": value,
                 "vname": vname.strip("$* "),
-
                 # FIXME: remove `type` being None. And raise an error
                 "type": type.strip() if type else None,
             }
@@ -236,7 +239,6 @@ def get_exports(lines):
                 "name": vname_type.strip(" *$"),
                 "value": None,
                 "vname": vname.strip("$* "),
-
                 # FIXME: remove `type` being None. And raise an error
                 "type": type.strip() if type else None,
             }
@@ -364,6 +366,12 @@ def expand_component_line(line, vars, exports):
             )
 
         return finalsetter + final
+
+    # content()
+    matched = content_pattern.search(line.strip())
+    if matched:
+
+        return "content?.invoke()"
 
     # if matched:
     #     return f"{t} {vname} by remember {{ derivedStateOf {{  {value}  }} }}"

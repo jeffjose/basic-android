@@ -17,8 +17,8 @@ import androidx.compose.ui.tooling.preview.Preview
 
 
 @Composable
-//fun Keypad(first: Int, _set_first_incoming_ : (( Int) -> Unit)? = null, second: Int, _set_second_incoming_ : (( Int) -> Unit)? = null, value: String="", _set_value_incoming_ : (( String) -> Unit)? = null,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
-fun Keypad(first: Int, _set_first_incoming_ : (( Int) -> Unit)? = null, second: Int, _set_second_incoming_ : (( Int) -> Unit)? = null, value: String="", _set_value_incoming_ : (( String) -> Unit)? = null, ) {
+//fun Keypad(first: Int, _set_first_incoming_ : (( Int) -> Unit)? = null, second: Int, _set_second_incoming_ : (( Int) -> Unit)? = null, value: String="", _set_value_incoming_ : (( String) -> Unit)? = null, content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
+fun Keypad(first: Int, _set_first_incoming_ : (( Int) -> Unit)? = null, second: Int, _set_second_incoming_ : (( Int) -> Unit)? = null, value: String="", _set_value_incoming_ : (( String) -> Unit)? = null, content: @Composable() (() -> Unit)? = null, ) {
 
     
 var first by rememberSaveable(inputs=arrayOf(first)) { mutableStateOf(first) }
@@ -106,7 +106,7 @@ LaunchedEffect(value) {
 @Suppress("unused_parameter")
 @Preview
 @Composable
-fun KeypadPreview(first: Int, _set_first_incoming_ : (( Int) -> Unit)? = null, second: Int, _set_second_incoming_ : (( Int) -> Unit)? = null, value: String="", _set_value_incoming_ : (( String) -> Unit)? = null,  @Suppress("UNUSED_PARAMETER")) {
+fun KeypadPreview(first: Int, _set_first_incoming_ : (( Int) -> Unit)? = null, second: Int, _set_second_incoming_ : (( Int) -> Unit)? = null, value: String="", _set_value_incoming_ : (( String) -> Unit)? = null, content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER")) {
     CupcakeTheme {
         Keypad(
         )
