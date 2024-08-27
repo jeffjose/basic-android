@@ -301,42 +301,38 @@ def test_get_multiple_exports(lines):
         [
             "Component(bind:foo=foo)",
             """
-        fun _set_foo(value: String) {
-            foo = value
-            _set_foo_incoming_?.invoke(foo)
-        }
-        
-Component(_set_foo_incoming_=::_set_foo, foo=foo)""",
+            fun _set_foo(value: String) {
+                foo = value
+                _set_foo_incoming_?.invoke(foo)
+            }
+            Component(_set_foo_incoming_=::_set_foo, foo=foo)""",
         ],
         [
             "Component(bind:foo=foo, bar=bar)",
             """
-        fun _set_foo(value: String) {
-            foo = value
-            _set_foo_incoming_?.invoke(foo)
-        }
-        
-Component(_set_foo_incoming_=::_set_foo, foo=foo, bar=bar)""",
+            fun _set_foo(value: String) {
+                foo = value
+                _set_foo_incoming_?.invoke(foo)
+            }
+            Component(_set_foo_incoming_=::_set_foo, foo=foo, bar=bar)""",
         ],
         [
             "Component(bind:foo=first, bar=bar)",
             """
-        fun _set_foo(value: String) {
-            foo = value
-            _set_foo_incoming_?.invoke(foo)
-        }
-        
-Component(_set_foo_incoming_=::_set_foo, foo=first, bar=bar)""",
+            fun _set_foo(value: String) {
+                foo = value
+                _set_foo_incoming_?.invoke(foo)
+            }
+            Component(_set_foo_incoming_=::_set_foo, foo=first, bar=bar)""",
         ],
         [
             "Component(baz=baz, bind:foo=first, bar=bar)",
             """
-        fun _set_foo(value: String) {
-            foo = value
-            _set_foo_incoming_?.invoke(foo)
-        }
-        
-Component(baz=baz, _set_foo_incoming_=::_set_foo, foo=first, bar=bar)""",
+            fun _set_foo(value: String) {
+                foo = value
+                _set_foo_incoming_?.invoke(foo)
+            }
+            Component(baz=baz, _set_foo_incoming_=::_set_foo, foo=first, bar=bar)""",
         ],
     ]
 )
@@ -365,16 +361,15 @@ def test_expand_component_lines_single_binding(line_and_expected):
         [
             "Component(bind:foo=foo, bind:bar=bar)",
             """
-        fun _set_foo(value: String) {
-            foo = value
-            _set_foo_incoming_?.invoke(foo)
-        }
-        fun _set_bar(value: String) {
-            bar = value
-            _set_bar_incoming_?.invoke(foo)
-        }
-        
-Component(_set_foo_incoming_=::_set_foo, foo=foo, _set_bar_incoming_=::_set_bar, bar=bar)""",
+            fun _set_foo(value: String) {
+                foo = value
+                _set_foo_incoming_?.invoke(foo)
+            }
+            fun _set_bar(value: String) {
+                bar = value
+                _set_bar_incoming_?.invoke(foo)
+            }
+            Component(_set_foo_incoming_=::_set_foo, foo=foo, _set_bar_incoming_=::_set_bar, bar=bar)""",
         ],
     ]
 )
