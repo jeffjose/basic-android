@@ -340,19 +340,59 @@ Component(baz=baz, _set_foo_incoming_=::_set_foo, foo=first, bar=bar)""",
         ],
     ]
 )
-def case_expand_component_lines_binding_single_component(line_and_expected):
+def case_expand_component_lines_single_binding_component(line_and_expected):
     return line_and_expected
 
 
 @parametrize_with_cases(
-    "line_and_expected", cases=".", prefix="case_expand_component_lines_binding_"
+    "line_and_expected", cases=".", prefix="case_expand_component_lines_single_binding_"
 )
-def test_expand_component_lines_binding(line_and_expected):
+def test_expand_component_lines_single_binding(line_and_expected):
 
     line, expected = line_and_expected
 
     vars = [{"vname": "foo", "type": "String"}]
     exports = [{"vname": "foo", "type": "String"}]
+
+    assert expand_component_line(line, vars, exports) == expected
+
+
+#######################################################################
+
+
+@parametrize(
+    line_and_expected=[
+        [
+            "Component(bind:foo=foo, bind:bar=bar)",
+            """
+        fun _set_foo(value: String) {
+            foo = value
+            _set_foo_incoming_?.invoke(foo)
+        }
+        fun _set_bar(value: String) {
+            bar = value
+            _set_bar_incoming_?.invoke(foo)
+        }
+        
+Component(_set_foo_incoming_=::_set_foo, foo=foo, _set_bar_incoming_=::_set_bar, bar=bar)""",
+        ],
+    ]
+)
+def case_expand_component_lines_multiple_binding_component(line_and_expected):
+    return line_and_expected
+
+
+@parametrize_with_cases(
+    "line_and_expected",
+    cases=".",
+    prefix="case_expand_component_lines_multiple_binding_",
+)
+def test_expand_component_lines_multiple_binding(line_and_expected):
+
+    line, expected = line_and_expected
+
+    vars = [{"vname": "foo", "type": "String"}, {"vname": "bar", "type": "String"}]
+    exports = [{"vname": "foo", "type": "String"}, {"vname": "bar", "type": "String"}]
 
     assert expand_component_line(line, vars, exports) == expected
 
