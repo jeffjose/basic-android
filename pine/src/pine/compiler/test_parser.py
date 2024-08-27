@@ -338,6 +338,70 @@ def test_get_multiple_exports(lines):
 #######################################################################
 
 
+
+@parametrize(
+    lines=[
+        # var
+        ['external var $foo = "baz"', 'external var $bar = "baz"'],
+        ['external var $foo="baz"', 'external var $bar="baz"'],
+        [
+            'external var $foo  =   "baz"',
+            'external var $bar  =  "baz"',
+        ],
+        ['external var *foo = "baz"', 'external var *bar = "baz"'],
+        ['external var *foo="baz"', 'external var *bar="baz"'],
+        [
+            'external var *foo   =   "baz"',
+            'external var *bar  =  "baz"',
+        ],
+        ["external var *foo", "external var *bar"],
+        ["external var *foo", "external var *bar"],
+        ["external var foo ", "external var bar "],
+        ["external var foo", "external var bar"],
+        # val
+        ['external val $foo = "baz"', 'external val $bar = "baz"'],
+        ['external val $foo="baz"', 'external val $bar="baz"'],
+        [
+            'external val $foo  =   "baz"',
+            'external val $bar  =  "baz"',
+        ],
+        ['external val *foo = "baz"', 'external val *bar = "baz"'],
+        ['external val *foo="baz"', 'external val *bar="baz"'],
+        [
+            'external val *foo   =   "baz"',
+            'external val *bar  =  "baz"',
+        ],
+        ["external val *foo", "external val *bar "],
+        ["external val *foo", "external val *bar"],
+        ["external val foo ", "external val bar "],
+        ["external val foo", "external val bar"],
+        # mix and match
+        ['external var $foo = "baz"', 'external var *bar = "baz"'],
+        ['external var *foo = "baz"', 'external var $bar = "baz"'],
+        ["external var $foo ", "external var *bar"],
+    ]
+)
+def case_get_multiple_exports_no_type_lines(lines):
+    return lines
+
+
+@parametrize_with_cases("lines", cases=".", prefix="case_get_multiple_exports_no_type_")
+def test_get_multiple_exports_no_type(lines):
+
+    exports = get_exports(lines)
+
+    assert len(exports) == 2
+
+    assert exports[0]["vname"] == "foo"
+    assert exports[1]["vname"] == "bar"
+
+    assert exports[0]["type"] == None
+    assert exports[1]["type"] == None
+
+
+#######################################################################
+
+
 @parametrize(
     line_and_expected=[
         [

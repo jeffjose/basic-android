@@ -213,7 +213,7 @@ def get_exports(lines):
                 "name": vname_type.strip(" *$"),
                 "value": value,
                 "vname": vname.strip("$* "),
-                "type": type.strip(),
+                "type": type.strip() if type else None,
             }
             exports.append(export)
 
@@ -234,7 +234,7 @@ def get_exports(lines):
                 "name": vname_type.strip(" *$"),
                 "value": None,
                 "vname": vname.strip("$* "),
-                "type": type.strip(),
+                "type": type.strip() if type else None,
             }
 
             exports.append(export)
