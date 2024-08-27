@@ -17,6 +17,7 @@
     "install:nogen": "cd dist/cupcake && ./gradlew installDebug",
     "preview": "cd dist/cupcake && ./gradlew installDebug",
     "sync": "cd pine && rye sync",
+    "test": "cd pine && rye test",
     "w:build": "npm-watch build",
     "w:build:canonical": "npm-watch build:canonical",
     "w:gen": "npm-watch gen",

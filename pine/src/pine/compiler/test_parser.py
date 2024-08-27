@@ -1,151 +1,78 @@
 from pine.compiler.parser import expand_component_line
-from pytest_cases import parametrize_with_cases
+from pytest_cases import parametrize_with_cases, parametrize
 
 
-def case_external_var_with_type():
-
-    inp = "external var first: Int"
-
-    out = (
-        "var first by rememberSaveable(inputs=arrayOf(first)) { mutableStateOf(first) }"
+@parametrize(
+    vdef=[
+        "external var foo: Int",
+        "external var foo:Int",
+        "external var foo      :         Int",
+        "external var foo: String",
+        "external var foo",
+        "external var foo: Int = 'bar'",
+        "external var foo:Int='bar'",
+        "external var foo      :         Int   = 'bar'",
+        "external var foo: String = 'bar'",
+        "external var foo='bar'",
+    ]
+)
+def case_external_var(vdef):
+    return (
+        vdef,
+        "var foo by rememberSaveable(inputs=arrayOf(foo)) { mutableStateOf(foo) }",
     )
 
-    return inp, out
 
-
-def case_external_var_with_type_nospaces():
-
-    inp = "external var first:Int"
-
-    out = (
-        "var first by rememberSaveable(inputs=arrayOf(first)) { mutableStateOf(first) }"
+@parametrize(
+    vdef=[
+        "external val foo: Int",
+        "external val foo:Int",
+        "external val foo      :         Int",
+        "external val foo: String",
+        "external val foo",
+        "external val foo: Int = 'bar'",
+        "external val foo:Int='bar'",
+        "external val foo      :         Int   = 'bar'",
+        "external val foo: String = 'bar'",
+        "external val foo='bar'",
+    ]
+)
+def case_external_val(vdef):
+    return (
+        vdef,
+        "val foo by rememberSaveable(inputs=arrayOf(foo)) { mutableStateOf(foo) }",
     )
 
-    return inp, out
 
-
-def case_external_var_with_type_lots_of_spaces():
-
-    inp = "external    var   first    :   Int"
-
-    out = (
-        "var first by rememberSaveable(inputs=arrayOf(first)) { mutableStateOf(first) }"
+@parametrize(
+    vdef=[
+        "var $foo = 'bar'",
+        "var $foo='bar'",
+        "var $foo        =          'bar'",
+    ]
+)
+def case_var_remember(vdef):
+    return (
+        vdef,
+        "var foo by remember { mutableStateOf('bar') }",
     )
 
-    return inp, out
 
-
-#####################
-
-
-def case_external_val_with_type():
-
-    inp = "external val first: Int"
-
-    out = (
-        "val first by rememberSaveable(inputs=arrayOf(first)) { mutableStateOf(first) }"
+@parametrize(
+    vdef=[
+        "var $foo    :    String       =          'bar'",
+        "var $foo:String='bar'",
+        "var $foo : String = 'bar'",
+    ]
+)
+def case_var_remember_with_type(vdef):
+    return (
+        vdef,
+        "var foo : String by remember { mutableStateOf('bar') }",
     )
-
-    return inp, out
-
-
-def case_external_val_with_type_nospaces():
-
-    inp = "external val first:Int"
-
-    out = (
-        "val first by rememberSaveable(inputs=arrayOf(first)) { mutableStateOf(first) }"
-    )
-
-    return inp, out
-
-
-def case_external_val_with_type_lots_of_spaces():
-
-    inp = "external    val   first    :   Int"
-
-    out = (
-        "val first by rememberSaveable(inputs=arrayOf(first)) { mutableStateOf(first) }"
-    )
-
-    return inp, out
-
-
-#####################
-
-
-def case_external_var_with_type_with_default_value():
-
-    inp = "external var first: Int = 10"
-
-    out = (
-        "var first by rememberSaveable(inputs=arrayOf(first)) { mutableStateOf(first) }"
-    )
-
-    return inp, out
-
-
-def case_external_var_with_type_nospaces_with_default_value():
-
-    inp = "external var first:Int=10"
-
-    out = (
-        "var first by rememberSaveable(inputs=arrayOf(first)) { mutableStateOf(first) }"
-    )
-
-    return inp, out
-
-
-def case_external_var_with_type_lots_of_spaces_with_default_value():
-
-    inp = "external    var   first    :   Int           =       10"
-
-    out = (
-        "var first by rememberSaveable(inputs=arrayOf(first)) { mutableStateOf(first) }"
-    )
-
-    return inp, out
-
-
-#####################
-
-
-def case_external_val_with_type_with_default_value():
-
-    inp = "external val first: Int = 10"
-
-    out = (
-        "val first by rememberSaveable(inputs=arrayOf(first)) { mutableStateOf(first) }"
-    )
-
-    return inp, out
-
-
-def case_external_val_with_type_nospaces_with_default_value():
-
-    inp = "external val first:Int=10"
-
-    out = (
-        "val first by rememberSaveable(inputs=arrayOf(first)) { mutableStateOf(first) }"
-    )
-
-    return inp, out
-
-
-def case_external_val_with_type_lots_of_spaces_with_default_value():
-
-    inp = "external    val   first    :   Int    =          10"
-
-    out = (
-        "val first by rememberSaveable(inputs=arrayOf(first)) { mutableStateOf(first) }"
-    )
-
-    return inp, out
 
 
 @parametrize_with_cases("line,expected", cases=".")
 def test_expand_component_line(line, expected):
 
-    print(line)
-    print(expected)
     assert expand_component_line(line, [], []) == expected
