@@ -11,6 +11,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.cupcake.ui.components.ComplexButton
 
 
 
@@ -19,16 +20,30 @@ import androidx.compose.ui.tooling.preview.Preview
 fun Reactivity() {
 
     
-println("[reactivity]: hi")
 
-var count by rememberSaveable { mutableStateOf(0) }
+println("[components/reactivity.pine]: Top")
 
-Text(text="Count: $count")
+var count : Int by rememberSaveable { mutableStateOf(0) }
+
+Text(text="Simple count: $count")
 
 Button(onClick={
   count = count + 1
 }) {
-  Text(text="Click me")
+  Text(text="Simple: Click me")
+}
+
+
+//Text(text=text)
+//
+//Button(onClick={
+//  count = count + 1
+//}) {
+//  Text(text="Complex: Click me")
+//}
+
+ComplexButton(count=count, text="xComplex count: $count") {
+  Text(text="Complex: Click me")
 }
 
 

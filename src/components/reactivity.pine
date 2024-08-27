@@ -1,14 +1,32 @@
 import androidx.compose.material3.Text
 import androidx.compose.material3.Button
 
-println("[reactivity]: hi")
+import com.example.cupcake.ui.components.ComplexButton
 
-var *count = 0
+println("[components/reactivity.pine]: Top")
 
-Text(text="Count: $count")
+var *count: Int = 0
+
+Text(text="Simple count: $count")
 
 Button(onClick={
   count = count + 1
 }) {
-  Text(text="Click me")
+  Text(text="Simple: Click me")
+}
+
+
+//Text(text=text)
+//
+//Button(onClick={
+//  count = count + 1
+//}) {
+//  Text(text="Complex: Click me")
+//}
+
+ComplexButton(count=count, text="Complex count: $count") {
+  Text(text="Inside")
+  Text(text="Inside")
+  Text(text="Inside")
+  Text(text="Inside")
 }

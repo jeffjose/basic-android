@@ -1,0 +1,13 @@
+import androidx.compose.material3.Text
+import androidx.compose.material3.Button
+
+external var text: String
+external var count : Int
+
+  Text(text=text)
+
+Button(onClick={
+  count = count + 1
+}) {
+  Text(text="Complex: Click me")
+}

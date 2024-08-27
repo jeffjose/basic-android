@@ -63,6 +63,7 @@ fun RootScreen(navController: NavHostController, params: Bundle?, http: HttpClie
 
     
 // Log.d("XXX", data.value?.toString() ?: "default")
+println("[routes/+screen.pine]: Top")
 
 Column(
     verticalArrangement = Arrangement.SpaceBetween,

@@ -101,8 +101,8 @@ def write_json(file: str, obj: any):
 
 
 def mksetter(name):
-    return f"_set_{name}"
+    return f"_set_{name.strip()}"
 
 
 def mksetter_incoming(name):
-    return f"_set_{name}_incoming_"
+    return f"_set_{name.strip()}_incoming_"

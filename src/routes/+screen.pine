@@ -17,6 +17,7 @@ import com.example.cupcake.ui.components.Spacer
 import com.example.cupcake.ui.components.Reactivity
 
 // Log.d("XXX", data.value?.toString() ?: "default")
+println("[routes/+screen.pine]: Top")
 
 Column(
     verticalArrangement = Arrangement.SpaceBetween,
