@@ -6,10 +6,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
 
 
@@ -19,16 +15,10 @@ import androidx.compose.ui.tooling.preview.Preview
 fun ComplexButton(content: @Composable() (() -> Unit)? = null, ) {
 
     
-//external var count : Int
-var count by rememberSaveable { mutableStateOf(1) }
-
 println("[components/complex-button.pine]: Top")
 
-Button(onClick={
-  count = count + 1
-}) {
+Text(text="-COMPLEX-")
 content?.invoke()
-}
 
 
 

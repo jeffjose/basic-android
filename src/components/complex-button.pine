@@ -1,13 +1,7 @@
 import androidx.compose.material3.Text
 import androidx.compose.material3.Button
 
-//external var count : Int
-var *count = 1
-
 println("[components/complex-button.pine]: Top")
 
-Button(onClick={
-  count = count + 1
-}) {
-  content()
-}
+Text(text="-COMPLEX-")
+content()

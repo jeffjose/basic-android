@@ -23,14 +23,17 @@ fun Reactivity(content: @Composable() (() -> Unit)? = null, ) {
 
 println("[components/reactivity.pine]: Top")
 
-var count : Int by rememberSaveable { mutableStateOf(0) }
 
+ComplexButton() {
+var count : Int by rememberSaveable { mutableStateOf(0) }
 Text(text="Simple count: $count")
 
 Button(onClick={
   count = count + 1
 }) {
   Text(text="Simple: Click me")
+}
+
 }
 
 
@@ -42,10 +45,16 @@ Button(onClick={
 //  Text(text="Complex: Click me")
 //}
 
-Text(text="Complex count: $count")
 
 ComplexButton() {
-  Text(text="Simple: Click me")
+var count : Int by rememberSaveable { mutableStateOf(0) }
+  Text(text="Complex count: $count")
+Text(text="Simple count: $count")
+  Button(onClick={
+    count = count + 1
+  }) {
+    Text(text="Simple: Click me")
+  }
 }
 
 
