@@ -348,7 +348,7 @@ def expand_component_line(line, vars, exports):
 
 
 def _clean_vname(s):
-    return s.strip("*$")
+    return s.strip("*$").strip()
 
 
 def analyze_for_imports(lines):
