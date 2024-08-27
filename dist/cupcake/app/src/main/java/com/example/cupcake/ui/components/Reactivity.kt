@@ -47,10 +47,10 @@ Button(onClick={
 
   if (signal.value > 5) {
 
-  Text(text="Greater than 5")
+  Text(text="Greater than 5 - ${signal.value}")
   }
   else {
-  Text(text="Less than 5")
+  Text(text="Less than 5 - ${signal.value}")
 
   }
 }
