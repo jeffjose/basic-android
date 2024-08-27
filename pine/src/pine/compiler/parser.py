@@ -329,31 +329,41 @@ def expand_component_line(line, vars, exports):
     # Component(bind:foo="bar")
     matched = bind_variable_pattern.search(line)
     if "bind:" in line and not line.strip().startswith("//"):
-        vname = matched.groups()[0]
 
-        var_declaration = [v for v in vars if v["vname"] == vname][0]
-        try:
-            [e for e in exports if e["vname"] == vname][0]
-        except:
-            is_export = False
-        else:
-            is_export = True
+        finalsetter = ""
+        final = line
 
-        bindingsetter = f"""
-        fun {mksetter(vname)}(value: {var_declaration['type']}) {{
-            {vname} = value
-            %%INCOMINGSETTER%%
-        }}
-        """
+        for vname in bind_variable_pattern.findall(line):
 
-        bindingsetter = bindingsetter.replace(
-            "%%INCOMINGSETTER%%",
-            f"{mksetter_incoming(vname)}?.invoke({vname})" if is_export else "",
-        )
+            # vname = matched.groups()[0]
 
-        return f"{bindingsetter}\n" + line.replace(
-            "bind:", f"{mksetter_incoming(vname)}=::{mksetter(vname)}, "
-        )
+            var_declaration = [v for v in vars if v["vname"] == vname][0]
+            try:
+                [e for e in exports if e["vname"] == vname][0]
+            except:
+                is_export = False
+            else:
+                is_export = True
+
+            bindingsetter = f"""
+            fun {mksetter(vname)}(value: {var_declaration['type']}) {{
+                {vname} = value
+                %%INCOMINGSETTER%%
+            }}
+            """
+
+            finalsetter = finalsetter + bindingsetter.replace(
+                "%%INCOMINGSETTER%%",
+                f"{mksetter_incoming(vname)}?.invoke({vname})" if is_export else "",
+            )
+
+            final = final.replace(
+                f"bind:{vname}", f"{mksetter_incoming(vname)}=::{mksetter(vname)}, {vname}"
+            )
+
+        print(final)
+
+        return finalsetter + final
 
     # if matched:
     #     return f"{t} {vname} by remember {{ derivedStateOf {{  {value}  }} }}"
