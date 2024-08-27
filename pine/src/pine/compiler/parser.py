@@ -127,7 +127,7 @@ def get_var_declarations(lines):
 
             t, vname_type, value = matched.groups()
             try:
-                vname, type = [x.strip('*$ ') for x in vname_type.split(":")]
+                vname, type = [x.strip("*$ ") for x in vname_type.split(":")]
             except:
                 vname = vname_type
                 type = None
@@ -142,11 +142,10 @@ def get_var_declarations(lines):
 
             t, vname_type = matched.groups()
             try:
-                vname, type = [x.strip('*$ ') for x in vname_type.split(":")]
+                vname, type = [x.strip("*$ ") for x in vname_type.split(":")]
             except:
                 vname = vname_type
                 type = None
-
 
             var = {"vname": vname, "type": type, "line": line}
             vars.append(var)
@@ -162,12 +161,11 @@ def get_var_declarations(lines):
             # because we need `type` info
             vname_type, saver = _extract_between_paren(vname)
             try:
-                vname, type = [x.strip('*$ ') for x in vname_type.split(":")]
+                vname, type = [x.strip("*$ ") for x in vname_type.split(":")]
             except:
                 vname = vname_type
                 type = None
 
-    
             var = {"vname": vname, "type": type, "line": line}
             vars.append(var)
             continue
@@ -182,7 +180,7 @@ def get_var_declarations(lines):
             # because we need `type` info
             vname_type, saver = _extract_between_paren(vname)
             try:
-                vname, type = [x.strip('*$ ') for x in vname_type.split(":")]
+                vname, type = [x.strip("*$ ") for x in vname_type.split(":")]
             except:
                 vname = vname_type
                 type = None
@@ -214,10 +212,10 @@ def get_exports(lines):
                 type = None
 
             export = {
-                "name": vname_type.strip("*$"),
+                "name": vname_type.strip(" *$"),
                 "value": value,
-                "vname": vname,
-                "type": type,
+                "vname": vname.strip("$* "),
+                "type": type.strip(),
             }
             exports.append(export)
 
@@ -235,15 +233,16 @@ def get_exports(lines):
                 type = None
 
             export = {
-                "name": vname_type.strip("*$"),
-                "value": None,
-                "vname": vname,
-                "type": type,
+                "name": vname_type.strip(" *$"),
+                "value": value,
+                "vname": vname.strip("$* "),
+                "type": type.strip(),
             }
 
             exports.append(export)
             continue
 
+    print(exports)
     return exports
 
 
@@ -317,7 +316,7 @@ def expand_component_line(line, vars, exports):
 
         stateSaverString = "" if not saver else f"({saver.strip()})"
 
-        #return f"{t} {vname_type} by rememberSaveable{stateSaverString} {{ mutableStateOf({value}) }}"
+        # return f"{t} {vname_type} by rememberSaveable{stateSaverString} {{ mutableStateOf({value}) }}"
         return f"{t} {_clean_vname(vname)}{' : ' + type if type else ''} by rememberSaveable{stateSaverString} {{ mutableStateOf({value}) }}"
 
     # var count = $derived(count * 2)
@@ -347,7 +346,10 @@ def expand_component_line(line, vars, exports):
         }}
         """
 
-        bindingsetter = bindingsetter.replace('%%INCOMINGSETTER%%', f'{mksetter_incoming(vname)}?.invoke({vname})' if is_export else '')
+        bindingsetter = bindingsetter.replace(
+            "%%INCOMINGSETTER%%",
+            f"{mksetter_incoming(vname)}?.invoke({vname})" if is_export else "",
+        )
 
         return f"{bindingsetter}\n" + line.replace(
             "bind:", f"{mksetter_incoming(vname)}=::{mksetter(vname)}, "

@@ -1,4 +1,4 @@
-from pine.compiler.parser import expand_component_line, get_var_declarations
+from pine.compiler.parser import expand_component_line, get_var_declarations, get_exports
 from pytest_cases import parametrize_with_cases, parametrize
 
 
@@ -262,9 +262,25 @@ def test_get_var_declarations_(lines):
 
 @parametrize(
     lines=[
+
+        # This is commented out because var x 
+        # is pretty useless in Android Compose
+        #[
+        #    'var foo : String = "baz"',
+        #    'var bar : String = "baz"'
+        # ],
+
         [
             'var $foo : String = "baz"',
             'var $bar : String = "baz"'
+         ],
+        [
+            'var *foo : String = "baz"',
+            'var *bar : String = "baz"'
+         ],
+        [
+            'external var foo : String = "baz"',
+            'external var bar : String = "baz"'
          ],
         [
             'external var $foo : String = "baz"',
@@ -291,6 +307,40 @@ def test_get_multiple_var_declarations_(lines):
 
     assert vars[0]['type'] == 'String'
     assert vars[1]['type'] == 'String'
+
+
+#######################################################################
+
+
+@parametrize(
+    lines=[
+        [
+            'external var $foo : String = "baz"',
+            'external var $bar : String = "baz"'
+         ],
+        [
+            'external var *foo : String = "baz"',
+            'external var *bar : String = "baz"'
+         ],
+    ]
+)
+def case_get_multiple_exports(lines):
+    return lines
+
+@parametrize_with_cases("lines", cases=".", prefix="case_get_multiple_exports_")
+def test_get_multiple_exports(lines):
+
+    exports =  get_exports(lines)
+
+    assert len(exports) == 2
+
+    assert exports[0]['vname'] == 'foo'
+    assert exports[1]['vname'] == 'bar'
+
+    assert exports[0]['type'] == 'String'
+    assert exports[1]['type'] == 'String'
+
+
 
 
 #######################################################################
