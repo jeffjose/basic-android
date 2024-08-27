@@ -7,14 +7,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.cupcake.utils.*
-import com.example.cupcake.utils.ScopedView
+import com.example.cupcake.utils.PineRender
 import kotlinx.coroutines.flow.MutableStateFlow
 
 
@@ -31,28 +29,19 @@ import kotlinx.coroutines.flow.MutableStateFlow
 fun Reactivity(content: @Composable() (() -> Unit)? = null, ) {
 
     
-
 println("[components/reactivity.pine]: Top")
 
-val viewModel = ViewModel() 
+var signal by rememberSaveable { mutableStateOf(0) }
 
-//var (first, setFirst) = viewModel.first.collectAsMutableState()
-//var signal = viewModel.signal.collectAsState()
+PineRender {
 
-var signal by remember { mutableStateOf(0)}
+  Button(onClick={
+    signal = signal + 1
+  }) {
 
-Button(onClick={
-  signal = signal + 1
-}) {
-
-  if (signal > 5) {
-
-  Text(text="Greater than 5 - ${signal}")
+    Text(text="hi - ${signal}")
   }
-  else {
-  Text(text="Less than 5 - ${signal}")
 
-  }
 }
 
 

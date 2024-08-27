@@ -20,7 +20,7 @@ DEFAULT_IMPORTS = [
 'import androidx.compose.runtime.Composable',
 'import androidx.compose.ui.tooling.preview.Preview',
 'import androidx.compose.runtime.LaunchedEffect',
-"import com.example.cupcake.utils.ScopedView",
+"import com.example.cupcake.utils.PineRender",
 ]
 
 INPUT_PATTERN = "src/**/**.pine"

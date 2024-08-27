@@ -227,6 +227,30 @@ def test_expand_component_line_content(line, expected):
 #######################################################################
 
 @parametrize(
+    line=[
+        "ui {",
+        "ui{",
+        "          ui   {",
+        "          ui{              ",
+    ]
+)
+def case_expand_component_line_ui_render_cases(line):
+    return (
+        line,
+        "PineRender {"
+    )
+
+
+@parametrize_with_cases(
+    "line,expected", cases=".", prefix="case_expand_component_line_ui_render"
+)
+def test_expand_component_line_ui_render(line, expected):
+
+    assert expand_component_line(line, [], []) == expected
+
+#######################################################################
+
+@parametrize(
     lines=[
         ['var $foo : String = "bar"'],
         ['var $foo:String="bar"'],

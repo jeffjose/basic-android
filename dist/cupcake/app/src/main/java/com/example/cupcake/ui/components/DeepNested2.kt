@@ -14,7 +14,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.cupcake.ui.components.DeepNested3
 import com.example.cupcake.utils.*
-import com.example.cupcake.utils.ScopedView
+import com.example.cupcake.utils.PineRender
 
 
 

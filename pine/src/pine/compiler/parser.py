@@ -2,6 +2,9 @@ import re
 from pine.utils import mksetter, mksetter_incoming
 
 
+# Render {
+render_pattern = re.compile(r"^ui\s*{$")
+
 # content()
 content_pattern = re.compile(r"^content\(\)$")
 
@@ -372,6 +375,12 @@ def expand_component_line(line, vars, exports):
     if matched:
 
         return "content?.invoke()"
+
+    # content()
+    matched = render_pattern.search(line.strip())
+    if matched:
+
+        return "PineRender {"
 
     # if matched:
     #     return f"{t} {vname} by remember {{ derivedStateOf {{  {value}  }} }}"

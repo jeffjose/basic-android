@@ -54,6 +54,6 @@ fun <T> State<T>.onValueChanged(content: @Composable (T) -> Unit) = content(valu
 
 
 @Composable
-fun ScopedView(content: @Composable () -> Unit) {
+fun PineRender(content: @Composable () -> Unit) {
     content()
 }
