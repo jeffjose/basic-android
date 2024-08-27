@@ -11,6 +11,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.cupcake.utils.ScopedView
 import com.example.cupcake.utils.http
 import com.hypercubetools.ktor.moshi.moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -30,7 +31,6 @@ data class Photo (
 )
 
 @Composable
-//fun OnMount(content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
 fun OnMount(content: @Composable() (() -> Unit)? = null, ) {
 
     
@@ -47,19 +47,5 @@ LaunchedEffect(true) {
 Text(text = "Photos - ${photos.size}")
 
 
-
     
 }
-
-/*
-@Suppress("unused")
-@Suppress("unused_parameter")
-@Preview
-@Composable
-fun OnMountPreview(content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER")) {
-    CupcakeTheme {
-        OnMount(
-        )
-    }
-    }
-    */

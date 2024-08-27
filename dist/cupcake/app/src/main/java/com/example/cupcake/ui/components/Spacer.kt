@@ -14,11 +14,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.cupcake.utils.ScopedView
 
 
 
 @Composable
-//fun Spacer(content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
 fun Spacer(content: @Composable() (() -> Unit)? = null, ) {
 
     
@@ -38,19 +38,5 @@ Column(
 }
 
 
-
     
 }
-
-/*
-@Suppress("unused")
-@Suppress("unused_parameter")
-@Preview
-@Composable
-fun SpacerPreview(content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER")) {
-    CupcakeTheme {
-        Spacer(
-        )
-    }
-    }
-    */

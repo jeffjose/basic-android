@@ -14,11 +14,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.cupcake.ui.components.Keypad
 import com.example.cupcake.utils.*
+import com.example.cupcake.utils.ScopedView
 
 
 
 @Composable
-//fun ComponentBindings(content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
 fun ComponentBindings(content: @Composable() (() -> Unit)? = null, ) {
 
     
@@ -56,19 +56,5 @@ Text( text = "OUTSIDE (1way): $second")
 //Keypad(value=pin, bind:v = v)
 
 
-
     
 }
-
-/*
-@Suppress("unused")
-@Suppress("unused_parameter")
-@Preview
-@Composable
-fun ComponentBindingsPreview(content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER")) {
-    CupcakeTheme {
-        ComponentBindings(
-        )
-    }
-    }
-    */

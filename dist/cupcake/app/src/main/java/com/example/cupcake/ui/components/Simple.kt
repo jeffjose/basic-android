@@ -13,12 +13,12 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.cupcake.utils.ScopedView
 import kotlinx.coroutines.launch
 
 
 
 @Composable
-//fun Simple(good:String="bye", _set_good_incoming_ : ((String) -> Unit)? = null, content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
 fun Simple(good:String="bye", _set_good_incoming_ : ((String) -> Unit)? = null, content: @Composable() (() -> Unit)? = null, ) {
 
     
@@ -63,23 +63,9 @@ Text("Simple $foo $bar $baz")
 Text("x=$x y=$y")
 
 
-
     
 LaunchedEffect(good) {
     _set_good_incoming_?.invoke(good)
 }
 
 }
-
-/*
-@Suppress("unused")
-@Suppress("unused_parameter")
-@Preview
-@Composable
-fun SimplePreview(good:String="bye", _set_good_incoming_ : ((String) -> Unit)? = null, content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER")) {
-    CupcakeTheme {
-        Simple(
-        )
-    }
-    }
-    */

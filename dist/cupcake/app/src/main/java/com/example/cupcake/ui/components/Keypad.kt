@@ -13,11 +13,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.cupcake.utils.ScopedView
 
 
 
 @Composable
-//fun Keypad(first: Int, _set_first_incoming_ : (( Int) -> Unit)? = null, second: Int, _set_second_incoming_ : (( Int) -> Unit)? = null, value: String="", _set_value_incoming_ : (( String) -> Unit)? = null, content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
 fun Keypad(first: Int, _set_first_incoming_ : (( Int) -> Unit)? = null, second: Int, _set_second_incoming_ : (( Int) -> Unit)? = null, value: String="", _set_value_incoming_ : (( String) -> Unit)? = null, content: @Composable() (() -> Unit)? = null, ) {
 
     
@@ -85,7 +85,6 @@ Row() {
 }
 
 
-
     
 LaunchedEffect(first) {
     _set_first_incoming_?.invoke(first)
@@ -100,16 +99,3 @@ LaunchedEffect(value) {
 }
 
 }
-
-/*
-@Suppress("unused")
-@Suppress("unused_parameter")
-@Preview
-@Composable
-fun KeypadPreview(first: Int, _set_first_incoming_ : (( Int) -> Unit)? = null, second: Int, _set_second_incoming_ : (( Int) -> Unit)? = null, value: String="", _set_value_incoming_ : (( String) -> Unit)? = null, content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER")) {
-    CupcakeTheme {
-        Keypad(
-        )
-    }
-    }
-    */

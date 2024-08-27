@@ -13,11 +13,11 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.cupcake.utils.*
+import com.example.cupcake.utils.ScopedView
 
 
 
 @Composable
-//fun DeepNested3(first: Int, _set_first_incoming_ : (( Int) -> Unit)? = null, content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
 fun DeepNested3(first: Int, _set_first_incoming_ : (( Int) -> Unit)? = null, content: @Composable() (() -> Unit)? = null, ) {
 
     
@@ -38,23 +38,9 @@ Button(onClick={
 println("  3. bottom")
 
 
-
     
 LaunchedEffect(first) {
     _set_first_incoming_?.invoke(first)
 }
 
 }
-
-/*
-@Suppress("unused")
-@Suppress("unused_parameter")
-@Preview
-@Composable
-fun DeepNested3Preview(first: Int, _set_first_incoming_ : (( Int) -> Unit)? = null, content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER")) {
-    CupcakeTheme {
-        DeepNested3(
-        )
-    }
-    }
-    */

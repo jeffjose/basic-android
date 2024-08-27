@@ -13,11 +13,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.cupcake.utils.ScopedView
 
 
 
 @Composable
-//fun ReactiveDeclarations(content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
 fun ReactiveDeclarations(content: @Composable() (() -> Unit)? = null, ) {
 
     
@@ -53,19 +53,5 @@ Button(onClick={handleClick()}) {
   Text(text = "$count * 2 = $quadrupled")
 
 
-
     
 }
-
-/*
-@Suppress("unused")
-@Suppress("unused_parameter")
-@Preview
-@Composable
-fun ReactiveDeclarationsPreview(content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER")) {
-    CupcakeTheme {
-        ReactiveDeclarations(
-        )
-    }
-    }
-    */

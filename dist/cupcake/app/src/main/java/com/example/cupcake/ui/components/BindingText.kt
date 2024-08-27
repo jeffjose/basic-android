@@ -15,11 +15,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.cupcake.utils.ScopedView
 
 
 
 @Composable
-//fun BindingText(content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
 fun BindingText(content: @Composable() (() -> Unit)? = null, ) {
 
     
@@ -30,19 +30,5 @@ TextField(value=text2, onValueChange={text2=it})
 Text("Entered ${text2.text}")
 
 
-
     
 }
-
-/*
-@Suppress("unused")
-@Suppress("unused_parameter")
-@Preview
-@Composable
-fun BindingTextPreview(content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER")) {
-    CupcakeTheme {
-        BindingText(
-        )
-    }
-    }
-    */

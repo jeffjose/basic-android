@@ -14,11 +14,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.cupcake.ui.components.DeepNested2
 import com.example.cupcake.utils.*
+import com.example.cupcake.utils.ScopedView
 
 
 
 @Composable
-//fun DeepNested1(content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
 fun DeepNested1(content: @Composable() (() -> Unit)? = null, ) {
 
     
@@ -48,19 +48,5 @@ Button(onClick={
 println("1. bottom")
 
 
-
     
 }
-
-/*
-@Suppress("unused")
-@Suppress("unused_parameter")
-@Preview
-@Composable
-fun DeepNested1Preview(content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER")) {
-    CupcakeTheme {
-        DeepNested1(
-        )
-    }
-    }
-    */

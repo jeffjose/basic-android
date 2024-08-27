@@ -10,11 +10,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.cupcake.utils.ScopedView
 
 
 
 @Composable
-//fun Nested(answer: Int=0, _set_answer_incoming_ : (( Int) -> Unit)? = null, content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
 fun Nested(answer: Int=0, _set_answer_incoming_ : (( Int) -> Unit)? = null, content: @Composable() (() -> Unit)? = null, ) {
 
     
@@ -23,23 +23,9 @@ var answer by rememberSaveable(inputs=arrayOf(answer)) { mutableStateOf(answer) 
 Text(text = "The answer is $answer")
 
 
-
     
 LaunchedEffect(answer) {
     _set_answer_incoming_?.invoke(answer)
 }
 
 }
-
-/*
-@Suppress("unused")
-@Suppress("unused_parameter")
-@Preview
-@Composable
-fun NestedPreview(answer: Int=0, _set_answer_incoming_ : (( Int) -> Unit)? = null, content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER")) {
-    CupcakeTheme {
-        Nested(
-        )
-    }
-    }
-    */

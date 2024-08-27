@@ -19,7 +19,8 @@ from pine.compiler.parser import parse_component
 DEFAULT_IMPORTS = [
 'import androidx.compose.runtime.Composable',
 'import androidx.compose.ui.tooling.preview.Preview',
-'import androidx.compose.runtime.LaunchedEffect'
+'import androidx.compose.runtime.LaunchedEffect',
+"import com.example.cupcake.utils.ScopedView",
 ]
 
 INPUT_PATTERN = "src/**/**.pine"
@@ -32,28 +33,12 @@ import %%NAMESPACE%%.ui.theme.CupcakeTheme
 %%FRONTMATTER%%
 
 @Composable
-//fun %%NAME%%(%%PARAMS%% @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
 fun %%NAME%%(%%PARAMS%%) {
 
     %%CONTENT%%
 
-
     %%PARAMSETTERSLAUNCHEDEFFECTS%%
 }
-
-/*
-@Suppress("unused")
-@Suppress("unused_parameter")
-@Preview
-@Composable
-fun %%NAME%%Preview(%%PARAMS%% @Suppress("UNUSED_PARAMETER")) {
-    CupcakeTheme {
-        %%NAME%%(
-        )
-    }
-    }
-    */
-
 """
 
 TEMPLATE_SETTERS_FUNCTION = '''

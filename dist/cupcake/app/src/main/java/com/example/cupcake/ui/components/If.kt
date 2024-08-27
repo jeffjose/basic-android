@@ -14,13 +14,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.cupcake.utils.ScopedView
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class User(var loggedIn: Boolean) : Parcelable
 
 @Composable
-//fun If(content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
 fun If(content: @Composable() (() -> Unit)? = null, ) {
 
     
@@ -71,19 +71,5 @@ Button(onClick={
   Text(text="${user.loggedIn}. Clicked foo=$foo times")
 
 
-
     
 }
-
-/*
-@Suppress("unused")
-@Suppress("unused_parameter")
-@Preview
-@Composable
-fun IfPreview(content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER")) {
-    CupcakeTheme {
-        If(
-        )
-    }
-    }
-    */

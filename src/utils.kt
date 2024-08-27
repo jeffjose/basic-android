@@ -47,3 +47,9 @@ public val http =
 
 @Composable
 fun <T> State<T>.onValueChanged(content: @Composable (T) -> Unit) = content(value)
+
+
+@Composable
+fun ScopedView(content: @Composable () -> Unit) {
+    content()
+}
