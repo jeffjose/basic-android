@@ -4,7 +4,7 @@ import time
 import glob
 from pathlib import Path
 
-from utils import (
+from pine.utils import (
     get_components_dir,
     read_file,
     write_file,
@@ -15,7 +15,7 @@ from utils import (
     mksetter_incoming
 
 )
-from compiler.parser import parse_component
+from pine.compiler.parser import parse_component
 DEFAULT_IMPORTS = [
 'import androidx.compose.runtime.Composable',
 'import androidx.compose.ui.tooling.preview.Preview',

@@ -4,7 +4,7 @@ import re
 import glob
 from pathlib import Path
 
-from utils import (
+from pine.utils import (
     get_screen_dir,
     read_file,
     write_file,
@@ -12,7 +12,7 @@ from utils import (
     get_app_dir,
 )
 
-from compiler.parser import parse_component
+from pine.compiler.parser import parse_component
 
 ROUTE_PARAM_REGEX = re.compile(r"\[(.*?)\]")
 

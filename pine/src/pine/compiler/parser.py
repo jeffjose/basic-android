@@ -1,5 +1,5 @@
 import re
-from utils import mksetter, mksetter_incoming
+from pine.utils import mksetter, mksetter_incoming
 
 #
 # A greedy pattern to capture everything inside paren

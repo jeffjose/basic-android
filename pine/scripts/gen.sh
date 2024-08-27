@@ -5,16 +5,16 @@ echo "--> Pine"
 COPY="cp"
 
 # 0. setup
-rye run --pyproject pine/pyproject.toml python pine/init.py
+rye run --pyproject pine/pyproject.toml pine init
 
 # 1. routes/
-rye run --pyproject pine/pyproject.toml python pine/gen_routes.py
+rye run --pyproject pine/pyproject.toml pine routes
 
 # 1a. components/
-rye run --pyproject pine/pyproject.toml python pine/gen_components.py
+rye run --pyproject pine/pyproject.toml pine components
 
 # 2. src/main/AndroidManifest.xml
-rye run --pyproject pine/pyproject.toml python pine/gen_manifest.py
+rye run --pyproject pine/pyproject.toml pine manifest
 
 #  3. src/main/res/drawable*
 mkdir -p dist/cupcake/app/src/main/res
