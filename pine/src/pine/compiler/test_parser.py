@@ -407,6 +407,7 @@ def test_expand_component_lines_multiple_binding(line_and_expected):
     lines=[
         """---
 import foo.bar
+import baz.foo.a.b.c.d.e
 
 data class Foo(
 a: String,
@@ -440,8 +441,9 @@ def case_get_frontmatter_(lines):
 def test_get_frontmatter(lines):
 
     frontmatter = get_frontmatter(lines)
-    assert len(frontmatter["imports"]) == 1
+    assert len(frontmatter["imports"]) == 2
     assert frontmatter["imports"][0] == "import foo.bar"
+    assert frontmatter["imports"][1] == "import baz.foo.a.b.c.d.e"
 
     assert len(frontmatter["frontmatter"]) == 6
 
