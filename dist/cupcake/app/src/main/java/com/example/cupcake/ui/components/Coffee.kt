@@ -23,8 +23,8 @@ import androidx.compose.ui.unit.dp
 
 
 @Composable
-//fun Coffee( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
-fun Coffee() {
+//fun Coffee(content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
+fun Coffee(content: @Composable() (() -> Unit)? = null, ) {
 
     
 
@@ -77,7 +77,7 @@ Column(
 @Suppress("unused_parameter")
 @Preview
 @Composable
-fun CoffeePreview( @Suppress("UNUSED_PARAMETER")) {
+fun CoffeePreview(content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER")) {
     CupcakeTheme {
         Coffee(
         )

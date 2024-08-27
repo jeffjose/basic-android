@@ -19,8 +19,8 @@ import androidx.compose.ui.tooling.preview.Preview
 
 
 @Composable
-//fun BindingText( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
-fun BindingText() {
+//fun BindingText(content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
+fun BindingText(content: @Composable() (() -> Unit)? = null, ) {
 
     
 
@@ -39,7 +39,7 @@ Text("Entered ${text2.text}")
 @Suppress("unused_parameter")
 @Preview
 @Composable
-fun BindingTextPreview( @Suppress("UNUSED_PARAMETER")) {
+fun BindingTextPreview(content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER")) {
     CupcakeTheme {
         BindingText(
         )

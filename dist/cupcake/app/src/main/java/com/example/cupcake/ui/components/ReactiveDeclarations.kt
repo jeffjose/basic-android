@@ -17,8 +17,8 @@ import androidx.compose.ui.tooling.preview.Preview
 
 
 @Composable
-//fun ReactiveDeclarations( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
-fun ReactiveDeclarations() {
+//fun ReactiveDeclarations(content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
+fun ReactiveDeclarations(content: @Composable() (() -> Unit)? = null, ) {
 
     
 
@@ -62,7 +62,7 @@ Button(onClick={handleClick()}) {
 @Suppress("unused_parameter")
 @Preview
 @Composable
-fun ReactiveDeclarationsPreview( @Suppress("UNUSED_PARAMETER")) {
+fun ReactiveDeclarationsPreview(content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER")) {
     CupcakeTheme {
         ReactiveDeclarations(
         )

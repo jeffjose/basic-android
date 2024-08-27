@@ -18,8 +18,8 @@ import com.example.cupcake.utils.*
 
 
 @Composable
-//fun ComponentBindings( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
-fun ComponentBindings() {
+//fun ComponentBindings(content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
+fun ComponentBindings(content: @Composable() (() -> Unit)? = null, ) {
 
     
 
@@ -65,7 +65,7 @@ Text( text = "OUTSIDE (1way): $second")
 @Suppress("unused_parameter")
 @Preview
 @Composable
-fun ComponentBindingsPreview( @Suppress("UNUSED_PARAMETER")) {
+fun ComponentBindingsPreview(content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER")) {
     CupcakeTheme {
         ComponentBindings(
         )

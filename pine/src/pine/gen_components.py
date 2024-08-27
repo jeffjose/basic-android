@@ -122,11 +122,15 @@ def mkexport_string_component(exports):
         vname, t = e['name'].split(':')
         s.append(f'{mksetter_incoming(vname)} : (({t}) -> Unit)? = null')
 
+    s.append(
+        "content: @Composable() (() -> Unit)? = null" 
+    )
     final = ", ".join(s)
+
 
     if final:
         # This is for the next param `vararg params` in the template
-        return f"{final}, content: @Composable() (() -> Unit)? = null, " 
+        return f"{final}, " 
     else:
         return final
 

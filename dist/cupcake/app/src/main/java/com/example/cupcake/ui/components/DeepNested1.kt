@@ -18,8 +18,8 @@ import com.example.cupcake.utils.*
 
 
 @Composable
-//fun DeepNested1( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
-fun DeepNested1() {
+//fun DeepNested1(content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
+fun DeepNested1(content: @Composable() (() -> Unit)? = null, ) {
 
     
 
@@ -57,7 +57,7 @@ println("1. bottom")
 @Suppress("unused_parameter")
 @Preview
 @Composable
-fun DeepNested1Preview( @Suppress("UNUSED_PARAMETER")) {
+fun DeepNested1Preview(content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER")) {
     CupcakeTheme {
         DeepNested1(
         )

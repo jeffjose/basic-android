@@ -9,8 +9,8 @@ import androidx.compose.ui.tooling.preview.Preview
 
 
 @Composable
-//fun Dropdown( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
-fun Dropdown() {
+//fun Dropdown(content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
+fun Dropdown(content: @Composable() (() -> Unit)? = null, ) {
 
     
 
@@ -23,7 +23,7 @@ fun Dropdown() {
 @Suppress("unused_parameter")
 @Preview
 @Composable
-fun DropdownPreview( @Suppress("UNUSED_PARAMETER")) {
+fun DropdownPreview(content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER")) {
     CupcakeTheme {
         Dropdown(
         )

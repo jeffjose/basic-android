@@ -16,8 +16,8 @@ import com.example.cupcake.ui.components.ComplexButton
 
 
 @Composable
-//fun Reactivity( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
-fun Reactivity() {
+//fun Reactivity(content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
+fun Reactivity(content: @Composable() (() -> Unit)? = null, ) {
 
     
 
@@ -42,7 +42,9 @@ Button(onClick={
 //  Text(text="Complex: Click me")
 //}
 
-ComplexButton(count=count, text="Complex count: $count") {
+Text(text="Complex count: $count")
+
+ComplexButton() {
   Text(text="Simple: Click me")
 }
 
@@ -56,7 +58,7 @@ ComplexButton(count=count, text="Complex count: $count") {
 @Suppress("unused_parameter")
 @Preview
 @Composable
-fun ReactivityPreview( @Suppress("UNUSED_PARAMETER")) {
+fun ReactivityPreview(content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER")) {
     CupcakeTheme {
         Reactivity(
         )

@@ -15,14 +15,14 @@ import androidx.compose.ui.tooling.preview.Preview
 
 
 @Composable
-//fun ComplexButton(text: String, _set_text_incoming_ : (( String) -> Unit)? = null, count : Int, _set_count_incoming_ : (( Int) -> Unit)? = null, content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
-fun ComplexButton(text: String, _set_text_incoming_ : (( String) -> Unit)? = null, count : Int, _set_count_incoming_ : (( Int) -> Unit)? = null, content: @Composable() (() -> Unit)? = null, ) {
+//fun ComplexButton(content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
+fun ComplexButton(content: @Composable() (() -> Unit)? = null, ) {
 
     
-var text by rememberSaveable(inputs=arrayOf(text)) { mutableStateOf(text) }
-var count by rememberSaveable(inputs=arrayOf(count)) { mutableStateOf(count) }
+//external var count : Int
+var count by rememberSaveable { mutableStateOf(1) }
 
-  Text(text=text)
+println("[components/complex-button.pine]: Top")
 
 Button(onClick={
   count = count + 1
@@ -33,14 +33,6 @@ content?.invoke()
 
 
     
-LaunchedEffect(text) {
-    _set_text_incoming_?.invoke(text)
-}
-
-LaunchedEffect(count ) {
-    _set_count_incoming_?.invoke(count )
-}
-
 }
 
 /*
@@ -48,7 +40,7 @@ LaunchedEffect(count ) {
 @Suppress("unused_parameter")
 @Preview
 @Composable
-fun ComplexButtonPreview(text: String, _set_text_incoming_ : (( String) -> Unit)? = null, count : Int, _set_count_incoming_ : (( Int) -> Unit)? = null, content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER")) {
+fun ComplexButtonPreview(content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER")) {
     CupcakeTheme {
         ComplexButton(
         )

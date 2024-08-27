@@ -18,8 +18,8 @@ import androidx.compose.ui.unit.dp
 
 
 @Composable
-//fun Spacer( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
-fun Spacer() {
+//fun Spacer(content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
+fun Spacer(content: @Composable() (() -> Unit)? = null, ) {
 
     
 Column(
@@ -47,7 +47,7 @@ Column(
 @Suppress("unused_parameter")
 @Preview
 @Composable
-fun SpacerPreview( @Suppress("UNUSED_PARAMETER")) {
+fun SpacerPreview(content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER")) {
     CupcakeTheme {
         Spacer(
         )

@@ -30,8 +30,8 @@ data class Photo (
 )
 
 @Composable
-//fun OnMount( @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
-fun OnMount() {
+//fun OnMount(content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER") vararg params: (String) -> Unit) {
+fun OnMount(content: @Composable() (() -> Unit)? = null, ) {
 
     
 
@@ -56,7 +56,7 @@ Text(text = "Photos - ${photos.size}")
 @Suppress("unused_parameter")
 @Preview
 @Composable
-fun OnMountPreview( @Suppress("UNUSED_PARAMETER")) {
+fun OnMountPreview(content: @Composable() (() -> Unit)? = null,  @Suppress("UNUSED_PARAMETER")) {
     CupcakeTheme {
         OnMount(
         )
