@@ -362,7 +362,7 @@ def expand_component_line(line, vars, exports):
                 f"{mksetter_incoming(vname)}=::{mksetter(vname)}, {vname}",
             )
 
-        print(finalsetter + final)
+        print([finalsetter + final])
 
         return finalsetter + final
 

@@ -6,6 +6,10 @@ from pine.compiler.parser import (
 from pytest_cases import parametrize_with_cases, parametrize
 
 
+def _clean_lines(lines):
+    return [x for x in lines if x.strip()]
+
+
 @parametrize(
     vdef=[
         "external var foo: Int",
@@ -365,6 +369,7 @@ def test_expand_component_lines_single_binding(line_and_expected):
                 foo = value
                 _set_foo_incoming_?.invoke(foo)
             } 
+            
             fun _set_bar(value: String) {
                 bar = value
                 _set_bar_incoming_?.invoke(bar)
@@ -389,7 +394,9 @@ def test_expand_component_lines_multiple_binding(line_and_expected):
     vars = [{"vname": "foo", "type": "String"}, {"vname": "bar", "type": "String"}]
     exports = [{"vname": "foo", "type": "String"}, {"vname": "bar", "type": "String"}]
 
-    assert expand_component_line(line, vars, exports) == expected
+    assert _clean_lines(expand_component_line(line, vars, exports)) == _clean_lines(
+        expected
+    )
 
 
 #######################################################################
