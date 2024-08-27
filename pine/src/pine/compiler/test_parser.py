@@ -44,6 +44,13 @@ def case_external_val(vdef):
     )
 
 
+
+
+
+
+
+
+
 @parametrize(
     vdef=[
         "var $foo = 'bar'",
@@ -71,6 +78,44 @@ def case_var_remember_with_type(vdef):
         "var foo : String by remember { mutableStateOf('bar') }",
     )
 
+
+
+
+
+
+
+@parametrize(
+    vdef=[
+        "val $foo = 'bar'",
+        "val $foo='bar'",
+        "val $foo        =          'bar'",
+    ]
+)
+def case_val_remember(vdef):
+    return (
+        vdef,
+        "val foo by remember { mutableStateOf('bar') }",
+    )
+
+
+@parametrize(
+    vdef=[
+        "val $foo    :    String       =          'bar'",
+        "val $foo:String='bar'",
+        "val $foo : String = 'bar'",
+    ]
+)
+def case_val_remember_with_type(vdef):
+    return (
+        vdef,
+        "val foo : String by remember { mutableStateOf('bar') }",
+    )
+
+
+
+
+
+
 @parametrize(
     vdef=[
         "var *foo = 'bar'",
@@ -97,6 +142,42 @@ def case_var_rememberSaveable_with_type(vdef):
         vdef,
         "var foo : String by rememberSaveable { mutableStateOf('bar') }",
     )
+
+
+
+
+
+
+
+
+@parametrize(
+    vdef=[
+        "val *foo = 'bar'",
+        "val *foo='bar'",
+        "val *foo        =          'bar'",
+    ]
+)
+def case_val_rememberSaveable(vdef):
+    return (
+        vdef,
+        "val foo by rememberSaveable { mutableStateOf('bar') }",
+    )
+
+
+@parametrize(
+    vdef=[
+        "val *foo    :    String       =          'bar'",
+        "val *foo:String='bar'",
+        "val *foo : String = 'bar'",
+    ]
+)
+def case_val_rememberSaveable_with_type(vdef):
+    return (
+        vdef,
+        "val foo : String by rememberSaveable { mutableStateOf('bar') }",
+    )
+
+
 
 
 @parametrize_with_cases("line,expected", cases=".")
