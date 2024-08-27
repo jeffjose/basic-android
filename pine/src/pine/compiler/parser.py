@@ -189,7 +189,6 @@ def get_var_declarations(lines):
             vars.append(var)
             continue
 
-    print(vars)
     return vars
 
 
@@ -242,7 +241,6 @@ def get_exports(lines):
             exports.append(export)
             continue
 
-    print(exports)
     return exports
 
 
@@ -361,8 +359,6 @@ def expand_component_line(line, vars, exports):
                 f"bind:{vname}",
                 f"{mksetter_incoming(vname)}=::{mksetter(vname)}, {vname}",
             )
-
-        print([finalsetter + final])
 
         return finalsetter + final
 

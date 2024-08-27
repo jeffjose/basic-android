@@ -208,7 +208,6 @@ def create_screen(template, file):
 
     slug = get_slug(file)
 
-    print("xxxxxxx", len(parcel["imports"].split("\n")))
     final = (
         template.replace("%%PACKAGENAME%%", mkpackage_string_screen())
         .replace("%%NAMESPACE%%", get_project_namespace())
