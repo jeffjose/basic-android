@@ -24,18 +24,18 @@ val viewModel = ViewModel()
 //var (first, setFirst) = viewModel.first.collectAsMutableState()
 //var signal = viewModel.signal.collectAsState()
 
-val signal = remember { mutableStateOf(0)}
+var signal by remember { mutableStateOf(0)}
 
 Button(onClick={
-  signal.value = signal.value + 1
+  signal = signal + 1
 }) {
 
-  if (signal.value > 5) {
+  if (signal > 5) {
 
-  Text(text="Greater than 5 - ${signal.value}")
+  Text(text="Greater than 5 - ${signal}")
   }
   else {
-  Text(text="Less than 5 - ${signal.value}")
+  Text(text="Less than 5 - ${signal}")
 
   }
 }
