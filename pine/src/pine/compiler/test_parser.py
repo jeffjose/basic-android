@@ -180,6 +180,35 @@ def case_val_rememberSaveable_with_type(vdef):
 
 
 
+@parametrize(
+    vdef=[
+        "var *text(stateSaver=TextFieldValue.Saver) = 'bar'",
+        "var       *text(stateSaver=TextFieldValue.Saver)     =    'bar'",
+        "var       *text(   stateSaver=TextFieldValue.Saver   )     =    'bar'",
+    ]
+)
+def case_val_rememberSaveable_with_saver(vdef):
+    return (
+        vdef,
+        "var text by rememberSaveable(stateSaver=TextFieldValue.Saver) { mutableStateOf('bar') }",
+    )
+
+
+
+@parametrize(
+    vdef=[
+        "var $text(stateSaver=TextFieldValue.Saver) = 'bar'",
+        "var       $text(stateSaver=TextFieldValue.Saver)     =    'bar'",
+        "var       $text(   stateSaver=TextFieldValue.Saver   )     =    'bar'",
+    ]
+)
+def case_val_remember_with_saver(vdef):
+    return (
+        vdef,
+        "var text by remember(stateSaver=TextFieldValue.Saver) { mutableStateOf('bar') }",
+    )
+
+
 @parametrize_with_cases("line,expected", cases=".")
 def test_expand_component_line(line, expected):
 

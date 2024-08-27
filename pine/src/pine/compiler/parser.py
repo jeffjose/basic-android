@@ -287,7 +287,7 @@ def expand_component_line(line, vars, exports):
             vname = vname_type
             type = None
 
-        stateSaverString = "" if not saver else f"({saver})"
+        stateSaverString = "" if not saver else f"({saver.strip()})"
 
         return f"{t} {_clean_vname(vname)}{' : ' + type if type else ''} by remember{stateSaverString} {{ mutableStateOf({value}) }}"
 
@@ -304,7 +304,7 @@ def expand_component_line(line, vars, exports):
             vname = vname_type
             type = None
 
-        stateSaverString = "" if not saver else f"({saver})"
+        stateSaverString = "" if not saver else f"({saver.strip()})"
 
         #return f"{t} {vname_type} by rememberSaveable{stateSaverString} {{ mutableStateOf({value}) }}"
         return f"{t} {_clean_vname(vname)}{' : ' + type if type else ''} by rememberSaveable{stateSaverString} {{ mutableStateOf({value}) }}"
