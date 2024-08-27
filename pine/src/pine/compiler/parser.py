@@ -111,7 +111,6 @@ def get_imports_and_contents(lines):
             imports.append(line)
         else:
             contents.append(line)
-
     return {"imports": imports, "contents": contents}
 
 

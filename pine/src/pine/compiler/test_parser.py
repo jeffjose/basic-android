@@ -2,6 +2,7 @@ from pine.compiler.parser import (
     expand_component_line,
     get_var_declarations,
     get_exports,
+    get_frontmatter,
 )
 from pytest_cases import parametrize_with_cases, parametrize
 
@@ -397,6 +398,54 @@ def test_expand_component_lines_multiple_binding(line_and_expected):
     assert _clean_lines(expand_component_line(line, vars, exports)) == _clean_lines(
         expected
     )
+
+
+#######################################################################
+
+
+@parametrize(
+    lines=[
+        """---
+import foo.bar
+
+data class Foo(
+a: String,
+b: String,
+c: String
+)
+---
+a
+b
+c
+d
+e
+f
+g
+h
+i 
+j""".split(
+            "\n"
+        )
+    ]
+)
+def case_get_frontmatter_(lines):
+    return lines
+
+
+@parametrize_with_cases(
+    "lines",
+    cases=".",
+    prefix="case_get_frontmatter_",
+)
+def test_get_frontmatter(lines):
+
+    frontmatter = get_frontmatter(lines)
+    assert len(frontmatter["imports"]) == 1
+    assert frontmatter["imports"][0] == "import foo.bar"
+
+    assert len(frontmatter["frontmatter"]) == 6
+
+    assert len(frontmatter["rest"]) == 10
 
 
 #######################################################################
