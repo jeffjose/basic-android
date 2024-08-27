@@ -364,10 +364,10 @@ def test_expand_component_lines_single_binding(line_and_expected):
             fun _set_foo(value: String) {
                 foo = value
                 _set_foo_incoming_?.invoke(foo)
-            }
+            } 
             fun _set_bar(value: String) {
                 bar = value
-                _set_bar_incoming_?.invoke(foo)
+                _set_bar_incoming_?.invoke(bar)
             }
             Component(_set_foo_incoming_=::_set_foo, foo=foo, _set_bar_incoming_=::_set_bar, bar=bar)""",
         ],
