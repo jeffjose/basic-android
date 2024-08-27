@@ -127,7 +127,7 @@ def get_var_declarations(lines):
 
             t, vname_type, value = matched.groups()
             try:
-                vname, type = [x.strip() for x in vname_type.split(":")]
+                vname, type = [x.strip('*$ ') for x in vname_type.split(":")]
             except:
                 vname = vname_type
                 type = None
@@ -142,7 +142,7 @@ def get_var_declarations(lines):
 
             t, vname_type = matched.groups()
             try:
-                vname, type = [x.strip() for x in vname_type.split(":")]
+                vname, type = [x.strip('*$ ') for x in vname_type.split(":")]
             except:
                 vname = vname_type
                 type = None
@@ -162,11 +162,12 @@ def get_var_declarations(lines):
             # because we need `type` info
             vname_type, saver = _extract_between_paren(vname)
             try:
-                vname, type = [x.strip() for x in vname_type.split(":")]
+                vname, type = [x.strip('*$ ') for x in vname_type.split(":")]
             except:
                 vname = vname_type
                 type = None
 
+    
             var = {"vname": vname, "type": type, "line": line}
             vars.append(var)
             continue
@@ -181,7 +182,7 @@ def get_var_declarations(lines):
             # because we need `type` info
             vname_type, saver = _extract_between_paren(vname)
             try:
-                vname, type = [x.strip() for x in vname_type.split(":")]
+                vname, type = [x.strip('*$ ') for x in vname_type.split(":")]
             except:
                 vname = vname_type
                 type = None
@@ -190,6 +191,7 @@ def get_var_declarations(lines):
             vars.append(var)
             continue
 
+    print(vars)
     return vars
 
 

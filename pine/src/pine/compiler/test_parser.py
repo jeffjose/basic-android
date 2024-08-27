@@ -229,53 +229,68 @@ def test_expand_component_line(line, expected):
 @parametrize(
     lines=[
         ['var $foo : String = "bar"'],
+        ['var $foo:String="bar"'],
+        ['var       $foo       :         String         =          "bar"'],
+
         ['var *foo : String = "bar"'],
+        ['var *foo:String="bar"'],
+        ['var *foo       :        String       =          "bar"'],
+
+        ['external var $foo : String = "bar"'],
+        ['external var $foo:String="bar"'],
+        ['external var       $foo        :         String       =           "bar"'],
+
+        ['external var *foo : String = "bar"'],
+        ['external var *foo:String="bar"'],
+        ['external var *foo          :           String          =          "bar"'],
     ]
 )
-def case_get_var_declarations_var_def(lines):
+def case_get_var_declarations_external_var_def(lines):
     return lines
 
 @parametrize_with_cases("lines", cases=".", prefix="case_get_var_declarations_")
-def test_get_var_declarations(lines):
+def test_get_var_declarations_(lines):
 
     vars =  get_var_declarations(lines)
 
     assert vars[0]['vname'] == 'foo'
     assert vars[0]['type'] == 'String'
 
-#######################################################################
-
-@parametrize(
-    lines=[
-        ['external var *foo : String = "bar"'],
-    ]
-)
-def case_get_var_declarations_external_remember_var_def(lines):
-    return lines
-
-@parametrize_with_cases("lines", cases=".", prefix="case_get_var_declarations_external_remember_")
-def test_get_var_declarations_external_remember(lines):
-
-    vars =  get_var_declarations(lines)
-
-    assert vars[0]['vname'] == '*foo'
-    assert vars[0]['type'] == 'String'
-
 
 #######################################################################
 
+
 @parametrize(
     lines=[
-        ['external var $foo : String = "bar"'],
+        [
+            'var $foo : String = "baz"',
+            'var $bar : String = "baz"'
+         ],
+        [
+            'external var $foo : String = "baz"',
+            'external var $bar : String = "baz"'
+         ],
+        [
+            'external var *foo : String = "baz"',
+            'external var *bar : String = "baz"'
+         ],
     ]
 )
-def case_get_var_declarations_external_rememberSaveable_var_def(lines):
+def case_get_multiple_var_declarations_var_def(lines):
     return lines
 
-@parametrize_with_cases("lines", cases=".", prefix="case_get_var_declarations_external_rememberSaveable_")
-def test_get_var_declarations_external_rememberSaveable(lines):
+@parametrize_with_cases("lines", cases=".", prefix="case_get_multiple_var_declarations_")
+def test_get_multiple_var_declarations_(lines):
 
     vars =  get_var_declarations(lines)
 
-    assert vars[0]['vname'] == '$foo'
+    assert len(vars) == 2
+
+    assert vars[0]['vname'] == 'foo'
+    assert vars[1]['vname'] == 'bar'
+
     assert vars[0]['type'] == 'String'
+    assert vars[1]['type'] == 'String'
+
+
+#######################################################################
