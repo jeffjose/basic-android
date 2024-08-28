@@ -17,8 +17,9 @@ fun ComplexButton(content: @Composable() (() -> Unit)? = null, ) {
     
 println("[components/complex-button.pine]: Top")
 
-Text(text="-COMPLEX-")
+PineRender {
 content?.invoke()
+}
 
 
     

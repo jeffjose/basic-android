@@ -1,0 +1,59 @@
+import androidx.compose.material3.Text
+import androidx.compose.material3.Button
+import kotlin.time.Duration.Companion.seconds
+import androidx.compose.runtime.mutableStateOf
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import androidx.compose.runtime.rememberCoroutineScope
+
+
+
+
+println("[components/counter.pine]: Top")
+
+// Regular. Changes dont trigger update
+var a = 0
+
+// proposed: remember
+var #b = 0
+
+// old: remember
+// proposed: mutableState
+var $c = 0
+
+// rememberSaveable
+var *d = 0
+
+var count by mutableStateOf(0)
+
+val scope = rememberCoroutineScope()
+
+var *ticks = 0
+
+suspend fun start() {
+  println("[components/counter.pine]: LE $ticks")
+  ticks  = 0
+  while(true) {
+  println("[components/counter.pine]: while $ticks")
+      delay(1.seconds)
+      ticks++
+  }
+}
+
+scope.launch {
+  start()
+}
+
+
+//Text(text="ticks: $ticks")
+ui {
+Text(text="Count: $count ticks: ${ticks}")
+
+Button(onClick={
+println("[components/counter.pine]: click $count")
+    count = count + 1
+  }) {
+    Text(text="Click Me")
+}
+
+}

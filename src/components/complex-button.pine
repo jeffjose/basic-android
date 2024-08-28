@@ -3,5 +3,6 @@ import androidx.compose.material3.Button
 
 println("[components/complex-button.pine]: Top")
 
-Text(text="-COMPLEX-")
+ui {
 content()
+}
