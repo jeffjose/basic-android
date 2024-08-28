@@ -27,6 +27,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.cupcake.R
+import com.example.cupcake.ui.components.DeepNested1
 import com.example.cupcake.ui.components.Reactivity
 import com.example.cupcake.ui.components.Spacer
 import com.example.cupcake.utils.PineRender
@@ -96,9 +97,9 @@ PineRender {
             // Loop()
             // BindingText()
             // ComponentBindings()
-            // DeepNested1()
+             DeepNested1()
             // OnMount()
-            Reactivity()
+            //Reactivity()
         }
 
         Column(

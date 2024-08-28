@@ -30,24 +30,20 @@ fun DeepNested2(first: Int, _set_first_incoming_ : (( Int) -> Unit)? = null, con
 println(" 2. top")
 var first by rememberSaveable(inputs=arrayOf(first)) { mutableStateOf(first) }
 
-LaunchedEffect(true) {
-  println("Loaded 2")
-}
-
-Button(onClick={
-  first = first + 1
-  }) {
-  Text( text = "2: $first")
-}
+PineRender {
+  Button(onClick={
+    first = first + 1
+    }) {
+    Text( text = "2: $first")
+  }
 
 
             fun _set_first(value: Int) {
                 first = value
                 _set_first_incoming_?.invoke(first)
             }
-            DeepNested3(_set_first_incoming_=::_set_first, first=first)
-
-println(" 2. bottom")
+              DeepNested3(_set_first_incoming_=::_set_first, first=first)
+}
 
 fun _pine_disposable_fun() {
 }

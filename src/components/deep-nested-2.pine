@@ -10,16 +10,12 @@ import com.example.cupcake.ui.components.DeepNested3
 println(" 2. top")
 external var first: Int
 
-LaunchedEffect(true) {
-  println("Loaded 2")
+ui {
+  Button(onClick={
+    first = first + 1
+    }) {
+    Text( text = "2: $first")
+  }
+
+  DeepNested3(bind:first=first)
 }
-
-Button(onClick={
-  first = first + 1
-  }) {
-  Text( text = "2: $first")
-}
-
-DeepNested3(bind:first=first)
-
-println(" 2. bottom")

@@ -8,18 +8,14 @@ import com.example.cupcake.ui.components.DeepNested2
 
 println("1. top")
 
-LaunchedEffect(true) {
-  println("Loaded 1")
-}
-
 var *first: Int = 0
 
-Button(onClick={
-  first = first + 1
-  }) {
-  Text( text = "1: $first")
+ui {
+  Button(onClick={
+    first = first + 1
+    }) {
+    Text( text = "1: $first")
+  }
+
+  DeepNested2(bind:first=first)
 }
-
-DeepNested2(bind:first=first)
-
-println("1. bottom")

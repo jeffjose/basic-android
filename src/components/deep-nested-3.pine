@@ -7,14 +7,12 @@ import com.example.cupcake.utils.*
 println("  3. top")
 external var first: Int
 
-LaunchedEffect(true) {
-  println("Loaded 3")
-}
+ui {
+  Button(onClick={
+    first = first + 1
+    }) {
+    Text( text = "3: $first")
+  }
 
-Button(onClick={
-  first = first + 1
-  }) {
-  Text( text = "3: $first")
+  println("  3. bottom")
 }
-
-println("  3. bottom")
