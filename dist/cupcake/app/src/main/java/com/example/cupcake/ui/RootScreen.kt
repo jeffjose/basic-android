@@ -27,8 +27,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.cupcake.R
-import com.example.cupcake.ui.components.DeepNested1
-import com.example.cupcake.ui.components.OnMount
 import com.example.cupcake.ui.components.Reactivity
 import com.example.cupcake.ui.components.Spacer
 import com.example.cupcake.utils.PineRender
@@ -68,7 +66,7 @@ fun RootScreen(navController: NavHostController, params: Bundle?, http: HttpClie
 println("[routes/+screen.pine]: Top")
 
 LaunchedEffect(true) {
-  println("[routes/+screen.pine]: on_create")
+    println("[routes/+screen.pine]: onCreate")
 }
 
 PineRender {
@@ -98,8 +96,8 @@ PineRender {
             // Loop()
             // BindingText()
             // ComponentBindings()
-            //DeepNested1()
-            //OnMount()
+            // DeepNested1()
+            // OnMount()
             Reactivity()
         }
 
@@ -128,13 +126,12 @@ PineRender {
             }
         }
     }
-
 }
 
 fun _pine_disposable_fun() {
 }
 
-    // on_destroy
+    // onDetroy
     val _pine_disposable_state by remember {mutableStateOf(true)}
 
     DisposableEffect(_pine_disposable_state) {

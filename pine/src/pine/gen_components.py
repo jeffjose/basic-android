@@ -23,7 +23,7 @@ DEFAULT_IMPORTS = [
 'import androidx.compose.runtime.LaunchedEffect',
 'import androidx.compose.runtime.DisposableEffect',
 
-# on_destroy
+# onDetroy
 "import androidx.compose.runtime.mutableStateOf",
 "import androidx.compose.runtime.getValue",
 "import androidx.compose.runtime.remember"
@@ -45,7 +45,7 @@ fun %%NAME%%(%%PARAMS%%) {
 
     %%PARAMSETTERSLAUNCHEDEFFECTS%%
 
-    // on_destroy
+    // onDetroy
     val _pine_disposable_state by remember {mutableStateOf(true)}
 
     DisposableEffect(_pine_disposable_state) {

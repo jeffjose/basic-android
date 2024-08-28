@@ -61,7 +61,7 @@ fun BlogScreen(navController: NavHostController, params: Bundle?, http: HttpClie
 
     
 fun _pine_disposable_fun() {
-    println("[routes/blog/+screen.pine]: on_destroy")
+    println("[routes/blog/+screen.pine]: onDetroy")
 
 }
 
@@ -103,7 +103,7 @@ Column(
 }
 
 
-    // on_destroy
+    // onDetroy
     val _pine_disposable_state by remember {mutableStateOf(true)}
 
     DisposableEffect(_pine_disposable_state) {

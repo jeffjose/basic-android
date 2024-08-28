@@ -83,7 +83,7 @@ Column(
 fun _pine_disposable_fun() {
 }
 
-    // on_destroy
+    // onDetroy
     val _pine_disposable_state by remember {mutableStateOf(true)}
 
     DisposableEffect(_pine_disposable_state) {

@@ -307,20 +307,20 @@ def test_expand_component_line_ui_render(line, expected):
 
 @parametrize(
     line=[
-        "on_create {",
-        "on_create{",
-        "          on_create   {",
-        "          on_create{              ",
+        "onCreate {",
+        "onCreate{",
+        "          onCreate   {",
+        "          onCreate{              ",
     ]
 )
-def case_expand_component_line_on_create_render_cases(line):
+def case_expand_component_line_onCreate_render_cases(line):
     return (line, "LaunchedEffect(true) {")
 
 
 @parametrize_with_cases(
-    "line,expected", cases=".", prefix="case_expand_component_line_on_create_render"
+    "line,expected", cases=".", prefix="case_expand_component_line_onCreate_render"
 )
-def test_expand_component_line_on_create_render(line, expected):
+def test_expand_component_line_onCreate_render(line, expected):
 
     assert expand_component_line(line, [], []) == expected
 

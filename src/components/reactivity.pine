@@ -16,8 +16,8 @@ import com.example.cupcake.ui.components.Counter
 
 println("[components/reactivity.pine]: Top")
 
-on_create {
-  println("[components/reactivity.pine]: on_create")
+onCreate {
+  println("[components/reactivity.pine]: onCreate")
 }
 
 ui {

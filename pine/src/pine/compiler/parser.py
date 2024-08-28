@@ -8,11 +8,11 @@ from pine.utils import mksetter, mksetter_incoming
 # ui {
 render_pattern = re.compile(r"^ui\s*{$")
 
-# on_create {
-on_create_pattern = re.compile(r"^on_create\s*{$")
+# onCreate {
+onCreate_pattern = re.compile(r"^onCreate\s*{$")
 
-# on_destroy {
-on_destroy_pattern = re.compile(r"^on_destroy\s*{$")
+# onDetroy {
+onDetroy_pattern = re.compile(r"^onDetroy\s*{$")
 
 ################
 
@@ -90,13 +90,13 @@ def get_frontmatter(lines):
 
 def add_default_destroy_fun(lines):
 
-    if any([line for line in lines if on_destroy_pattern.search(line)]):
+    if any([line for line in lines if onDetroy_pattern.search(line)]):
 
-        # There is a 'on_destroy {' line, so just return
+        # There is a 'onDetroy {' line, so just return
         return lines
     else:
 
-        lines.append('on_destroy {')
+        lines.append('onDetroy {')
         lines.append('}')
 
         return lines
@@ -455,14 +455,14 @@ def expand_component_line(line, vars, exports):
 
         return "PineRender {"
 
-    # on_create {}
-    matched = on_create_pattern.search(line.strip())
+    # onCreate {}
+    matched = onCreate_pattern.search(line.strip())
     if matched:
 
         return "LaunchedEffect(true) {"
 
-    # on_destroy {}
-    matched = on_destroy_pattern.search(line.strip())
+    # onDetroy {}
+    matched = onDetroy_pattern.search(line.strip())
     if matched:
 
         return 'fun _pine_disposable_fun() {'

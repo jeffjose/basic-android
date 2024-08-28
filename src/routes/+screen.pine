@@ -11,16 +11,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import com.example.cupcake.R
-import com.example.cupcake.ui.components.DeepNested1
-import com.example.cupcake.ui.components.OnMount
-import com.example.cupcake.ui.components.Spacer
 import com.example.cupcake.ui.components.Reactivity
+import com.example.cupcake.ui.components.Spacer
 
 // Log.d("XXX", data.value?.toString() ?: "default")
 println("[routes/+screen.pine]: Top")
 
-on_create {
-  println("[routes/+screen.pine]: on_create")
+onCreate {
+    println("[routes/+screen.pine]: onCreate")
 }
 
 ui {
@@ -50,8 +48,8 @@ ui {
             // Loop()
             // BindingText()
             // ComponentBindings()
-            //DeepNested1()
-            //OnMount()
+            // DeepNested1()
+            // OnMount()
             Reactivity()
         }
 
@@ -80,5 +78,4 @@ ui {
             }
         }
     }
-
 }

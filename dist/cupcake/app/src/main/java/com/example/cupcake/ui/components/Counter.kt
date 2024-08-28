@@ -46,11 +46,11 @@ suspend fun start() {
 }
 
 LaunchedEffect(true) {
-  println("[components/counter.pine]: on_create")
+  println("[components/counter.pine]: onCreate")
 }
 
 fun _pine_disposable_fun() {
-  println("[components/counter.pine]: on_destroy")
+  println("[components/counter.pine]: onDetroy")
 }
 
 
@@ -69,7 +69,7 @@ PineRender {
 
     
 
-    // on_destroy
+    // onDetroy
     val _pine_disposable_state by remember {mutableStateOf(true)}
 
     DisposableEffect(_pine_disposable_state) {

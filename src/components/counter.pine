@@ -26,12 +26,12 @@ suspend fun start() {
   }
 }
 
-on_create {
-  println("[components/counter.pine]: on_create")
+onCreate {
+  println("[components/counter.pine]: onCreate")
 }
 
-on_destroy {
-  println("[components/counter.pine]: on_destroy")
+onDetroy {
+  println("[components/counter.pine]: onDetroy")
 }
 
 

@@ -32,7 +32,7 @@ fun Reactivity(content: @Composable() (() -> Unit)? = null, ) {
 println("[components/reactivity.pine]: Top")
 
 LaunchedEffect(true) {
-  println("[components/reactivity.pine]: on_create")
+  println("[components/reactivity.pine]: onCreate")
 }
 
 PineRender {
@@ -47,7 +47,7 @@ fun _pine_disposable_fun() {
 
     
 
-    // on_destroy
+    // onDetroy
     val _pine_disposable_state by remember {mutableStateOf(true)}
 
     DisposableEffect(_pine_disposable_state) {
