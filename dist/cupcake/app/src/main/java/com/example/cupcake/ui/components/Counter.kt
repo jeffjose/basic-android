@@ -44,9 +44,10 @@ suspend fun start() {
   }
 }
 
-scope.launch {
-  println("[components/counter.pine]: scope.launch")
-  //start()
+LaunchedEffect(true) {
+  println("[components/counter.pine]: on_create")
+
+  start()
 }
 
 
@@ -56,7 +57,7 @@ PineRender {
 
   Button(onClick={
   println("[components/counter.pine]: click $count")
-      count = count + 1
+      ticks = ticks + 1
     }) {
       Text(text="Click Me")
   }

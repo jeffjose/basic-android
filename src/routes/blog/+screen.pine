@@ -12,6 +12,8 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import com.example.cupcake.R
 
+ui {
+
 Column(
     verticalArrangement = Arrangement.SpaceBetween,
     modifier =
@@ -43,4 +45,6 @@ Column(
             ) { Text(stringResource(R.string.blog345)) }
         }
     }
+}
+
 }

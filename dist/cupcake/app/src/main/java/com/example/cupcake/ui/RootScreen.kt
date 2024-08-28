@@ -30,6 +30,7 @@ import com.example.cupcake.ui.components.DeepNested1
 import com.example.cupcake.ui.components.OnMount
 import com.example.cupcake.ui.components.Reactivity
 import com.example.cupcake.ui.components.Spacer
+import com.example.cupcake.utils.PineRender
 import io.ktor.client.*
 import io.ktor.client.call.body
 import io.ktor.client.engine.cio.*
@@ -65,61 +66,68 @@ fun RootScreen(navController: NavHostController, params: Bundle?, http: HttpClie
 // Log.d("XXX", data.value?.toString() ?: "default")
 println("[routes/+screen.pine]: Top")
 
-Column(
-    verticalArrangement = Arrangement.SpaceBetween,
-    modifier =
-        Modifier
-            .fillMaxHeight()
-            .padding(dimensionResource(R.dimen.padding_medium)),
-) {
+LaunchedEffect(true) {
+  println("[routes/+screen.pine]: on_create")
+}
+
+PineRender {
     Column(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_small)),
+        verticalArrangement = Arrangement.SpaceBetween,
+        modifier =
+            Modifier
+                .fillMaxHeight()
+                .padding(dimensionResource(R.dimen.padding_medium)),
     ) {
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_small)),
+        ) {
 
-        Spacer()
-        // Coffee()
-        // Simple(good="buh-bye")
-        // ReactiveAssignments()
-        // ReactiveDeclarations()
-        // ReactiveStatements()
-        // Nested(answer=42)
-        // Nested()
-        // If()
-        // If()
-        // Loop()
-        // BindingText()
-        // ComponentBindings()
-        //DeepNested1()
-        //OnMount()
-        Reactivity()
-    }
+            Spacer()
+            // Coffee()
+            // Simple(good="buh-bye")
+            // ReactiveAssignments()
+            // ReactiveDeclarations()
+            // ReactiveStatements()
+            // Nested(answer=42)
+            // Nested()
+            // If()
+            // If()
+            // Loop()
+            // BindingText()
+            // ComponentBindings()
+            //DeepNested1()
+            //OnMount()
+            Reactivity()
+        }
 
-    Column(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement =
-            Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium)),
-    ) {
-        Row(horizontalArrangement = Arrangement.SpaceEvenly) {
-            Button(
-                onClick = { navController.navigate("/") },
-            ) { Text(stringResource(R.string.home)) }
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement =
+                Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium)),
+        ) {
+            Row(horizontalArrangement = Arrangement.SpaceEvenly) {
+                Button(
+                    onClick = { navController.navigate("/") },
+                ) { Text(stringResource(R.string.home)) }
 
-            Button(
-                onClick = { navController.navigate("/blog") },
-            ) { Text(stringResource(R.string.blog)) }
+                Button(
+                    onClick = { navController.navigate("/blog") },
+                ) { Text(stringResource(R.string.blog)) }
 
-            Button(
-                onClick = { navController.navigate("/settings") },
-            ) { Text(stringResource(R.string.settings)) }
+                Button(
+                    onClick = { navController.navigate("/settings") },
+                ) { Text(stringResource(R.string.settings)) }
 
-            Button(
-                onClick = { navController.navigate("/about") },
-            ) { Text(stringResource(R.string.about)) }
+                Button(
+                    onClick = { navController.navigate("/about") },
+                ) { Text(stringResource(R.string.about)) }
+            }
         }
     }
+
 }
 
 }

@@ -26,6 +26,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.cupcake.R
+import com.example.cupcake.utils.PineRender
 import io.ktor.client.*
 import io.ktor.client.call.body
 import io.ktor.client.engine.cio.*
@@ -58,6 +59,8 @@ fun BlogScreen(navController: NavHostController, params: Bundle?, http: HttpClie
 
 
     
+PineRender {
+
 Column(
     verticalArrangement = Arrangement.SpaceBetween,
     modifier =
@@ -89,6 +92,8 @@ Column(
             ) { Text(stringResource(R.string.blog345)) }
         }
     }
+}
+
 }
 
 }

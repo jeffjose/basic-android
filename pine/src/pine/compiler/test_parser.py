@@ -109,10 +109,6 @@ def case_expand_component_line_val_remember_with_type(vdef):
     )
 
 
-
-
-
-
 @parametrize(
     vdef=[
         "var $foo = 'bar'",
@@ -167,11 +163,6 @@ def case_expand_component_line_val_mutable_with_type(vdef):
         vdef,
         "val foo = mutableStateOf<String>('bar')",
     )
-
-
-
-
-
 
 
 @parametrize(
@@ -268,6 +259,7 @@ def test_expand_component_line(line, expected):
 
 #######################################################################
 
+
 @parametrize(
     line=[
         "content()",
@@ -276,10 +268,7 @@ def test_expand_component_line(line, expected):
     ]
 )
 def case_expand_component_line_content_cases(line):
-    return (
-        line,
-        "content?.invoke()"
-    )
+    return (line, "content?.invoke()")
 
 
 @parametrize_with_cases(
@@ -289,7 +278,9 @@ def test_expand_component_line_content(line, expected):
 
     assert expand_component_line(line, [], []) == expected
 
+
 #######################################################################
+
 
 @parametrize(
     line=[
@@ -300,10 +291,7 @@ def test_expand_component_line_content(line, expected):
     ]
 )
 def case_expand_component_line_ui_render_cases(line):
-    return (
-        line,
-        "PineRender {"
-    )
+    return (line, "PineRender {")
 
 
 @parametrize_with_cases(
@@ -313,7 +301,9 @@ def test_expand_component_line_ui_render(line, expected):
 
     assert expand_component_line(line, [], []) == expected
 
+
 #######################################################################
+
 
 @parametrize(
     line=[
@@ -324,10 +314,7 @@ def test_expand_component_line_ui_render(line, expected):
     ]
 )
 def case_expand_component_line_on_create_render_cases(line):
-    return (
-        line,
-        "val _pine_on_create_scope = rememberCoroutineScope();\n_pine_on_create_scope.launch {"
-    )
+    return (line, "LaunchedEffect(true) {")
 
 
 @parametrize_with_cases(
@@ -337,7 +324,9 @@ def test_expand_component_line_on_create_render(line, expected):
 
     assert expand_component_line(line, [], []) == expected
 
+
 #######################################################################
+
 
 @parametrize(
     lines=[
@@ -473,8 +462,7 @@ def test_get_multiple_exports(lines):
 #######################################################################
 
 
-
-# FIXME: Should this error? 
+# FIXME: Should this error?
 # external should have a type, but
 @parametrize(
     lines=[

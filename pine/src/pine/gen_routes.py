@@ -50,6 +50,7 @@ DEFAULT_IMPORTS = [
     "import androidx.compose.runtime.rememberCoroutineScope",
     "import androidx.compose.runtime.remember",
     "import androidx.compose.runtime.LaunchedEffect",
+    "import com.example.cupcake.utils.PineRender",
 ]
 
 TEMPLATE_NAVIGATION = """%%PACKAGENAME%%

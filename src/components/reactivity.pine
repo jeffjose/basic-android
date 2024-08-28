@@ -8,8 +8,6 @@ import androidx.compose.runtime.MutableState
     val c = MutableStateFlow(0)
     var signal = MutableStateFlow(0)
  }
- 
-
 ---
 import androidx.compose.material3.Text
 import androidx.compose.material3.Button
@@ -17,6 +15,10 @@ import com.example.cupcake.ui.components.ComplexButton
 import com.example.cupcake.ui.components.Counter
 
 println("[components/reactivity.pine]: Top")
+
+on_create {
+  println("[components/reactivity.pine]: on_create")
+}
 
 ui {
 

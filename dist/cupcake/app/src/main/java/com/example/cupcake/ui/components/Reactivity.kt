@@ -20,14 +20,16 @@ import kotlinx.coroutines.flow.MutableStateFlow
     val c = MutableStateFlow(0)
     var signal = MutableStateFlow(0)
  }
- 
-
 
 @Composable
 fun Reactivity(content: @Composable() (() -> Unit)? = null, ) {
 
     
 println("[components/reactivity.pine]: Top")
+
+LaunchedEffect(true) {
+  println("[components/reactivity.pine]: on_create")
+}
 
 PineRender {
 

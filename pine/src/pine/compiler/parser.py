@@ -444,7 +444,7 @@ def expand_component_line(line, vars, exports):
     matched = on_create_pattern.search(line.strip())
     if matched:
 
-        return "val _pine_on_create_scope = rememberCoroutineScope();\n_pine_on_create_scope.launch {"
+        return "LaunchedEffect(true) {"
 
     # on_destroy {}
     matched = on_destroy_pattern.search(line.strip())
