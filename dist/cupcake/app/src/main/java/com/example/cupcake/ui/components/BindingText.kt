@@ -7,9 +7,11 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.text.TextRange
@@ -29,6 +31,18 @@ var text2 by rememberSaveable(stateSaver = TextFieldValue.Saver) { mutableStateO
 TextField(value=text2, onValueChange={text2=it})
 Text("Entered ${text2.text}")
 
+fun _pine_disposable_fun() {
+}
 
     
+
+    // on_destroy
+    val _pine_disposable_state by remember {mutableStateOf(true)}
+
+    DisposableEffect(_pine_disposable_state) {
+    onDispose {
+        _pine_disposable_fun()
+        }
+    }
+
 }

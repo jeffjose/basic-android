@@ -5,6 +5,7 @@ import com.example.cupcake.ui.theme.CupcakeTheme
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -46,8 +47,10 @@ suspend fun start() {
 
 LaunchedEffect(true) {
   println("[components/counter.pine]: on_create")
+}
 
-  start()
+fun _pine_disposable_fun() {
+  println("[components/counter.pine]: on_destroy")
 }
 
 
@@ -65,4 +68,14 @@ PineRender {
 
 
     
+
+    // on_destroy
+    val _pine_disposable_state by remember {mutableStateOf(true)}
+
+    DisposableEffect(_pine_disposable_state) {
+    onDispose {
+        _pine_disposable_fun()
+        }
+    }
+
 }

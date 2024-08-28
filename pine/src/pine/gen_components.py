@@ -19,8 +19,14 @@ from pine.compiler.parser import parse_component
 DEFAULT_IMPORTS = [
 'import androidx.compose.runtime.Composable',
 'import androidx.compose.ui.tooling.preview.Preview',
-'import androidx.compose.runtime.LaunchedEffect',
 "import com.example.cupcake.utils.PineRender",
+'import androidx.compose.runtime.LaunchedEffect',
+'import androidx.compose.runtime.DisposableEffect',
+
+# on_destroy
+"import androidx.compose.runtime.mutableStateOf",
+"import androidx.compose.runtime.getValue",
+"import androidx.compose.runtime.remember"
 ]
 
 INPUT_PATTERN = "src/**/**.pine"
@@ -38,6 +44,16 @@ fun %%NAME%%(%%PARAMS%%) {
     %%CONTENT%%
 
     %%PARAMSETTERSLAUNCHEDEFFECTS%%
+
+    // on_destroy
+    val _pine_disposable_state by remember {mutableStateOf(true)}
+
+    DisposableEffect(_pine_disposable_state) {
+    onDispose {
+        _pine_disposable_fun()
+        }
+    }
+
 }
 """
 

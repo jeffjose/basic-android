@@ -49,8 +49,9 @@ DEFAULT_IMPORTS = [
     "import androidx.compose.runtime.setValue",
     "import androidx.compose.runtime.rememberCoroutineScope",
     "import androidx.compose.runtime.remember",
-    "import androidx.compose.runtime.LaunchedEffect",
     "import com.example.cupcake.utils.PineRender",
+    "import androidx.compose.runtime.LaunchedEffect",
+    "import androidx.compose.runtime.DisposableEffect",
 ]
 
 TEMPLATE_NAVIGATION = """%%PACKAGENAME%%
@@ -129,6 +130,15 @@ fun %%NAME%%Screen(navController: NavHostController, params: Bundle?, http: Http
 
 
     %%CONTENT%%
+
+    // on_destroy
+    val _pine_disposable_state by remember {mutableStateOf(true)}
+
+    DisposableEffect(_pine_disposable_state) {
+    onDispose {
+        _pine_disposable_fun()
+        }
+    }
 }
 
 /*

@@ -62,10 +62,22 @@ DisposableEffect(scope) {
 Text("Simple $foo $bar $baz")
 Text("x=$x y=$y")
 
+fun _pine_disposable_fun() {
+}
 
     
 LaunchedEffect(good) {
     _set_good_incoming_?.invoke(good)
 }
+
+
+    // on_destroy
+    val _pine_disposable_state by remember {mutableStateOf(true)}
+
+    DisposableEffect(_pine_disposable_state) {
+    onDispose {
+        _pine_disposable_fun()
+        }
+    }
 
 }

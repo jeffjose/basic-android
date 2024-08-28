@@ -5,6 +5,7 @@ import com.example.cupcake.ui.theme.CupcakeTheme
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.derivedStateOf
@@ -45,6 +46,18 @@ Button(onClick={handleClick()}) {
   Text(text = "RS: Count: $count")
 }
 
+fun _pine_disposable_fun() {
+}
 
     
+
+    // on_destroy
+    val _pine_disposable_state by remember {mutableStateOf(true)}
+
+    DisposableEffect(_pine_disposable_state) {
+    onDispose {
+        _pine_disposable_fun()
+        }
+    }
+
 }

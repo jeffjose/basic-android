@@ -88,9 +88,24 @@ def get_frontmatter(lines):
     }
 
 
+def add_default_destroy_fun(lines):
+
+    if any([line for line in lines if on_destroy_pattern.search(line)]):
+
+        # There is a 'on_destroy {' line, so just return
+        return lines
+    else:
+
+        lines.append('on_destroy {')
+        lines.append('}')
+
+        return lines
+
 def parse_component(data, default_imports):
 
     lines = data.split("\n")
+
+    lines = add_default_destroy_fun(lines)
 
     frontmatter = get_frontmatter(lines)
 
@@ -450,7 +465,7 @@ def expand_component_line(line, vars, exports):
     matched = on_destroy_pattern.search(line.strip())
     if matched:
 
-        return "on_destroy {"
+        return 'fun _pine_disposable_fun() {'
 
     # if matched:
     #     return f"{t} {vname} by remember {{ derivedStateOf {{  {value}  }} }}"

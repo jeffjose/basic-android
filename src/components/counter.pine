@@ -28,8 +28,10 @@ suspend fun start() {
 
 on_create {
   println("[components/counter.pine]: on_create")
+}
 
-  start()
+on_destroy {
+  println("[components/counter.pine]: on_destroy")
 }
 
 
