@@ -55,9 +55,9 @@ def case_expand_component_line_external_val(vdef):
 
 @parametrize(
     vdef=[
-        "var $foo = 'bar'",
-        "var $foo='bar'",
-        "var $foo        =          'bar'",
+        "var #foo = 'bar'",
+        "var #foo='bar'",
+        "var #foo        =          'bar'",
     ]
 )
 def case_expand_component_line_var_remember(vdef):
@@ -69,9 +69,9 @@ def case_expand_component_line_var_remember(vdef):
 
 @parametrize(
     vdef=[
-        "var $foo    :    String       =          'bar'",
-        "var $foo:String='bar'",
-        "var $foo : String = 'bar'",
+        "var #foo    :    String       =          'bar'",
+        "var #foo:String='bar'",
+        "var #foo : String = 'bar'",
     ]
 )
 def case_expand_component_line_var_remember_with_type(vdef):
@@ -83,9 +83,9 @@ def case_expand_component_line_var_remember_with_type(vdef):
 
 @parametrize(
     vdef=[
-        "val $foo = 'bar'",
-        "val $foo='bar'",
-        "val $foo        =          'bar'",
+        "val #foo = 'bar'",
+        "val #foo='bar'",
+        "val #foo        =          'bar'",
     ]
 )
 def case_expand_component_line_val_remember(vdef):
@@ -97,9 +97,9 @@ def case_expand_component_line_val_remember(vdef):
 
 @parametrize(
     vdef=[
-        "val $foo    :    String       =          'bar'",
-        "val $foo:String='bar'",
-        "val $foo : String = 'bar'",
+        "val #foo    :    String       =          'bar'",
+        "val #foo:String='bar'",
+        "val #foo : String = 'bar'",
     ]
 )
 def case_expand_component_line_val_remember_with_type(vdef):
@@ -107,6 +107,71 @@ def case_expand_component_line_val_remember_with_type(vdef):
         vdef,
         "val foo : String by remember { mutableStateOf('bar') }",
     )
+
+
+
+
+
+
+@parametrize(
+    vdef=[
+        "var $foo = 'bar'",
+        "var $foo='bar'",
+        "var $foo        =          'bar'",
+    ]
+)
+def case_expand_component_line_var_mutable(vdef):
+    return (
+        vdef,
+        "var foo = mutableStateOf('bar')",
+    )
+
+
+@parametrize(
+    vdef=[
+        "var $foo    :    String       =          'bar'",
+        "var $foo:String='bar'",
+        "var $foo : String = 'bar'",
+    ]
+)
+def case_expand_component_line_var_mutable_with_type(vdef):
+    return (
+        vdef,
+        "var foo : String = mutableStateOf('bar')",
+    )
+
+
+@parametrize(
+    vdef=[
+        "val $foo = 'bar'",
+        "val $foo='bar'",
+        "val $foo        =          'bar'",
+    ]
+)
+def case_expand_component_line_val_mutable(vdef):
+    return (
+        vdef,
+        "val foo = mutableStateOf('bar')",
+    )
+
+
+@parametrize(
+    vdef=[
+        "val $foo    :    String       =          'bar'",
+        "val $foo:String='bar'",
+        "val $foo : String = 'bar'",
+    ]
+)
+def case_expand_component_line_val_mutable_with_type(vdef):
+    return (
+        vdef,
+        "val foo : String = mutableStateOf('bar')",
+    )
+
+
+
+
+
 
 
 @parametrize(
@@ -181,9 +246,9 @@ def case_expand_component_line_val_rememberSaveable_with_saver(vdef):
 
 @parametrize(
     vdef=[
-        "var $text(stateSaver=TextFieldValue.Saver) = 'bar'",
-        "var       $text(stateSaver=TextFieldValue.Saver)     =    'bar'",
-        "var       $text(   stateSaver=TextFieldValue.Saver   )     =    'bar'",
+        "var #text(stateSaver=TextFieldValue.Saver) = 'bar'",
+        "var       #text(stateSaver=TextFieldValue.Saver)     =    'bar'",
+        "var       #text(   stateSaver=TextFieldValue.Saver   )     =    'bar'",
     ]
 )
 def case_expand_component_line_val_remember_with_saver(vdef):

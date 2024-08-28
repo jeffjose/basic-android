@@ -27,11 +27,16 @@ external_variable_pattern = re.compile(r"^external\s+(val|var)\s+(.*)")
 # Component(bind:foo="bar")
 bind_variable_pattern = re.compile(r"bind:(\w+)\s*=\s*\w+")
 
+
 # var $foo = "bar"
-remember_mutablestate_pattern = re.compile(r"(val|var)\s+\$(.*)\s*=\s*(.*)")
+mutablestate_pattern = re.compile(r"(val|var)\s+\$(.*)\s*=\s*(.*)")
+
+# var #foo = "bar"
+remember_mutablestate_pattern = re.compile(r"(val|var)\s+#(.*)\s*=\s*(.*)")
 
 # var *foo = "bar"
 remembersaveable_mutablestate_pattern = re.compile(r"(val|var)\s+\*(.*)\s*=\s*(.*)")
+
 
 # Implemented in this file, but not used
 # var count = $derived(count * 2)
@@ -158,6 +163,25 @@ def get_var_declarations(lines):
             continue
 
         # var $foo = "bar"
+        matched = mutablestate_pattern.match(line)
+        if matched:
+
+            t, vname, value = matched.groups()
+
+            # This section is updated (newer) than expand_component_line
+            # because we need `type` info
+            vname_type, saver = _extract_between_paren(vname)
+            try:
+                vname, type = [x.strip("*$ ") for x in vname_type.split(":")]
+            except:
+                vname = vname_type
+                type = None
+
+            var = {"vname": vname, "type": type, "line": line}
+            vars.append(var)
+            continue
+
+        # var #foo = "bar"
         matched = remember_mutablestate_pattern.match(line)
         if matched:
 
@@ -291,6 +315,24 @@ def expand_component_line(line, vars, exports):
         line = f"{t} *{_clean_vname(vname)}(inputs=arrayOf({_clean_vname(vname)})) = {_clean_vname(vname)}"
 
     # var $foo = "bar"
+    matched = mutablestate_pattern.match(line)
+    if matched:
+
+        t, vname, value = matched.groups()
+
+        # This statement is probably not needed, but keeping it around for consistency with other variable def
+        # blocks. var $foo doesnt have saverString
+
+        vname_type, saver = _extract_between_paren(vname)
+        try:
+            vname, type = [x.strip() for x in vname_type.split(":")]
+        except:
+            vname = vname_type
+            type = None
+
+        return f"{t} {_clean_vname(vname)}{' : ' + type if type else ''} = mutableStateOf({value})"
+
+    # var #foo = "bar"
     matched = remember_mutablestate_pattern.match(line)
     if matched:
 

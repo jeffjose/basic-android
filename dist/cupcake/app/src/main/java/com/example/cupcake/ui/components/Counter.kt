@@ -33,7 +33,7 @@ println("[components/counter.pine]: Top")
 var a = 0
 
 // proposed: remember
-var &b = 0
+var #b = 0
 
 // old: remember
 // proposed: mutableState
