@@ -29,31 +29,13 @@ fun Counter(content: @Composable() (() -> Unit)? = null, ) {
 
 println("[components/counter.pine]: Top")
 
-// Regular. Changes dont trigger update
-var a = 0
-var aa:Int = 0
-
-// proposed: remember
-var b by remember { mutableStateOf(0) }
-var bb : Int by remember { mutableStateOf(0) }
-
-// old: remember
-// proposed: mutableState
-var c = mutableStateOf(0)
-var cc = mutableStateOf<Int>(0)
-
-// rememberSaveable
-var d by rememberSaveable { mutableStateOf(0) }
-var dd : Int by rememberSaveable { mutableStateOf(0) }
-
-var count by mutableStateOf(0)
-
 val scope = rememberCoroutineScope()
+
+var count : Int by rememberSaveable { mutableStateOf(0) }
 
 var ticks by rememberSaveable { mutableStateOf(0) }
 
 suspend fun start() {
-  println("[components/counter.pine]: LE $ticks")
   ticks  = 0
   while(true) {
   println("[components/counter.pine]: while $ticks")
@@ -63,21 +45,21 @@ suspend fun start() {
 }
 
 scope.launch {
-  start()
+  println("[components/counter.pine]: scope.launch")
+  //start()
 }
 
 
-//Text(text="ticks: $ticks")
 PineRender {
-Text(text="Count: $count ticks: ${ticks}")
+  Text(text="ticks: $ticks")
+  Text(text="Count: $count ticks: ${ticks}")
 
-Button(onClick={
-println("[components/counter.pine]: click $count")
-    count = count + 1
-  }) {
-    Text(text="Click Me")
-}
-
+  Button(onClick={
+  println("[components/counter.pine]: click $count")
+      count = count + 1
+    }) {
+      Text(text="Click Me")
+  }
 }
 
 

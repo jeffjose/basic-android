@@ -137,7 +137,7 @@ def case_expand_component_line_var_mutable(vdef):
 def case_expand_component_line_var_mutable_with_type(vdef):
     return (
         vdef,
-        "var foo : String = mutableStateOf('bar')",
+        "var foo = mutableStateOf<String>('bar')",
     )
 
 
@@ -165,7 +165,7 @@ def case_expand_component_line_val_mutable(vdef):
 def case_expand_component_line_val_mutable_with_type(vdef):
     return (
         vdef,
-        "val foo : String = mutableStateOf('bar')",
+        "val foo = mutableStateOf<String>('bar')",
     )
 
 
@@ -310,6 +310,30 @@ def case_expand_component_line_ui_render_cases(line):
     "line,expected", cases=".", prefix="case_expand_component_line_ui_render"
 )
 def test_expand_component_line_ui_render(line, expected):
+
+    assert expand_component_line(line, [], []) == expected
+
+#######################################################################
+
+@parametrize(
+    line=[
+        "on_create {",
+        "on_create{",
+        "          on_create   {",
+        "          on_create{              ",
+    ]
+)
+def case_expand_component_line_on_create_render_cases(line):
+    return (
+        line,
+        "val _pine_on_create_scope = rememberCoroutineScope();\n_pine_on_create_scope.launch {"
+    )
+
+
+@parametrize_with_cases(
+    "line,expected", cases=".", prefix="case_expand_component_line_on_create_render"
+)
+def test_expand_component_line_on_create_render(line, expected):
 
     assert expand_component_line(line, [], []) == expected
 

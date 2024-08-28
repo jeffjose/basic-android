@@ -2,8 +2,20 @@ import re
 from pine.utils import mksetter, mksetter_incoming
 
 
-# Render {
+################
+## Blocks
+
+# ui {
 render_pattern = re.compile(r"^ui\s*{$")
+
+# on_create {
+on_create_pattern = re.compile(r"^on_create\s*{$")
+
+# on_destroy {
+on_destroy_pattern = re.compile(r"^on_destroy\s*{$")
+
+################
+
 
 # content()
 content_pattern = re.compile(r"^content\(\)$")
@@ -15,6 +27,10 @@ saver_pattern = re.compile(r"(\w+)\((.*)\)")
 # import androidx.foo.bar.Baz
 import_pattern = re.compile(r"import\s+.*")
 
+
+################
+## Variables
+
 # external val foo = "bar"
 external_variable_w_default_value_pattern = re.compile(
     r"^external\s+(val|var)\s*(.*)\s*=\s*(.*)"
@@ -23,10 +39,8 @@ external_variable_w_default_value_pattern = re.compile(
 # external val foo
 external_variable_pattern = re.compile(r"^external\s+(val|var)\s+(.*)")
 
-
 # Component(bind:foo="bar")
 bind_variable_pattern = re.compile(r"bind:(\w+)\s*=\s*\w+")
-
 
 # var $foo = "bar"
 mutablestate_pattern = re.compile(r"(val|var)\s+\$(.*)\s*=\s*(.*)")
@@ -36,6 +50,8 @@ remember_mutablestate_pattern = re.compile(r"(val|var)\s+#(.*)\s*=\s*(.*)")
 
 # var *foo = "bar"
 remembersaveable_mutablestate_pattern = re.compile(r"(val|var)\s+\*(.*)\s*=\s*(.*)")
+
+################
 
 
 # Implemented in this file, but not used
@@ -418,11 +434,23 @@ def expand_component_line(line, vars, exports):
 
         return "content?.invoke()"
 
-    # content()
+    # ui {}
     matched = render_pattern.search(line.strip())
     if matched:
 
         return "PineRender {"
+
+    # on_create {}
+    matched = on_create_pattern.search(line.strip())
+    if matched:
+
+        return "val _pine_on_create_scope = rememberCoroutineScope();\n_pine_on_create_scope.launch {"
+
+    # on_destroy {}
+    matched = on_destroy_pattern.search(line.strip())
+    if matched:
+
+        return "on_destroy {"
 
     # if matched:
     #     return f"{t} {vname} by remember {{ derivedStateOf {{  {value}  }} }}"
