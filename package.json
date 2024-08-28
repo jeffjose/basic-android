@@ -11,6 +11,7 @@
     "antlr2": "cd pine/antlr-v1 && antlr4 *g4 -Dlanguage=Python3 && mv KotlinParser.py KotlinParser.tokens KotlinParser.interp KotlinLexer.py KotlinLexer.tokens KotlinLexer.interp ../kotlin",
     "build": "pnpm gen && cd dist/cupcake && ./gradlew buildDebug",
     "build:canonical": "cd .canonical-app && ./gradlew buildDebug",
+    "build:nogen": "cd dist/cupcake && ./gradlew buildDebug",
     "gen": "./pine/scripts/gen.sh",
     "install": "pnpm gen && cd dist/cupcake && ./gradlew installDebug",
     "install:canonical": "cd .canonical-app && ./gradlew installDebug",

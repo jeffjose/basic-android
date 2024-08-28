@@ -26,7 +26,7 @@ fun ReactiveDeclarations(content: @Composable() (() -> Unit)? = null, ) {
 
 
 var count by rememberSaveable { mutableStateOf(1) }
-var x by remember { mutableStateOf(0) }
+var x = mutableStateOf(0)
 
 //val doubled by remember {derivedStateOf { count * 2}}
 //val quadrupled by remember {derivedStateOf { doubled * 2}}

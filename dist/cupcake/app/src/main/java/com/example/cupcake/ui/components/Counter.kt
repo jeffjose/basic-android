@@ -31,16 +31,20 @@ println("[components/counter.pine]: Top")
 
 // Regular. Changes dont trigger update
 var a = 0
+var aa:Int = 0
 
 // proposed: remember
-var #b = 0
+var b by remember { mutableStateOf(0) }
+var bb : Int by remember { mutableStateOf(0) }
 
 // old: remember
 // proposed: mutableState
-var c by remember { mutableStateOf(0) }
+var c = mutableStateOf(0)
+var cc = mutableStateOf<Int>(0)
 
 // rememberSaveable
 var d by rememberSaveable { mutableStateOf(0) }
+var dd : Int by rememberSaveable { mutableStateOf(0) }
 
 var count by mutableStateOf(0)
 

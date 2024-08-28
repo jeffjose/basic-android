@@ -10,7 +10,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
@@ -29,7 +28,7 @@ fun If(content: @Composable() (() -> Unit)? = null, ) {
 
 
 var foo = 0
-var count by remember { mutableStateOf(0) }
+var count = mutableStateOf(0)
 var user by rememberSaveable { mutableStateOf(User(false)) }
 
 //println("if - after ${user["loggedIn"]}")

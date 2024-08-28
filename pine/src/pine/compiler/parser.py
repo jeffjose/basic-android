@@ -330,7 +330,7 @@ def expand_component_line(line, vars, exports):
             vname = vname_type
             type = None
 
-        return f"{t} {_clean_vname(vname)}{' : ' + type if type else ''} = mutableStateOf({value})"
+        return f"{t} {_clean_vname(vname)} = mutableStateOf{ f"<{type}>" if type else ''}({value})"
 
     # var #foo = "bar"
     matched = remember_mutablestate_pattern.match(line)

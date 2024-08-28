@@ -9,10 +9,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.material3.Button
 
 
-var $coffeeCount  = 0
+var #coffeeCount  = 0
 var *count = 0
 
-val $xcoffeeCount  = 0
+val #xcoffeeCount  = 0
 val *xcount = 0
 
 

@@ -13,16 +13,20 @@ println("[components/counter.pine]: Top")
 
 // Regular. Changes dont trigger update
 var a = 0
+var aa:Int = 0
 
 // proposed: remember
 var #b = 0
+var #bb:Int = 0
 
 // old: remember
 // proposed: mutableState
 var $c = 0
+var $cc:Int = 0
 
 // rememberSaveable
 var *d = 0
+var *dd:Int = 0
 
 var count by mutableStateOf(0)
 
