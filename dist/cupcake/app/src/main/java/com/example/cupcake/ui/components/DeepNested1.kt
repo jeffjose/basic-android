@@ -36,6 +36,9 @@ LaunchedEffect(true) {
 
 PineRender {
   Button(onClick={
+
+    println("----")
+
     first = first + 1
     }) {
     Text( text = "1: $first")

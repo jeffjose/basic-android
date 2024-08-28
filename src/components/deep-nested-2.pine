@@ -16,10 +16,13 @@ onCreate {
 
 ui {
   Button(onClick={
+
+    println("----")
+
     first = first + 1
     }) {
     Text( text = "2: $first")
   }
 
-  DeepNested3(bind:first=first)
+  //DeepNested3(bind:first=first)
 }
