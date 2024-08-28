@@ -7,8 +7,12 @@ import com.example.cupcake.utils.*
 import com.example.cupcake.ui.components.DeepNested3
 
 
-println(" 2. top")
+println(" 2. Render")
 external var first: Int
+
+onCreate {
+  println(" 2. onCreate")
+}
 
 ui {
   Button(onClick={

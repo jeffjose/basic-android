@@ -6,9 +6,13 @@ import com.example.cupcake.utils.*
 
 import com.example.cupcake.ui.components.DeepNested2
 
-println("1. top")
+println("1. Render")
 
 var *first: Int = 0
+
+onCreate {
+  println("1. onCreate")
+}
 
 ui {
   Button(onClick={
@@ -19,3 +23,41 @@ ui {
 
   DeepNested2(bind:first=first)
 }
+
+
+// 
+// Open app
+//   [routes/+screen.pine]: Top
+//   1. Render
+//    2. Render
+//     3. Render
+//     3. bottom
+//   [routes/+screen.pine]: onCreate
+//   1. onCreate
+//    2. onCreate
+//     3. onCreate
+
+// 
+// Click DeepNested1 Button
+//    2. Render
+//     3. Render
+//     3. bottom
+
+
+// 
+// Click DeepNested2 Button
+//    2. Render
+//     3. Render
+//     3. bottom
+//    2. Render
+//     3. Render
+//     3. bottom
+
+
+// 
+// Click DeepNested3 Button
+//     3. Render
+//     3. bottom
+//    2. Render
+//     3. Render
+//     3. bottom

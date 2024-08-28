@@ -24,8 +24,12 @@ fun DeepNested3(first: Int, _set_first_incoming_ : (( Int) -> Unit)? = null, con
 
     
 
-println("  3. top")
+println("  3. Render")
 var first by rememberSaveable(inputs=arrayOf(first)) { mutableStateOf(first) }
+
+LaunchedEffect(true) {
+  println("  3. onCreate")
+}
 
 PineRender {
   Button(onClick={

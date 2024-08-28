@@ -26,9 +26,13 @@ fun DeepNested1(content: @Composable() (() -> Unit)? = null, ) {
     
 
 
-println("1. top")
+println("1. Render")
 
 var first : Int by rememberSaveable { mutableStateOf(0) }
+
+LaunchedEffect(true) {
+  println("1. onCreate")
+}
 
 PineRender {
   Button(onClick={
@@ -44,6 +48,9 @@ PineRender {
             }
               DeepNested2(_set_first_incoming_=::_set_first, first=first)
 }
+
+
+// 
 
 fun _pine_disposable_fun() {
 }
