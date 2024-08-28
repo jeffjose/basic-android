@@ -51,6 +51,41 @@ PineRender {
 
 
 // 
+// Open app
+//   [routes/+screen.pine]: Top
+//   1. Render
+//    2. Render
+//     3. Render
+//     3. bottom
+//   [routes/+screen.pine]: onCreate
+//   1. onCreate
+//    2. onCreate
+//     3. onCreate
+
+// 
+// Click DeepNested1 Button
+//    2. Render
+//     3. Render
+//     3. bottom
+
+
+// 
+// Click DeepNested2 Button
+//    2. Render
+//     3. Render
+//     3. bottom
+//    2. Render
+//     3. Render
+//     3. bottom
+
+
+// 
+// Click DeepNested3 Button
+//     3. Render
+//     3. bottom
+//    2. Render
+//     3. Render
+//     3. bottom
 
 fun _pine_disposable_fun() {
 }
