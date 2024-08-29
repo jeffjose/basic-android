@@ -14,23 +14,21 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.cupcake.ui.components.DeepNested3
 import com.example.cupcake.utils.*
 import com.example.cupcake.utils.PineRender
 
 
 
 @Composable
-fun DeepNested3(first: Int, _set_first_incoming_ : (( Int) -> Unit)? = null, content: @Composable() (() -> Unit)? = null, ) {
+fun DeepNested4(first: Int, _set_first_incoming_ : (( Int) -> Unit)? = null, content: @Composable() (() -> Unit)? = null, ) {
 
     
 
-
-println("  3. Render")
+println("   4. Render")
 var first by rememberSaveable(inputs=arrayOf(first)) { mutableStateOf(first) }
 
 LaunchedEffect(true) {
-  println("  3. onCreate")
+  println("   4. onCreate")
 }
 
 
@@ -47,15 +45,8 @@ LaunchedEffect(first) {
 
     first = first + 1
     }) {
-    Text( text = "3: $first")
+    Text( text = "4: $first")
   }
-
-
-            fun _set_first(value: Int) {
-                first = value
-                _set_first_incoming_?.invoke(first)
-            }
-              DeepNested4(_set_first_incoming_=::_set_first, first=first)
 }
 
 fun _pine_disposable_fun() {
