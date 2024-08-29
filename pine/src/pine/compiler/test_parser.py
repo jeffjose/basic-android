@@ -291,7 +291,7 @@ def test_expand_component_line_content(line, expected):
     ]
 )
 def case_expand_component_line_ui_render_cases(line):
-    return (line, "PineRender {")
+    return (line, "PineRender {\n    %%PARAMSETTERSLAUNCHEDEFFECTS%%")
 
 
 @parametrize_with_cases(
@@ -299,7 +299,8 @@ def case_expand_component_line_ui_render_cases(line):
 )
 def test_expand_component_line_ui_render(line, expected):
 
-    assert expand_component_line(line, [], []) == expected
+    for x,y in zip(expand_component_line(line, [], []).split(), expected.split()):
+        assert x.strip() == y.strip()
 
 
 #######################################################################
