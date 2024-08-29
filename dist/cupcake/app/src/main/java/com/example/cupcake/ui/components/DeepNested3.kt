@@ -47,8 +47,6 @@ LaunchedEffect(first) {
     }) {
     Text( text = "3: $first")
   }
-
-  println("  3. bottom")
 }
 
 fun _pine_disposable_fun() {

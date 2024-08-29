@@ -20,6 +20,4 @@ ui {
     }) {
     Text( text = "3: $first")
   }
-
-  println("  3. bottom")
 }

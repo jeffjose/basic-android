@@ -51,7 +51,12 @@ LaunchedEffect(first) {
     Text( text = "2: $first")
   }
 
-  //DeepNested3(bind:first=first)
+
+            fun _set_first(value: Int) {
+                first = value
+                _set_first_incoming_?.invoke(first)
+            }
+              DeepNested3(_set_first_incoming_=::_set_first, first=first)
 }
 
 fun _pine_disposable_fun() {

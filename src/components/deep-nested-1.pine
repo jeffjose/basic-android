@@ -7,7 +7,6 @@ import com.example.cupcake.utils.*
 import com.example.cupcake.ui.components.DeepNested2
 
 println("1. Render")
-
 var *first: Int = 0
 
 onCreate {
