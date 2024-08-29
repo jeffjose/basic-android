@@ -1,0 +1,27 @@
+import androidx.compose.material3.Text
+import androidx.compose.material3.Button
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.*
+
+
+
+println("[components/computed-bad.pine]: Top")
+
+var *count = 0
+val doubled  = count * 2
+
+onCreate {
+  println("[components/computed-bad.pine]: onCreate")
+}
+
+ui {
+  Text("Computed Bad")
+
+  Text("count=$count, doubled=$doubled")
+
+  Button(onClick={count = count + 1}) {
+    Text("count++")
+  }
+
+
+}

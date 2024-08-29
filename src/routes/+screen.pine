@@ -14,6 +14,8 @@ import com.example.cupcake.R
 import com.example.cupcake.ui.components.Reactivity
 import com.example.cupcake.ui.components.DeepNested1
 import com.example.cupcake.ui.components.Spacer
+import com.example.cupcake.ui.components.ComputedGood
+import com.example.cupcake.ui.components.ComputedBad
 
 // Log.d("XXX", data.value?.toString() ?: "default")
 println("[routes/+screen.pine]: Top")
@@ -49,7 +51,9 @@ ui {
             // Loop()
             // BindingText()
             // ComponentBindings()
-             DeepNested1()
+             //DeepNested1()
+             ComputedBad()
+             ComputedGood()
             // OnMount()
             //Reactivity()
         }
