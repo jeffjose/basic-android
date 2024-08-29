@@ -89,21 +89,7 @@ Row() {
 fun _pine_disposable_fun() {
 }
 
-    
-LaunchedEffect(first) {
-    _set_first_incoming_?.invoke(first)
-}
-
-LaunchedEffect(second) {
-    _set_second_incoming_?.invoke(second)
-}
-
-LaunchedEffect(value) {
-    _set_value_incoming_?.invoke(value)
-}
-
-
-    // onDetroy
+    // onDestroy
     val _pine_disposable_state by remember {mutableStateOf(true)}
 
     DisposableEffect(_pine_disposable_state) {

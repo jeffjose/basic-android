@@ -42,9 +42,7 @@ Text(text = "Clicked $count " + if (count == 1) "time" else "times")
 fun _pine_disposable_fun() {
 }
 
-    
-
-    // onDetroy
+    // onDestroy
     val _pine_disposable_state by remember {mutableStateOf(true)}
 
     DisposableEffect(_pine_disposable_state) {

@@ -34,7 +34,14 @@ LaunchedEffect(true) {
   println(" 2. onCreate")
 }
 
+
 PineRender {
+    
+LaunchedEffect(first) {
+    _set_first_incoming_?.invoke(first)
+}
+
+   
   Button(onClick={
 
     println("----")
@@ -50,13 +57,7 @@ PineRender {
 fun _pine_disposable_fun() {
 }
 
-    
-LaunchedEffect(first) {
-    _set_first_incoming_?.invoke(first)
-}
-
-
-    // onDetroy
+    // onDestroy
     val _pine_disposable_state by remember {mutableStateOf(true)}
 
     DisposableEffect(_pine_disposable_state) {

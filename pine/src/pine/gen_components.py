@@ -43,9 +43,7 @@ fun %%NAME%%(%%PARAMS%%) {
 
     %%CONTENT%%
 
-    %%PARAMSETTERSLAUNCHEDEFFECTS%%
-
-    // onDetroy
+    // onDestroy
     val _pine_disposable_state by remember {mutableStateOf(true)}
 
     DisposableEffect(_pine_disposable_state) {
@@ -102,6 +100,7 @@ def mkexport_param_setters_launched_effect_components(exports):
     for e in exports:
         vname, t = e['name'].split(':')
         setter = TEMPLATE_SETTER_LAUNCHED_EFFECT.replace("%%NAME%%", vname).replace("%%SETTER%%", mksetter_incoming(vname))
+
 
         final = final + setter
         

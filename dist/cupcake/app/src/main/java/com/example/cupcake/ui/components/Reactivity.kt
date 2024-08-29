@@ -35,7 +35,10 @@ LaunchedEffect(true) {
   println("[components/reactivity.pine]: onCreate")
 }
 
+
 PineRender {
+    
+   
 
   Counter()
   Counter()
@@ -45,9 +48,7 @@ PineRender {
 fun _pine_disposable_fun() {
 }
 
-    
-
-    // onDetroy
+    // onDestroy
     val _pine_disposable_state by remember {mutableStateOf(true)}
 
     DisposableEffect(_pine_disposable_state) {

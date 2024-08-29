@@ -453,7 +453,12 @@ def expand_component_line(line, vars, exports):
     matched = render_pattern.search(line.strip())
     if matched:
 
-        return "PineRender {"
+        # We have to do this template stuff here, because LaunchedEffect(var) needs to be *inside*
+        # PineRender to optimize recomposition
+        return '''
+PineRender {
+    %%PARAMSETTERSLAUNCHEDEFFECTS%%
+   ''' 
 
     # onCreate {}
     matched = onCreate_pattern.search(line.strip())

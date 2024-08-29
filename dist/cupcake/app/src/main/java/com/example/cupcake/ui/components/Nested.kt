@@ -27,13 +27,7 @@ Text(text = "The answer is $answer")
 fun _pine_disposable_fun() {
 }
 
-    
-LaunchedEffect(answer) {
-    _set_answer_incoming_?.invoke(answer)
-}
-
-
-    // onDetroy
+    // onDestroy
     val _pine_disposable_state by remember {mutableStateOf(true)}
 
     DisposableEffect(_pine_disposable_state) {

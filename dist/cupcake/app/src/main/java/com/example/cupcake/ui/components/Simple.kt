@@ -65,13 +65,7 @@ Text("x=$x y=$y")
 fun _pine_disposable_fun() {
 }
 
-    
-LaunchedEffect(good) {
-    _set_good_incoming_?.invoke(good)
-}
-
-
-    // onDetroy
+    // onDestroy
     val _pine_disposable_state by remember {mutableStateOf(true)}
 
     DisposableEffect(_pine_disposable_state) {

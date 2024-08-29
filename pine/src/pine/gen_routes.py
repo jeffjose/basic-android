@@ -224,6 +224,7 @@ def create_screen(template, file):
         .replace("%%NAMESPACE%%", get_project_namespace())
         .replace("%%IMPORT%%", parcel["imports"])
         .replace("%%CONTENT%%", parcel["contents"])
+        .replace("%%PARAMSETTERSLAUNCHEDEFFECTS%%", '') # Screens dont have LaunchedEffect `external var`
         .replace("%%NAME%%", slug)
         .strip()
     )

@@ -60,9 +60,7 @@ Text( text = "OUTSIDE (1way): $second")
 fun _pine_disposable_fun() {
 }
 
-    
-
-    // onDetroy
+    // onDestroy
     val _pine_disposable_state by remember {mutableStateOf(true)}
 
     DisposableEffect(_pine_disposable_state) {

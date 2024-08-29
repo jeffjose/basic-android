@@ -54,7 +54,10 @@ fun _pine_disposable_fun() {
 }
 
 
+
 PineRender {
+    
+   
   Text(text="ticks: $ticks")
   Text(text="Count: $count ticks: ${ticks}")
 
@@ -67,9 +70,7 @@ PineRender {
 }
 
 
-    
-
-    // onDetroy
+    // onDestroy
     val _pine_disposable_state by remember {mutableStateOf(true)}
 
     DisposableEffect(_pine_disposable_state) {

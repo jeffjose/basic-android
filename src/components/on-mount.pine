@@ -29,4 +29,6 @@ LaunchedEffect(true) {
   println("onMount - C $photos")
 }
 
-Text(text = "Photos - ${photos.size}")
+ui {
+  Text(text = "Photos - ${photos.size}")
+}
